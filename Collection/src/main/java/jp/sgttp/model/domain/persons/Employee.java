@@ -4,7 +4,11 @@ import jp.array.Array;
 
 public class Employee extends AbstractPerson {
     private String id;
-  
+    private final int type = 0;
+
+    public int getType() {
+        return type;
+    }
     public Employee(String names, String lastNames, Array<String> phoneNumbers, String id) {
       super(names, lastNames, phoneNumbers);
       this.id = id;

@@ -44,4 +44,13 @@ public class AbstractPerson implements Serializable {
     public void setPhoneNumbers(Array<String> phoneNumbers) {
       this.phoneNumbers = phoneNumbers;
     }
+    public AbstractPerson getPerson(){
+        return new AbstractPerson(this.names,this.lastNames,this.getPhoneNumbers());
+    }
+
+    @Override
+    public String toString() {
+        return "AbstractPerson{" + "names=" + names + ", lastNames=" + lastNames + ", phoneNumbers=" + phoneNumbers + '}';
+    }
+    
 }
