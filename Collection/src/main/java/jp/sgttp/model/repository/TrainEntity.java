@@ -1,8 +1,10 @@
-package jp.sgttp.model.domain.trainUtilities;
+package jp.sgttp.model.repository;
 
 import jp.array.Array;
+import jp.sgttp.model.domain.trainUtilities.CustomersWagon;
+import jp.sgttp.model.domain.trainUtilities.LuggageWagon;
 
-public class Train {
+public class TrainEntity {
 
     private String trainName;
     private String trainId;
@@ -12,7 +14,7 @@ public class Train {
     private Array<CustomersWagon> customersWagons;
     private Array<LuggageWagon> luggageWagons;
 
-    public Train(String trainName, String trainId, int kilometers, float loadingCapacity, String brand,
+    public TrainEntity(String trainName, String trainId, int kilometers, float loadingCapacity, String brand,
             Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons) {
         this.trainName = trainName;
         this.trainId = trainId;
@@ -23,6 +25,7 @@ public class Train {
         this.luggageWagons = luggageWagons;
     }
 
+    // Getters and setters
     public String getTrainName() {
         return trainName;
     }
@@ -78,18 +81,5 @@ public class Train {
     public void setLuggageWagons(Array<LuggageWagon> luggageWagons) {
         this.luggageWagons = luggageWagons;
     }
-
-    public static Train getNullTrain() {
-        return new Train("", "", 0, 0, "", null, null);
-    }
     
-    /*Nombre: Gestión de trenes. 
-    Como empleado, quiero un sistema de gestión de trenes, para garantizar una 
-    buena operación. 
-    Criterio de aceptación: 
-    el administrador podrá agregar un tren, darlo de baja, consultar, modificar 
-    los datos de los trenes, cada tren debe tener los siguientes datos nombre, 
-    identificador, capacidad de carga y kilometraje.
-    Prioridad: Alto.  */
-
 }

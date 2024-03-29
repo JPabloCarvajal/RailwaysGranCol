@@ -3,7 +3,7 @@ package jp.sgttp.model.domain.trainUtilities;
 import jp.linkedlist.singly.LinkedList;
 import jp.sgttp.model.domain.Luggage;
 
-public class LuggageWagon extends wagon{
+public class LuggageWagon extends Wagon{
 
     private LinkedList<Luggage> luggagesWagon;
     private float wagonWeight;
