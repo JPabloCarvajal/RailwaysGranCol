@@ -32,12 +32,23 @@ public class TrainManagementTest {
                 System.out.println("Train not found for ID: " + trainIdToSearch);
             }
 
+            // Eliminar tren
             String trainIdToRemove = "005"; // Cambiar por el ID del tren que deseas remover
             boolean removed = trainRepository.removeTrain(trainIdToRemove);
             if (removed) {
                 System.out.println("Train removed successfully.");
             } else {
                 System.out.println("Failed to remove train with ID: " + trainIdToRemove);
+            }
+
+            // Modificar un tren existente
+            String trainIdToModify = "004"; // Cambiar por el ID del tren que deseas modificar
+            Train modifiedTrain = new Train("Mercedes Updated", trainIdToModify, 900, 85.0f, "Passenger Transport Updated", new Array<>(3), new Array<>(3));
+            boolean modified = trainRepository.modifyTrain(trainIdToModify, modifiedTrain);
+            if (modified) {
+                System.out.println("Train modified successfully.");
+            } else {
+                System.out.println("Failed to modify train with ID: " + trainIdToModify);
             }
         } catch (Exception e) {
             e.printStackTrace();

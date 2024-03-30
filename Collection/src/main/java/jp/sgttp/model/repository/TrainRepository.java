@@ -103,11 +103,41 @@ public class TrainRepository {
             return false;
         }
     }
+
+    public boolean modifyTrain(String trainId, Train modifiedTrain) {
+        // Obtener todos los trenes del archivo JSON
+        TrainEntity[] trainEntities = fileJson.getObjects(pathFile, TrainEntity[].class);
+    
+        // Buscar el tren con el ID especificado
+        int indexToModify = -1;
+        for (int i = 0; i < trainEntities.length; i++) {
+            if (trainEntities[i].getTrainId().equals(trainId)) {
+                indexToModify = i;
+                break;
+            }
+        }
+    
+        // Si se encontró el tren, modificarlo y escribir de nuevo los trenes actualizados en el archivo JSON
+        if (indexToModify != -1) {
+            trainEntities[indexToModify].setTrainName(modifiedTrain.getTrainName());
+            trainEntities[indexToModify].setKilometers(modifiedTrain.getKilometers());
+            trainEntities[indexToModify].setLoadingCapacity(modifiedTrain.getLoadingCapacity());
+            trainEntities[indexToModify].setBrand(modifiedTrain.getBrand());
+            trainEntities[indexToModify].setCustomersWagons(modifiedTrain.getCustomersWagons());
+            trainEntities[indexToModify].setLuggageWagons(modifiedTrain.getLuggageWagons());
+    
+            return fileJson.writeObjects(pathFile, trainEntities);
+        } else {
+            // Si no se encontró el tren con el ID especificado, devolver false
+            return false;
+        }
+    }
+    
     /*Nombre: Gestión de trenes. 
     Como empleado, quiero un sistema de gestión de trenes, para garantizar una 
     buena operación. 
     Criterio de aceptación: 
-    el administrador podrá //YA//agregar un tren, darlo de baja, //YA// consultar, modificar 
+    el administrador podrá //YA//agregar un tren, //YA//darlo de baja, //YA// consultar, //YA//modificar 
     los datos de los trenes, cada tren debe tener los siguientes datos nombre, 
     identificador, capacidad de carga y kilometraje.
     Prioridad: Alto.  */
