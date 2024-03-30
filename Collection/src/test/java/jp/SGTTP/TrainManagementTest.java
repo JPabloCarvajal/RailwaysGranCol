@@ -1,0 +1,46 @@
+package jp.SGTTP;
+
+import jp.array.Array;
+import jp.sgttp.model.domain.trainUtilities.Train;
+import jp.sgttp.model.repository.TrainRepository;
+
+public class TrainManagementTest {
+    public static void main(String[] args) {
+        // Ruta del archivo JSON de trenes
+        String pathFile = "C:\\Users\\juanp\\OneDrive\\Escritorio\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json";
+
+        // Instancia de TrainRepository
+        TrainRepository trainRepository = new TrainRepository(pathFile);
+
+        try {
+            // Agregar un nuevo tren
+            Train newTrain = new Train("Mercedes", "004", 800, 75.0f, "Passenger Transport", new Array<>(2), new Array<>(2));
+            boolean added = trainRepository.addTrain(newTrain);
+            if (added) {
+                System.out.println("New train added successfully.");
+            } else {
+                System.out.println("Failed to add new train.");
+            }
+
+            // Prueba del método getTrain()
+            String trainIdToSearch = "003";
+            Train train = trainRepository.getTrain(trainIdToSearch);
+            if (train != Train.getNullTrain()) {
+                System.out.println("Train found:");
+                System.out.println(train.toString());
+            } else {
+                System.out.println("Train not found for ID: " + trainIdToSearch);
+            }
+
+            String trainIdToRemove = "005"; // Cambiar por el ID del tren que deseas remover
+            boolean removed = trainRepository.removeTrain(trainIdToRemove);
+            if (removed) {
+                System.out.println("Train removed successfully.");
+            } else {
+                System.out.println("Failed to remove train with ID: " + trainIdToRemove);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

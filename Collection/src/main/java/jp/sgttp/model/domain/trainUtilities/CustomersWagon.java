@@ -10,8 +10,8 @@ public class CustomersWagon extends Wagon {
     private int premiunAmount;
     private LinkedList<Ticket> customers;
 
-    public CustomersWagon(int wagonNum, int standarAmount, int executiveAmount, int premiunAmount, LinkedList<Ticket> customers) {
-        super(wagonNum);
+    public CustomersWagon(int wagonNum,String asociatedTrainID, int standarAmount, int executiveAmount, int premiunAmount, LinkedList<Ticket> customers) {
+        super(wagonNum,asociatedTrainID);
         this.standarAmount = standarAmount;
         this.premiunAmount = premiunAmount;
         this.executiveAmount = executiveAmount;

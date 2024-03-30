@@ -1,0 +1,44 @@
+[
+  {
+    "trainName": "Mercedes",
+    "trainId": "003",
+    "kilometers": 800,
+    "loadingCapacity": 75.0,
+    "brand": "Passenger Transport",
+    "customersWagons": {
+      "E": [
+        null,
+        null
+      ],
+      "size": 2
+    },
+    "luggageWagons": {
+      "E": [
+        null,
+        null
+      ],
+      "size": 2
+    }
+  },
+  {
+    "trainName": "Mercedes",
+    "trainId": "004",
+    "kilometers": 800,
+    "loadingCapacity": 75.0,
+    "brand": "Passenger Transport",
+    "customersWagons": {
+      "E": [
+        null,
+        null
+      ],
+      "size": 2
+    },
+    "luggageWagons": {
+      "E": [
+        null,
+        null
+      ],
+      "size": 2
+    }
+  }
+]

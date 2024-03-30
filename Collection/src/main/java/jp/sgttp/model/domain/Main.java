@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package jp.sgttp.model.domain;
 
 import javax.swing.JOptionPane;
@@ -13,11 +9,6 @@ import jp.sgttp.model.domain.persons.Contact;
 import jp.sgttp.model.domain.persons.Customer;
 import jp.sgttp.model.domain.persons.Employee;
 import jp.sgttp.model.domain.persons.User;
-
-/**
- *
- * @author thewe
- */
 public class Main {
 
     static public LinkedList<Employee> employees = new LinkedList<>();

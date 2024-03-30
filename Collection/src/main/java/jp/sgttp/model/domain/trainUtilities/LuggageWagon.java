@@ -9,8 +9,8 @@ public class LuggageWagon extends Wagon{
     private float wagonWeight;
     private int luggagesAmount;
 
-    public LuggageWagon(LinkedList<Luggage> luggagesWagon, float wagonWeight, int luggagesAmount, int wagonNum) {
-        super(wagonNum);
+    public LuggageWagon(LinkedList<Luggage> luggagesWagon,String asociatedTrainID, float wagonWeight, int luggagesAmount, int wagonNum) {
+        super(wagonNum,asociatedTrainID);
         this.luggagesWagon = luggagesWagon;
         this.wagonWeight = wagonWeight;
         this.luggagesAmount = luggagesAmount;
@@ -39,5 +39,6 @@ public class LuggageWagon extends Wagon{
     public void setLuggagesAmount(int luggagesAmount) {
         this.luggagesAmount = luggagesAmount;
     }
+
 }
 
