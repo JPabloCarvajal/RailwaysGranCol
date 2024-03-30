@@ -19,7 +19,7 @@ public class UserRepository {
     EmployeeRepository employeeRepository = new EmployeeRepository("../../databas/employees.json");
     for (UserEntity userEntity : userEntities) {
       if (userEntity.username.equals(username)) {
-        return new User(employeeRepository.getEmployee(userEntity.person), userEntity.username, userEntity.password);
+        return new User(employeeRepository.getEmployee(userEntity.person), userEntity.username, userEntity.password,userEntity.type);
       }
     }
     return User.getNullUser();

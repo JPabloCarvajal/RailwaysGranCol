@@ -10,6 +10,7 @@ public class TrainRepository {
     private FileJsonInterface<TrainEntity> fileJson;
     private String pathFile;
 
+
     public TrainRepository(String pathFile) {
         this.pathFile = pathFile;
         this.fileJson = FileJsonAdapter.getInstance();
@@ -18,7 +19,7 @@ public class TrainRepository {
     public Train getTrain(String trainId) {
         TrainEntity[] trainEntities = fileJson.getObjects(pathFile, TrainEntity[].class);
         for (TrainEntity trainEntity : trainEntities) {
-        if (trainEntity.getTrainId() == trainId) {
+        if (trainEntity.getTrainId().equals(trainId)) {
             return new Train(
                 trainEntity.getTrainName(),
                 trainEntity.getTrainId(),
@@ -39,7 +40,7 @@ public class TrainRepository {
         // Crear una nueva instancia de TrainEntity a partir del tren proporcionado
         TrainEntity newTrainEntity = new TrainEntity(
                 train.getTrainName(),
-                train.getTrainId(),
+                String.valueOf(train.getTrainId()), // Convertir el ID de int a String
                 train.getKilometers(),
                 train.getLoadingCapacity(),
                 train.getBrand(),

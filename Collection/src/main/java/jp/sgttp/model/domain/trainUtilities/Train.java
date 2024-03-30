@@ -11,9 +11,9 @@ public class Train {
     private String brand;
     private Array<CustomersWagon> customersWagons;
     private Array<LuggageWagon> luggageWagons;
-
+    
     public Train(String trainName, String trainId, int kilometers, float loadingCapacity, String brand,
-            Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons) {
+                 Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons) {
         this.trainName = trainName;
         this.trainId = trainId;
         this.kilometers = kilometers;
@@ -22,67 +22,68 @@ public class Train {
         this.customersWagons = customersWagons;
         this.luggageWagons = luggageWagons;
     }
-
-    public String getTrainName() {
-        return trainName;
-    }
-
+    
     public void setTrainName(String trainName) {
         this.trainName = trainName;
-    }
-
-    public String getTrainId() {
-        return trainId;
     }
 
     public void setTrainId(String trainId) {
         this.trainId = trainId;
     }
 
-    public int getKilometers() {
-        return kilometers;
-    }
-
     public void setKilometers(int kilometers) {
         this.kilometers = kilometers;
-    }
-
-    public float getLoadingCapacity() {
-        return loadingCapacity;
     }
 
     public void setLoadingCapacity(float loadingCapacity) {
         this.loadingCapacity = loadingCapacity;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
     public void setBrand(String brand) {
         this.brand = brand;
-    }
-
-    public Array<CustomersWagon> getCustomersWagons() {
-        return customersWagons;
     }
 
     public void setCustomersWagons(Array<CustomersWagon> customersWagons) {
         this.customersWagons = customersWagons;
     }
 
-    public Array<LuggageWagon> getLuggageWagons() {
-        return luggageWagons;
-    }
-
     public void setLuggageWagons(Array<LuggageWagon> luggageWagons) {
         this.luggageWagons = luggageWagons;
+    }
+
+    // Getters
+    public String getTrainName() {
+        return trainName;
+    }
+
+    public String getTrainId() {
+        return trainId;
+    }
+
+    public int getKilometers() {
+        return kilometers;
+    }
+
+    public float getLoadingCapacity() {
+        return loadingCapacity;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public Array<CustomersWagon> getCustomersWagons() {
+        return customersWagons;
+    }
+
+    public Array<LuggageWagon> getLuggageWagons() {
+        return luggageWagons;
     }
 
     public static Train getNullTrain() {
         return new Train("", "", 0, 0, "", null, null);
     }
-    
+
     /*Nombre: Gestión de trenes. 
     Como empleado, quiero un sistema de gestión de trenes, para garantizar una 
     buena operación. 

@@ -9,7 +9,7 @@ import jp.sgttp.model.domain.Luggage;
 public class Customer extends AbstractPerson {
 
     LinkedList<Luggage> luggages = new LinkedList<>();
-
+    private final int type = 1;
     int customerId;   
 
     public Customer(Luggage luggage,String names, String lastNames, Array<String> phoneNumbers){
@@ -35,5 +35,10 @@ public class Customer extends AbstractPerson {
     public static Customer getNullCustomer() {
       return new Customer(null,"","",null);
     }
+
+    public int getType() {
+        return type;
+    }
+
 
 }

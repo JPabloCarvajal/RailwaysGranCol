@@ -680,17 +680,28 @@ public class LinkedList<E> extends AbstractList<E>{
     //public void forEach(Function<E, Void> action)
 
     //agregado nuevo
+//    public E get(int index) {
+//        if (index < 0 || index >= size) {
+//            throw new IndexOutOfBoundsException("Invalid index");
+//        }
+//        LinkedNode<E> inode = head;
+//        for (int i = 0; i < index; i++) {
+//            inode = inode.getNext();
+//        }
+//        return inode.get();
+//    }
     public E get(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Invalid index");
+            throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
         }
-        LinkedNode<E> inode = head;
-        for (int i = 0; i < index; i++) {
-            inode = inode.getNext();
-        }
-        return inode.get();
-    }
 
+        LinkedNode<E> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        return current.get();
+    }
+    
     public int indexOf(E element) {
         int index = 0;
         LinkedNode<E> current = head;
