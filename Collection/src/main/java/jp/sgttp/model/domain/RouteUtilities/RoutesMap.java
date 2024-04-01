@@ -82,5 +82,18 @@ public class RoutesMap {
         }
         return stations;
     }
-    
+    //probar y arreglar con este main
+    public static void main(String[] args) {
+        // Crear una instancia de RoutesMap
+        RoutesMap routesMap = new RoutesMap();
+
+        // Estaciones de origen y destino para probar el cálculo de la distancia más corta
+        Station origin = routesMap.stationA;
+        Station destination = routesMap.stationH;
+
+        // Calcular la distancia más corta entre dos estaciones
+        float shortestDistance = routesMap.lowestDistanceBeetweenStationsKM(origin, destination);
+        System.out.println("La distancia más corta entre " + origin.getStationName() + " y " +
+                destination.getStationName() + " es: " + shortestDistance + " km");
+    }
 }

@@ -7,7 +7,7 @@ public class Graph<E> {
     public GraphNode<E> first;
     public GraphNode<E> last;
 
-
+    //Revisar metodos
     public Graph() {
         first = null;
         last = null;
