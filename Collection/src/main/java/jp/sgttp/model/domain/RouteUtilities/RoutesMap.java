@@ -8,17 +8,17 @@ public class RoutesMap {
 
     Graph<Station> stationsGraph = new Graph<>();
 
-    Station stationA = new Station("Estacion A", "Ciudad A");
-    Station stationB = new Station("Estacion B", "Ciudad B");
-    Station stationC = new Station("Estacion C", "Ciudad C");
-    Station stationD = new Station("Estacion D", "Ciudad D");
-    Station stationE = new Station("Estacion E", "Ciudad E");
-    Station stationF = new Station("Estacion F", "Ciudad F");
-    Station stationG = new Station("Estacion G", "Ciudad G");
-    Station stationH = new Station("Estacion H", "Ciudad H");
-    Station stationI = new Station("Estacion I", "Ciudad I");
-    Station stationJ = new Station("Estacion J", "Ciudad J");
-    Station stationK = new Station("Estacion K", "Ciudad K");
+    private Station stationA = new Station("Estacion A", "Ciudad A");
+    private Station stationB = new Station("Estacion B", "Ciudad B");
+    private Station stationC = new Station("Estacion C", "Ciudad C");
+    private Station stationD = new Station("Estacion D", "Ciudad D");
+    private Station stationE = new Station("Estacion E", "Ciudad E");
+    private Station stationF = new Station("Estacion F", "Ciudad F");
+    private Station stationG = new Station("Estacion G", "Ciudad G");
+    private Station stationH = new Station("Estacion H", "Ciudad H");
+    private Station stationI = new Station("Estacion I", "Ciudad I");
+    private Station stationJ = new Station("Estacion J", "Ciudad J");
+    private Station stationK = new Station("Estacion K", "Ciudad K");
 
     public RoutesMap() {
         stationsGraph.newNode(stationA);
@@ -70,6 +70,94 @@ public class RoutesMap {
         stationsGraph.newEdge(stationK, stationC, 110);
     }
 
+    public Station getStationA() {
+        return stationA;
+    }
+
+    public void setStationA(Station stationA) {
+        this.stationA = stationA;
+    }
+
+    public Station getStationB() {
+        return stationB;
+    }
+
+    public void setStationB(Station stationB) {
+        this.stationB = stationB;
+    }
+
+    public Station getStationC() {
+        return stationC;
+    }
+
+    public void setStationC(Station stationC) {
+        this.stationC = stationC;
+    }
+
+    public Station getStationD() {
+        return stationD;
+    }
+
+    public void setStationD(Station stationD) {
+        this.stationD = stationD;
+    }
+
+    public Station getStationE() {
+        return stationE;
+    }
+
+    public void setStationE(Station stationE) {
+        this.stationE = stationE;
+    }
+
+    public Station getStationF() {
+        return stationF;
+    }
+
+    public void setStationF(Station stationF) {
+        this.stationF = stationF;
+    }
+
+    public Station getStationG() {
+        return stationG;
+    }
+
+    public void setStationG(Station stationG) {
+        this.stationG = stationG;
+    }
+
+    public Station getStationH() {
+        return stationH;
+    }
+
+    public void setStationH(Station stationH) {
+        this.stationH = stationH;
+    }
+
+    public Station getStationI() {
+        return stationI;
+    }
+
+    public void setStationI(Station stationI) {
+        this.stationI = stationI;
+    }
+
+    public Station getStationJ() {
+        return stationJ;
+    }
+
+    public void setStationJ(Station stationJ) {
+        this.stationJ = stationJ;
+    }
+
+    public Station getStationK() {
+        return stationK;
+    }
+
+    public void setStationK(Station stationK) {
+        this.stationK = stationK;
+    }
+
     public float lowestDistanceBeetweenStationsKM(Station A, Station B){
         return stationsGraph.shortestPath(stationsGraph, A, B);
     }
@@ -82,18 +170,32 @@ public class RoutesMap {
         }
         return stations;
     }
-    //probar y arreglar con este main
+    
+    // Prueba con este main xd
     public static void main(String[] args) {
         // Crear una instancia de RoutesMap
         RoutesMap routesMap = new RoutesMap();
 
         // Estaciones de origen y destino para probar el cálculo de la distancia más corta
-        Station origin = routesMap.stationA;
-        Station destination = routesMap.stationH;
+        Station origin = routesMap.getStationA();
+        Station destination = routesMap.getStationH();
 
         // Calcular la distancia más corta entre dos estaciones
         float shortestDistance = routesMap.lowestDistanceBeetweenStationsKM(origin, destination);
         System.out.println("La distancia más corta entre " + origin.getStationName() + " y " +
                 destination.getStationName() + " es: " + shortestDistance + " km");
+        
+        // Obtener la cola de estaciones en el camino más corto
+        QueueArray<Station> shortestPathStations = routesMap.stationsToTravel(origin, destination);
+        
+        // Imprimir las estaciones en el camino más corto
+        int i = shortestPathStations.size();
+        while (!shortestPathStations.isEmpty()) {
+            System.out.println("Estacion "+ i);
+            System.out.println(shortestPathStations.extract().getStationName()+"\n");
+            i--;
+        }
     }
 }
+
+

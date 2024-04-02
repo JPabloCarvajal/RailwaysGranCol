@@ -32,22 +32,20 @@ public class Graph<E> {
     }
 
     public void newEdge(E from, E to) {
-        if (contains(from) && contains(to)) {
-            GraphNode<E> position = first;
-            while (!position.data.equals(from.toString())) {
-                position = position.next;
-            }
+        GraphNode<E> position = getNodeByData(from);
+        if (position != null && contains(to)) {
             position.list.newAdjacency(to);
+        } else {
+            System.out.println("El nodo de origen o destino no existe en el grafo.");
         }
     }
-
+    
     public void newEdge(E from, E to, float weight) {
-        if (contains(from) && contains(to)) {
-            GraphNode<E> position = first;
-            while (!position.data.equals(from.toString())) {
-                position = position.next;
-            }
+        GraphNode<E> position = getNodeByData(from);
+        if (position != null && contains(to)) {
             position.list.newAdjacency(to, weight);
+        } else {
+            System.out.println("El nodo de origen o destino no existe en el grafo.");
         }
     }
 
