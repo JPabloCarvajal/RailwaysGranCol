@@ -161,7 +161,7 @@ public class RoutesMap {
     }
 
     public float lowestDistanceBeetweenStationsKM(Station A, Station B){
-        return stationsGraph.shortestPath(stationsGraph, A, B);
+        return stationsGraph.shortestPathKm(stationsGraph, A, B);
     }
 
     public QueueArray<Station> stationsToTravel(Station A,Station B){

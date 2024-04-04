@@ -121,8 +121,8 @@ public class Graph<E> {
         return null;
     }
 
-    // Método para encontrar el camino más corto entre dos nodos utilizando el algoritmo de Dijkstra
-        public float shortestPath(Graph<E> graph, E startNode, E endNode) {
+    // Método para encontrar el camino más corto entre dos nodos utilizando el algoritmo de Dijkstra y sumar la distancia recorrida total
+        public float shortestPathKm(Graph<E> graph, E startNode, E endNode) {
             // Obtener el nodo de inicio
             GraphNode<E> start = getNode(graph, startNode);
             if (start == null) {
@@ -222,6 +222,7 @@ public class Graph<E> {
             return null;
         }
 
+        // Método para encontrar el camino más corto entre dos nodos utilizando el algoritmo de Dijkstra
         public Array<GraphNode<E>> shortestPathNodes(Graph<E> graph, E startNode, E endNode) {
             // Obtener el nodo de inicio
             GraphNode<E> start = getNode(graph, startNode);
