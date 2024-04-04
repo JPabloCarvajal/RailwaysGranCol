@@ -65,6 +65,10 @@ public class QueueList<E> extends AbstractQueue<E> {
         return queue.peek();
     }
 
+    public E peekLast() {
+        return queue.peekLast();
+    }
+
     @Override
     public E extract() {
         return queue.poll();

@@ -2,7 +2,9 @@ package jp.sgttp.model.domain.RouteUtilities;
 
 import jp.array.Array;
 import jp.graphs.*;
+import jp.linkedlist.singly.LinkedList;
 import jp.queue.array.QueueArray;
+import jp.queue.list.QueueList;
 
 public class RoutesMap {
 
@@ -168,8 +170,77 @@ public class RoutesMap {
         for (int i = 0; i < shortestPathNodes.size(); i++) {
             stations.insert(shortestPathNodes.get(i).data);
         }
+        stations.reverse();
         return stations;
     }
+
+    public QueueList<Station> buildCustomRoute(LinkedList<Station> stations) {
+        if (stations == null || stations.size() < 2) {
+            // Verificar si la lista de estaciones es válida
+            System.out.println("La lista de estaciones proporcionada no es válida.");
+            return null;
+        }
+    
+        // Crear una copia de la lista de estaciones
+        LinkedList<Station> stationsCopy = new LinkedList<>();
+        stationsCopy.add(stations);
+    
+        // Crear una cola para almacenar las estaciones en la ruta personalizada
+        QueueList<Station> customRouteStations = new QueueList<>();
+    
+        // Guardar la estacion final para agregar al final
+        Station lastStation = stationsCopy.peekLast();
+    
+        // Iterar sobre las estaciones proporcionadas por el cliente en la copia de la lista
+        Station currentStation = stationsCopy.poll();
+        while (!stationsCopy.isEmpty()) {
+            Station nextStation = stationsCopy.peek(); // Miramos la siguiente estación sin quitarla de la lista
+    
+            // Obtener la ruta más corta desde la estación actual hasta la próxima estación
+            QueueArray<Station> shortestPath = stationsToTravel(currentStation, nextStation);
+    
+            // Agregar las estaciones de la ruta más corta a la ruta personalizada
+            while (!shortestPath.isEmpty()) {
+                Station stationToAdd = shortestPath.extract();
+                // Agregar la estación solo si la siguiente estación no es la misma que la actual
+                if (!nextStation.equals(stationToAdd)) {
+                    customRouteStations.insert(stationToAdd);
+                }
+            }
+    
+            // Actualizar la estación actual
+            currentStation = stationsCopy.poll();
+        }
+        customRouteStations.insert(lastStation);
+        return customRouteStations;
+    }
+    
+    public float calculateTotalDistance(LinkedList<Station> stations) {
+        float totalDistance = 0;
+    
+        // Crear una copia de la lista de estaciones
+        LinkedList<Station> stationsCopy = new LinkedList<>();
+        stationsCopy.add(stations);
+    
+        // Iterar sobre las estaciones proporcionadas por el cliente en la copia de la lista
+        Station currentStation = stationsCopy.poll();
+        while (!stationsCopy.isEmpty()) {
+            Station nextStation = stationsCopy.peek(); // Miramos la siguiente estación sin quitarla de la lista
+    
+            // Obtener la distancia entre la estación actual y la próxima estación
+            float distance = lowestDistanceBeetweenStationsKM(currentStation, nextStation);
+    
+            // Sumar la distancia al total
+            totalDistance += distance;
+    
+            // Actualizar la estación actual
+            currentStation = stationsCopy.poll();
+        }
+    
+        return totalDistance;
+    }
+    
+    
     
     // Prueba con este main xd
     public static void main(String[] args) {
@@ -177,8 +248,8 @@ public class RoutesMap {
         RoutesMap routesMap = new RoutesMap();
 
         // Estaciones de origen y destino para probar el cálculo de la distancia más corta
-        Station origin = routesMap.getStationA();
-        Station destination = routesMap.getStationH();
+        Station origin = routesMap.getStationC();
+        Station destination = routesMap.getStationG();
 
         // Calcular la distancia más corta entre dos estaciones
         float shortestDistance = routesMap.lowestDistanceBeetweenStationsKM(origin, destination);
@@ -189,12 +260,42 @@ public class RoutesMap {
         QueueArray<Station> shortestPathStations = routesMap.stationsToTravel(origin, destination);
         
         // Imprimir las estaciones en el camino más corto
-        int i = shortestPathStations.size();
+        int i = 1;
         while (!shortestPathStations.isEmpty()) {
             System.out.println("Estacion "+ i);
             System.out.println(shortestPathStations.extract().getStationName()+"\n");
-            i--;
+            i++;
         }
+        // Prueba de la ruta personalizada
+        Station intermediateStationI = routesMap.getStationI();
+        Station intermediateStationJ = routesMap.getStationJ();
+        Station intermediateStationA = routesMap.getStationA();
+        Station intermediateStationG = routesMap.getStationG();
+        Station intermediateStationH = routesMap.getStationH();
+
+        // Crear una lista de estaciones proporcionadas por el cliente
+        LinkedList<Station> customStationsList = new LinkedList<>();
+        customStationsList.add(intermediateStationI);
+        customStationsList.add(intermediateStationJ);
+        customStationsList.add(intermediateStationA);
+        customStationsList.add(intermediateStationG);
+        customStationsList.add(intermediateStationH);
+
+        // Construir la ruta personalizada
+        QueueList<Station> customRouteStations = routesMap.buildCustomRoute(customStationsList);
+
+        // Imprimir las estaciones en la ruta personalizada
+        System.out.println("Ruta Personalizada:");
+        int j = 1;
+        while (!customRouteStations.isEmpty()) {
+            System.out.println("Estación " + j + ": " + customRouteStations.extract().getStationName());
+            j++;
+        }
+
+        // Calcular los kilómetros totales recorridos
+        float totalDistance = routesMap.calculateTotalDistance(customStationsList);
+        System.out.println("Kilómetros totales recorridos en la ruta personalizada: " + totalDistance + " km");
+        
     }
 }
 

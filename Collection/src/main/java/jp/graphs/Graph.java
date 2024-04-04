@@ -194,6 +194,20 @@ public class Graph<E> {
             return null;
         }
 
+        public float getEdgeWeight(E from, E to) {
+            GraphNode<E> fromNode = getNodeByData(from);
+            if (fromNode != null) {
+                Edge<E> currentEdge = fromNode.list.first;
+                while (currentEdge != null) {
+                    if (currentEdge.destination.equals(to)) {
+                        return currentEdge.weight;
+                    }
+                    currentEdge = currentEdge.next;
+                }
+            }
+           
+            return Float.POSITIVE_INFINITY;
+        }
         
 
         // Método para obtener un nodo por su dato
