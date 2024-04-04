@@ -1,4 +1,4 @@
-package jp.sgttp.model.repository;
+package jp.sgttp.model.repository.Employees;
 
 public class EmployeeEntity {
     String id;

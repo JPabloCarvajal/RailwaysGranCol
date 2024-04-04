@@ -1,4 +1,4 @@
-package jp.sgttp.model.repository;
+package jp.sgttp.model.repository.Employees;
 
 import jp.array.Array;
 import jp.sgttp.model.domain.persons.Employee;
