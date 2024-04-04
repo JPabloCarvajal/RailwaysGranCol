@@ -1,20 +1,24 @@
 package jp.SGTTP;
 
 import jp.array.Array;
+import jp.sgttp.model.domain.RouteUtilities.RoutesMap;
 import jp.sgttp.model.domain.trainUtilities.Train;
-import jp.sgttp.model.repository.TrainRepository;
+import jp.sgttp.model.repository.Trains.TrainRepository;
+import jp.util.iterator.Iterator;
 
 public class TrainManagementTest {
     public static void main(String[] args) {
         // Ruta del archivo JSON de trenes
-        String pathFile = "C:\\Users\\juanp\\OneDrive\\Escritorio\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json";
+        String pathFile = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json";
+        RoutesMap mapa = new RoutesMap();
 
         // Instancia de TrainRepository
         TrainRepository trainRepository = new TrainRepository(pathFile);
 
         try {
             // Agregar un nuevo tren
-            Train newTrain = new Train("Mercedes", "004", 800, 75.0f, "Passenger Transport", new Array<>(2), new Array<>(2));
+            
+            Train newTrain = new Train("Mercedes", "004", 800, 75.0f, "Passenger Transport", new Array<>(2), new Array<>(2),mapa.getStationA());
             boolean added = trainRepository.addTrain(newTrain);
             if (added) {
                 System.out.println("New train added successfully.");
@@ -43,13 +47,21 @@ public class TrainManagementTest {
 
             // Modificar un tren existente
             String trainIdToModify = "004"; // Cambiar por el ID del tren que deseas modificar
-            Train modifiedTrain = new Train("Mercedes Updated", trainIdToModify, 900, 85.0f, "Passenger Transport Updated", new Array<>(3), new Array<>(3));
+            Train modifiedTrain = new Train("Mercedes Updated", trainIdToModify, 900, 85.0f, "Passenger Transport Updated", new Array<>(3), new Array<>(3),mapa.getStationA());
             boolean modified = trainRepository.modifyTrain(trainIdToModify, modifiedTrain);
             if (modified) {
                 System.out.println("Train modified successfully.");
             } else {
                 System.out.println("Failed to modify train with ID: " + trainIdToModify);
             }
+            Iterator<Train> iterador = trainRepository.getAllTrainsAsLinkedList().iterator();
+            System.out.println("[");
+            while(iterador.hasNext()){
+                Train temp = iterador.next();
+                System.out.println(temp.toString());
+            }
+            System.out.println("]");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

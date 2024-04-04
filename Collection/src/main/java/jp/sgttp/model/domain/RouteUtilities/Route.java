@@ -10,17 +10,19 @@ public class Route {
     private static int routeId = 0;
     private LinkedList<Station> stations;
     private QueueList<Station> actualRoute;
-    private QueueList<Train> actualTrain;
-    private Station destinationPoint;
-    private Station startPoint;
-    private float kmTraveled;
-    private float kmToEachStation;
+    private QueueList<Train> actualTrain; 
+    private Station destinationPoint; 
+    private Station startPoint; 
+    private float kmTraveled;   
+    private float kmToEachStation;  
     private LocalTime departureTime;
     private LocalTime arrivalTime;
 
     public Route(LinkedList<Station> stations, QueueList<Station> actualRoute,
                  Station destinationPoint, Station startPoint, float kmTraveled, float kmToEachStation,
                  QueueList<Train> actualTrain, LocalTime departureTime, LocalTime arrivalTime) {
+
+
         this.routeId++;
         this.stations = stations;
         this.actualRoute = actualRoute;

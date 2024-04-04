@@ -1,9 +1,12 @@
-package jp.sgttp.model.domain.trainUtilities;
+package jp.sgttp.model.repository.Trains;
 
 import jp.array.Array;
 import jp.sgttp.model.domain.RouteUtilities.Station;
+import jp.sgttp.model.domain.trainUtilities.CustomersWagon;
+import jp.sgttp.model.domain.trainUtilities.LuggageWagon;
+import jp.sgttp.model.domain.trainUtilities.Train;
 
-public class Train {
+public class TrainEntity {
 
     private String trainName;
     private String trainId;
@@ -23,7 +26,7 @@ public class Train {
         this.ubication = ubication;
     }
 
-    public Train(String trainName, String trainId, int kilometers, float loadingCapacity, String brand,
+    public TrainEntity(String trainName, String trainId, int kilometers, float loadingCapacity, String brand,
                  Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons,Station ubication) {
         this.trainName = trainName;
         this.trainId = trainId;
@@ -95,17 +98,5 @@ public class Train {
     public static Train getNullTrain() {
         return new Train("", "", 0, 0, "", null, null,null);
     }
-    
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Train Name: ").append(trainName).append("\n");
-        sb.append("Train ID: ").append(trainId).append("\n");
-        sb.append("Kilometers: ").append(kilometers).append("\n");
-        sb.append("Loading Capacity: ").append(loadingCapacity).append("\n");
-        sb.append("Brand: ").append(brand).append("\n");
-        sb.append("Ubication: ").append(ubication.toString()).append("\n");
-        sb.append("Customers Wagons: ").append(customersWagons.toStringg()).append("\n");
-        sb.append("Luggage Wagons: ").append(luggageWagons.toStringg()).append("\n");
-        return sb.toString();
-    }
 }
+

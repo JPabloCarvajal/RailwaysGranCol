@@ -1,6 +1,7 @@
-package jp.sgttp.model.repository; 
+package jp.sgttp.model.repository.Trains; 
 
 import jp.array.Array;
+import jp.linkedlist.singly.LinkedList;
 import jp.sgttp.model.domain.trainUtilities.Train;
 import jp.sgttp.shared.filejsonadapter.FileJsonAdapter;
 import jp.sgttp.shared.filejsonadapter.FileJsonInterface;
@@ -27,7 +28,8 @@ public class TrainRepository {
                 trainEntity.getLoadingCapacity(),
                 trainEntity.getBrand(),
                 trainEntity.getCustomersWagons(),
-                trainEntity.getLuggageWagons());
+                trainEntity.getLuggageWagons(),
+                trainEntity.getUbication());
         }
         }
         return Train.getNullTrain();
@@ -44,13 +46,14 @@ public class TrainRepository {
     
         // Crear una nueva instancia de TrainEntity a partir del tren proporcionado
         TrainEntity newTrainEntity = new TrainEntity(
-                train.getTrainName(),
-                train.getTrainId(),
-                train.getKilometers(),
-                train.getLoadingCapacity(),
-                train.getBrand(),
-                train.getCustomersWagons(),
-                train.getLuggageWagons());
+            train.getTrainName(),
+            train.getTrainId(),
+            train.getKilometers(),
+            train.getLoadingCapacity(),
+            train.getBrand(),
+            train.getCustomersWagons(),
+            train.getLuggageWagons(),
+            train.getUbication());
     
         // Crear un nuevo array para almacenar todos los trenes, incluido el nuevo tren
         Array<TrainEntity> updatedTrainEntities = new Array<>(trainEntities.length + 1);
@@ -132,14 +135,32 @@ public class TrainRepository {
             return false;
         }
     }
+
+    public LinkedList<Train> getAllTrainsAsLinkedList() {
+        // Obtener todos los trenes del archivo JSON
+        TrainEntity[] trainEntities = fileJson.getObjects(pathFile, TrainEntity[].class);
+        
+        // Crear una lista enlazada para almacenar los trenes
+        LinkedList<Train> trainList = new LinkedList<>();
+        
+        // Agregar cada tren a la lista enlazada
+        for (int i = 0; i < trainEntities.length; i++) {
+            TrainEntity entity = trainEntities[i];
+            Train train = new Train(
+                    entity.getTrainName(),
+                    entity.getTrainId(),
+                    entity.getKilometers(),
+                    entity.getLoadingCapacity(),
+                    entity.getBrand(),
+                    entity.getCustomersWagons(),
+                    entity.getLuggageWagons(),
+                    entity.getUbication()
+            );
+            trainList.add(train);
+        }
+        
+        return trainList;
+    }
     
-    /*Nombre: Gestión de trenes. 
-    Como empleado, quiero un sistema de gestión de trenes, para garantizar una 
-    buena operación. 
-    Criterio de aceptación: 
-    el administrador podrá //YA//agregar un tren, //YA//darlo de baja, //YA// consultar, //YA//modificar 
-    los datos de los trenes, cada tren debe tener los siguientes datos nombre, 
-    identificador, capacidad de carga y kilometraje.
-    Prioridad: Alto.  */
 }
 

@@ -1,4 +1,4 @@
-package jp.sgttp.model.repository;
+package jp.sgttp.model.repository.Users;
 
 public class UserEntity {
     String person;

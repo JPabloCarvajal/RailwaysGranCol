@@ -1,6 +1,6 @@
 package jp.sgttp.model.domain;
 
-import jp.sgttp.model.repository.UserRepository;
+import jp.sgttp.model.repository.Users.UserRepository;
 
 public class Validator {
 
