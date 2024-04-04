@@ -3,6 +3,7 @@ package jp.sgttp.model.domain;
 import javax.swing.JOptionPane;
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
+import jp.sgttp.controller.SGTTPController;
 import jp.sgttp.gui.Login;
 import jp.sgttp.model.domain.persons.Admin;
 import jp.sgttp.model.domain.persons.Contact;
@@ -25,13 +26,17 @@ public class Main {
     public static void main(String[] args) {
 //        boolean hasAc= Boolean.parseBoolean(JOptionPane.showInputDialog("tiene cuenta escriba true sino false:"));
 //        System.out.println("hasAc = " + hasAc);
-        Login log = new Login();
-        log.setVisible(true);
-        log.setLocationRelativeTo(null);
+//        Login log = new Login();
+//        log.setVisible(true);
+//        log.setLocationRelativeTo(null);
 
 //        addArray();
         setup();
 //        logIn();
+        Login loginView = new Login();
+        SGTTPController loginController = new SGTTPController(loginView);
+        loginView.setVisible(true);
+        loginView.setLocationRelativeTo(null);
 
     }
 
