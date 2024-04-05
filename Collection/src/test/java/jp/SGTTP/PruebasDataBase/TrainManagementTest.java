@@ -1,4 +1,4 @@
-package jp.SGTTP;
+package jp.SGTTP.PruebasDataBase;
 
 import jp.array.Array;
 import jp.sgttp.model.domain.RouteUtilities.RoutesMap;

@@ -4,17 +4,16 @@ import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import jp.sgttp.model.domain.Luggage;
 
-
-//tolis
 public class Customer extends AbstractPerson {
 
     LinkedList<Luggage> luggages = new LinkedList<>();
     private final int type = 1;
     int customerId;   
 
-    public Customer(Luggage luggage,String names, String lastNames, Array<String> phoneNumbers){
+    public Customer(LinkedList<Luggage> luggage,String names, String lastNames, Array<String> phoneNumbers, int id){
         super(names, lastNames, phoneNumbers);
         luggages.add(luggage);
+        this.customerId = id;
     }
 
     public LinkedList<Luggage> getLuggages() {
@@ -33,7 +32,7 @@ public class Customer extends AbstractPerson {
     }
 
     public static Customer getNullCustomer() {
-      return new Customer(null,"","",null);
+      return new Customer(null,"","",null,-1);
     }
 
     public int getType() {
