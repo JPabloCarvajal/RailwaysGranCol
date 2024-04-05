@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: jp.array.ArrayTest
+-------------------------------------------------------------------------------
+Tests run: 19, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.014 sec <<< FAILURE!
+jp.array.ArrayTest.testAddWithIndex()  Time elapsed: 0.006 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <4> but was: <3>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:528)
+	at jp.array.ArrayTest.testAddWithIndex(ArrayTest.java:50)
+
