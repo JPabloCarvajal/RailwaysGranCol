@@ -132,7 +132,7 @@ public LinkedList<Employee> getAllEmployeesAsLinkedList() {
 
   // Agregar cada empleado a la lista enlazada
   for (int i = 0; i < employeeEntities.length; i++) {
-      EmployeeEntity entity = employeeEntities[i];
+         EmployeeEntity entity = employeeEntities[i];
       Employee employee = new Employee(
               entity.getNames(),
               entity.getLastNames(),
