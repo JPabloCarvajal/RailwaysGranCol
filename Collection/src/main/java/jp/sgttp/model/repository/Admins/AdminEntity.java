@@ -1,17 +1,18 @@
-package jp.sgttp.model.domain.persons;
+package jp.sgttp.model.repository.Admins;
 
 import jp.array.Array;
+import jp.sgttp.model.domain.persons.AbstractPerson;
 
-public class Admin extends AbstractPerson {
-
+public class AdminEntity extends AbstractPerson{
+    
     private String id;
     private final int type = 3;
 
-    public Admin() {
+    public AdminEntity() {
         id = "N/A";
     }
 
-    public Admin(String names, String lastNames, Array<String> phoneNumbers, String id) {
+    public AdminEntity(String names, String lastNames, Array<String> phoneNumbers, String id) {
         super(names, lastNames, phoneNumbers);
         this.id = id;
     }
@@ -32,12 +33,11 @@ public class Admin extends AbstractPerson {
         this.phoneNumbers = phoneNumbers;
     }
 
-    public Admin getNullAdmin() {
-        return new Admin();
+    public AdminEntity getNullAdmin() {
+        return new AdminEntity();
     }
 
     public int getType() {
         return type;
     }
-
 }

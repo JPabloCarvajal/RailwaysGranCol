@@ -3,7 +3,6 @@ package jp.sgttp.model.repository.Users;
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import jp.sgttp.model.domain.persons.User;
-import jp.sgttp.model.repository.Employees.EmployeeRepository;
 import jp.sgttp.shared.filejsonadapter.FileJsonAdapter;
 import jp.sgttp.shared.filejsonadapter.FileJsonInterface;
 
