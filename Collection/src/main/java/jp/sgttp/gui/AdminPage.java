@@ -45,6 +45,11 @@ public class AdminPage extends javax.swing.JFrame {
         jLabel1.setText("Admin");
 
         jButton2.setText("Gestion de trenes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Gestion de rutas");
 
@@ -126,6 +131,15 @@ public class AdminPage extends javax.swing.JFrame {
         user.setLocationRelativeTo(null);
         user.addUsers();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        TrainManagement train = new TrainManagement();
+        train.setVisible(true);
+        train.setLocationRelativeTo(null);
+        train.addTrains();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

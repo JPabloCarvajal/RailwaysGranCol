@@ -4,6 +4,7 @@
  */
 package jp.sgttp.gui;
 
+import java.awt.event.ActionListener;
 import jp.sgttp.model.domain.Main;
 
 /**
@@ -116,7 +117,7 @@ public class LoginIncorrect extends javax.swing.JFrame {
             // Aquí puedes crear una nueva instancia de tu ventana principal
             // por ejemplo:
 //            AdminPage ventanaPrincipal = new AdminPage();
-            if (type == 4) {
+            if (type == 3) {
                 AdminPage ventanaPrincipal = new AdminPage();
                 ventanaPrincipal.setVisible(true);
                 ventanaPrincipal.setLocationRelativeTo(null);
@@ -132,7 +133,7 @@ public class LoginIncorrect extends javax.swing.JFrame {
             log.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -123,51 +123,39 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-//        String text1 = jTextField1.getText();
-//        String text2 = jTextField2.getText();
-//        int type = jp.sgttp.model.domain.Main.logIn(text1, text2);
-//        // Verifica si el inicio de sesión fue exitoso
-//        if (Main.getLogin()) {
-//            // Si el inicio de sesión es exitoso, cierra esta ventana de inicio de sesión
-//            this.dispose();
-//
-//            // Abre la nueva ventana de la aplicación después del inicio de sesión exitoso
-//            // Aquí puedes crear una nueva instancia de tu ventana principal
-//            // por ejemplo:
-////            AdminPage ventanaPrincipal = new AdminPage();
-//            if (type == 3) {
-//                AdminPage ventanaPrincipal = new AdminPage();
-//                ventanaPrincipal.setVisible(true);
-//                ventanaPrincipal.setLocationRelativeTo(null);
-//            } else {
-//                LoginIncorrect log = new LoginIncorrect();
-//                log.setVisible(true);
-//                log.setLocationRelativeTo(null);
-//            }
-//        } else {
-//            this.dispose();
-//            LoginIncorrect log = new LoginIncorrect();
-//            log.setVisible(true);
-//            log.setLocationRelativeTo(null);
-//        }
+        String text1 = jTextField1.getText();
+        String text2 = jTextField2.getText();
+        int type = jp.sgttp.model.domain.Main.logIn(text1, text2);
+        // Verifica si el inicio de sesión fue exitoso
+        if (Main.getLogin()) {
+            // Si el inicio de sesión es exitoso, cierra esta ventana de inicio de sesión
+            this.dispose();
+
+            // Abre la nueva ventana de la aplicación después del inicio de sesión exitoso
+            // Aquí puedes crear una nueva instancia de tu ventana principal
+            // por ejemplo:
+//            AdminPage ventanaPrincipal = new AdminPage();
+            if (type == 3) {
+                AdminPage ventanaPrincipal = new AdminPage();
+                ventanaPrincipal.setVisible(true);
+                ventanaPrincipal.setLocationRelativeTo(null);
+            } else {
+                LoginIncorrect log = new LoginIncorrect();
+                log.setVisible(true);
+                log.setLocationRelativeTo(null);
+            }
+        } else {
+            this.dispose();
+            LoginIncorrect log = new LoginIncorrect();
+            log.setVisible(true);
+            log.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-    public void close() {
-        dispose();
-    }
-    public String getUsername() {
-        return jTextField1.getText();
-    }
-
-    public String getPassword() {
-        return jTextField2.getText();
-    }
-    public void addLoginButtonListener(ActionListener listener) {
-        jButton1.addActionListener(listener);
-    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
