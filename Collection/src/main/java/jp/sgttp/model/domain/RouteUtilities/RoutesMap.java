@@ -166,12 +166,11 @@ public class RoutesMap {
     }
 
     public QueueArray<Station> stationsToTravel(Station A,Station B){
-        Array<GraphNode<Station>> shortestPathNodes = stationsGraph.shortestPathNodes(stationsGraph, A, B);
+        Array<Station> shortestPathNodes = stationsGraph.shortestPathNodes(stationsGraph, A, B);
         QueueArray<Station> stations = new QueueArray<>(shortestPathNodes.size());
         for (int i = 0; i < shortestPathNodes.size(); i++) {
-            stations.insert(shortestPathNodes.get(i).data);
+            stations.insert(shortestPathNodes.get(i));
         }
-        stations.reverse();
         return stations;
     }
 
@@ -213,7 +212,7 @@ public class RoutesMap {
         customRouteStations.insert(lastStation);
         return customRouteStations;
     }
-    
+
     public float calculateTotalDistance(LinkedList<Station> stations) {
         float totalDistance = 0;
 
@@ -238,15 +237,13 @@ public class RoutesMap {
         return totalDistance;
     }
     
-    
-    
     // Prueba con este main xd
     public static void main(String[] args) {
-
+ 
         RoutesMap routesMap = new RoutesMap();
 
-        Station origin = routesMap.getStationC();
-        Station destination = routesMap.getStationG();
+        Station origin = routesMap.getStationJ();
+        Station destination = routesMap.getStationE();
 
         // Calcular la distancia más corta entre dos estaciones
         float shortestDistance = routesMap.lowestDistanceBeetweenStationsKM(origin, destination);
@@ -263,7 +260,7 @@ public class RoutesMap {
             System.out.println(shortestPathStations.extract().getStationName()+"\n");
             i++;
         }
-        
+
         // Prueba de la ruta personalizada
         Station intermediateStationI = routesMap.getStationI();
         Station intermediateStationJ = routesMap.getStationJ();
@@ -293,7 +290,6 @@ public class RoutesMap {
         // Calcular los kilómetros totales recorridos
         float totalDistance = routesMap.calculateTotalDistance(customStationsList);
         System.out.println("Kilómetros totales recorridos en la ruta personalizada: " + totalDistance + " km");
-        
     }
 }
 
