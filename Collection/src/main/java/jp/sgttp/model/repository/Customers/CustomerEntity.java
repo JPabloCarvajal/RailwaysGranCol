@@ -4,13 +4,15 @@ import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import jp.sgttp.model.domain.Luggage;
 import jp.sgttp.model.domain.persons.AbstractPerson;
+import jp.sgttp.model.domain.persons.Customer;
 
 public class CustomerEntity extends AbstractPerson {
-    
-    LinkedList<Luggage> luggages = new LinkedList<>();
-    int customerId;   
 
-    public CustomerEntity(LinkedList<Luggage> luggage,String names, String lastNames, Array<String> phoneNumbers,int id){
+    LinkedList<Luggage> luggages = new LinkedList<>();
+    private final int type = 1;
+    String customerId;
+
+    public CustomerEntity(LinkedList<Luggage> luggage, String names, String lastNames, Array<String> phoneNumbers, String id) {
         super(names, lastNames, phoneNumbers);
         luggages.add(luggage);
         this.customerId = id;
@@ -24,15 +26,19 @@ public class CustomerEntity extends AbstractPerson {
         this.luggages = luggages;
     }
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
-    public void setCustomerId(int customerId) {
+
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
-    public static CustomerEntity getNullCustomer() {
-      return new CustomerEntity(null,"","",null,-1);
+    public static Customer getNullCustomer() {
+        return new Customer(null, "", "", null, "");
     }
 
+    public int getType() {
+        return type;
+    }
 }

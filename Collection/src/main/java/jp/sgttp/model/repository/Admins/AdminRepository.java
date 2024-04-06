@@ -7,7 +7,7 @@ import jp.sgttp.shared.filejsonadapter.FileJsonAdapter;
 import jp.sgttp.shared.filejsonadapter.FileJsonInterface;
 
 public class AdminRepository {
-    
+
     private FileJsonInterface<AdminEntity> fileJson;
     private String pathFile;
 
@@ -19,33 +19,33 @@ public class AdminRepository {
     public boolean addAdmin(Admin admin) {
         // Obtener todos los administradores del archivo JSON
         AdminEntity[] adminEntities = fileJson.getObjects(pathFile, AdminEntity[].class);
-    
+
         // Verificar si adminEntities es null antes de continuar
         if (adminEntities == null) {
             adminEntities = new AdminEntity[0]; // Si es null, asignamos un array vacío
         }
-    
+
         // Crear una nueva instancia de AdminEntity a partir del administrador proporcionado
         AdminEntity newAdminEntity = new AdminEntity(
-            admin.getNames(),
-            admin.getLastNames(),
-            admin.getPhoneNumbers(),
-            admin.getId()
+                admin.getNames(),
+                admin.getLastNames(),
+                admin.getPhoneNumbers(),
+                admin.getId()
         );
-    
+
         // Crear un nuevo array para almacenar todos los administradores, incluido el nuevo administrador
         Array<AdminEntity> updatedAdminEntities = new Array<>(adminEntities.length + 1);
         for (AdminEntity entity : adminEntities) {
             updatedAdminEntities.add(entity);
         }
         updatedAdminEntities.add(newAdminEntity);
-    
+
         // Convertir el Array<AdminEntity> a un array regular de AdminEntity[]
         AdminEntity[] updatedAdminEntitiesArray = new AdminEntity[updatedAdminEntities.size()];
         for (int i = 0; i < updatedAdminEntities.size(); i++) {
             updatedAdminEntitiesArray[i] = updatedAdminEntities.get(i);
         }
-    
+
         return fileJson.writeObjects(pathFile, updatedAdminEntitiesArray);
     }
 
@@ -113,22 +113,38 @@ public class AdminRepository {
     public LinkedList<Admin> getAllAdminsAsLinkedList() {
         // Obtener todos los administradores del archivo JSON
         AdminEntity[] adminEntities = fileJson.getObjects(pathFile, AdminEntity[].class);
-    
+
         // Crear una lista enlazada para almacenar los administradores
         LinkedList<Admin> adminList = new LinkedList<>();
-    
+
         // Agregar cada administrador a la lista enlazada
         for (AdminEntity entity : adminEntities) {
             Admin admin = new Admin(
-                entity.getNames(),
-                entity.getLastNames(),
-                entity.getPhoneNumbers(),
-                entity.getId()
+                    entity.getNames(),
+                    entity.getLastNames(),
+                    entity.getPhoneNumbers(),
+                    entity.getId()
             );
             adminList.add(admin);
         }
-    
+
         return adminList;
     }
-}
 
+    public boolean modifyAdmin(LinkedList<Admin> modifiedAdmins) {
+        // Convertir la LinkedList a un arreglo de AdminEntity
+        AdminEntity[] modifiedAdminEntities = new AdminEntity[modifiedAdmins.size()];
+        for (int i = 0; i < modifiedAdmins.size(); i++) {
+            Admin admin = modifiedAdmins.get(i);
+            modifiedAdminEntities[i] = new AdminEntity(
+                    admin.getNames(),
+                    admin.getLastNames(),
+                    admin.getPhoneNumbers(),
+                    admin.getId()
+            );
+        }
+
+        // Escribir los nuevos objetos en el archivo JSON
+        return fileJson.writeObjects(pathFile, modifiedAdminEntities);
+    }
+}

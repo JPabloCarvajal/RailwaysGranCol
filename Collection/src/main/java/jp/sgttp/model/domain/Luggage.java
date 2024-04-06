@@ -2,12 +2,19 @@ package jp.sgttp.model.domain;
 
 public class Luggage {
     
-    int luggageId;
+    static int luggageId = 0;
     float weight;
     int wagonId;
-
-    public Luggage(int luggageId,float weight, int wagonId){
-        this.luggageId = luggageId;
+    public Luggage(){
+        sumarId();
+        this.weight = -1;
+        this.wagonId = -1;
+    }
+    private void sumarId(){
+        this.luggageId ++;
+    }
+    public Luggage(float weight, int wagonId){
+        sumarId();
         this.weight = weight;
         this.wagonId = wagonId;
     }
@@ -30,5 +37,7 @@ public class Luggage {
     public void setWeight(float weight) {
         this.weight = weight;
     }
-
+    public static Luggage getNullLuggage(){
+        return new Luggage();
+    }
 }

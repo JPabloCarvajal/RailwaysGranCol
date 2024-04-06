@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "A2",
+    "type": 3,
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 2
+    }
+  }
+]

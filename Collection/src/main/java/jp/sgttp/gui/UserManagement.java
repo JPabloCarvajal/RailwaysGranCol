@@ -8,7 +8,12 @@ import javax.swing.table.DefaultTableModel;
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import jp.sgttp.model.domain.persons.AbstractPerson;
+import jp.sgttp.model.domain.persons.Customer;
+import jp.sgttp.model.domain.persons.Employee;
 import jp.sgttp.model.domain.persons.User;
+import jp.sgttp.model.domain.Luggage;
+import jp.sgttp.model.domain.persons.Admin;
+import jp.sgttp.model.domain.persons.Contact;
 
 /**
  *
@@ -18,7 +23,10 @@ public class UserManagement extends javax.swing.JFrame {
 
     DefaultTableModel model = new DefaultTableModel();
     LinkedList<User> list = new LinkedList<>();
-
+    LinkedList<Customer> customers = new LinkedList();
+    LinkedList<Employee> employees = new LinkedList();
+    LinkedList<Admin> admins = new LinkedList();
+    LinkedList<Contact> contacts = new LinkedList();
     /**
      * Creates new form UserManagement
      */
@@ -55,7 +63,6 @@ public class UserManagement extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,13 +123,6 @@ public class UserManagement extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Actualizar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -146,24 +146,21 @@ public class UserManagement extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(jButton4)
                                 .addGap(29, 29, 29)
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 513, Short.MAX_VALUE)
-                                .addComponent(jButton2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField5))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(jButton5))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                                .addComponent(jTextField2)
+                                .addComponent(jTextField3)
+                                .addComponent(jTextField4)
+                                .addComponent(jTextField5))
+                            .addComponent(jLabel7)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 509, Short.MAX_VALUE)))
                 .addGap(124, 124, 124))
         );
         jPanel1Layout.setVerticalGroup(
@@ -177,18 +174,13 @@ public class UserManagement extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton3)
-                                    .addComponent(jButton4)
-                                    .addComponent(jButton5))
-                                .addGap(116, 116, 116)
-                                .addComponent(jButton1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2))))
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton3)
+                            .addComponent(jButton4)
+                            .addComponent(jButton5))
+                        .addGap(116, 116, 116)
+                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -207,9 +199,9 @@ public class UserManagement extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17))
         );
@@ -277,12 +269,6 @@ public class UserManagement extends javax.swing.JFrame {
         }
         jTable1.setModel(model);
     }
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        reloadTable();
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     @SuppressWarnings("unchecked")
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -297,26 +283,47 @@ public class UserManagement extends javax.swing.JFrame {
         if (!usuario.isBlank() || !contraseña.isBlank()){
             Array array = new Array(1);
             array.add(numeros);
-            AbstractPerson person = new AbstractPerson(nombres, contraseña, array);
+//            AbstractPerson person = new AbstractPerson(nombres, contraseña, array);
             int tipo = -1;
             if (sType.equals("Empleado")) {
                 tipo = 0;
+                Employee employ = new Employee(nombres, apellidos, array,jp.sgttp.model.domain.Main.createId(tipo));
+                list.add(new User(employ, usuario, contraseña, tipo));
+                employees.add(employ);
+                jp.sgttp.model.domain.Main.modifyJsonEmployee(employees);
+                jp.sgttp.model.domain.Main.modifyListEmployees(employees);
             } else {
                 if (sType.equals("Cliente")) {
                     tipo = 1;
+                    LinkedList luggage = new LinkedList<>(Luggage.getNullLuggage());
+                    Customer customer = new Customer(luggage, nombres, apellidos, array,jp.sgttp.model.domain.Main.createId(tipo));
+                    list.add(new User(customer, usuario, contraseña, tipo));
+                    customers.add(customer);
+                    jp.sgttp.model.domain.Main.modifyJsonCustomer(customers);
+                    jp.sgttp.model.domain.Main.modifyListCustomers(customers);
                 } else {
                     if (sType.equals("Admin")) {
                         tipo = 3;
+                        Admin admin = new Admin(nombres, apellidos, array, jp.sgttp.model.domain.Main.createId(tipo));
+                        list.add(new User(admin, usuario, contraseña, tipo));
+                        admins.add(admin);
+                        jp.sgttp.model.domain.Main.modifyJsonAdmin(admins);
+                        jp.sgttp.model.domain.Main.modifyListAdmins(admins);
                     } else {
                         if (sType.equals("Contact")) {
                             tipo = 2;
+                            Contact contact = new Contact(nombres, apellidos, array, jp.sgttp.model.domain.Main.createId(tipo));
+                            contacts.add(contact);
+                            jp.sgttp.model.domain.Main.modifyJsonContact(contacts);
+                            jp.sgttp.model.domain.Main.modifyListContacts(contacts);
                         }
                     }
                 }
             }
-        list.add(new User(person, usuario, contraseña, tipo));
+//        list.add(new User(person, usuario, contraseña, tipo));
         }
         jp.sgttp.model.domain.Main.modifyListUsers(list);
+        jp.sgttp.model.domain.Main.modifyJsonUser(list);
         reloadTable();
         jTextField1.setText("");
         jTextField2.setText("");
@@ -389,7 +396,6 @@ public class UserManagement extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
