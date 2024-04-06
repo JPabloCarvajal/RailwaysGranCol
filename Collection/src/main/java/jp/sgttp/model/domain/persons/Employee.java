@@ -14,10 +14,6 @@ public class Employee extends AbstractPerson {
       this.id = id;
     }
   
-    public Employee(String id) {
-      this.id = id;
-    }
-  
     public String getId() {
       return id;
     }

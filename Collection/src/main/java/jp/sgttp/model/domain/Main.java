@@ -112,6 +112,9 @@ public class Main {
     public static void modifyJson(String id,Train modify){
         train.modifyTrain(id, modify);
     }
+    public static void modifyJson(LinkedList<Train> trains){
+         train.modifyTrain(trains);
+    }
     public static void DeleteJsonTrain(String id){
         train.removeTrain(id);
     }

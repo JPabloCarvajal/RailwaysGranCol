@@ -40,7 +40,7 @@ public class Admin extends AbstractPerson {
         this.phoneNumbers = phoneNumbers;
     }
 
-    public Admin getNullAdmin() {
+    public static Admin getNullAdmin() {
         return new Admin();
     }
 

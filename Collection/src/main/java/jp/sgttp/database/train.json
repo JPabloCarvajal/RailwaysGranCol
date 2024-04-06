@@ -163,5 +163,24 @@
       "stationName": "Estacion A",
       "cityStation": "Ciudad A"
     }
+  },
+  {
+    "trainName": "hola",
+    "trainId": "fdf",
+    "kilometers": 1,
+    "loadingCapacity": 1.0,
+    "brand": "Arnold",
+    "customersWagons": {
+      "E": [
+        null
+      ],
+      "size": 1
+    },
+    "luggageWagons": {
+      "E": [
+        null
+      ],
+      "size": 1
+    }
   }
 ]

@@ -70,13 +70,37 @@ public class TrainManagement extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre");
 
-        jLabel3.setText("Apellidos");
+        jLabel3.setText("Id");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Kilometros");
 
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         jLabel5.setText("Capacidad de carga");
 
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Ubicacion");
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Marca");
 
@@ -91,6 +115,12 @@ public class TrainManagement extends javax.swing.JFrame {
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
             }
         });
 
@@ -224,22 +254,34 @@ public class TrainManagement extends javax.swing.JFrame {
         list = jp.sgttp.model.domain.Main.getTrains();
         String nombre = jTextField1.getText();
         String id = jTextField2.getText();
-        int kilometros = Integer.parseInt(jTextField3.getText());
-        float capacidadCarga = Float.parseFloat(jTextField4.getText());
+//        int kilometros = Integer.parseInt(jTextField3.getText());
+        int kilometros = 0;
+        if (!jTextField3.getText().isEmpty()) {
+            kilometros = Integer.parseInt(jTextField3.getText());
+        }
+//        float capacidadCarga = Float.parseFloat(jTextField4.getText());
+//        float capacidadCarga = Float.parseFloat(jTextField4.getText());
+        float capacidadCarga = 0.0f;
+        if (!jTextField4.getText().isEmpty()) {
+            capacidadCarga = Float.parseFloat(jTextField4.getText());
+        }
         //        @SuppressWarnings("rawtypes")
+        String marca = "";
         if (!id.isBlank()) {
-            String marca = "";
             if (sType.equals("Mercedez-Benz")) {
                 marca = "Mercedez-Benz";
             } else {
                 if (sType.equals("Arnold")) {
                     marca = "Arnold";
                 }
-                Train train = new Train(nombre, id, kilometros, capacidadCarga, id, new Array(1), new Array(1), Main.searchStationByName(jTextField5.getText()));
-                jp.sgttp.model.domain.Main.addJsonTrain(train);
+                Train train = new Train(nombre, id, kilometros, capacidadCarga, marca, new Array(1), new Array(1), Main.searchStationByName(jTextField5.getText()));
+//                jp.sgttp.model.domain.Main.addJsonTrain(train);
+                list.add(train);
+//                jp.sgttp.model.domain.Main.modifyListTrains(list);
             }
-//            jp.sgttp.model.domain.Main.modifyListTrains(list);
-            jp.sgttp.model.domain.Main.chargeTrains();
+            jp.sgttp.model.domain.Main.modifyListTrains(list);
+            jp.sgttp.model.domain.Main.modifyJson(list);
+//            jp.sgttp.model.domain.Main.chargeTrains();
             reloadTable();
             jTextField1.setText("");
             jTextField2.setText("");
@@ -277,6 +319,7 @@ public class TrainManagement extends javax.swing.JFrame {
                 reloadTable();
             }
         }
+        jp.sgttp.model.domain.Main.modifyJson(list);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -291,8 +334,16 @@ public class TrainManagement extends javax.swing.JFrame {
             list = jp.sgttp.model.domain.Main.getTrains();
             String nombre = jTextField1.getText();
             String id = jTextField2.getText();
-            int kilometros = Integer.parseInt(jTextField3.getText());
-            float capacidadCarga = Float.parseFloat(jTextField4.getText());
+//            int kilometros = Integer.parseInt(jTextField3.getText());
+            int kilometros = 0;
+            if (!jTextField3.getText().isEmpty()) {
+                kilometros = Integer.parseInt(jTextField3.getText());
+            }
+//            float capacidadCarga = Float.parseFloat(jTextField4.getText());
+            float capacidadCarga = 0.0f;
+            if (!jTextField4.getText().isEmpty()) {
+                capacidadCarga = Float.parseFloat(jTextField4.getText());
+            }
             //        @SuppressWarnings("rawtypes")
             if (!id.isBlank()) {
                 String marca = "";
@@ -303,7 +354,7 @@ public class TrainManagement extends javax.swing.JFrame {
                         marca = "Arnold";
                     }
                     Train train = new Train(nombre, id, kilometros, capacidadCarga, marca, new Array(1), new Array(1), Main.searchStationByName(jTextField5.getText()));
-                    jp.sgttp.model.domain.Main.modifyJson(list.get(selectedRow).getTrainId(),train);
+//                    jp.sgttp.model.domain.Main.modifyJson(list.get(selectedRow).getTrainId(),train);
                 }
                 list.get(selectedRow).setTrainName(nombre);
                 list.get(selectedRow).setTrainId(id);
@@ -311,7 +362,7 @@ public class TrainManagement extends javax.swing.JFrame {
                 list.get(selectedRow).setLoadingCapacity(capacidadCarga);
                 list.get(selectedRow).setBrand(marca);
                 jp.sgttp.model.domain.Main.modifyListTrains(list);
-                
+                jp.sgttp.model.domain.Main.modifyJson(list);
                 reloadTable();
                 jTextField1.setText("");
                 jTextField2.setText("");
@@ -321,6 +372,26 @@ public class TrainManagement extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
     public void addTrains() {
         model.addColumn("Nombre");
         model.addColumn("id");
