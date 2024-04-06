@@ -72,6 +72,7 @@ public class RoutesMap {
         stationsGraph.newEdge(stationK, stationC, 110);
     }
 
+
     public Station getStationA() {
         return stationA;
     }
@@ -181,11 +182,9 @@ public class RoutesMap {
             return null;
         }
     
-        // Crear una copia de la lista de estaciones
         LinkedList<Station> stationsCopy = new LinkedList<>();
         stationsCopy.add(stations);
     
-        // Crear una cola para almacenar las estaciones en la ruta personalizada
         QueueList<Station> customRouteStations = new QueueList<>();
     
         // Guardar la estacion final para agregar al final
@@ -217,8 +216,7 @@ public class RoutesMap {
     
     public float calculateTotalDistance(LinkedList<Station> stations) {
         float totalDistance = 0;
-    
-        // Crear una copia de la lista de estaciones
+
         LinkedList<Station> stationsCopy = new LinkedList<>();
         stationsCopy.add(stations);
     
@@ -244,10 +242,9 @@ public class RoutesMap {
     
     // Prueba con este main xd
     public static void main(String[] args) {
-        // Crear una instancia de RoutesMap
+
         RoutesMap routesMap = new RoutesMap();
 
-        // Estaciones de origen y destino para probar el cálculo de la distancia más corta
         Station origin = routesMap.getStationC();
         Station destination = routesMap.getStationG();
 
@@ -266,6 +263,7 @@ public class RoutesMap {
             System.out.println(shortestPathStations.extract().getStationName()+"\n");
             i++;
         }
+        
         // Prueba de la ruta personalizada
         Station intermediateStationI = routesMap.getStationI();
         Station intermediateStationJ = routesMap.getStationJ();

@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package jp.sgttp.model.domain.persons;
 
 import jp.array.Array;
 
-/**
- *
- * @author thewe
- */
 public class Admin extends AbstractPerson {
 
     private String id;
