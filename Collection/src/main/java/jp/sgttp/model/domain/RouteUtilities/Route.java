@@ -15,12 +15,12 @@ public class Route {
     private Station startPoint; 
     private float kmTraveled;   
     private float kmToEachStation;  
-    private LocalTime departureTime;
-    private LocalTime arrivalTime;
+    private String departureTime;
+    private String arrivalTime;
 
     public Route(LinkedList<Station> stations, QueueList<Station> actualRoute,
                  Station destinationPoint, Station startPoint, float kmTraveled, float kmToEachStation,
-                 QueueList<Train> actualTrain, LocalTime departureTime, LocalTime arrivalTime) {
+                 QueueList<Train> actualTrain, String departureTime, String arrivalTime) {
 
 
         this.routeId++;
@@ -99,19 +99,19 @@ public class Route {
         this.kmToEachStation = kmToEachStation;
     }
 
-    public LocalTime getDepartureTime() {
+    public String getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(LocalTime departureTime) {
+    public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
     }
 
-    public LocalTime getArrivalTime() {
+    public String getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(LocalTime arrivalTime) {
+    public void setArrivalTime(String arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 }

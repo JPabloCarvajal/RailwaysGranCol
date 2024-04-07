@@ -1,105 +1,77 @@
 package jp.sgttp.model.domain.TicketUtilites;
 
 import java.time.LocalTime;
+import java.util.Date;
 
 import jp.queue.array.QueueArray;
+import jp.sgttp.model.domain.RouteUtilities.Route;
 import jp.sgttp.model.domain.RouteUtilities.Station;
 import jp.sgttp.model.domain.persons.Contact;
 import jp.sgttp.model.domain.persons.Customer;
 import jp.sgttp.model.domain.trainUtilities.Train;
 
 public class Ticket {
-    
     Customer customer;
 
     private int ticketId;
-    private LocalTime purchaseDate;
-    private LocalTime boardingDate;
-    private QueueArray<Train> trains;
-    private QueueArray<Station> stations;
-
+    private String purchaseDate;
+    private String boardingDate;
+    private Route route;
     private float value;
-    private LocalTime arriveDate;
-    private LocalTime boardingHour;
-    private LocalTime arriveHour;
+    private String arriveDate;
+    private String boardingHour;
+    private String arriveHour;
     private CustomerCategory customerCategory;
     private Contact customerContact;
     private StatusEnum status;
 
-    public Ticket(Customer customer, int ticketId, LocalTime purchaseDate, 
-                  LocalTime boardingDate, QueueArray<Train> trains,QueueArray<Station> stations, 
-                  float value, LocalTime arriveDate, LocalTime boardingHour, 
-                  LocalTime arriveHour, CustomerCategory customerCategory, 
-                  Contact customerContact, StatusEnum status) {
-        this.customer = customer;
-        this.ticketId = ticketId;
-        this.purchaseDate = purchaseDate;
-        this.boardingDate = boardingDate;
-        this.trains = trains;
-        this.value = value;
-        this.arriveDate = arriveDate;
-        this.boardingHour = boardingHour;
-        this.arriveHour = arriveHour;
-        this.customerCategory = customerCategory;
-        this.customerContact = customerContact;
-        this.status = status;
-        this.stations = stations;
+
+    
+    public Route getRoute() {
+        return route;
     }
 
-    public QueueArray<Station> getStations() {
-        return stations;
+    public void setRoute(Route route) {
+        this.route = route;
     }
 
-    public void setStations(QueueArray<Station> stations) {
-        this.stations = stations;
-    }
-
-
-    public LocalTime getBoardingHour() {
+    public String getBoardingHour() {
         return boardingHour;
     }
 
-    public void setBoardingHour(LocalTime boardingHour) {
+    public void setBoardingHour(String boardingHour) {
         this.boardingHour = boardingHour;
     }
 
-    public LocalTime getArriveDate() {
+    public String getArriveDate() {
         return arriveDate;
     }
 
-    public void setArriveDate(LocalTime arriveDate) {
+    public void setArriveDate(String arriveDate) {
         this.arriveDate = arriveDate;
     }
 
-    public LocalTime getArriveHour() {
+    public String getArriveHour() {
         return arriveHour;
     }
 
-    public void setArriveHour(LocalTime arriveHour) {
+    public void setArriveHour(String arriveHour) {
         this.arriveHour = arriveHour;
     }
 
-    public LocalTime getBoardingDate() {
+    public String getBoardingDate() {
         return boardingDate;
     }
 
-    public void setBoardingDate(LocalTime boardingDate) {
+    public void setBoardingDate(String boardingDate) {
         this.boardingDate = boardingDate;
     }
 
-    public QueueArray<Train> getTrains() {
-        return trains;
-    }
-
-    public void setTrains(QueueArray<Train> trains) {
-        this.trains = trains;
-    }
-
-    public LocalTime getPurchaseDate() {
+    public String getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalTime purchaseDate) {
+    public void setPurchaseDate(String purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
