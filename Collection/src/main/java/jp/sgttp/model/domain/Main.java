@@ -33,7 +33,7 @@ public class Main {
     static public AdminRepository admin = new AdminRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\admins.json");
     static public ContactRepository contact = new ContactRepository("Collection\\src\\main\\java\\jp\\sgttp\\database\\contacts.json");
     static public UserRepository user = new UserRepository("Collection\\src\\main\\java\\jp\\sgttp\\database\\users.json");
-//    static public Array array = new Array(5);
+//   static public Array array = new Array(5);
     static boolean login = false;
     static int typeUser = -1;
     static String id;

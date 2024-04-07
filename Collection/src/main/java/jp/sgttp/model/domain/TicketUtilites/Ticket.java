@@ -11,6 +11,7 @@ import jp.sgttp.model.domain.persons.Customer;
 import jp.sgttp.model.domain.trainUtilities.Train;
 
 public class Ticket {
+    
     Customer customer;
 
     private int ticketId;
