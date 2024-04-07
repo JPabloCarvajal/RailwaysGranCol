@@ -1,70 +1,7 @@
 [
   {
     "person": {
-      "names": "",
-      "lastNames": "",
-      "phoneNumbers": {
-        "E": [
-          null
-        ],
-        "size": 1
-      }
-    },
-    "username": "modifieduser",
-    "password": "newpassword123",
-    "type": 2
-  },
-  {
-    "person": {
-      "names": "pepe",
-      "lastNames": "lopez",
-      "phoneNumbers": {
-        "E": [
-          "3",
-          "1",
-          "6",
-          "4",
-          "9",
-          "9",
-          "1",
-          "0",
-          "2",
-          "8"
-        ],
-        "size": 10
-      }
-    },
-    "username": "pepepee",
-    "password": "password123",
-    "type": 1
-  },
-  {
-    "person": {
-      "names": "pepe",
-      "lastNames": "lopez",
-      "phoneNumbers": {
-        "E": [
-          "3",
-          "1",
-          "6",
-          "4",
-          "9",
-          "9",
-          "1",
-          "0",
-          "2",
-          "8"
-        ],
-        "size": 10
-      }
-    },
-    "username": "pepepee",
-    "password": "password123",
-    "type": 1
-  },
-  {
-    "person": {
-      "names": "don quijote",
+      "names": "pepe botellas",
       "lastNames": "lopez",
       "phoneNumbers": {
         "E": [

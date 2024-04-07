@@ -2,11 +2,23 @@
   {
     "id": "A2",
     "type": 3,
-    "names": "1",
-    "lastNames": "1",
+    "names": "PEPE 123",
+    "lastNames": "BOTELLON",
     "phoneNumbers": {
       "E": [
-        "1"
+        "12312312321"
+      ],
+      "size": 2
+    }
+  },
+  {
+    "id": "A2",
+    "type": 3,
+    "names": "12312",
+    "lastNames": "13123",
+    "phoneNumbers": {
+      "E": [
+        "12312311231"
       ],
       "size": 2
     }

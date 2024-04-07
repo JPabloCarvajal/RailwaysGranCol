@@ -16,7 +16,7 @@ public class UserManagementTest {
 
         try {
             // Agregar un nuevo usuario
-            User newUser = new User(new AbstractPerson("don quijote","lopez",new Array<>(new String[]{"3","1","6","4","9","9","1","0","2","8"})), "pepe223221", "password123", 3);
+            User newUser = new User(new AbstractPerson("pepe botellas","lopez",new Array<>(new String[]{"3","1","6","4","9","9","1","0","2","8"})), "pepe223221", "password123", 3);
             boolean added = userRepository.addUser(newUser);
             if (added) {
                 System.out.println("New user added successfully.");

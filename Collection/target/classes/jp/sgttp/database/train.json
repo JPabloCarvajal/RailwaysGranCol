@@ -1,1 +1,59 @@
-[]
+[
+  {
+    "trainName": "",
+    "trainId": "2",
+    "kilometers": 0,
+    "loadingCapacity": 0.0,
+    "brand": "Arnold",
+    "customersWagons": {
+      "E": [
+        null
+      ],
+      "size": 1
+    },
+    "luggageWagons": {
+      "E": [
+        null
+      ],
+      "size": 1
+    }
+  },
+  {
+    "trainName": "Mercedes",
+    "trainId": "12312321",
+    "kilometers": 0,
+    "loadingCapacity": 123132.0,
+    "brand": "Arnold",
+    "customersWagons": {
+      "E": [
+        null
+      ],
+      "size": 1
+    },
+    "luggageWagons": {
+      "E": [
+        null
+      ],
+      "size": 1
+    }
+  },
+  {
+    "trainName": "asdasda",
+    "trainId": "123123",
+    "kilometers": 10000,
+    "loadingCapacity": 10000.0,
+    "brand": "Arnold",
+    "customersWagons": {
+      "E": [
+        null
+      ],
+      "size": 1
+    },
+    "luggageWagons": {
+      "E": [
+        null
+      ],
+      "size": 1
+    }
+  }
+]

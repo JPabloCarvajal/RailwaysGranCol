@@ -2,5 +2,5 @@ package jp.sgttp.model.domain.TicketUtilites;
 
 public enum StatusEnum {
     
-    BOARDING,UNBOARDING,ABOARD
+    BOARDING, UNBOARDING, ABOARD, WAITING
 }
