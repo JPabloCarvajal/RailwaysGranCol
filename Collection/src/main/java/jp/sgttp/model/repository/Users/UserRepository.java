@@ -137,30 +137,16 @@ public class UserRepository {
     }
 
     public boolean modifyUsers(LinkedList<User> modifiedUsers) {
-        // Obtener todos los usuarios del archivo JSON
-        UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);
-
-        // Inicializar un arreglo para almacenar los nuevos objetos de usuario
-        UserEntity[] modifiedUserEntities = new UserEntity[userEntities.length];
-
-        // Iterar sobre los usuarios existentes y actualizarlos según los usuarios modificados
-        for (int i = 0; i < userEntities.length; i++) {
-            UserEntity entity = userEntities[i];
-            // Iterar sobre los usuarios modificados para buscar el usuario correspondiente
-            for (int j = 0; j < modifiedUsers.size(); j++) {
-                User modifiedUser = modifiedUsers.get(j);
-                // Si se encuentra el usuario correspondiente, actualizar sus datos
-                if (entity.getUsername().equals(modifiedUser.getUsername())) {
-                    entity.setPerson(modifiedUser.getPerson());
-                    entity.setUsername(modifiedUser.getUsername());
-                    entity.setPassword(modifiedUser.getPassword());
-                    entity.setType(modifiedUser.getType());
-                    // Al encontrar el usuario correspondiente, salir del bucle interno
-                    break;
-                }
-            }
-            // Almacenar el objeto de usuario actualizado en el arreglo
-            modifiedUserEntities[i] = entity;
+        // Convertir la lista de usuarios modificados a un arreglo de entidades de usuario
+        UserEntity[] modifiedUserEntities = new UserEntity[modifiedUsers.size()];
+        for (int i = 0; i < modifiedUsers.size(); i++) {
+            User modifiedUser = modifiedUsers.get(i);
+            modifiedUserEntities[i] = new UserEntity(
+                    modifiedUser.getPerson(),
+                    modifiedUser.getUsername(),
+                    modifiedUser.getPassword(),
+                    modifiedUser.getType()
+            );
         }
 
         // Escribir los nuevos objetos en el archivo JSON

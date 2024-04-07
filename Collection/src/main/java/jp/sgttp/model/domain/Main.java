@@ -27,20 +27,20 @@ public class Main {
     static public LinkedList<Train> trains = new LinkedList<>();
     static public LinkedList<Station> stations = new LinkedList<>();
     static public int nextId;
-    static public TrainRepository train = new TrainRepository("Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json");
-    static public CustomerRepository customer = new CustomerRepository("Collection\\src\\main\\java\\jp\\sgttp\\database\\customer.json");
-    static public EmployeeRepository employee = new EmployeeRepository("Collection\\src\\main\\java\\jp\\sgttp\\database\\employee.json");
-    static public AdminRepository admin = new AdminRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\admins.json");
-    static public ContactRepository contact = new ContactRepository("Collection\\src\\main\\java\\jp\\sgttp\\database\\contacts.json");
-    static public UserRepository user = new UserRepository("Collection\\src\\main\\java\\jp\\sgttp\\database\\users.json");
-//   static public Array array = new Array(5);
+    static public TrainRepository train = new TrainRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json");
+    static public CustomerRepository customer = new CustomerRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\customer.json");
+    static public EmployeeRepository employee = new EmployeeRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\employee.json");
+    static public AdminRepository admin = new AdminRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\admins.json");
+    static public ContactRepository contact = new ContactRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\contacts.json");
+    static public UserRepository user = new UserRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\users.json");
+//    static public Array array = new Array(5);
     static boolean login = false;
     static int typeUser = -1;
     static String id;
     static String password;
 
     public static void main(String[] args) {
-        setup();
+//        setup();
         chargeTrains();
         chargeUsers();
         Login log = new Login();
@@ -53,8 +53,8 @@ public class Main {
         array.add("300");
         admins.add(new Admin("Luis", "Fuentes", array, "1"));
         users.add(new User(admins.get(0).getPerson(), "Luis", "1", admins.get(0).getType()));
-//        user.modifyUsers(users);
-//        admin.modifyAdmin(admins);
+        user.modifyUsers(users);
+        admin.modifyAdmin(admins);
     }
 
     public static void chargeTrains() {
@@ -63,7 +63,10 @@ public class Main {
 
     public static void chargeUsers() {
         customers = customer.getAllCustomersAsLinkedList();
-
+        employees = employee.getAllEmployeesAsLinkedList();
+        admins = admin.getAllAdminsAsLinkedList();
+        contacts = contact.getAllContactsAsLinkedList();
+        users = user.getAllUsersAsLinkedList();
     }
 
     public static int logIn(String n, String p) {
@@ -102,6 +105,71 @@ public class Main {
 
     public static LinkedList<User> getUsers() {
         return users;
+    }
+
+    public static String getEmployeeId(int index) {
+        Employee employee = (Employee) users.get(index).getPerson();
+        return employee.getId();
+    }
+
+    public static String getCustomerId(int index) {
+        Customer customer = (Customer) users.get(index).getPerson();
+        return customer.getCustomerId();
+    }
+
+    public static String getAdminId(int index) {
+        Admin admin = (Admin) users.get(index).getPerson();
+        return admin.getId();
+    }
+
+    public static String getContactId(int index) {
+        Contact contact = (Contact) users.get(index).getPerson();
+        return contact.getContactId();
+    }
+
+    public static void modifyEmployee(Employee employ) {
+        for (int i = 0; i < employees.getSize(); i++) {
+            if (employ.getId().equals(employees.get(i).getId())) {
+                employees.get(i).setNames(employ.getNames());
+                employees.get(i).setLastNames(employ.getLastNames());
+                employees.get(i).setPhoneNumbers(employ.getPhoneNumbers());
+                employees.get(i).setId(employ.getId());
+            }
+        }
+        employee.modifyEmployees(employees);
+    }
+    public static void modifyCustomer(Customer element) {
+        for (int i = 0; i < customers.getSize(); i++) {
+            if (element.getCustomerId().equals(customers.get(i).getCustomerId())) {
+                customers.get(i).setNames(element.getNames());
+                customers.get(i).setLastNames(element.getLastNames());
+                customers.get(i).setPhoneNumbers(element.getPhoneNumbers());
+                customers.get(i).setCustomerId(element.getCustomerId());
+            }
+        }
+        customer.modifyCustomers(customers);
+    }
+    public static void modifyAdmin(Admin element) {
+        for (int i = 0; i < admins.getSize(); i++) {
+            if (element.getId().equals(admins.get(i).getId())) {
+                admins.get(i).setNames(element.getNames());
+                admins.get(i).setLastNames(element.getLastNames());
+                admins.get(i).setPhoneNumbers(element.getPhoneNumbers());
+                admins.get(i).setId(element.getId());
+            }
+        }
+        admin.modifyAdmin(admins);
+    }
+    public static void modifyContact(Contact element) {
+        for (int i = 0; i < contacts.getSize(); i++) {
+            if (element.getContactId().equals(employees.get(i).getId())) {
+                contacts.get(i).setNames(element.getNames());
+                contacts.get(i).setLastNames(element.getLastNames());
+                contacts.get(i).setPhoneNumbers(element.getPhoneNumbers());
+                contacts.get(i).setContactId(element.getContactId());
+            }
+        }
+        contact.modifyContact(contacts);
     }
 
     public static LinkedList<Train> getTrains() {

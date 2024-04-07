@@ -4,6 +4,7 @@
  */
 package jp.sgttp.gui;
 
+import java.util.function.Predicate;
 import javax.swing.table.DefaultTableModel;
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
@@ -27,6 +28,7 @@ public class UserManagement extends javax.swing.JFrame {
     LinkedList<Employee> employees = new LinkedList();
     LinkedList<Admin> admins = new LinkedList();
     LinkedList<Contact> contacts = new LinkedList();
+
     /**
      * Creates new form UserManagement
      */
@@ -258,10 +260,17 @@ public class UserManagement extends javax.swing.JFrame {
         list = jp.sgttp.model.domain.Main.getUsers();
         for (int i = 0; i < list.size(); i++) {
             AbstractPerson person = list.get(i).getPerson();
+            String numbers = "";
+            for(int j=0;j<list.get(i).getPerson().getPhoneNumbers().size();j++){
+                numbers+=list.get(i).getPerson().getPhoneNumbers().get(j);
+                if(i<list.get(i).getPerson().getPhoneNumbers().size()){
+                    numbers+=",";
+                }
+            }
             Object u[] = new Object[6];
             u[0] = person.getNames();
             u[1] = person.getLastNames();
-            u[2] = person.getPhoneNumbers().get(0);
+            u[2] = numbers;
             u[3] = list.get(i).getUsername();
             u[4] = list.get(i).getPassword();
             u[5] = list.get(i).getType();
@@ -269,6 +278,7 @@ public class UserManagement extends javax.swing.JFrame {
         }
         jTable1.setModel(model);
     }
+
     @SuppressWarnings("unchecked")
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -277,17 +287,17 @@ public class UserManagement extends javax.swing.JFrame {
         String nombres = jTextField1.getText();
         String apellidos = jTextField2.getText();
         String numeros = jTextField3.getText();
+        String[]  numbers= numeros.split(",");
         String usuario = jTextField4.getText();
         String contraseña = jTextField5.getText();
 //        @SuppressWarnings("rawtypes")
-        if (!usuario.isBlank() || !contraseña.isBlank()){
-            Array array = new Array(1);
-            array.add(numeros);
+        if (!usuario.isBlank() || !contraseña.isBlank()) {
+            Array array = new Array(numbers);
 //            AbstractPerson person = new AbstractPerson(nombres, contraseña, array);
             int tipo = -1;
             if (sType.equals("Empleado")) {
                 tipo = 0;
-                Employee employ = new Employee(nombres, apellidos, array,jp.sgttp.model.domain.Main.createId(tipo));
+                Employee employ = new Employee(nombres, apellidos, array, jp.sgttp.model.domain.Main.createId(tipo));
                 list.add(new User(employ, usuario, contraseña, tipo));
                 employees.add(employ);
                 jp.sgttp.model.domain.Main.modifyListEmployees(employees);
@@ -296,7 +306,7 @@ public class UserManagement extends javax.swing.JFrame {
                 if (sType.equals("Cliente")) {
                     tipo = 1;
                     LinkedList luggage = new LinkedList<>(Luggage.getNullLuggage());
-                    Customer customer = new Customer(luggage, nombres, apellidos, array,jp.sgttp.model.domain.Main.createId(tipo));
+                    Customer customer = new Customer(luggage, nombres, apellidos, array, jp.sgttp.model.domain.Main.createId(tipo));
                     list.add(new User(customer, usuario, contraseña, tipo));
                     customers.add(customer);
                     jp.sgttp.model.domain.Main.modifyJsonCustomer(customers);
@@ -325,7 +335,7 @@ public class UserManagement extends javax.swing.JFrame {
         }
         jp.sgttp.model.domain.Main.modifyJsonUser(list);
         jp.sgttp.model.domain.Main.modifyListUsers(list);
-        
+
         reloadTable();
         jTextField1.setText("");
         jTextField2.setText("");
@@ -336,13 +346,46 @@ public class UserManagement extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         int selectedRow = jTable1.getSelectedRow();
-
+        System.out.println("selectedRow = " + selectedRow);
+        System.out.println("list size = " + list.getSize());
+        for(int i=0;i<list.size();i++){
+        System.out.println("list "+i+" :"+list.get(i).getType());
+        }
         // Verificar si se ha seleccionado una fila
         if (selectedRow != -1) {
             // Eliminar la fila del modelo de la tabla
-            if(list.size()>1){
-            list.remove(list.get(selectedRow));
-            reloadTable();
+            if (list.size() > 1) {
+                int tipo = list.get(selectedRow).getType();
+                System.out.println("tipo = " + tipo);
+                switch(tipo){
+                    case 0://empleados
+                        Employee employee = (Employee) list.get(selectedRow).getPerson();
+                        employees.remove(employee);
+                        jp.sgttp.model.domain.Main.modifyListEmployees(employees);
+                        jp.sgttp.model.domain.Main.modifyJsonEmployee(employees);
+                        break;
+                    case 1://cliente
+                        Customer customer = (Customer) list.get(selectedRow).getPerson();
+                        customers.remove(customer);
+                        jp.sgttp.model.domain.Main.modifyListCustomers(customers);
+                        jp.sgttp.model.domain.Main.modifyJsonCustomer(customers);
+                        break;
+                    case 2://contacto
+                        Contact contact = (Contact) list.get(selectedRow).getPerson();
+                        contacts.remove(contact);
+                        jp.sgttp.model.domain.Main.modifyListContacts(contacts);
+                        jp.sgttp.model.domain.Main.modifyJsonContact(contacts);
+                        break;
+                    case 3://admin
+                        Admin admin = (Admin) list.get(selectedRow).getPerson();
+                        admins.remove(admin);
+                        jp.sgttp.model.domain.Main.modifyListAdmins(admins);
+                        jp.sgttp.model.domain.Main.modifyJsonAdmin(admins);
+                        break;
+                }
+                list.remove(list.get(selectedRow));
+                jp.sgttp.model.domain.Main.modifyJsonUser(list);
+                reloadTable();
             }
         }
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -360,32 +403,55 @@ public class UserManagement extends javax.swing.JFrame {
             String nombres = jTextField1.getText();
             String apellidos = jTextField2.getText();
             String numeros = jTextField3.getText();
+            String[]  numbers= numeros.split(",");
             String usuario = jTextField4.getText();
             String contraseña = jTextField5.getText();
-            Array array = new Array(1);
-            array.add(numeros);
-            AbstractPerson person = new AbstractPerson(nombres, contraseña, array);
+            Array array = new Array(numbers);
+            System.out.println("selectrow:"+selectedRow);
             int tipo = -1;
             if (sType.equals("Empleado")) {
                 tipo = 0;
+                Employee employ = new Employee(nombres, apellidos, array, jp.sgttp.model.domain.Main.getEmployeeId(selectedRow));
+                jp.sgttp.model.domain.Main.modifyEmployee(employ);
+                list.get(selectedRow).setPerson(employ);
+//                list.get(selectedRow).setUsername(usuario);
+//                list.get(selectedRow).setPassword(contraseña);
+//                list.get(selectedRow).setType(tipo);
+//                jp.sgttp.model.domain.Main.modifyListUsers(list);
+//                jp.sgttp.model.domain.Main.modifyJsonUser(list);
             } else {
                 if (sType.equals("Cliente")) {
                     tipo = 1;
+                    LinkedList luggage = new LinkedList<>(Luggage.getNullLuggage());
+                    Customer customer = new Customer(luggage, nombres, apellidos, array, jp.sgttp.model.domain.Main.getCustomerId(selectedRow));
+                    jp.sgttp.model.domain.Main.modifyCustomer(customer);
+                    list.get(selectedRow).setPerson(customer);
                 } else {
                     if (sType.equals("Admin")) {
                         tipo = 3;
+                        Admin admin = new Admin(nombres, apellidos, array, jp.sgttp.model.domain.Main.getAdminId(selectedRow));
+                        jp.sgttp.model.domain.Main.modifyAdmin(admin);
+                        list.get(selectedRow).setPerson(admin);
                     } else {
                         if (sType.equals("Contact")) {
                             tipo = 2;
+                            Contact contact = new Contact(nombres, apellidos, array, jp.sgttp.model.domain.Main.getContactId(selectedRow));
+                            jp.sgttp.model.domain.Main.modifyContact(contact);
+                        list.get(selectedRow).setPerson(contact);
                         }
                     }
                 }
             }
-            list.get(selectedRow).setPerson(person);
             list.get(selectedRow).setUsername(usuario);
             list.get(selectedRow).setPassword(contraseña);
             list.get(selectedRow).setType(tipo);
             jp.sgttp.model.domain.Main.modifyListUsers(list);
+            jp.sgttp.model.domain.Main.modifyJsonUser(list);
+//            list.get(selectedRow).setPerson(person);
+//            list.get(selectedRow).setUsername(usuario);
+//            list.get(selectedRow).setPassword(contraseña);
+//            list.get(selectedRow).setType(tipo);
+//            jp.sgttp.model.domain.Main.modifyListUsers(list);
             reloadTable();
             jTextField1.setText("");
             jTextField2.setText("");
