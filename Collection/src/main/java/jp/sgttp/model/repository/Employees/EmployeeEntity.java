@@ -4,15 +4,17 @@ import jp.array.Array;
 import jp.sgttp.model.domain.persons.AbstractPerson;
 
 public class EmployeeEntity extends AbstractPerson {
+
     private String id;
-    private String names;
-    private String lastNames;
-    private Array<String> phoneNumbers;
-  
+    private final int type = 0;
+
+    public int getType() {
+        return type;
+    }
 
     public EmployeeEntity(String names, String lastNames, Array<String> phoneNumbers, String id) {
-      super(names, lastNames, phoneNumbers);
-      this.id = id;
+        super(names, lastNames, phoneNumbers);
+        this.id = id;
     }
 
     public String getId() {
@@ -23,20 +25,8 @@ public class EmployeeEntity extends AbstractPerson {
         this.id = id;
     }
 
-    public String getNames() {
-        return names;
-    }
-
-    public void setNames(String names) {
-        this.names = names;
-    }
-
-    public String getLastNames() {
-        return lastNames;
-    }
-
-    public void setLastNames(String lastNames) {
-        this.lastNames = lastNames;
+    public static EmployeeEntity getNullEmployee() {
+        return new EmployeeEntity("", "", new Array<>(new String[]{""}), "");
     }
 
     public Array<String> getPhoneNumbers() {
@@ -45,9 +35,5 @@ public class EmployeeEntity extends AbstractPerson {
 
     public void setPhoneNumbers(Array<String> phoneNumbers) {
         this.phoneNumbers = phoneNumbers;
-    }
-
-    public static EmployeeEntity getNullEmployee() {
-      return new EmployeeEntity("", "", new Array<>(new String[]{""}), "");
     }
 }

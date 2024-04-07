@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "trainName": "",
+    "trainId": "2",
+    "kilometers": 0,
+    "loadingCapacity": 0.0,
+    "brand": "Arnold",
+    "customersWagons": {
+      "E": [
+        null
+      ],
+      "size": 1
+    },
+    "luggageWagons": {
+      "E": [
+        null
+      ],
+      "size": 1
+    }
+  }
+]

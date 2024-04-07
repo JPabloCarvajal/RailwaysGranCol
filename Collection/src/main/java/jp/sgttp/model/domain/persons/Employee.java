@@ -25,4 +25,12 @@ public class Employee extends AbstractPerson {
     public static Employee getNullEmployee() {
       return new Employee("", "", new Array<>(new String[]{""}), "");
     }
+
+    public Array<String> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(Array<String> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
+    }
 }

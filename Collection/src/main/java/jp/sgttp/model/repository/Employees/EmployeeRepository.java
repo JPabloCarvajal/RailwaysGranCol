@@ -160,5 +160,28 @@ public class EmployeeRepository {
         // Escribir los nuevos objetos en el archivo JSON
         return fileJson.writeObjects(pathFile, modifiedEmployeeEntities);
     }
-
+//    public boolean modifyEmployees(LinkedList<Employee> modifiedEmployees) {
+//        // Obtener todos los empleados del archivo JSON
+//        EmployeeEntity[] employeeEntities = fileJson.getObjects(pathFile, EmployeeEntity[].class);
+//
+//        // Iterar sobre los empleados modificados
+//        for (int i = 0; i < modifiedEmployees.size(); i++) {
+//            Employee modifiedEmployee = modifiedEmployees.get(i);
+//            // Iterar sobre las entidades de empleado
+//            for (int j = 0; j < employeeEntities.length; j++) {
+//                EmployeeEntity entity = employeeEntities[j];
+//                // Verificar si la entidad de empleado corresponde al empleado modificado
+//                if (entity.getId().equals(modifiedEmployee.getId())) {
+//                    // Actualizar los datos de la entidad de empleado con los datos del empleado modificado
+//                    entity.setNames(modifiedEmployee.getNames());
+//                    entity.setLastNames(modifiedEmployee.getLastNames());
+//                    entity.setPhoneNumbers(modifiedEmployee.getPhoneNumbers());
+//                    entity.setId(modifiedEmployee.getId());
+//                }
+//            }
+//        }
+//
+//        // Escribir los empleados modificados en el archivo JSON
+//        return fileJson.writeObjects(pathFile, employeeEntities);
+//    }
 }

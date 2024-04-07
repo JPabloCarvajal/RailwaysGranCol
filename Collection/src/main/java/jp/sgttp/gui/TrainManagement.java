@@ -266,19 +266,21 @@ public class TrainManagement extends javax.swing.JFrame {
             capacidadCarga = Float.parseFloat(jTextField4.getText());
         }
         //        @SuppressWarnings("rawtypes")
-        String marca = "";
         if (!id.isBlank()) {
+            String marca = "";
             if (sType.equals("Mercedez-Benz")) {
                 marca = "Mercedez-Benz";
             } else {
                 if (sType.equals("Arnold")) {
                     marca = "Arnold";
                 }
-                Train train = new Train(nombre, id, kilometros, capacidadCarga, marca, new Array(1), new Array(1), Main.searchStationByName(jTextField5.getText()));
+                
 //                jp.sgttp.model.domain.Main.addJsonTrain(train);
-                list.add(train);
+                
 //                jp.sgttp.model.domain.Main.modifyListTrains(list);
             }
+            Train train = new Train(nombre, id, kilometros, capacidadCarga, marca, new Array(1), new Array(1), Main.searchStationByName(jTextField5.getText()));
+            list.add(train);
             jp.sgttp.model.domain.Main.modifyListTrains(list);
             jp.sgttp.model.domain.Main.modifyJson(list);
 //            jp.sgttp.model.domain.Main.chargeTrains();
@@ -353,7 +355,7 @@ public class TrainManagement extends javax.swing.JFrame {
                     if (sType.equals("Arnold")) {
                         marca = "Arnold";
                     }
-                    Train train = new Train(nombre, id, kilometros, capacidadCarga, marca, new Array(1), new Array(1), Main.searchStationByName(jTextField5.getText()));
+//                    Train train = new Train(nombre, id, kilometros, capacidadCarga, marca, new Array(1), new Array(1), Main.searchStationByName(jTextField5.getText()));
 //                    jp.sgttp.model.domain.Main.modifyJson(list.get(selectedRow).getTrainId(),train);
                 }
                 list.get(selectedRow).setTrainName(nombre);

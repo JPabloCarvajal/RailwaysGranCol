@@ -32,7 +32,7 @@ public class Main {
     static public EmployeeRepository employee = new EmployeeRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\employee.json");
     static public AdminRepository admin = new AdminRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\admins.json");
     static public ContactRepository contact = new ContactRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\contacts.json");
-    static public UserRepository user = new  UserRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\users.json");
+    static public UserRepository user = new UserRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\users.json");
 //    static public Array array = new Array(5);
     static boolean login = false;
     static int typeUser = -1;
@@ -42,6 +42,7 @@ public class Main {
     public static void main(String[] args) {
         setup();
         chargeTrains();
+        chargeUsers();
         Login log = new Login();
         log.setVisible(true);
         log.setLocationRelativeTo(null);
@@ -52,11 +53,20 @@ public class Main {
         array.add("300");
         admins.add(new Admin("Luis", "Fuentes", array, "1"));
         users.add(new User(admins.get(0).getPerson(), "Luis", "1", admins.get(0).getType()));
-
+//        user.modifyUsers(users);
+//        admin.modifyAdmin(admins);
     }
 
     public static void chargeTrains() {
         trains = train.getAllTrainsAsLinkedList();
+    }
+
+    public static void chargeUsers() {
+        customers = customer.getAllCustomersAsLinkedList();
+//        employees = employee.getAllEmployeesAsLinkedList();
+//        admins = admin.getAllAdminsAsLinkedList();
+//        contacts = contact.getAllContactsAsLinkedList();
+//        users = user.getAllUsersAsLinkedList();
     }
 
     public static int logIn(String n, String p) {
@@ -116,12 +126,15 @@ public class Main {
     public static void modifyListEmployees(LinkedList<Employee> employee) {
         employees = employee;
     }
+
     public static void modifyListContacts(LinkedList<Contact> contact) {
         contacts = contact;
     }
+
     public static void modifyListAdmins(LinkedList<Admin> admin) {
         admins = admin;
     }
+
     public static Station searchStationByName(String name) {
         for (int i = 0; i < stations.size(); i++) {
             Station station = stations.get(i);
@@ -148,12 +161,15 @@ public class Main {
     public static void modifyJsonEmployee(LinkedList<Employee> employees) {
         employee.modifyEmployees(employees);
     }
+
     public static void modifyJsonAdmin(LinkedList<Admin> admins) {
         admin.modifyAdmin(admins);
     }
+
     public static void modifyJsonContact(LinkedList<Contact> contacts) {
         contact.modifyContact(contacts);
     }
+
     public static void modifyJsonUser(LinkedList<User> users) {
         user.modifyUsers(users);
     }
@@ -192,7 +208,7 @@ public class Main {
                 break;
             case 2://contacto
                 nextId = contacts.getSize() + 1;
-                generatedId = "C" + nextId;
+                generatedId = "CO" + nextId;
                 nextId++;
                 break;
             case 3://admin
