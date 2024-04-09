@@ -27,12 +27,12 @@ public class Main {
     static public LinkedList<Train> trains = new LinkedList<>();
     static public LinkedList<Station> stations = new LinkedList<>();
     static public int nextId;
-    static public TrainRepository train = new TrainRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json");
-    static public CustomerRepository customer = new CustomerRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\customer.json");
-    static public EmployeeRepository employee = new EmployeeRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\employee.json");
-    static public AdminRepository admin = new AdminRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\admins.json");
-    static public ContactRepository contact = new ContactRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\contacts.json");
-    static public UserRepository user = new UserRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\users.json");
+    static public TrainRepository train = new TrainRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json");
+    static public CustomerRepository customer = new CustomerRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\customer.json");
+    static public EmployeeRepository employee = new EmployeeRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\employee.json");
+    static public AdminRepository admin = new AdminRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\admins.json");
+    static public ContactRepository contact = new ContactRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\contacts.json");
+    static public UserRepository user = new UserRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\users.json");
 //    static public Array array = new Array(5);
     static boolean login = false;
     static int typeUser = -1;

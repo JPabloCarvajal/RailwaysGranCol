@@ -27,8 +27,8 @@ public class TrainRepository {
                         trainEntity.getLoadingCapacity(),
                         trainEntity.getBrand(),
                         trainEntity.getCustomersWagons(),
-                        trainEntity.getLuggageWagons(),
-                        trainEntity.getUbication());
+                        trainEntity.getLuggageWagons()
+                        );
             }
         }
         return Train.getNullTrain();
@@ -51,8 +51,8 @@ public class TrainRepository {
                 train.getLoadingCapacity(),
                 train.getBrand(),
                 train.getCustomersWagons(),
-                train.getLuggageWagons(),
-                train.getUbication());
+                train.getLuggageWagons()
+                );
 
         // Crear un nuevo array para almacenar todos los trenes, incluido el nuevo tren
         Array<TrainEntity> updatedTrainEntities = new Array<>(trainEntities.length + 1);
@@ -140,7 +140,6 @@ public class TrainRepository {
         // Crear una lista enlazada para almacenar los trenes
         LinkedList<Train> trainList = new LinkedList<>();
 
-        // Agregar cada tren a la lista enlazada
         for (int i = 0; i < trainEntities.length; i++) {
             TrainEntity entity = trainEntities[i];
             Train train = new Train(
@@ -150,8 +149,8 @@ public class TrainRepository {
                     entity.getLoadingCapacity(),
                     entity.getBrand(),
                     entity.getCustomersWagons(),
-                    entity.getLuggageWagons(),
-                    entity.getUbication()
+                    entity.getLuggageWagons()
+                    
             );
             trainList.add(train);
         }
@@ -189,8 +188,7 @@ public class TrainRepository {
                     train.getLoadingCapacity(),
                     train.getBrand(),
                     train.getCustomersWagons(),
-                    train.getLuggageWagons(),
-                    train.getUbication()
+                    train.getLuggageWagons()
             );
         }
 

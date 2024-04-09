@@ -18,7 +18,7 @@ public class TrainManagementTest {
         try {
             // Agregar un nuevo tren
             
-            Train newTrain = new Train("Mercedes", "004", 800, 75.0f, "Passenger Transport", new Array<>(2), new Array<>(2),mapa.getStationA());
+            Train newTrain = new Train("Mercedes", "004", 800, 75.0f, "Passenger Transport", new Array<>(2), new Array<>(2));
             boolean added = trainRepository.addTrain(newTrain);
             if (added) {
                 System.out.println("New train added successfully.");
@@ -47,7 +47,7 @@ public class TrainManagementTest {
 
             // Modificar un tren existente
             String trainIdToModify = "004"; // Cambiar por el ID del tren que deseas modificar
-            Train modifiedTrain = new Train("Mercedes Updated", trainIdToModify, 900, 85.0f, "Passenger Transport Updated", new Array<>(3), new Array<>(3),mapa.getStationA());
+            Train modifiedTrain = new Train("Mercedes Updated", trainIdToModify, 900, 85.0f, "Passenger Transport Updated", new Array<>(3), new Array<>(3));
             boolean modified = trainRepository.modifyTrain(trainIdToModify, modifiedTrain);
             if (modified) {
                 System.out.println("Train modified successfully.");
