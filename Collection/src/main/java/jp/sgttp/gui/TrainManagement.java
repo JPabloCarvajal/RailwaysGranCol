@@ -279,7 +279,7 @@ public class TrainManagement extends javax.swing.JFrame {
                 
 //                jp.sgttp.model.domain.Main.modifyListTrains(list);
             }
-            Train train = new Train(nombre, id, kilometros, capacidadCarga, marca, new Array(1), new Array(1), Main.searchStationByName(jTextField5.getText()));
+            Train train = new Train(nombre, id, kilometros, capacidadCarga, marca, new Array(1), new Array(1));
             list.add(train);
             jp.sgttp.model.domain.Main.modifyListTrains(list);
             jp.sgttp.model.domain.Main.modifyJson(list);
@@ -418,7 +418,6 @@ public class TrainManagement extends javax.swing.JFrame {
             u[2] = list.get(i).getKilometers();
             u[3] = list.get(i).getLoadingCapacity();
             u[4] = list.get(i).getBrand();
-            u[5] = list.get(i).getUbication();
             model.addRow(u);
         }
         jTable1.setModel(model);

@@ -1,14 +1,14 @@
-package jp.sgttp.model.domain.RouteUtilities;
+package jp.sgttp.model.repository.Routes;
 
 import java.util.Date;
 
 import jp.linkedlist.singly.LinkedList;
-
+import jp.sgttp.model.domain.RouteUtilities.Station;
 import jp.sgttp.model.domain.trainUtilities.Train;
 
-public class Route {
-
-    private String routeId ;
+public class RouteEntity {
+    
+    private String routeId;
 
     private LinkedList<Station> stations;//
 
@@ -22,7 +22,7 @@ public class Route {
 
     private Train trainToDoRoute;
 
-    public Route(LinkedList<Station> stations,
+    public RouteEntity(LinkedList<Station> stations,
                  Station startPoint,Station destinationPoint,
                  Date departureTime, Date estimatedArrivalTime,float totalKmToTravel,
                  Train trainToDoRoute,String id) {
@@ -108,22 +108,5 @@ public class Route {
         System.out.println("Hora Estimada de Llegada: " + estimatedArrivalTime);
         System.out.println("Kilómetros totales a recorrer: " + totalKmToTravel);
     }
-
-    
-    //Prueba de como crear una ruta
-    public static void main(String[] args) {
-        RoutesMap mapa = new RoutesMap();
-
-        // Definir fechas de salida y llegada
-        Date departureTime1 = new Date(); // Fecha de salida actual
-        Date arrivalTime1 = new Date();
-        arrivalTime1 = mapa.calculateEstimatedArrivalTime(departureTime1,mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB()));  
-
-        Route route3 = new Route(mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB()), mapa.getStationA(), mapa.getStationB(),
-                departureTime1,arrivalTime1, mapa.calculateTotalDistance(mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB())), 
-                new Train("Tren 3", "", 0, 0, "marca3", null, null),"2231");
-
-        route3.printRouteInfo();
-    }
-    
 }
+

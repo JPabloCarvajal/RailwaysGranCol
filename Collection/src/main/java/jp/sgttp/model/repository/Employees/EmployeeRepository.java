@@ -31,29 +31,24 @@ public class EmployeeRepository {
     }
 
     public boolean addEmployee(Employee employee) {
-        // Obtener todos los empleados del archivo JSON
         EmployeeEntity[] employeeEntities = fileJson.getObjects(pathFile, EmployeeEntity[].class);
 
-        // Verificar si employeeEntities es null antes de continuar
         if (employeeEntities == null) {
             employeeEntities = new EmployeeEntity[0]; // Si es null, asignamos un array vacío
         }
 
-        // Crear una nueva instancia de EmployeeEntity a partir del empleado proporcionado
         EmployeeEntity newEmployeeEntity = new EmployeeEntity(
                 employee.getNames(),
                 employee.getLastNames(),
                 employee.getPhoneNumbers(),
                 employee.getId());
 
-        // Crear un nuevo array para almacenar todos los empleados, incluido el nuevo empleado
         Array<EmployeeEntity> updatedEmployeeEntities = new Array<>(employeeEntities.length + 1);
         for (EmployeeEntity entity : employeeEntities) {
             updatedEmployeeEntities.add(entity);
         }
         updatedEmployeeEntities.add(newEmployeeEntity);
 
-        // Convertir el Array<EmployeeEntity> a un array regular de EmployeeEntity[]
         EmployeeEntity[] updatedEmployeeEntitiesArray = new EmployeeEntity[updatedEmployeeEntities.size()];
         for (int i = 0; i < updatedEmployeeEntities.size(); i++) {
             updatedEmployeeEntitiesArray[i] = updatedEmployeeEntities.get(i);
@@ -63,10 +58,8 @@ public class EmployeeRepository {
     }
 
     public boolean removeEmployee(String employeeId) {
-        // Obtener todos los empleados del archivo JSON
         EmployeeEntity[] employeeEntities = fileJson.getObjects(pathFile, EmployeeEntity[].class);
 
-        // Buscar el empleado con el ID especificado
         int indexToRemove = -1;
         for (int i = 0; i < employeeEntities.length; i++) {
             if (employeeEntities[i].getId().equals(employeeId)) {
@@ -75,7 +68,6 @@ public class EmployeeRepository {
             }
         }
 
-        // Si se encontró el empleado, eliminarlo y escribir de nuevo los empleados actualizados en el archivo JSON
         if (indexToRemove != -1) {
             Array<EmployeeEntity> updatedEmployeeEntities = new Array<>(employeeEntities.length - 1);
             for (int i = 0; i < employeeEntities.length; i++) {
@@ -91,16 +83,13 @@ public class EmployeeRepository {
 
             return fileJson.writeObjects(pathFile, updatedEmployeeEntitiesArray);
         } else {
-            // Si no se encontró el empleado con el ID especificado, devolver false
             return false;
         }
     }
 
     public boolean modifyEmployee(String employeeId, Employee modifiedEmployee) {
-        // Obtener todos los empleados del archivo JSON
         EmployeeEntity[] employeeEntities = fileJson.getObjects(pathFile, EmployeeEntity[].class);
 
-        // Buscar el empleado con el ID especificado
         int indexToModify = -1;
         for (int i = 0; i < employeeEntities.length; i++) {
             if (employeeEntities[i].getId().equals(employeeId)) {
@@ -109,7 +98,6 @@ public class EmployeeRepository {
             }
         }
 
-        // Si se encontró el empleado, modificarlo y escribir de nuevo los empleados actualizados en el archivo JSON
         if (indexToModify != -1) {
             employeeEntities[indexToModify].setNames(modifiedEmployee.getNames());
             employeeEntities[indexToModify].setLastNames(modifiedEmployee.getLastNames());
@@ -117,19 +105,15 @@ public class EmployeeRepository {
 
             return fileJson.writeObjects(pathFile, employeeEntities);
         } else {
-            // Si no se encontró el empleado con el ID especificado, devolver false
             return false;
         }
     }
 
     public LinkedList<Employee> getAllEmployeesAsLinkedList() {
-        // Obtener todos los empleados del archivo JSON
         EmployeeEntity[] employeeEntities = fileJson.getObjects(pathFile, EmployeeEntity[].class);
 
-        // Crear una lista enlazada para almacenar los empleados
         LinkedList<Employee> employeeList = new LinkedList<>();
 
-        // Agregar cada empleado a la lista enlazada
         for (int i = 0; i < employeeEntities.length; i++) {
             EmployeeEntity entity = employeeEntities[i];
             Employee employee = new Employee(

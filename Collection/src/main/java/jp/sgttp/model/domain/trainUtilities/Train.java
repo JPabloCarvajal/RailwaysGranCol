@@ -15,7 +15,8 @@ public class Train {
     private Station ubication;
     private boolean available;
 
-    public Train(String trainName, String trainId, int kilometers, float loadingCapacity, String brand,
+    public Train(String trainName, String trainId, int kilometers, 
+                 float loadingCapacity, String brand,
                  Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons) {
         this.trainName = trainName;
         this.trainId = trainId;
@@ -24,7 +25,6 @@ public class Train {
         this.brand = brand;
         this.customersWagons = customersWagons;
         this.luggageWagons = luggageWagons;
-        this.ubication = ubication;
         this.available = true;
     }
 
