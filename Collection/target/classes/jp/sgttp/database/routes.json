@@ -1,0 +1,142 @@
+[
+  {
+    "routeId": "modified id",
+    "stations": {
+      "head": {
+        "next": {
+          "element": {
+            "stationName": "Estacion B",
+            "cityStation": "Ciudad B"
+          }
+        },
+        "element": {
+          "stationName": "Estacion A",
+          "cityStation": "Ciudad A"
+        }
+      },
+      "tail": {
+        "element": {
+          "stationName": "Estacion B",
+          "cityStation": "Ciudad B"
+        }
+      },
+      "size": 2
+    },
+    "totalKmToTravel": 30.0,
+    "destinationPoint": {
+      "stationName": "Estacion B",
+      "cityStation": "Ciudad B"
+    },
+    "startPoint": {
+      "stationName": "Estacion A",
+      "cityStation": "Ciudad A"
+    },
+    "departureTime": "Apr 8, 2024, 11:08:55 PM",
+    "estimatedArrivalTime": "Apr 8, 2024, 11:56:07 PM"
+  },
+  {
+    "routeId": "555",
+    "stations": {
+      "head": {
+        "next": {
+          "element": {
+            "stationName": "Estacion B",
+            "cityStation": "Ciudad B"
+          }
+        },
+        "element": {
+          "stationName": "Estacion A",
+          "cityStation": "Ciudad A"
+        }
+      },
+      "tail": {
+        "element": {
+          "stationName": "Estacion B",
+          "cityStation": "Ciudad B"
+        }
+      },
+      "size": 2
+    },
+    "totalKmToTravel": 30.0,
+    "destinationPoint": {
+      "stationName": "Estacion B",
+      "cityStation": "Ciudad B"
+    },
+    "startPoint": {
+      "stationName": "Estacion A",
+      "cityStation": "Ciudad A"
+    },
+    "departureTime": "Apr 8, 2024, 11:08:55 PM",
+    "estimatedArrivalTime": "Apr 8, 2024, 11:56:07 PM"
+  },
+  {
+    "routeId": "555",
+    "stations": {
+      "head": {
+        "next": {
+          "element": {
+            "stationName": "Estacion B",
+            "cityStation": "Ciudad B"
+          }
+        },
+        "element": {
+          "stationName": "Estacion A",
+          "cityStation": "Ciudad A"
+        }
+      },
+      "tail": {
+        "element": {
+          "stationName": "Estacion B",
+          "cityStation": "Ciudad B"
+        }
+      },
+      "size": 2
+    },
+    "totalKmToTravel": 30.0,
+    "destinationPoint": {
+      "stationName": "Estacion B",
+      "cityStation": "Ciudad B"
+    },
+    "startPoint": {
+      "stationName": "Estacion A",
+      "cityStation": "Ciudad A"
+    },
+    "departureTime": "Apr 8, 2024, 11:20:39 PM",
+    "estimatedArrivalTime": "Apr 9, 2024, 12:07:51 AM"
+  },
+  {
+    "routeId": "555",
+    "stations": {
+      "head": {
+        "next": {
+          "element": {
+            "stationName": "Estacion B",
+            "cityStation": "Ciudad B"
+          }
+        },
+        "element": {
+          "stationName": "Estacion A",
+          "cityStation": "Ciudad A"
+        }
+      },
+      "tail": {
+        "element": {
+          "stationName": "Estacion B",
+          "cityStation": "Ciudad B"
+        }
+      },
+      "size": 2
+    },
+    "totalKmToTravel": 30.0,
+    "destinationPoint": {
+      "stationName": "Estacion B",
+      "cityStation": "Ciudad B"
+    },
+    "startPoint": {
+      "stationName": "Estacion A",
+      "cityStation": "Ciudad A"
+    },
+    "departureTime": "Apr 8, 2024, 11:29:45 PM",
+    "estimatedArrivalTime": "Apr 9, 2024, 12:16:57 AM"
+  }
+]
