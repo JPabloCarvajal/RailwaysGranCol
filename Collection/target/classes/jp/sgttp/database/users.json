@@ -1,18 +1,13 @@
 [
   {
     "person": {
-      "id": "1",
-      "type": 3,
       "names": "Luis",
       "lastNames": "Fuentes",
       "phoneNumbers": {
-        "head": {
-          "element": "300"
-        },
-        "tail": {
-          "element": "300"
-        },
-        "size": 1
+        "E": [
+          "300"
+        ],
+        "size": 2
       }
     },
     "username": "Luis",

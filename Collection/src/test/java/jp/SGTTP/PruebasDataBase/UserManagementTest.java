@@ -6,8 +6,7 @@ import jp.sgttp.model.domain.persons.User;
 import jp.sgttp.model.repository.Users.UserRepository;
 import jp.util.iterator.Iterator;
 
-public class UserManagementTest {
-    public static void main(String[] args) {
+public class UserManagementTest {/*    public static void main(String[] args) {
         // Ruta del archivo JSON de usuarios
         String pathFile = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\users.json";
 
@@ -55,4 +54,5 @@ public class UserManagementTest {
             e.printStackTrace();
         }
     }
+    */ 
 }

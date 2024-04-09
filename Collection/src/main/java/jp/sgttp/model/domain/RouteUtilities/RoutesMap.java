@@ -1,5 +1,7 @@
 package jp.sgttp.model.domain.RouteUtilities;
 
+import java.util.Date;
+
 import jp.array.Array;
 import jp.graphs.*;
 import jp.linkedlist.singly.LinkedList;
@@ -165,78 +167,95 @@ public class RoutesMap {
         return stationsGraph.shortestPathKm(stationsGraph, A, B);
     }
 
-    public QueueArray<Station> stationsToTravel(Station A,Station B){
+    public LinkedList<Station> stationsToTravel(Station A,Station B){
         Array<Station> shortestPathNodes = stationsGraph.shortestPathNodes(stationsGraph, A, B);
-        QueueArray<Station> stations = new QueueArray<>(shortestPathNodes.size());
+        LinkedList<Station> stations = new LinkedList<>();
         for (int i = 0; i < shortestPathNodes.size(); i++) {
-            stations.insert(shortestPathNodes.get(i));
+            stations.add(shortestPathNodes.get(i));
         }
         return stations;
     }
 
-    public QueueList<Station> buildCustomRoute(LinkedList<Station> stations) {
+    public LinkedList<Station> buildCustomRoute(LinkedList<Station> stations) {
         if (stations == null || stations.size() < 2) {
-            // Verificar si la lista de estaciones es válida
+
             System.out.println("La lista de estaciones proporcionada no es válida.");
             return null;
         }
-    
         LinkedList<Station> stationsCopy = new LinkedList<>();
         stationsCopy.add(stations);
-    
-        QueueList<Station> customRouteStations = new QueueList<>();
-    
-        // Guardar la estacion final para agregar al final
+
+        LinkedList<Station> customRouteStations = new LinkedList<>();
+
         Station lastStation = stationsCopy.peekLast();
-    
-        // Iterar sobre las estaciones proporcionadas por el cliente en la copia de la lista
+
         Station currentStation = stationsCopy.poll();
         while (!stationsCopy.isEmpty()) {
-            Station nextStation = stationsCopy.peek(); // Miramos la siguiente estación sin quitarla de la lista
+            Station nextStation = stationsCopy.peek();
+
+            LinkedList<Station> shortestPath = stationsToTravel(currentStation, nextStation);
     
-            // Obtener la ruta más corta desde la estación actual hasta la próxima estación
-            QueueArray<Station> shortestPath = stationsToTravel(currentStation, nextStation);
-    
-            // Agregar las estaciones de la ruta más corta a la ruta personalizada
             while (!shortestPath.isEmpty()) {
-                Station stationToAdd = shortestPath.extract();
-                // Agregar la estación solo si la siguiente estación no es la misma que la actual
+                Station stationToAdd = shortestPath.poll();
+
                 if (!nextStation.equals(stationToAdd)) {
-                    customRouteStations.insert(stationToAdd);
+                    customRouteStations.add(stationToAdd);
                 }
             }
     
-            // Actualizar la estación actual
             currentStation = stationsCopy.poll();
         }
-        customRouteStations.insert(lastStation);
+        customRouteStations.add(lastStation);
         return customRouteStations;
     }
+    
 
     public float calculateTotalDistance(LinkedList<Station> stations) {
         float totalDistance = 0;
 
         LinkedList<Station> stationsCopy = new LinkedList<>();
         stationsCopy.add(stations);
-    
-        // Iterar sobre las estaciones proporcionadas por el cliente en la copia de la lista
+
         Station currentStation = stationsCopy.poll();
         while (!stationsCopy.isEmpty()) {
-            Station nextStation = stationsCopy.peek(); // Miramos la siguiente estación sin quitarla de la lista
+            Station nextStation = stationsCopy.peek();
     
-            // Obtener la distancia entre la estación actual y la próxima estación
             float distance = lowestDistanceBeetweenStationsKM(currentStation, nextStation);
     
-            // Sumar la distancia al total
             totalDistance += distance;
     
-            // Actualizar la estación actual
             currentStation = stationsCopy.poll();
         }
     
         return totalDistance;
     }
     
+    public float calculateTotalTime(LinkedList<Station> stations) {
+
+        float totalDistance = calculateTotalDistance(stations);
+
+        float travelTime = totalDistance / 250; // 250 km/h
+
+        int numStations = stations.size();
+        float stopTimePerStation = 20.0f / 60; // Convertir 20 minutos a horas
+        float totalStopTime = stopTimePerStation * numStations;
+        float totalTime = travelTime + totalStopTime;
+
+        return totalTime;
+
+    }
+
+    public Date calculateEstimatedArrivalTime(Date departureTime, LinkedList<Station> stations) {
+        // Obtener el tiempo total estimado de la ruta
+        float totalTime = calculateTotalTime(stations);
+        
+        // Convertir el tiempo total a milisegundos
+        long totalMillis = (long) (totalTime * 3600000); // 1 hora = 3600000 ms
+        
+        // Calcular el tiempo estimado de llegada sumándolo al tiempo de salida
+        return new Date(departureTime.getTime() + totalMillis);
+    }
+
     // Prueba con este main xd
     public static void main(String[] args) {
  
@@ -245,19 +264,16 @@ public class RoutesMap {
         Station origin = routesMap.getStationJ();
         Station destination = routesMap.getStationE();
 
-        // Calcular la distancia más corta entre dos estaciones
         float shortestDistance = routesMap.lowestDistanceBeetweenStationsKM(origin, destination);
         System.out.println("La distancia más corta entre " + origin.getStationName() + " y " +
                 destination.getStationName() + " es: " + shortestDistance + " km");
-        
-        // Obtener la cola de estaciones en el camino más corto
-        QueueArray<Station> shortestPathStations = routesMap.stationsToTravel(origin, destination);
-        
-        // Imprimir las estaciones en el camino más corto
+
+        LinkedList<Station> shortestPathStations = routesMap.stationsToTravel(origin, destination);
+
         int i = 1;
         while (!shortestPathStations.isEmpty()) {
             System.out.println("Estacion "+ i);
-            System.out.println(shortestPathStations.extract().getStationName()+"\n");
+            System.out.println(shortestPathStations.poll().getStationName()+"\n");
             i++;
         }
 
@@ -277,13 +293,15 @@ public class RoutesMap {
         customStationsList.add(intermediateStationH);
 
         // Construir la ruta personalizada
-        QueueList<Station> customRouteStations = routesMap.buildCustomRoute(customStationsList);
+        LinkedList<Station> customRouteStations = routesMap.buildCustomRoute(customStationsList);
+
+        System.out.println("Tiempo que se demoraria la ruta: "+routesMap.calculateTotalTime(customRouteStations));
 
         // Imprimir las estaciones en la ruta personalizada
         System.out.println("Ruta Personalizada:");
         int j = 1;
         while (!customRouteStations.isEmpty()) {
-            System.out.println("Estación " + j + ": " + customRouteStations.extract().getStationName());
+            System.out.println("Estación " + j + ": " + customRouteStations.poll().getStationName());
             j++;
         }
 

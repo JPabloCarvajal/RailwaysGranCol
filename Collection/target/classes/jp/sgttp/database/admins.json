@@ -5,13 +5,10 @@
     "names": "Luis",
     "lastNames": "Fuentes",
     "phoneNumbers": {
-      "head": {
-        "element": "300"
-      },
-      "tail": {
-        "element": "300"
-      },
-      "size": 1
+      "E": [
+        "300"
+      ],
+      "size": 2
     }
   }
 ]

@@ -19,30 +19,11 @@
     }
   },
   {
-    "trainName": "Mercedes",
-    "trainId": "12312321",
-    "kilometers": 0,
-    "loadingCapacity": 123132.0,
-    "brand": "Arnold",
-    "customersWagons": {
-      "E": [
-        null
-      ],
-      "size": 1
-    },
-    "luggageWagons": {
-      "E": [
-        null
-      ],
-      "size": 1
-    }
-  },
-  {
-    "trainName": "asdasda",
-    "trainId": "123123",
-    "kilometers": 10000,
-    "loadingCapacity": 10000.0,
-    "brand": "Arnold",
+    "trainName": "1",
+    "trainId": "1",
+    "kilometers": 1,
+    "loadingCapacity": 11.0,
+    "brand": "Mercedez-Benz",
     "customersWagons": {
       "E": [
         null

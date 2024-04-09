@@ -13,18 +13,11 @@ public class Train {
     private Array<CustomersWagon> customersWagons;
     private Array<LuggageWagon> luggageWagons;
     private Station ubication;
-    
-    
-    public Station getUbication() {
-        return ubication;
-    }
+    private boolean available;
 
-    public void setUbication(Station ubication) {
-        this.ubication = ubication;
-    }
-
-    public Train(String trainName, String trainId, int kilometers, float loadingCapacity, String brand,
-                 Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons,Station ubication) {
+    public Train(String trainName, String trainId, int kilometers, 
+                 float loadingCapacity, String brand,
+                 Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons) {
         this.trainName = trainName;
         this.trainId = trainId;
         this.kilometers = kilometers;
@@ -32,7 +25,15 @@ public class Train {
         this.brand = brand;
         this.customersWagons = customersWagons;
         this.luggageWagons = luggageWagons;
-        this.ubication = ubication;
+        this.available = true;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
     
     public void setTrainName(String trainName) {
@@ -93,7 +94,7 @@ public class Train {
     }
 
     public static Train getNullTrain() {
-        return new Train("", "", 0, 0, "", null, null,null);
+        return new Train("", "", 0, 0, "", null, null);
     }
     
     public String toString() {
