@@ -8,32 +8,31 @@ import java.time.LocalTime;
 public class Route {
 
     private static int routeId = 0;
-
-    private LinkedList<Station> stations;//
-
-    private QueueList<Station> actualRoute;//
-    private QueueList<Train> actualTrain;
-
-    private float totalKmToTravel;
-
-    private Station destinationPoint; //
-    private Station startPoint; //
-   
-    private String departureTime; //
-    private String estimateArrivalTime; //
+    private LinkedList<Station> stations;
+    private QueueList<Station> actualRoute;
+    private QueueList<Train> actualTrain; 
+    private Station destinationPoint; 
+    private Station startPoint; 
+    private float kmTraveled;   
+    private float kmToEachStation;  
+    private LocalTime departureTime;
+    private LocalTime arrivalTime;
 
     public Route(LinkedList<Station> stations, QueueList<Station> actualRoute,
-                 Station destinationPoint, Station startPoint,
-                 QueueList<Train> actualTrain, String departureTime, String estimateArrivalTime,float totalKmToTravel) {
+                 Station destinationPoint, Station startPoint, float kmTraveled, float kmToEachStation,
+                 QueueList<Train> actualTrain, LocalTime departureTime, LocalTime arrivalTime) {
+
+
         this.routeId++;
         this.stations = stations;
         this.actualRoute = actualRoute;
         this.destinationPoint = destinationPoint;
         this.startPoint = startPoint;
+        this.kmTraveled = kmTraveled;
+        this.kmToEachStation = kmToEachStation;
         this.actualTrain = actualTrain;
         this.departureTime = departureTime;
-        this.estimateArrivalTime = estimateArrivalTime;
-        this.totalKmToTravel = totalKmToTravel;
+        this.arrivalTime = arrivalTime;
     }
 
     public int getRouteId() {
@@ -84,27 +83,35 @@ public class Route {
         this.startPoint = startPoint;
     }
 
-    public String getDepartureTime() {
+    public float getKmTraveled() {
+        return kmTraveled;
+    }
+
+    public void setKmTraveled(float kmTraveled) {
+        this.kmTraveled = kmTraveled;
+    }
+
+    public float getKmToEachStation() {
+        return kmToEachStation;
+    }
+
+    public void setKmToEachStation(float kmToEachStation) {
+        this.kmToEachStation = kmToEachStation;
+    }
+
+    public LocalTime getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(String departureTime) {
+    public void setDepartureTime(LocalTime departureTime) {
         this.departureTime = departureTime;
     }
 
-    public String getArrivalTime() {
-        return estimateArrivalTime;
+    public LocalTime getArrivalTime() {
+        return arrivalTime;
     }
 
-    public void ArrivalTime(String arrivalTime) {
-        this.estimateArrivalTime = arrivalTime;
-    }
-
-    public float getTotalKmToTravel() {
-        return totalKmToTravel;
-    }
-
-    public void setTotalKmToTravel(float kmToTravel) {
-        this.totalKmToTravel = kmToTravel;
+    public void setArrivalTime(LocalTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 }

@@ -13,8 +13,10 @@ jp\sgttp\gui\TrainManagement$10.class
 jp\sgttp\gui\TrainManagement$4.class
 jp\sgttp\gui\AdminPage$2.class
 jp\sgttp\gui\TrainManagement.class
+jp\sgttp\model\domain\TicketUtilites\Ticket$1.class
 jp\sgttp\gui\UserManagement$2.class
 jp\sgttp\gui\TrainManagement$3.class
+jp\sgttp\model\converter\ArrayConverter.class
 jp\sgttp\gui\AdminPage$1.class
 jp\sgttp\gui\TrainManagement$2.class
 UserManagement.class

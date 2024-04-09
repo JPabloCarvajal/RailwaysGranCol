@@ -107,24 +107,63 @@ public class Main {
         return users;
     }
 
+//    public static String getEmployeeId(int index) {
+//        Employee employee = (Employee) users.get(index).getPerson();
+//        return employee.getId();
+//    }
+//
+//    public static String getCustomerId(int index) {
+//        Customer customer = (Customer) users.get(index).getPerson();
+//        return customer.getCustomerId();
+//    }
+//
+//    public static String getAdminId(int index) {
+//        Admin admin = (Admin) users.get(index).getPerson();
+//        return admin.getId();
+//    }
+//
+//    public static String getContactId(int index) {
+//        Contact contact = (Contact) users.get(index).getPerson();
+//        return contact.getContactId();
+//    }
     public static String getEmployeeId(int index) {
-        Employee employee = (Employee) users.get(index).getPerson();
-        return employee.getId();
+        if (users.get(index).getPerson() instanceof Employee) {
+            Employee employee = (Employee) users.get(index).getPerson();
+            return employee.getId();
+        } else {
+            // Manejar el caso cuando la persona no es un Employee
+            return null; // o lanzar una excepción, o retornar un valor por defecto, etc.
+        }
     }
 
     public static String getCustomerId(int index) {
-        Customer customer = (Customer) users.get(index).getPerson();
-        return customer.getCustomerId();
+        if (users.get(index).getPerson() instanceof Customer) {
+            Customer customer = (Customer) users.get(index).getPerson();
+            return customer.getCustomerId();
+        } else {
+            // Manejar el caso cuando la persona no es un Customer
+            return null; // o lanzar una excepción, o retornar un valor por defecto, etc.
+        }
     }
 
     public static String getAdminId(int index) {
-        Admin admin = (Admin) users.get(index).getPerson();
-        return admin.getId();
+        if (users.get(index).getPerson() instanceof Admin) {
+            Admin admin = (Admin) users.get(index).getPerson();
+            return admin.getId();
+        } else {
+            // Manejar el caso cuando la persona no es un Admin
+            return null; // o lanzar una excepción, o retornar un valor por defecto, etc.
+        }
     }
 
     public static String getContactId(int index) {
-        Contact contact = (Contact) users.get(index).getPerson();
-        return contact.getContactId();
+        if (users.get(index).getPerson() instanceof Contact) {
+            Contact contact = (Contact) users.get(index).getPerson();
+            return contact.getContactId();
+        } else {
+            // Manejar el caso cuando la persona no es un Contact
+            return null; // o lanzar una excepción, o retornar un valor por defecto, etc.
+        }
     }
 
     public static void modifyEmployee(Employee employ) {
@@ -138,6 +177,7 @@ public class Main {
         }
         employee.modifyEmployees(employees);
     }
+
     public static void modifyCustomer(Customer element) {
         for (int i = 0; i < customers.getSize(); i++) {
             if (element.getCustomerId().equals(customers.get(i).getCustomerId())) {
@@ -149,6 +189,7 @@ public class Main {
         }
         customer.modifyCustomers(customers);
     }
+
     public static void modifyAdmin(Admin element) {
         for (int i = 0; i < admins.getSize(); i++) {
             if (element.getId().equals(admins.get(i).getId())) {
@@ -160,6 +201,7 @@ public class Main {
         }
         admin.modifyAdmin(admins);
     }
+
     public static void modifyContact(Contact element) {
         for (int i = 0; i < contacts.getSize(); i++) {
             if (element.getContactId().equals(employees.get(i).getId())) {

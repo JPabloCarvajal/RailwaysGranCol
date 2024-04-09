@@ -1,6 +1,8 @@
 package jp.sgttp.shared.filejsonadapter;
 
-public interface FileJsonInterface<E> {
+import java.io.IOException;
+
+public interface FileJsonInterface<E>{
     
     E getObject(String pathFile, Class<E> classOfT);
   
@@ -9,4 +11,5 @@ public interface FileJsonInterface<E> {
     Boolean writeObject(String pathFile, E object);
   
     Boolean writeObjects(String pathFile, E[] objects);
+    E[] getObjects(String filePath, Class<E[]> clazz, Class<?> entityType) throws IOException;
   }

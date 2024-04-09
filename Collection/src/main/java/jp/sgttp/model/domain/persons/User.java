@@ -7,6 +7,13 @@ public class User {
     private String password;
     private int type;
 
+    public User() {
+        this.person = new AbstractPerson();
+        this.username = "N/A";
+        this.password = "N/A";
+        this.type = -1;
+    }
+
     public User(AbstractPerson person, String username, String password, int type) {
         this.person = person;
         this.username = username;

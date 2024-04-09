@@ -1,11 +1,7 @@
 package jp.sgttp.model.domain.TicketUtilites;
 
-import java.time.LocalTime;
 import java.util.Date;
 
-import jp.queue.array.QueueArray;
-import jp.sgttp.model.domain.RouteUtilities.Route;
-import jp.sgttp.model.domain.RouteUtilities.Station;
 import jp.sgttp.model.domain.persons.Contact;
 import jp.sgttp.model.domain.persons.Customer;
 import jp.sgttp.model.domain.trainUtilities.Train;
@@ -13,68 +9,17 @@ import jp.sgttp.model.domain.trainUtilities.Train;
 public class Ticket {
     
     Customer customer;
-
     private int ticketId;
-    private String purchaseDate;
-    private String boardingDate;
-    private Route route;
+    private Date purchaseDate;
+    private Date boardingDate;
+    private Train train;
     private float value;
-    private String arriveDate;
+    private Date arriveDate;
     private String boardingHour;
     private String arriveHour;
     private CustomerCategory customerCategory;
     private Contact customerContact;
     private StatusEnum status;
-
-
-    
-    public Route getRoute() {
-        return route;
-    }
-
-    public void setRoute(Route route) {
-        this.route = route;
-    }
-
-    public String getBoardingHour() {
-        return boardingHour;
-    }
-
-    public void setBoardingHour(String boardingHour) {
-        this.boardingHour = boardingHour;
-    }
-
-    public String getArriveDate() {
-        return arriveDate;
-    }
-
-    public void setArriveDate(String arriveDate) {
-        this.arriveDate = arriveDate;
-    }
-
-    public String getArriveHour() {
-        return arriveHour;
-    }
-
-    public void setArriveHour(String arriveHour) {
-        this.arriveHour = arriveHour;
-    }
-
-    public String getBoardingDate() {
-        return boardingDate;
-    }
-
-    public void setBoardingDate(String boardingDate) {
-        this.boardingDate = boardingDate;
-    }
-
-    public String getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public void setPurchaseDate(String purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
@@ -84,8 +29,32 @@ public class Ticket {
         this.ticketId = ticketId;
     }
 
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public void setBoardingDate(Date boardingDate) {
+        this.boardingDate = boardingDate;
+    }
+
+    public void setTrain(Train train) {
+        this.train = train;
+    }
+
     public void setValue(float value) {
         this.value = value;
+    }
+
+    public void setArriveDate(Date arriveDate) {
+        this.arriveDate = arriveDate;
+    }
+
+    public void setBoardingHour(String boardingHour) {
+        this.boardingHour = boardingHour;
+    }
+
+    public void setArriveHour(String arriveHour) {
+        this.arriveHour = arriveHour;
     }
 
     public void setCustomerCategory(CustomerCategory customerCategory) {
@@ -109,8 +78,32 @@ public class Ticket {
         return ticketId;
     }
 
+    public Date getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public Date getBoardingDate() {
+        return boardingDate;
+    }
+
+    public Train getTrain() {
+        return train;
+    }
+
     public float getValue() {
         return value;
+    }
+
+    public Date getArriveDate() {
+        return arriveDate;
+    }
+
+    public String getBoardingHour() {
+        return boardingHour;
+    }
+
+    public String getArriveHour() {
+        return arriveHour;
     }
 
     public CustomerCategory getCustomerCategory() {
@@ -123,19 +116,6 @@ public class Ticket {
 
     public StatusEnum getStatus() {
         return status;
-    }
-
-    public float totalTravelValue(float km) {
-        switch (customerCategory) {
-            case EXECUTIVE:
-                return km * 1200;
-            case STANDARD:
-                return km * 1000;
-            case PREMIUM:
-                return km * 1800;
-            default:
-                return -1f;
-        }
     }
     
 }

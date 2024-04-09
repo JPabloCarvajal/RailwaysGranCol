@@ -1,24 +1,12 @@
 [
   {
-    "id": "A2",
+    "id": "1",
     "type": 3,
-    "names": "PEPE 123",
-    "lastNames": "BOTELLON",
+    "names": "Luis",
+    "lastNames": "Fuentes",
     "phoneNumbers": {
       "E": [
-        "12312312321"
-      ],
-      "size": 2
-    }
-  },
-  {
-    "id": "A2",
-    "type": 3,
-    "names": "12312",
-    "lastNames": "13123",
-    "phoneNumbers": {
-      "E": [
-        "12312311231"
+        "300"
       ],
       "size": 2
     }

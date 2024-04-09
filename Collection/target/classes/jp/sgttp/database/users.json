@@ -1,26 +1,22 @@
 [
   {
     "person": {
-      "names": "pepe botellas",
-      "lastNames": "lopez",
+      "id": "1",
+      "type": 3,
+      "names": "Luis",
+      "lastNames": "Fuentes",
       "phoneNumbers": {
-        "E": [
-          "3",
-          "1",
-          "6",
-          "4",
-          "9",
-          "9",
-          "1",
-          "0",
-          "2",
-          "8"
-        ],
-        "size": 10
+        "head": {
+          "element": "300"
+        },
+        "tail": {
+          "element": "300"
+        },
+        "size": 1
       }
     },
-    "username": "pepe223221",
-    "password": "password123",
+    "username": "Luis",
+    "password": "1",
     "type": 3
   }
 ]
