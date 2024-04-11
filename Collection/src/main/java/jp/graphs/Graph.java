@@ -163,7 +163,8 @@ public class Graph<E> {
         for (int i = 0; i < graph.getSize(); i++) {
             visited.add(false);
         }
-    
+        
+        
         // Iterar sobre todos los nodos
         for (int i = 0; i < graph.getSize(); i++) {
             // Encontrar el nodo no visitado más cercano
@@ -222,6 +223,7 @@ public class Graph<E> {
 
         // Inicializar las distancias desde el nodo de inicio a todos los demás nodos como infinito
         Array<Float> distances = new Array<>(graph.getSize());
+
         for (int i = 0; i < graph.getSize(); i++) {
             distances.add(Float.POSITIVE_INFINITY);
         }
@@ -242,19 +244,30 @@ public class Graph<E> {
         }
 
         // Iterar sobre todos los nodos
+        //0,1
         for (int i = 0; i < graph.getSize(); i++) {
+
             // Encontrar el nodo no visitado más cercano
             int minIndex = minDistance(distances, visited);
+            // 7
             visited.set(minIndex, true);
 
             // Actualizar las distancias a los nodos adyacentes
             GraphNode<E> currentNode = getNodeByIndex(minIndex);
+            //B
+
             for (Edge<E> edge = currentNode.list.first; edge != null; edge = edge.next) {
+
+                //TRAE INDICE DE A
                 int adjIndex = graph.getNodeIndex(edge.destination);
+
                 float newDistance = distances.get(minIndex) + edge.weight;
+                //REVISA QUE EL NODO EN EL QUE ESTA NO HAYA SIDO VISITADO Y 
                 if (!visited.get(adjIndex) && newDistance < distances.get(adjIndex)) {
+
                     distances.set(adjIndex, newDistance);
                     previous.set(adjIndex, currentNode);
+
                 }
             }
         }
@@ -269,5 +282,96 @@ public class Graph<E> {
         path.reverse(); // Invertir la lista para que esté en el orden correcto
         Array<E> pathArray = new Array<>(path.toArray());
         return pathArray;
+    }
+
+    public static void printGraph(Graph<String> graph) {
+        GraphNode<String> node = graph.first;
+        while (node != null) {
+            System.out.print("Nodo " + node.data + " tiene los siguientes vértices: ");
+            Edge<String> edge = node.list.first;
+            while (edge != null) {
+                System.out.print("(" + edge.destination + ", peso: " + edge.weight + ") ");
+                edge = edge.next;
+            }
+            System.out.println();
+            node = node.next;
+        }
+    }
+    public static void main(String[] args) {
+        // Crear el grafo
+        Graph<String> graph = new Graph<>();
+
+        // Agregar nodos
+        graph.newNode("A");
+        graph.newNode("B");
+        graph.newNode("C");
+        graph.newNode("D");
+        graph.newNode("E");
+        graph.newNode("F");
+        graph.newNode("G");
+        graph.newNode("H");
+        graph.newNode("I");
+        graph.newNode("J");
+        graph.newNode("K");
+
+        // Agregar vértices
+        graph.newEdge("A", "F", 50);
+        graph.newEdge("A", "D", 50);
+        graph.newEdge("A", "C", 40);
+        graph.newEdge("A", "B", 30);
+        
+        graph.newEdge("B", "A", 30);
+
+        graph.newEdge("C", "A", 40);
+        graph.newEdge("C", "I", 80);
+        graph.newEdge("C", "J", 120);
+        graph.newEdge("C", "K", 110);
+
+        graph.newEdge("D", "A", 50);
+        graph.newEdge("D", "E", 20);
+
+        graph.newEdge("E", "D", 20);
+        graph.newEdge("E", "F", 65);
+
+        graph.newEdge("F", "A", 50);
+        graph.newEdge("F", "E", 65);
+        graph.newEdge("F", "G", 80);
+
+        graph.newEdge("G", "F", 80);
+        graph.newEdge("G", "H", 30);
+        graph.newEdge("G", "I", 145);
+
+        graph.newEdge("H", "G", 30);
+         
+        graph.newEdge("I", "G", 145);
+        graph.newEdge("I", "C", 80);
+
+        graph.newEdge("J", "C", 120);
+
+        graph.newEdge("K", "C", 110);
+
+        // Verificar la estructura del grafo
+        //printGraph(graph);
+
+        // Calcular el camino más corto entre dos estaciones
+        String startNode = "B";
+        String endNode = "K";
+
+         // Encontrar el camino más corto
+         //float shortestDistance = graph.shortestPath(graph, startNode, endNode);
+        // System.out.println("La distancia más corta entre " + startNode + " y " + endNode + " es: " + shortestDistance);
+
+        // Obtener nodos de inicio y fin del grafo
+        GraphNode<String> start = graph.getNodeByData(startNode);
+        GraphNode<String> end = graph.getNodeByData(endNode);
+
+        // Calcular el camino más corto
+        Array<String> shortestPathNodes = graph.shortestPathNodes(graph, start.data, end.data);
+
+        // Imprimir los nodos en el camino más corto
+        System.out.println("Nodos en el camino más corto:");
+        for (int i = 0; i < shortestPathNodes.size(); i++) {
+            System.out.println(shortestPathNodes.get(i));
+        }
     }
 }

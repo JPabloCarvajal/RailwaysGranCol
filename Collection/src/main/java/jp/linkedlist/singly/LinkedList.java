@@ -733,6 +733,16 @@ public class LinkedList<E> extends AbstractList<E>{
         sb.append("]");
         return sb.toString();
     }
+    public boolean containsAll(LinkedList<E> elements) {
+        Iterator<E> iterator = elements.iterator();
+        while (iterator.hasNext()) {
+            E element = iterator.next();
+            if (!contains(element)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
     

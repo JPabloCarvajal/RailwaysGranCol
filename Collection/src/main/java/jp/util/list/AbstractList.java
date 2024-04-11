@@ -289,20 +289,20 @@ public abstract class AbstractList<E> implements List<E>, Collection<E>, Cloneab
     //SI
     @Override
     public boolean contains(Collection<E> collection) {
-        try {    
-            Iterator<E> iterator = iterator();
-            while (iterator.hasNext()) {
-                E Element = iterator.next();
-                if (!collection.contains(Element)) {
+        try {
+            Iterator<E> iterator = collection.iterator();
+
+            while(iterator.hasNext()){
+                E element = iterator.next();
+                if(!this.contains(element)){
                     return false;
             }
-            }
-            return true;
         }
-        catch (Exception e) {
-            System.err.println(e.getMessage());
+        return true;
+
+        } catch (Exception e) {
             return false;
-        }   
+        }
     }
     
     //SI

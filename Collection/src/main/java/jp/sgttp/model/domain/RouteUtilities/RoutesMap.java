@@ -5,8 +5,6 @@ import java.util.Date;
 import jp.array.Array;
 import jp.graphs.*;
 import jp.linkedlist.singly.LinkedList;
-import jp.queue.array.QueueArray;
-import jp.queue.list.QueueList;
 
 public class RoutesMap {
 
@@ -167,6 +165,14 @@ public class RoutesMap {
         return stationsGraph.shortestPathKm(stationsGraph, A, B);
     }
 
+    public void showsStationsIndex(){
+        for(int i = 0 ; i<11; i++){
+             System.out.println("Indice "+i+ " :"+stationsGraph.getNodeByIndex(i).data.getStationName());
+        }
+    }
+        
+    
+
     public LinkedList<Station> stationsToTravel(Station A,Station B){
         Array<Station> shortestPathNodes = stationsGraph.shortestPathNodes(stationsGraph, A, B);
         LinkedList<Station> stations = new LinkedList<>();
@@ -246,13 +252,8 @@ public class RoutesMap {
     }
 
     public Date calculateEstimatedArrivalTime(Date departureTime, LinkedList<Station> stations) {
-        // Obtener el tiempo total estimado de la ruta
         float totalTime = calculateTotalTime(stations);
-        
-        // Convertir el tiempo total a milisegundos
-        long totalMillis = (long) (totalTime * 3600000); // 1 hora = 3600000 ms
-        
-        // Calcular el tiempo estimado de llegada sumándolo al tiempo de salida
+        long totalMillis = (long) (totalTime * 3600000); // Convertir horas a milisegundos
         return new Date(departureTime.getTime() + totalMillis);
     }
 
@@ -261,8 +262,8 @@ public class RoutesMap {
  
         RoutesMap routesMap = new RoutesMap();
 
-        Station origin = routesMap.getStationJ();
-        Station destination = routesMap.getStationE();
+        Station origin = routesMap.getStationB();
+        Station destination = routesMap.getStationK();
 
         float shortestDistance = routesMap.lowestDistanceBeetweenStationsKM(origin, destination);
         System.out.println("La distancia más corta entre " + origin.getStationName() + " y " +
@@ -308,7 +309,12 @@ public class RoutesMap {
         // Calcular los kilómetros totales recorridos
         float totalDistance = routesMap.calculateTotalDistance(customStationsList);
         System.out.println("Kilómetros totales recorridos en la ruta personalizada: " + totalDistance + " km");
+
+
+        routesMap.showsStationsIndex();
     }
+
+    
 }
 
 

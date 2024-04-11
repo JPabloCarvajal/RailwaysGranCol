@@ -1,5 +1,7 @@
 package jp.sgttp.model.domain.RouteUtilities;
 
+import java.util.Objects;
+
 import jp.linkedlist.singly.LinkedList;
 import jp.sgttp.model.domain.trainUtilities.Train;
 
@@ -37,5 +39,17 @@ public class Station {
 
     public void setCityStation(String cityStation) {
         this.cityStation = cityStation;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Station other = (Station) obj;
+        return Objects.equals(stationName, other.stationName);
     }
 }

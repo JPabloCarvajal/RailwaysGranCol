@@ -5,6 +5,7 @@ import java.util.Date;
 import jp.linkedlist.singly.LinkedList;
 import jp.sgttp.model.domain.RouteUtilities.Route;
 import jp.sgttp.model.domain.RouteUtilities.RoutesMap;
+import jp.sgttp.model.domain.RouteUtilities.Station;
 import jp.sgttp.model.domain.trainUtilities.Train;
 import jp.sgttp.model.repository.Routes.RouteRepository;
 import jp.util.iterator.Iterator;
@@ -15,25 +16,44 @@ public class RouteManagerTest {
         RoutesMap mapa = new RoutesMap();
         RouteRepository routeManager = new RouteRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\routes.json");
 
-        // Definir fechas de salida y llegada
-        Date departureTime1 = new Date(); // Fecha de salida actual
-        Date arrivalTime1 = new Date();
-        arrivalTime1 = mapa.calculateEstimatedArrivalTime(departureTime1, mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB()));  
+        // Definir estaciones de inicio y fin para la primera ruta
+        Station startStation1 = mapa.getStationB();
+        Station endStation1 = mapa.getStationA();
+ 
+        // Crear la primera ruta
+        Route route1 = createRoute(mapa, startStation1, endStation1);
 
-        Route route3 = new Route(mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB()), mapa.getStationA(), mapa.getStationB(),
-                departureTime1, arrivalTime1, mapa.calculateTotalDistance(mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB())), 
-                new Train("Tren 3", "", 0, 0, "marca3", null, null),"555");
+        // Definir estaciones de inicio y fin para la segunda ruta
+        Station startStation2 = mapa.getStationC();
+        Station endStation2 = mapa.getStationD();
 
-        Route routeMod = new Route(mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB()), mapa.getStationA(), mapa.getStationB(),
-        departureTime1, arrivalTime1, mapa.calculateTotalDistance(mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB())), 
-        new Train("Tren 3", "", 0, 1000, "marca3", null, null),"modified id");
+        // Crear la segunda ruta
+        Route route2 = createRoute(mapa, startStation2, endStation2);
 
+        // Definir estaciones de inicio y fin para la tercera ruta
+        Station startStation3 = mapa.getStationE();
+        Station endStation3 = mapa.getStationF();
+
+        // Crear la tercera ruta
+        Route route3 = createRoute(mapa, startStation3, endStation3);
+
+        // Imprimir información de las rutas
+        System.out.println("Información de la primera ruta:");
+        route1.printRouteInfo();
+        System.out.println();
+
+        System.out.println("Información de la segunda ruta:");
+        route2.printRouteInfo();
+        System.out.println();
+
+        System.out.println("Información de la tercera ruta:");
         route3.printRouteInfo();
+        System.out.println();
 
-        routeManager.addRoute(route3);
-        routeManager.removeRoute("1231232312");
-        routeManager.modifyRoute("333", routeMod);
+        // Agregar las rutas al repositorio de rutas
+        routeManager.addRoute(route1);
 
+        // Imprimir información de todas las rutas en el repositorio
         LinkedList<Route> rutas = routeManager.getAllRoutesAsLinkedList();
         Iterator<Route> iterador = rutas.iterator();
         while(iterador.hasNext()){
@@ -41,7 +61,16 @@ public class RouteManagerTest {
             temp.printRouteInfo();
             temp.getStations().toString();
         }
-    
     }
-    
+
+    // Método para crear una ruta con un inicio y fin dados
+    private static Route createRoute(RoutesMap mapa, Station startStation, Station endStation) {
+        LinkedList<Station> stations = mapa.stationsToTravel(startStation, endStation);
+        Date departureTime = new Date(); // Hora de salida actual
+        Date arrivalTime = mapa.calculateEstimatedArrivalTime(departureTime, stations);  
+
+        return new Route(stations, startStation, endStation,
+                departureTime, arrivalTime, mapa.calculateTotalDistance(stations), 
+                new Train("Tren " + startStation.getStationName() + " to " + endStation.getStationName(), "", 0, 0, "marca", null, null), startStation.getStationName() + "-" + endStation.getStationName());
+    }
 }

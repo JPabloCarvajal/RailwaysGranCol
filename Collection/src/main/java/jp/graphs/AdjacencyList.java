@@ -28,6 +28,7 @@ public class AdjacencyList<E> {
             insert(node, destination);
         }
     }
+    
 
     public void insert(Edge<E> node, E destination) {
         if (emptyList()) {
