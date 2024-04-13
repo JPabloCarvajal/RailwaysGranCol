@@ -3,7 +3,8 @@ package upb.sgttp.model.domain.RouteUtilities;
 import java.util.Date;
 
 import jp.array.Array;
-import jp.graphs.*;
+import jp.graphs.Graph;
+
 import jp.linkedlist.singly.LinkedList;
 
 public class RoutesMap {
@@ -170,8 +171,6 @@ public class RoutesMap {
              System.out.println("Indice "+i+ " :"+stationsGraph.getNodeByIndex(i).data.getStationName());
         }
     }
-        
-    
 
     public LinkedList<Station> stationsToTravel(Station A,Station B){
         Array<Station> shortestPathNodes = stationsGraph.shortestPathNodes(stationsGraph, A, B);
