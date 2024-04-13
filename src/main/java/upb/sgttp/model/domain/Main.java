@@ -18,20 +18,21 @@ import upb.sgttp.model.repository.Trains.TrainRepository;
 import upb.sgttp.model.repository.Users.UserRepository;
 
 public class Main {
-    static String luisCliente ="C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\customer.json";
-    static String luisTren= "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\train.json";
-    static String luisEmpleado = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\employee.json"; 
-    static String luisAdmin = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\admins.json";
-    static String luisContact = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\contacts.json";
-    static String luisUsuario = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\users.json";
 
-    static String jpCliente ="C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\customer.json";
+    static String luisCliente = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\customer.json";
+    static String luisTren = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\train.json";
+    static String luisEmpleado = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\employee.json";
+    static String luisAdmin = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\admins.json";
+    static String luisContact = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\contacts.json";
+    static String luisUsuario = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\users.json";
+
+    static String jpCliente = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\customer.json";
     static String jpTren = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json";
     static String jpEmpleado = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\employee.json";
     static String jpAdmin = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\admins.json";
     static String jpContact = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\contacts.json";
     static String jpUsuario = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\users.json";
-    
+
     static public LinkedList<Employee> employees = new LinkedList<>();
     static public LinkedList<Customer> customers = new LinkedList<>();
     static public LinkedList<Contact> contacts = new LinkedList<>();
@@ -53,7 +54,7 @@ public class Main {
     static String password;
 
     public static void main(String[] args) {
-
+        //setup();
         chargeTrains();
         chargeUsers();
         Login log = new Login();

@@ -1,20 +1,23 @@
 package upb.sgttp.model.domain.trainUtilities;
 
 import jp.array.Array;
+import jp.linkedlist.singly.LinkedList;
+import upb.sgttp.model.domain.Luggage;
 import upb.sgttp.model.domain.RouteUtilities.Station;
+import upb.sgttp.model.domain.TicketUtilites.Ticket;
 
 public class Train {
 
     private String trainName;
     private String trainId;
     private float kilometers;
-    private Array<Integer> loadingCapacity;
+    private int loadingCapacity;
     private String brand;
     private Array<CustomersWagon> customersWagons;
     private Array<LuggageWagon> luggageWagons;
     private boolean available;
 
-    public Train(String trainName, String trainId, float kilometers, Array<Integer> loadingCapacity, String brand, Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons, boolean available) {
+    public Train(String trainName, String trainId, float kilometers, int loadingCapacity, String brand, Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons, boolean available) {
         this.trainName = trainName;
         this.trainId = trainId;
         this.kilometers = kilometers;
@@ -22,6 +25,15 @@ public class Train {
         this.brand = brand;
         this.customersWagons = customersWagons;
         this.luggageWagons = luggageWagons;
+        this.available = available;
+    }
+
+    public Train(String trainName, String trainId, float kilometers, String brand, int customersWagons, boolean available) {
+        this.trainName = trainName;
+        this.trainId = trainId;
+        this.kilometers = kilometers;
+        setwagons(customersWagons);
+        this.brand = brand;
         this.available = available;
     }
 
@@ -45,7 +57,7 @@ public class Train {
         this.kilometers = kilometers;
     }
 
-    public void setLoadingCapacity(Array<Integer> loadingCapacity) {
+    public void setLoadingCapacity(int loadingCapacity) {
         this.loadingCapacity = loadingCapacity;
     }
 
@@ -74,7 +86,7 @@ public class Train {
         return kilometers;
     }
 
-    public Array<Integer> getLoadingCapacity() {
+    public int getLoadingCapacity() {
         return loadingCapacity;
     }
 
@@ -91,7 +103,7 @@ public class Train {
     }
 
     public static Train getNullTrain() {
-        return new Train("", "", 0, new Array(1), "", new Array(1), new Array(1), true);
+        return new Train("", "", 0, 0, "", new Array(1), new Array(1), true);
     }
 
     public String toString() {
@@ -99,7 +111,7 @@ public class Train {
         sb.append("Train Name: ").append(trainName).append("\n");
         sb.append("Train ID: ").append(trainId).append("\n");
         sb.append("Kilometers: ").append(kilometers).append("\n");
-        sb.append("Loading Capacity: ").append(loadingCapacity.toStringg()).append("\n");
+        sb.append("Loading Capacity: ").append(loadingCapacity).append("\n");
         sb.append("Brand: ").append(brand).append("\n");
         sb.append("Customers Wagons: ").append(customersWagons.toStringg()).append("\n");
         sb.append("Luggage Wagons: ").append(luggageWagons.toStringg()).append("\n");
@@ -110,10 +122,30 @@ public class Train {
         this.kilometers += kilometers;
     }
 
-    private Integer loadingCapacity(Integer nWagons) {
-        int luggagueWagon = luggagueWagon = nWagons / 2;
-        Integer wagonsTotals = nWagons + luggagueWagon;
+    public Integer getLoadingCapacities(Integer nWagons) {
+        Integer wagonsTotals = nWagons + luggagueWagon(nWagons);
         return wagonsTotals;
+    }
+
+    public Integer luggagueWagon(Integer nWagons) {
+        int luggagueWagon = nWagons / 2;
+        return luggagueWagon;
+    }
+
+    public void setwagons(int vagonesPasajeros) {
+        loadingCapacity = getLoadingCapacities(vagonesPasajeros);
+        int c = 0; 
+        for (int i = 0; i < vagonesPasajeros; i++) {
+            CustomersWagon customerwagon = new CustomersWagon(i, trainId, 18, 8, 4, new LinkedList<Ticket>());
+            customersWagons = new Array<>(vagonesPasajeros);
+            customersWagons.add(customerwagon);
+            c++;
+        }
+        for (int i = c; i < loadingCapacity-1; i++) {
+            LuggageWagon wagon = new LuggageWagon(new LinkedList<Luggage>(), trainId, 0, 0, i);
+            luggageWagons = new Array<>(luggagueWagon(vagonesPasajeros));
+            luggageWagons.add(wagon);
+        }
     }
 
 }

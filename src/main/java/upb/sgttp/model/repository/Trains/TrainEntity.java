@@ -11,13 +11,13 @@ public class TrainEntity {
     private String trainName;
     private String trainId;
     private float kilometers;
-    private Array<Integer> loadingCapacity;
+    private int loadingCapacity;
     private String brand;
     private Array<CustomersWagon> customersWagons;
     private Array<LuggageWagon> luggageWagons;
     private boolean available;
 
-    public TrainEntity(String trainName, String trainId, float kilometers, Array<Integer> loadingCapacity, String brand,
+    public TrainEntity(String trainName, String trainId, float kilometers, int loadingCapacity, String brand,
                  Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons, boolean available) {
         this.trainName = trainName;
         this.trainId = trainId;
@@ -49,7 +49,7 @@ public class TrainEntity {
         this.kilometers = kilometers;
     }
 
-    public void setLoadingCapacity(Array<Integer> loadingCapacity) {
+    public void setLoadingCapacity(int loadingCapacity) {
         this.loadingCapacity = loadingCapacity;
     }
 
@@ -78,7 +78,7 @@ public class TrainEntity {
         return kilometers;
     }
 
-    public Array<Integer> getLoadingCapacity() {
+    public int getLoadingCapacity() {
         return loadingCapacity;
     }
 
@@ -95,7 +95,7 @@ public class TrainEntity {
     }
 
     public static Train getNullTrain() {
-        return new Train("", "", 0, new Array(1), "", new Array(1), new Array(1), true);
+        return new Train("", "", 0, 0, "", new Array(1), new Array(1), true);
     }
 }
 

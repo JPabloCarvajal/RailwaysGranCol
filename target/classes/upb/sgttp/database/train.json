@@ -1,2 +1,49 @@
 [
+  {
+    "trainName": "1",
+    "trainId": "E1",
+    "kilometers": 0.0,
+    "loadingCapacity": 1,
+    "brand": "Mercedez-Benz",
+    "customersWagons": {
+      "E": [
+        {
+          "standarAmount": 18,
+          "executiveAmount": 8,
+          "premiunAmount": 4,
+          "customers": {
+            "size": 0
+          },
+          "asociatedTrainID": "E1",
+          "wagonNum": 0
+        }
+      ],
+      "size": 2
+    },
+    "available": true
+  },
+  {
+    "trainName": "1",
+    "trainId": "E1",
+    "kilometers": 0.0,
+    "loadingCapacity": 3,
+    "brand": "Mercedez-Benz",
+    "customersWagons": {
+      "E": [
+        {
+          "standarAmount": 18,
+          "executiveAmount": 8,
+          "premiunAmount": 4,
+          "customers": {
+            "size": 0
+          },
+          "asociatedTrainID": "E1",
+          "wagonNum": 1
+        },
+        null
+      ],
+      "size": 3
+    },
+    "available": true
+  }
 ]
