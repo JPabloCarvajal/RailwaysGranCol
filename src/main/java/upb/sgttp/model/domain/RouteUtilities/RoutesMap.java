@@ -3,7 +3,8 @@ package upb.sgttp.model.domain.RouteUtilities;
 import java.util.Date;
 
 import jp.array.Array;
-import jp.graphs.*;
+import jp.graphs.Graph;
+
 import jp.linkedlist.singly.LinkedList;
 
 public class RoutesMap {
@@ -170,8 +171,6 @@ public class RoutesMap {
              System.out.println("Indice "+i+ " :"+stationsGraph.getNodeByIndex(i).data.getStationName());
         }
     }
-        
-    
 
     public LinkedList<Station> stationsToTravel(Station A,Station B){
         Array<Station> shortestPathNodes = stationsGraph.shortestPathNodes(stationsGraph, A, B);
@@ -262,8 +261,8 @@ public class RoutesMap {
  
         RoutesMap routesMap = new RoutesMap();
 
-        Station origin = routesMap.getStationB();
-        Station destination = routesMap.getStationK();
+        Station origin = routesMap.getStationI();
+        Station destination = routesMap.getStationH();
 
         float shortestDistance = routesMap.lowestDistanceBeetweenStationsKM(origin, destination);
         System.out.println("La distancia más corta entre " + origin.getStationName() + " y " +

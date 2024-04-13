@@ -11,6 +11,7 @@ public class Route {
     private String routeId;
 
     private LinkedList<Station> stations;//
+    private LinkedList<SubRoute> subRoutes;
 
     private float totalKmToTravel;
 
@@ -33,6 +34,25 @@ public class Route {
         this.departureTime = departureTime;
         this.estimatedArrivalTime = estimatedArrivalTime;
         this.totalKmToTravel = totalKmToTravel;
+        this.subRoutes = createSubRoutes(stations);
+    }
+
+
+    private LinkedList<SubRoute> createSubRoutes(LinkedList<Station> stations) {
+        LinkedList<SubRoute> subRoutes = new LinkedList<>();
+        for (int i = 0; i < stations.getSize() - 1; i++) {
+            SubRoute subRoute = new SubRoute(stations.get(i), stations.get(i + 1), departureTime, estimatedArrivalTime, trainToDoRoute, routeId);
+            subRoutes.add(subRoute);
+        }
+        return subRoutes;
+    }
+
+    public LinkedList<SubRoute> getSubRoutes() {
+        return subRoutes;
+    }
+
+    public void setSubRoutes(LinkedList<SubRoute> rubRoutes) {
+        this.subRoutes = rubRoutes;
     }
 
     public Train getTrainToDoRoute() {
@@ -107,23 +127,34 @@ public class Route {
         System.out.println("Hora de Salida: " + departureTime);
         System.out.println("Hora Estimada de Llegada: " + estimatedArrivalTime);
         System.out.println("Kilómetros totales a recorrer: " + totalKmToTravel);
+
+        System.out.println("Subrutas:");
+        for (int i = 0; i < subRoutes.getSize(); i++) {
+            SubRoute subRoute = subRoutes.get(i);
+            System.out.println("Subruta " + (i + 1) + ":");
+            System.out.println("  Estación de Partida: " + subRoute.getStartPoint().getStationName());
+            System.out.println("  Estación de Destino: " + subRoute.getDestinationPoint().getStationName());
+            System.out.println("  Hora de Salida: " + subRoute.getDepartureTime());
+            System.out.println("  Hora Estimada de Llegada: " + subRoute.getEstimatedArrivalTime());
+        }
     }
 
-    
+    /*
     //Prueba de como crear una ruta
     public static void main(String[] args) {
+     
         RoutesMap mapa = new RoutesMap();
 
         // Definir fechas de salida y llegada
         Date departureTime1 = new Date(); // Fecha de salida actual
         Date arrivalTime1 = new Date();
-        arrivalTime1 = mapa.calculateEstimatedArrivalTime(departureTime1,mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB()));  
+        arrivalTime1 = mapa.calculateEstimatedArrivalTime(departureTime1,mapa.stationsToTravel(mapa.getStationA(), mapa.getStationH()));  
 
-//        Route route3 = new Route(mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB()), mapa.getStationA(), mapa.getStationB(),
-//                departureTime1,arrivalTime1, mapa.calculateTotalDistance(mapa.stationsToTravel(mapa.getStationA(), mapa.getStationB())), 
-//                new Train("Tren 3", "", 0, 0, "marca3", null, null),"2231");
+        Route route3 = new Route(mapa.stationsToTravel(mapa.getStationA(), mapa.getStationH()), mapa.getStationA(), mapa.getStationH(),
+                departureTime1,arrivalTime1, mapa.calculateTotalDistance(mapa.stationsToTravel(mapa.getStationA(), mapa.getStationH())), 
+                new Train("Tren 3", "", 0f, , "marca3", true),"2231");
 
-//        route3.printRouteInfo();
+        route3.printRouteInfo();
     }
-    
+    */
 }
