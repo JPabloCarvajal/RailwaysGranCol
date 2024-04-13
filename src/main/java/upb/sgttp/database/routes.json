@@ -121,5 +121,87 @@
     },
     "departureTime": "Apr 13, 2024, 1:49:19 AM",
     "estimatedArrivalTime": "Apr 13, 2024, 2:36:31 AM"
+  },
+  {
+    "routeId": "Estacion F-Estacion D",
+    "stations": {
+      "head": {
+        "next": {
+          "next": {
+            "element": {
+              "stationName": "Estacion D",
+              "cityStation": "Ciudad D"
+            }
+          },
+          "element": {
+            "stationName": "Estacion E",
+            "cityStation": "Ciudad E"
+          }
+        },
+        "element": {
+          "stationName": "Estacion F",
+          "cityStation": "Ciudad F"
+        }
+      },
+      "tail": {
+        "element": {
+          "stationName": "Estacion D",
+          "cityStation": "Ciudad D"
+        }
+      },
+      "size": 3
+    },
+    "totalKmToTravel": 85.0,
+    "destinationPoint": {
+      "stationName": "Estacion D",
+      "cityStation": "Ciudad D"
+    },
+    "startPoint": {
+      "stationName": "Estacion F",
+      "cityStation": "Ciudad F"
+    },
+    "departureTime": "Apr 13, 2024, 12:39:33 PM",
+    "estimatedArrivalTime": "Apr 13, 2024, 1:59:57 PM"
+  },
+  {
+    "routeId": "Estacion I-Estacion A",
+    "stations": {
+      "head": {
+        "next": {
+          "next": {
+            "element": {
+              "stationName": "Estacion A",
+              "cityStation": "Ciudad A"
+            }
+          },
+          "element": {
+            "stationName": "Estacion C",
+            "cityStation": "Ciudad C"
+          }
+        },
+        "element": {
+          "stationName": "Estacion I",
+          "cityStation": "Ciudad I"
+        }
+      },
+      "tail": {
+        "element": {
+          "stationName": "Estacion A",
+          "cityStation": "Ciudad A"
+        }
+      },
+      "size": 3
+    },
+    "totalKmToTravel": 120.0,
+    "destinationPoint": {
+      "stationName": "Estacion A",
+      "cityStation": "Ciudad A"
+    },
+    "startPoint": {
+      "stationName": "Estacion I",
+      "cityStation": "Ciudad I"
+    },
+    "departureTime": "Apr 13, 2024, 12:40:11 PM",
+    "estimatedArrivalTime": "Apr 13, 2024, 2:08:59 PM"
   }
 ]

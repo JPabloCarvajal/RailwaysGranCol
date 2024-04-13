@@ -261,8 +261,8 @@ public class RoutesMap {
  
         RoutesMap routesMap = new RoutesMap();
 
-        Station origin = routesMap.getStationB();
-        Station destination = routesMap.getStationK();
+        Station origin = routesMap.getStationI();
+        Station destination = routesMap.getStationH();
 
         float shortestDistance = routesMap.lowestDistanceBeetweenStationsKM(origin, destination);
         System.out.println("La distancia más corta entre " + origin.getStationName() + " y " +

@@ -2,10 +2,13 @@ package upb.SGTTP.PruebasDataBase;
 
 import java.util.Date;
 
+import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.RouteUtilities.Route;
 import upb.sgttp.model.domain.RouteUtilities.RoutesMap;
 import upb.sgttp.model.domain.RouteUtilities.Station;
+import upb.sgttp.model.domain.trainUtilities.CustomersWagon;
+import upb.sgttp.model.domain.trainUtilities.LuggageWagon;
 import upb.sgttp.model.domain.trainUtilities.Train;
 import upb.sgttp.model.repository.Routes.RouteRepository;
 import jp.util.iterator.Iterator;
@@ -14,10 +17,10 @@ public class RouteManagerTest {
     
     public static void main(String[] args) {
         RoutesMap mapa = new RoutesMap();
-        RouteRepository routeManager = new RouteRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
+        RouteRepository routeManager = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
 
         // Definir estaciones de inicio y fin para la primera ruta
-        Station startStation1 = mapa.getStationB();
+        Station startStation1 = mapa.getStationI();
         Station endStation1 = mapa.getStationA();
  
         // Crear la primera ruta
@@ -67,10 +70,27 @@ public class RouteManagerTest {
     private static Route createRoute(RoutesMap mapa, Station startStation, Station endStation) {
         LinkedList<Station> stations = mapa.stationsToTravel(startStation, endStation);
         Date departureTime = new Date(); // Hora de salida actual
-        Date arrivalTime = mapa.calculateEstimatedArrivalTime(departureTime, stations);  
-
-        return new Route(stations, startStation, endStation,
-                departureTime, arrivalTime, mapa.calculateTotalDistance(stations), 
-                new Train("Tren " + startStation.getStationName() + " to " + endStation.getStationName(), "", 0, 0, "marca", null, null), startStation.getStationName() + "-" + endStation.getStationName());
+        Date arrivalTime = mapa.calculateEstimatedArrivalTime(departureTime, stations);
+    
+        // Crear Array con la capacidad de carga para los vagones de pasajeros
+        Array<Integer> passengerWagonCapacity = new Array<>(3);
+        passengerWagonCapacity.add(50); // Capacidad del primer vagón de pasajeros
+        passengerWagonCapacity.add(50); // Capacidad del segundo vagón de pasajeros
+        passengerWagonCapacity.add(50); // Capacidad del tercer vagón de pasajeros
+    
+        // Crear los vagones de pasajeros y de equipaje
+        Array<CustomersWagon> passengerWagons = new Array<>(3);
+        Array<LuggageWagon> luggageWagons = new Array<>(3);
+        for (int i = 0; i < 3; i++) {
+            passengerWagons.add(null);
+            luggageWagons.add(null); // Capacidad de equipaje de 100
+        }
+    
+        // Crear el objeto Train con los vagones creados
+        Train train = new Train("Tren", "idTrenPopo", 0f, passengerWagonCapacity, "marca", passengerWagons, luggageWagons, true);
+    
+        // Crear la ruta
+        return new Route(stations, startStation, endStation, departureTime, arrivalTime,
+                mapa.calculateTotalDistance(stations), train, startStation.getStationName() + "-" + endStation.getStationName());
     }
 }
