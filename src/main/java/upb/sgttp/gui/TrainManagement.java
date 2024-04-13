@@ -215,7 +215,7 @@ public class TrainManagement extends javax.swing.JFrame {
 //                upb.sgttp.model.domain.Main.modifyListTrains(list);
             }
             if (vagonesMax>=vagonesPasajeros) {
-                Train train = new Train(nombre, upb.sgttp.model.domain.Main.createId(tipo), kilometros, marca, vagonesPasajeros, true);
+                Train train = new Train(nombre, upb.sgttp.model.domain.Main.createIdTrain(tipo), kilometros, marca, vagonesPasajeros, true);
 //            for (int i = 0; i < capacidadCarga.size(); i++) {
 //                train.loadingCapacity(capacidadCarga.get(i));
 //            }

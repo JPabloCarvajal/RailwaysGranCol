@@ -134,16 +134,16 @@ public class Train {
 
     public void setwagons(int vagonesPasajeros) {
         loadingCapacity = getLoadingCapacities(vagonesPasajeros);
-        int c = 0; 
+        customersWagons = new Array<>(vagonesPasajeros);
+        luggageWagons = new Array<>(luggagueWagon(vagonesPasajeros));
+        int c = 0;
         for (int i = 0; i < vagonesPasajeros; i++) {
             CustomersWagon customerwagon = new CustomersWagon(i, trainId, 18, 8, 4, new LinkedList<Ticket>());
-            customersWagons = new Array<>(vagonesPasajeros);
             customersWagons.add(customerwagon);
             c++;
         }
-        for (int i = c; i < loadingCapacity-1; i++) {
+        for (int i = c; i < loadingCapacity; i++) {
             LuggageWagon wagon = new LuggageWagon(new LinkedList<Luggage>(), trainId, 0, 0, i);
-            luggageWagons = new Array<>(luggagueWagon(vagonesPasajeros));
             luggageWagons.add(wagon);
         }
     }
