@@ -7,17 +7,14 @@ public class Train {
 
     private String trainName;
     private String trainId;
-    private int kilometers;
-    private float loadingCapacity;
+    private float kilometers;
+    private Array<Integer> loadingCapacity;
     private String brand;
     private Array<CustomersWagon> customersWagons;
     private Array<LuggageWagon> luggageWagons;
-    private Station ubication;
     private boolean available;
 
-    public Train(String trainName, String trainId, int kilometers, 
-                 float loadingCapacity, String brand,
-                 Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons) {
+    public Train(String trainName, String trainId, float kilometers, Array<Integer> loadingCapacity, String brand, Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons, boolean available) {
         this.trainName = trainName;
         this.trainId = trainId;
         this.kilometers = kilometers;
@@ -25,7 +22,7 @@ public class Train {
         this.brand = brand;
         this.customersWagons = customersWagons;
         this.luggageWagons = luggageWagons;
-        this.available = true;
+        this.available = available;
     }
 
     public boolean isAvailable() {
@@ -35,7 +32,7 @@ public class Train {
     public void setAvailable(boolean available) {
         this.available = available;
     }
-    
+
     public void setTrainName(String trainName) {
         this.trainName = trainName;
     }
@@ -44,11 +41,11 @@ public class Train {
         this.trainId = trainId;
     }
 
-    public void setKilometers(int kilometers) {
+    public void setKilometers(float kilometers) {
         this.kilometers = kilometers;
     }
 
-    public void setLoadingCapacity(float loadingCapacity) {
+    public void setLoadingCapacity(Array<Integer> loadingCapacity) {
         this.loadingCapacity = loadingCapacity;
     }
 
@@ -73,11 +70,11 @@ public class Train {
         return trainId;
     }
 
-    public int getKilometers() {
+    public float getKilometers() {
         return kilometers;
     }
 
-    public float getLoadingCapacity() {
+    public Array<Integer> getLoadingCapacity() {
         return loadingCapacity;
     }
 
@@ -94,19 +91,29 @@ public class Train {
     }
 
     public static Train getNullTrain() {
-        return new Train("", "", 0, 0, "", null, null);
+        return new Train("", "", 0, new Array(1), "", new Array(1), new Array(1), true);
     }
-    
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Train Name: ").append(trainName).append("\n");
         sb.append("Train ID: ").append(trainId).append("\n");
         sb.append("Kilometers: ").append(kilometers).append("\n");
-        sb.append("Loading Capacity: ").append(loadingCapacity).append("\n");
+        sb.append("Loading Capacity: ").append(loadingCapacity.toStringg()).append("\n");
         sb.append("Brand: ").append(brand).append("\n");
-        sb.append("Ubication: ").append(ubication.toString()).append("\n");
         sb.append("Customers Wagons: ").append(customersWagons.toStringg()).append("\n");
         sb.append("Luggage Wagons: ").append(luggageWagons.toStringg()).append("\n");
         return sb.toString();
     }
+
+    public void addkilometers(int kilometers) {
+        this.kilometers += kilometers;
+    }
+
+    private Integer loadingCapacity(Integer nWagons) {
+        int luggagueWagon = luggagueWagon = nWagons / 2;
+        Integer wagonsTotals = nWagons + luggagueWagon;
+        return wagonsTotals;
+    }
+
 }

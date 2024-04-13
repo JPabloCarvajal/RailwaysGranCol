@@ -27,7 +27,8 @@ public class TrainRepository {
                         trainEntity.getLoadingCapacity(),
                         trainEntity.getBrand(),
                         trainEntity.getCustomersWagons(),
-                        trainEntity.getLuggageWagons()
+                        trainEntity.getLuggageWagons(),
+                        trainEntity.isAvailable()
                         );
             }
         }
@@ -48,7 +49,8 @@ public class TrainRepository {
                 train.getLoadingCapacity(),
                 train.getBrand(),
                 train.getCustomersWagons(),
-                train.getLuggageWagons()
+                train.getLuggageWagons(),
+                train.isAvailable()
                 );
 
         Array<TrainEntity> updatedTrainEntities = new Array<>(trainEntities.length + 1);
@@ -112,7 +114,7 @@ public class TrainRepository {
             trainEntities[indexToModify].setBrand(modifiedTrain.getBrand());
             trainEntities[indexToModify].setCustomersWagons(modifiedTrain.getCustomersWagons());
             trainEntities[indexToModify].setLuggageWagons(modifiedTrain.getLuggageWagons());
-
+            trainEntities[indexToModify].setAvailable(modifiedTrain.isAvailable());
             return fileJson.writeObjects(pathFile, trainEntities);
         } else {
             return false;
@@ -121,9 +123,7 @@ public class TrainRepository {
 
     public LinkedList<Train> getAllTrainsAsLinkedList() {
         TrainEntity[] trainEntities = fileJson.getObjects(pathFile, TrainEntity[].class);
-
         LinkedList<Train> trainList = new LinkedList<>();
-
         for (int i = 0; i < trainEntities.length; i++) {
             TrainEntity entity = trainEntities[i];
             Train train = new Train(
@@ -133,8 +133,8 @@ public class TrainRepository {
                     entity.getLoadingCapacity(),
                     entity.getBrand(),
                     entity.getCustomersWagons(),
-                    entity.getLuggageWagons()
-                    
+                    entity.getLuggageWagons(),
+                    entity.isAvailable()
             );
             trainList.add(train);
         }
@@ -171,7 +171,8 @@ public class TrainRepository {
                     train.getLoadingCapacity(),
                     train.getBrand(),
                     train.getCustomersWagons(),
-                    train.getLuggageWagons()
+                    train.getLuggageWagons(),
+                    train.isAvailable()
             );
         }
 

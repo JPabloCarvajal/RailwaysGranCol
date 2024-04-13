@@ -8,7 +8,7 @@ import upb.sgttp.model.domain.trainUtilities.Train;
 
 public class Route {
 
-    private String routeId;
+    /*private String routeId;
 
     private LinkedList<Station> stations;//
 
@@ -124,6 +124,6 @@ public class Route {
                 new Train("Tren 3", "", 0, 0, "marca3", null, null),"2231");
 
         route3.printRouteInfo();
-    }
+    }*/
     
 }

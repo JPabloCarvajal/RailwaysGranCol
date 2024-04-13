@@ -18,12 +18,12 @@ import upb.sgttp.model.repository.Trains.TrainRepository;
 import upb.sgttp.model.repository.Users.UserRepository;
 
 public class Main {
-    static String luisCliente ="C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\customer.json";
-    static String luisTren= "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json";
-    static String luisEmpleado = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\employee.json"; 
-    static String luisAdmin = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\admins.json";
-    static String luisContact = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\contacts.json";
-    static String luisUsuario = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\RailwaysGranCol\\Collection\\src\\main\\java\\jp\\sgttp\\database\\users.json";
+    static String luisCliente ="C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\customer.json";
+    static String luisTren= "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\train.json";
+    static String luisEmpleado = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\employee.json"; 
+    static String luisAdmin = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\admins.json";
+    static String luisContact = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\contacts.json";
+    static String luisUsuario = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\train\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\users.json";
 
     static String jpCliente ="C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\customer.json";
     static String jpTren = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json";
@@ -333,6 +333,26 @@ public class Main {
                 break;
             case 3://admin
                 nextId = admins.getSize() + 1;
+                generatedId = "A" + nextId;
+                nextId++;
+                break;
+        }
+        return generatedId;
+    }
+
+    public static String createIdTrain(int type) {
+        String generatedId = "";
+        switch (type) {
+//        String generatedId = "C" + nextId;
+//        nextId++;
+//        return generatedId;
+            case 0://empleado
+                nextId = trains.getSize() + 1;
+                generatedId = "M" + nextId;
+                nextId++;
+                break;
+            case 1://cliente
+                nextId = trains.getSize() + 1;
                 generatedId = "A" + nextId;
                 nextId++;
                 break;
