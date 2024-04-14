@@ -4,10 +4,8 @@ import java.util.Date;
 
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
-import jp.queue.list.QueueList;
 import upb.sgttp.model.domain.trainUtilities.Train;
 import upb.sgttp.model.repository.Routes.RouteRepository;
-import jp.stack.list.StackList;
 import jp.util.iterator.Iterator;
 
 public class CustomerRoute {
@@ -27,6 +25,13 @@ public class CustomerRoute {
         this.departureTime = departureTime;
         this.estimatedArrivalTime = estimatedArrivalTime;
         this.trainToDoRoute = trainToDoRoute;
+    }
+    public CustomerRoute(){
+        this.startPoint = null;
+        this.destinationPoint = null;
+        this.departureTime = null;
+        this.estimatedArrivalTime = null;
+        this.trainToDoRoute = null;
     }
 
     public Station getStartPoint() {
@@ -78,7 +83,7 @@ public class CustomerRoute {
         return subRoutes;
     }
 
-    public LinkedList<SubRoute> assignSubRoutesForCustomerStationsToRun(LinkedList<Station> stationsToRun) {
+    private LinkedList<SubRoute> assignSubRoutesForCustomerStationsToRun(LinkedList<Station> stationsToRun) {
 
         LinkedList<SubRoute> subRoutesOfStationsToRun = createSubStations(stationsToRun);
     
@@ -116,7 +121,7 @@ public class CustomerRoute {
         return assignedSubRoutes;
     }
 
-    public LinkedList<Route> getOrderedRoutes(LinkedList<SubRoute> assignedSubRoutes) {
+    private LinkedList<Route> getOrderedRoutes(LinkedList<SubRoute> assignedSubRoutes) {
         // Agrupar las subrutas por ruta asociada
         Array<LinkedList<SubRoute>> tempRouteGroups = new Array<>(assignedSubRoutes.getSize());
         int groupCount = 0;
@@ -212,7 +217,7 @@ public class CustomerRoute {
         return route;
     }
 
-    public LinkedList<CustomerRoute> createCustomerRoutes(LinkedList<Route> routes) {
+    private LinkedList<CustomerRoute> createCustomerRoutes(LinkedList<Route> routes) {
         LinkedList<CustomerRoute> customerRoutes = new LinkedList<>();
         int size = routes.size();
         for (int i = 0; i < size; i++) {
@@ -236,7 +241,6 @@ public class CustomerRoute {
             Route route = routeIterator.next();
             LinkedList<Station> stations = route.getStations();
             
-            Station tuto = stations.pollLast();
             // Mostrar la estación inicial
             System.out.println("Estación inicial: " + stations.peek().getStationName());
     
@@ -258,6 +262,13 @@ public class CustomerRoute {
         }
     }
 
+    
+    public LinkedList<CustomerRoute> traerLaRutaDelCliente(LinkedList<Station> stationsToRun){
+        LinkedList<SubRoute> assignedSubRoutes = assignSubRoutesForCustomerStationsToRun(stationsToRun);
+        LinkedList<Route> orderedRoutes = getOrderedRoutes(assignedSubRoutes);
+        LinkedList<CustomerRoute> customerRoutes = createCustomerRoutes(orderedRoutes);
+        return customerRoutes;
+    }
 
     public static void main(String[] args) {
 

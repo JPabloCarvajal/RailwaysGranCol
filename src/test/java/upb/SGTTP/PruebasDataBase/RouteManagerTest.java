@@ -87,8 +87,8 @@ public class RouteManagerTest {
         }
     
         // Crear el objeto Train con los vagones creados
-        Train train = new Train("Tren", "idTrenPopo", 0f, passengerWagonCapacity, "marca", passengerWagons, luggageWagons, true);
-    
+        //String trainName//, String trainId//, float kilometers//, int loadingCapacity//, String brand, Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons, boolean available
+        Train train = null;
         // Crear la ruta
         return new Route(stations, startStation, endStation, departureTime, arrivalTime,
                 mapa.calculateTotalDistance(stations), train, startStation.getStationName() + "-" + endStation.getStationName());

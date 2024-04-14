@@ -1,15 +1,16 @@
-package upb.sgttp.model.domain.TicketUtilites;
+package upb.sgttp.model.repository.Tickets;
 
 import java.util.Date;
 
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.RouteUtilities.CustomerRoute;
 import upb.sgttp.model.domain.RouteUtilities.Station;
+import upb.sgttp.model.domain.TicketUtilites.CustomerCategory;
+import upb.sgttp.model.domain.TicketUtilites.StatusEnum;
 import upb.sgttp.model.domain.persons.Contact;
 import upb.sgttp.model.domain.persons.Customer;
 
-public class Ticket {
-    
+public class TicketEntity {
     private Customer customer; //
 
     private CustomerCategory customerCategory; //
@@ -32,7 +33,7 @@ public class Ticket {
 
     private LinkedList<Station> stations;
 
-    public Ticket(Customer customer, CustomerCategory customerCategory, String ticketId, Date purchaseDate, 
+    public TicketEntity(Customer customer, CustomerCategory customerCategory, String ticketId, Date purchaseDate, 
                   Date boardingDate,Date arriveDate, float value, Contact customerContact, StatusEnum status, 
                   LinkedList<CustomerRoute> customerRoute,LinkedList<Station> stations) {
         this.customer = customer;

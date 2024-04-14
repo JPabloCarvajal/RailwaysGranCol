@@ -6,6 +6,7 @@ import jp.array.Array;
 import jp.graphs.Graph;
 
 import jp.linkedlist.singly.LinkedList;
+import upb.sgttp.model.domain.TicketUtilites.CustomerCategory;
 
 public class RoutesMap {
 
@@ -248,6 +249,25 @@ public class RoutesMap {
 
         return totalTime;
 
+    }
+
+    public float calculateTotalPrice(float kms, CustomerCategory category) {
+        float pricePerKm;
+            
+        switch (category) {
+            case PREMIUN:
+                pricePerKm = 1800.0f; // Tarifa para clientes premium: 1800 USD por km
+                break;
+            case EXECUTIVE:
+                pricePerKm = 1200.0f; // Tarifa para clientes ejecutivos: 1200 USD por km
+                break;
+            case STANDAR:
+            default:
+                pricePerKm = 100.0f; // Tarifa por defecto para clientes estándar: 100 USD por km
+                break;
+        }
+        
+        return kms * pricePerKm;
     }
 
     public Date calculateEstimatedArrivalTime(Date departureTime, LinkedList<Station> stations) {
