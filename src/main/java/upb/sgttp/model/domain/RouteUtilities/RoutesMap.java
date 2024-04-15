@@ -42,7 +42,7 @@ public class RoutesMap {
         stationsGraph.newEdge(stationA, stationD, 50);
         stationsGraph.newEdge(stationA, stationC, 40);
         stationsGraph.newEdge(stationA, stationB, 30);
-        
+
         stationsGraph.newEdge(stationB, stationA, 30);
 
         stationsGraph.newEdge(stationC, stationA, 40);
@@ -65,7 +65,7 @@ public class RoutesMap {
         stationsGraph.newEdge(stationG, stationI, 145);
 
         stationsGraph.newEdge(stationH, stationG, 30);
-        
+
         stationsGraph.newEdge(stationI, stationG, 145);
         stationsGraph.newEdge(stationI, stationC, 80);
 
@@ -73,7 +73,6 @@ public class RoutesMap {
 
         stationsGraph.newEdge(stationK, stationC, 110);
     }
-
 
     public Station getStationA() {
         return stationA;
@@ -163,17 +162,17 @@ public class RoutesMap {
         this.stationK = stationK;
     }
 
-    public float lowestDistanceBeetweenStationsKM(Station A, Station B){
+    public float lowestDistanceBeetweenStationsKM(Station A, Station B) {
         return stationsGraph.shortestPathKm(stationsGraph, A, B);
     }
 
-    public void showsStationsIndex(){
-        for(int i = 0 ; i<11; i++){
-             System.out.println("Indice "+i+ " :"+stationsGraph.getNodeByIndex(i).data.getStationName());
+    public void showsStationsIndex() {
+        for (int i = 0; i < 11; i++) {
+            System.out.println("Indice " + i + " :" + stationsGraph.getNodeByIndex(i).data.getStationName());
         }
     }
 
-    public LinkedList<Station> stationsToTravel(Station A,Station B){
+    public LinkedList<Station> stationsToTravel(Station A, Station B) {
         Array<Station> shortestPathNodes = stationsGraph.shortestPathNodes(stationsGraph, A, B);
         LinkedList<Station> stations = new LinkedList<>();
         for (int i = 0; i < shortestPathNodes.size(); i++) {
@@ -200,7 +199,7 @@ public class RoutesMap {
             Station nextStation = stationsCopy.peek();
 
             LinkedList<Station> shortestPath = stationsToTravel(currentStation, nextStation);
-    
+
             while (!shortestPath.isEmpty()) {
                 Station stationToAdd = shortestPath.poll();
 
@@ -208,13 +207,12 @@ public class RoutesMap {
                     customRouteStations.add(stationToAdd);
                 }
             }
-    
+
             currentStation = stationsCopy.poll();
         }
         customRouteStations.add(lastStation);
         return customRouteStations;
     }
-    
 
     public float calculateTotalDistance(LinkedList<Station> stations) {
         float totalDistance = 0;
@@ -225,17 +223,17 @@ public class RoutesMap {
         Station currentStation = stationsCopy.poll();
         while (!stationsCopy.isEmpty()) {
             Station nextStation = stationsCopy.peek();
-    
+
             float distance = lowestDistanceBeetweenStationsKM(currentStation, nextStation);
-    
+
             totalDistance += distance;
-    
+
             currentStation = stationsCopy.poll();
         }
-    
+
         return totalDistance;
     }
-    
+
     public float calculateTotalTime(LinkedList<Station> stations) {
 
         float totalDistance = calculateTotalDistance(stations);
@@ -253,7 +251,11 @@ public class RoutesMap {
 
     public float calculateTotalPrice(float kms, CustomerCategory category) {
         float pricePerKm;
+<<<<<<< HEAD
+
+=======
             
+>>>>>>> 254eb0cd5dbb97a34f30bbe8d684339137190dbb
         switch (category) {
             case PREMIUN:
                 pricePerKm = 1800.0f; // Tarifa para clientes premium: 1800 USD por km
@@ -266,7 +268,11 @@ public class RoutesMap {
                 pricePerKm = 100.0f; // Tarifa por defecto para clientes estándar: 100 USD por km
                 break;
         }
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> 254eb0cd5dbb97a34f30bbe8d684339137190dbb
         return kms * pricePerKm;
     }
 
@@ -278,22 +284,22 @@ public class RoutesMap {
 
     // Prueba con este main xd
     public static void main(String[] args) {
- 
+
         RoutesMap routesMap = new RoutesMap();
 
         Station origin = routesMap.getStationI();
         Station destination = routesMap.getStationH();
 
         float shortestDistance = routesMap.lowestDistanceBeetweenStationsKM(origin, destination);
-        System.out.println("La distancia más corta entre " + origin.getStationName() + " y " +
-                destination.getStationName() + " es: " + shortestDistance + " km");
+        System.out.println("La distancia más corta entre " + origin.getStationName() + " y "
+                + destination.getStationName() + " es: " + shortestDistance + " km");
 
         LinkedList<Station> shortestPathStations = routesMap.stationsToTravel(origin, destination);
 
         int i = 1;
         while (!shortestPathStations.isEmpty()) {
-            System.out.println("Estacion "+ i);
-            System.out.println(shortestPathStations.poll().getStationName()+"\n");
+            System.out.println("Estacion " + i);
+            System.out.println(shortestPathStations.poll().getStationName() + "\n");
             i++;
         }
 
@@ -315,7 +321,7 @@ public class RoutesMap {
         // Construir la ruta personalizada
         LinkedList<Station> customRouteStations = routesMap.buildCustomRoute(customStationsList);
 
-        System.out.println("Tiempo que se demoraria la ruta: "+routesMap.calculateTotalTime(customRouteStations));
+        System.out.println("Tiempo que se demoraria la ruta: " + routesMap.calculateTotalTime(customRouteStations));
 
         // Imprimir las estaciones en la ruta personalizada
         System.out.println("Ruta Personalizada:");
@@ -329,11 +335,32 @@ public class RoutesMap {
         float totalDistance = routesMap.calculateTotalDistance(customStationsList);
         System.out.println("Kilómetros totales recorridos en la ruta personalizada: " + totalDistance + " km");
 
-
         routesMap.showsStationsIndex();
     }
 
-    
+    public Station getStation(String nombre) {
+        LinkedList<Station> station = getStationList();
+        for (int i = 0; i < station.size(); i++) {
+            if (nombre.equals(station.get(i).getStationName())) {
+                return station.get(i);
+            }
+        }
+        return null;
+    }
+
+    public LinkedList<Station> getStationList() {
+        LinkedList<Station> station = new LinkedList<>();
+        station.add(stationA);
+        station.add(stationB);
+        station.add(stationC);
+        station.add(stationD);
+        station.add(stationE);
+        station.add(stationF);
+        station.add(stationG);
+        station.add(stationH);
+        station.add(stationK);
+        station.add(stationI);
+        station.add(stationJ);
+        return station;
+    }
 }
-
-

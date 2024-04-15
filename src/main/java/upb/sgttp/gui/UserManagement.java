@@ -405,6 +405,7 @@ public class UserManagement extends javax.swing.JFrame {
                 }
                 list.remove(list.get(selectedRow));
                 upb.sgttp.model.domain.Main.modifyJsonUser(list);
+                upb.sgttp.model.domain.Main.modifyListUsers(list);
                 reloadTable();
             }
         }

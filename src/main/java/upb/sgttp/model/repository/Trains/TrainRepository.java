@@ -141,7 +141,7 @@ public class TrainRepository {
 
         return trainList;
     }
-
+    
 //    public boolean modifyTrain(LinkedList<Train> modifiedTrains) {
 //        // Convertir la LinkedList a un arreglo de TrainEntity
 //        TrainEntity[] modifiedTrainEntities = new TrainEntity[modifiedTrains.size()];

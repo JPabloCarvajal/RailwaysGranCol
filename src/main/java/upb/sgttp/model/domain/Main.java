@@ -1,8 +1,13 @@
 package upb.sgttp.model.domain;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.gui.Login;
+import upb.sgttp.model.domain.RouteUtilities.Route;
+import upb.sgttp.model.domain.RouteUtilities.RoutesMap;
 import upb.sgttp.model.domain.RouteUtilities.Station;
 import upb.sgttp.model.domain.persons.Admin;
 import upb.sgttp.model.domain.persons.Contact;
@@ -14,6 +19,7 @@ import upb.sgttp.model.repository.Admins.AdminRepository;
 import upb.sgttp.model.repository.Contacts.ContactRepository;
 import upb.sgttp.model.repository.Customers.CustomerRepository;
 import upb.sgttp.model.repository.Employees.EmployeeRepository;
+import upb.sgttp.model.repository.Routes.RouteRepository;
 import upb.sgttp.model.repository.Trains.TrainRepository;
 import upb.sgttp.model.repository.Users.UserRepository;
 
@@ -25,6 +31,7 @@ public class Main {
     static String luisAdmin = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\admins.json";
     static String luisContact = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\contacts.json";
     static String luisUsuario = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\users.json";
+    static String luisRoute = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\routes.json";
 
     static String jpCliente = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\customer.json";
     static String jpTren = "C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\EDDJP\\Collection\\src\\main\\java\\jp\\sgttp\\database\\train.json";
@@ -40,6 +47,7 @@ public class Main {
     static public LinkedList<Admin> admins = new LinkedList<>();
     static public LinkedList<Train> trains = new LinkedList<>();
     static public LinkedList<Station> stations = new LinkedList<>();
+    static public LinkedList<Route> routes = new LinkedList<>();
     static public int nextId;
     static public TrainRepository train = new TrainRepository(luisTren);
     static public CustomerRepository customer = new CustomerRepository(luisCliente);
@@ -47,7 +55,7 @@ public class Main {
     static public AdminRepository admin = new AdminRepository(luisAdmin);
     static public ContactRepository contact = new ContactRepository(luisContact);
     static public UserRepository user = new UserRepository(luisUsuario);
-
+    static public RouteRepository route = new RouteRepository(luisRoute);
     static boolean login = false;
     static int typeUser = -1;
     static String id;
@@ -57,6 +65,7 @@ public class Main {
         //setup();
         chargeTrains();
         chargeUsers();
+        chargeRoutes();
         Login log = new Login();
         log.setVisible(true);
         log.setLocationRelativeTo(null);
@@ -73,6 +82,10 @@ public class Main {
 
     public static void chargeTrains() {
         trains = train.getAllTrainsAsLinkedList();
+    }
+
+    public static void chargeRoutes() {
+        routes = route.getAllRoutesAsLinkedList();
     }
 
     public static void chargeUsers() {
@@ -121,6 +134,25 @@ public class Main {
         return users;
     }
 
+    public static Route getRoute(String id) {
+        return route.getRoute(id);
+    }
+
+    public static Train getTrain(String id) {
+        for (int i = 0; i < trains.size(); i++) {
+            if (trains.get(i).getTrainId().equals(id)) {
+                System.out.println("trains.get(i) = " + trains.get(i));
+                return trains.get(i);
+            }
+        }
+//        return train.getTrain(id);
+        return new Train("N/A", "N/A", 0, "N/A", 0, true);
+    }
+
+//    public static Station getStation(String id) {
+//        RoutesMap mapa = new RoutesMap();
+//        return mapa.g;
+//    }
 //    public static String getEmployeeId(int index) {
 //        Employee employee = (Employee) users.get(index).getPerson();
 //        return employee.getId();
@@ -228,8 +260,41 @@ public class Main {
         contact.modifyContact(contacts);
     }
 
+    public static void modifyTrainIsAvailable(String element) {
+        for (int i = 0; i < trains.getSize(); i++) {
+            if (element.equals(trains.get(i).getTrainId())) {
+                trains.get(i).setAvailable(true);
+            }
+        }
+        train.modifyTrain(trains);
+    }
+
+    public static void modifyTrainIsAvailable(String oldTrainId, String newTrainId) {
+        for (int i = 0; i < trains.size(); i++) {
+            Train train = trains.get(i);
+            if (train.getTrainId().equals(oldTrainId)) {
+                train.setAvailable(true);
+            } else if (train.getTrainId().equals(newTrainId)) {
+                train.setAvailable(false);
+            }
+        }
+        train.modifyTrain(trains);
+    }
+    
+    public static void modifyRoute(Route element, String id) {
+        route.modifyRoute(id, element);
+    }
+
+    public static void DeleteRoute(String id) {
+        route.removeRoute(id);
+    }
+
     public static LinkedList<Train> getTrains() {
         return trains;
+    }
+
+    public static LinkedList<Route> getRoutes() {
+        return routes;
     }
 
     public static void modifyListUsers(LinkedList<User> user) {
@@ -256,6 +321,10 @@ public class Main {
         admins = admin;
     }
 
+    public static void modifyListRoutes(LinkedList<Route> route) {
+        routes = route;
+    }
+
     public static Station searchStationByName(String name) {
         for (int i = 0; i < stations.size(); i++) {
             Station station = stations.get(i);
@@ -267,8 +336,9 @@ public class Main {
         return null;
     }
 
-    public static void modifyJson(String id, Train modify) {
+    public static void modifyJsonTrain(String id, Train element, Train modify) {
         train.modifyTrain(id, modify);
+        trains.set(element, modify);
     }
 
     public static void modifyJson(LinkedList<Train> trains) {
@@ -305,6 +375,10 @@ public class Main {
 
     public static void addJsonCustomer(Customer object) {
         customer.addCustomer(object);
+    }
+
+    public static void addJsonRoute(Route object) {
+        route.addRoute(object);
     }
 
     public static LinkedList<Customer> getCustomers() {
@@ -359,5 +433,25 @@ public class Main {
                 break;
         }
         return generatedId;
+    }
+
+    public static String createIdRoute(Station station1, Station station2) {
+        String generatedId = "";
+        nextId = trains.getSize() + 1;
+        generatedId = station1.getStationName() + "-" + station2.getStationName();
+        return generatedId;
+    }
+
+    public static Date DateConverter(String dateString) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date date = dateFormat.parse(dateString); // Convertir String a Date
+            System.out.println("Fecha convertida: " + date);
+            return date;
+        } catch (ParseException e) {
+
+            System.out.println("Error al convertir la fecha: " + e.getMessage());
+        }
+        return null;
     }
 }

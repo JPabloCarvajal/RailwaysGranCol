@@ -35,6 +35,7 @@ public class Route {
         this.estimatedArrivalTime = estimatedArrivalTime;
         this.totalKmToTravel = totalKmToTravel;
         this.subRoutes = createSubRoutes(stations);
+        this.trainToDoRoute = trainToDoRoute;
     }
 
 
@@ -79,6 +80,14 @@ public class Route {
         this.stations = stations;
     }
 
+    public Date getEstimatedArrivalTime() {
+        return estimatedArrivalTime;
+    }
+
+    public void setEstimatedArrivalTime(Date estimatedArrivalTime) {
+        this.estimatedArrivalTime = estimatedArrivalTime;
+    }
+    
     public Station getDestinationPoint() {
         return destinationPoint;
     }

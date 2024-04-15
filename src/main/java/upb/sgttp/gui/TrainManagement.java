@@ -203,7 +203,7 @@ public class TrainManagement extends javax.swing.JFrame {
             if (sType.equals("Mercedez-Benz")) {
                 marca = "Mercedez-Benz";
                 tipo = 0;
-                vagonesMax = 18;//o 19 si no se cuenta la locomotora
+                vagonesMax = 19;//o 19 si no se cuenta la locomotora
             } else {
                 if (sType.equals("Arnold")) {
                     marca = "Arnold";
@@ -254,6 +254,7 @@ public class TrainManagement extends javax.swing.JFrame {
                 reloadTable();
             }
         }
+        upb.sgttp.model.domain.Main.modifyListTrains(list);
         upb.sgttp.model.domain.Main.modifyJson(list);
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -262,7 +263,7 @@ public class TrainManagement extends javax.swing.JFrame {
         int selectedRow = jTable1.getSelectedRow();
 
         // Verificar si se ha seleccionado una fila
-        if (selectedRow != -1) {
+        if (selectedRow != -1 && list.get(selectedRow).isAvailable()) {
             // modificar la fila del modelo de la tabla
             list.get(selectedRow);
             String sType = (String) jComboBox1.getSelectedItem();
