@@ -5,9 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
+import upb.sgttp.controller.LoginController;
 import upb.sgttp.gui.Login;
+import upb.sgttp.gui.LoginView;
+import upb.sgttp.model.AuthenticationModel;
 import upb.sgttp.model.domain.RouteUtilities.Route;
-import upb.sgttp.model.domain.RouteUtilities.RoutesMap;
 import upb.sgttp.model.domain.RouteUtilities.Station;
 import upb.sgttp.model.domain.persons.Admin;
 import upb.sgttp.model.domain.persons.Contact;
@@ -60,15 +62,24 @@ public class Main {
     static int typeUser = -1;
     static String id;
     static String password;
-
+    //--------------------------------------------------------------------
+    private static AuthenticationModel model;
+    private static LoginView view;
+    private static LoginController controller;
     public static void main(String[] args) {
         //setup();
         chargeTrains();
         chargeUsers();
         chargeRoutes();
-        Login log = new Login();
-        log.setVisible(true);
-        log.setLocationRelativeTo(null);
+//        Login log = new Login();
+//        log.setVisible(true);
+//        log.setLocationRelativeTo(null);
+//==============================================
+        model = new AuthenticationModel();
+        view = new LoginView();
+        controller = new LoginController(model, view);
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
     }
 
     public static void setup() {
@@ -280,7 +291,7 @@ public class Main {
         }
         train.modifyTrain(trains);
     }
-    
+
     public static void modifyRoute(Route element, String id) {
         route.modifyRoute(id, element);
     }

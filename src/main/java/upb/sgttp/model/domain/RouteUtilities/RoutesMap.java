@@ -251,11 +251,6 @@ public class RoutesMap {
 
     public float calculateTotalPrice(float kms, CustomerCategory category) {
         float pricePerKm;
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 254eb0cd5dbb97a34f30bbe8d684339137190dbb
         switch (category) {
             case PREMIUN:
                 pricePerKm = 1800.0f; // Tarifa para clientes premium: 1800 USD por km
@@ -268,11 +263,6 @@ public class RoutesMap {
                 pricePerKm = 100.0f; // Tarifa por defecto para clientes estándar: 100 USD por km
                 break;
         }
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 254eb0cd5dbb97a34f30bbe8d684339137190dbb
         return kms * pricePerKm;
     }
 

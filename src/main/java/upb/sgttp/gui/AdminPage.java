@@ -4,6 +4,9 @@
  */
 package upb.sgttp.gui;
 
+import upb.sgttp.controller.LoginController;
+import upb.sgttp.model.AuthenticationModel;
+
 /**
  *
  * @author thewe
@@ -122,9 +125,15 @@ public class AdminPage extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        Login log = new Login();
-        log.setVisible(true);
-        log.setLocationRelativeTo(null);
+//        LoginView log = new LoginView();
+//        log.setVisible(true);
+//        log.setLocationRelativeTo(null);
+        //----------------------------------------------
+        AuthenticationModel model = new AuthenticationModel();
+        LoginView view = new LoginView();
+        LoginController controller = new LoginController(model, view);
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
         upb.sgttp.model.domain.Main.resetCredentials();
     }//GEN-LAST:event_jButton1ActionPerformed
 

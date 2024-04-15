@@ -422,4 +422,65 @@ public class UserRepository {
         // Escribir los nuevos objetos en el archivo JSON
         return fileJson.writeObjects(pathFile, modifiedUserEntities);
     }
+
+    public User getUserByUsername(String username) {
+        // Obtener todos los usuarios del archivo JSON
+        UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);
+
+        // Verificar si userEntities es null antes de continuar
+        if (userEntities != null) {
+            // Recorrer cada UserEntity
+            for (UserEntity entity : userEntities) {
+                // Verificar si el nombre de usuario coincide con el proporcionado
+                if (entity.getUsername().equals(username)) {
+                    User user = new User();
+                    switch (entity.getType()) {
+                        case 0:
+                            EmployeeRepository employeeRepo = new EmployeeRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\employee.json");
+                            LinkedList<Employee> employees = employeeRepo.getAllEmployeesAsLinkedList();
+                            user = new User(
+                                    getEmployee(employees, entity.getPerson().getNames()),
+                                    entity.getUsername(),
+                                    entity.getPassword(),
+                                    entity.getType()
+                            );
+                            break;
+                        case 1:
+                            CustomerRepository customerRepo = new CustomerRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\customer.json");
+                            LinkedList<Customer> customers = customerRepo.getAllCustomersAsLinkedList();
+                            user = new User(
+                                    getCustomer(customers, entity.getPerson().getNames()),
+                                    entity.getUsername(),
+                                    entity.getPassword(),
+                                    entity.getType()
+                            );
+                            break;
+                        case 2:
+                            ContactRepository contactRepo = new ContactRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\contacts.json");
+                            LinkedList<Contact> contacts = contactRepo.getAllContactsAsLinkedList();
+                            user = new User(
+                                    getContact(contacts, entity.getPerson().getNames()),
+                                    entity.getUsername(),
+                                    entity.getPassword(),
+                                    entity.getType()
+                            );
+                            break;
+                        case 3:
+                            AdminRepository adminRepo = new AdminRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\admins.json");
+                            LinkedList<Admin> admins = adminRepo.getAllAdminsAsLinkedList();
+                            user = new User(
+                                    getAdmin(admins, entity.getPerson().getNames()),
+                                    entity.getUsername(),
+                                    entity.getPassword(),
+                                    entity.getType()
+                            );
+                            break;
+                    }
+                    // Devolver el usuario encontrado
+                    return user;
+                }
+            }
+        }
+        return null;
+    }
 }
