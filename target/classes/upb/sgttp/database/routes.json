@@ -1,148 +1,303 @@
 [
   {
-    "routeId": "Estacion C-Estacion D",
+    "routeId": "Estacion K-Estacion A",
     "stations": {
       "head": {
         "next": {
           "next": {
             "element": {
-              "stationName": "Estacion D",
-              "cityStation": "Ciudad D"
+              "stationName": "Estacion A",
+              "cityStation": "Ciudad A"
             }
           },
           "element": {
-            "stationName": "Estacion A",
-            "cityStation": "Ciudad A"
+            "stationName": "Estacion C",
+            "cityStation": "Ciudad C"
           }
         },
         "element": {
-          "stationName": "Estacion C",
-          "cityStation": "Ciudad C"
+          "stationName": "Estacion K",
+          "cityStation": "Ciudad K"
         }
       },
       "tail": {
         "element": {
-          "stationName": "Estacion D",
-          "cityStation": "Ciudad D"
+          "stationName": "Estacion A",
+          "cityStation": "Ciudad A"
         }
       },
       "size": 3
     },
-    "totalKmToTravel": 90.0,
-    "destinationPoint": {
-      "stationName": "Estacion D",
-      "cityStation": "Ciudad D"
-    },
-    "startPoint": {
-      "stationName": "Estacion C",
-      "cityStation": "Ciudad C"
-    },
-    "departureTime": "Apr 10, 2024, 10:14:31 PM",
-    "estimatedArrivalTime": "Apr 10, 2024, 11:36:07 PM"
-  },
-  {
-    "routeId": "Estacion E-Estacion F",
-    "stations": {
-      "head": {
-        "next": {
-          "element": {
-            "stationName": "Estacion F",
-            "cityStation": "Ciudad F"
-          }
-        },
-        "element": {
-          "stationName": "Estacion E",
-          "cityStation": "Ciudad E"
-        }
-      },
-      "tail": {
-        "element": {
-          "stationName": "Estacion F",
-          "cityStation": "Ciudad F"
-        }
-      },
-      "size": 2
-    },
-    "totalKmToTravel": 65.0,
-    "destinationPoint": {
-      "stationName": "Estacion F",
-      "cityStation": "Ciudad F"
-    },
-    "startPoint": {
-      "stationName": "Estacion E",
-      "cityStation": "Ciudad E"
-    },
-    "departureTime": "Apr 10, 2024, 10:14:31 PM",
-    "estimatedArrivalTime": "Apr 10, 2024, 11:10:07 PM"
-  },
-  {
-    "routeId": "Estacion A-Estacion F",
-    "stations": {
-      "head": {
-        "next": {
-          "element": {
-            "stationName": "Estacion F",
-            "cityStation": "Ciudad F"
-          }
-        },
-        "element": {
-          "stationName": "Estacion A",
-          "cityStation": "Ciudad A"
-        }
-      },
-      "tail": {
-        "element": {
-          "stationName": "Estacion F",
-          "cityStation": "Ciudad F"
-        }
-      },
-      "size": 2
-    },
-    "totalKmToTravel": 50.0,
-    "destinationPoint": {
-      "stationName": "Estacion F",
-      "cityStation": "Ciudad F"
-    },
-    "startPoint": {
-      "stationName": "Estacion A",
-      "cityStation": "Ciudad A"
-    },
-    "departureTime": "Apr 10, 2024, 11:21:49 PM",
-    "estimatedArrivalTime": "Apr 11, 2024, 12:13:49 AM"
-  },
-  {
-    "routeId": "Estacion B-Estacion A",
-    "stations": {
-      "head": {
-        "next": {
-          "element": {
-            "stationName": "Estacion A",
-            "cityStation": "Ciudad A"
-          }
-        },
-        "element": {
-          "stationName": "Estacion B",
-          "cityStation": "Ciudad B"
-        }
-      },
-      "tail": {
-        "element": {
-          "stationName": "Estacion A",
-          "cityStation": "Ciudad A"
-        }
-      },
-      "size": 2
-    },
-    "totalKmToTravel": 30.0,
+    "totalKmToTravel": 150.0,
     "destinationPoint": {
       "stationName": "Estacion A",
       "cityStation": "Ciudad A"
     },
     "startPoint": {
-      "stationName": "Estacion B",
-      "cityStation": "Ciudad B"
+      "stationName": "Estacion K",
+      "cityStation": "Ciudad K"
     },
-    "departureTime": "Apr 11, 2024, 3:00:54 AM",
-    "estimatedArrivalTime": "Apr 11, 2024, 3:48:06 AM"
+    "departureTime": "Apr 19, 2024, 3:30:00 PM",
+    "estimatedArrivalTime": "Apr 19, 2024, 5:06:00 PM",
+    "trainToDoRoute": {
+      "trainName": "ferrocarreada",
+      "trainId": "M2",
+      "kilometers": 0.0,
+      "loadingCapacity": 25,
+      "brand": "Mercedez-Benz",
+      "customersWagons": {
+        "E": [
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 0
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 1
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 2
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 3
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 4
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 5
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 6
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 7
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 8
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 9
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 10
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 11
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 12
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 13
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 14
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 15
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M2",
+            "wagonNum": 16
+          }
+        ],
+        "size": 34
+      },
+      "luggageWagons": {
+        "E": [
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M2",
+            "wagonNum": 17
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M2",
+            "wagonNum": 18
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M2",
+            "wagonNum": 19
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M2",
+            "wagonNum": 20
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M2",
+            "wagonNum": 21
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M2",
+            "wagonNum": 22
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M2",
+            "wagonNum": 23
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M2",
+            "wagonNum": 24
+          }
+        ],
+        "size": 16
+      },
+      "available": false
+    }
   }
 ]

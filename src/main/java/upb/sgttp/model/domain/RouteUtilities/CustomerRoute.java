@@ -191,7 +191,6 @@ public class CustomerRoute {
             }
         }
         
-        // Agregar el último grupo
         groupedRoutes.add(currentGroup);
         
         return groupedRoutes;
@@ -232,32 +231,25 @@ public class CustomerRoute {
     public static void traerRutasCliente() {
         RouteRepository routeManager = new RouteRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\clone repositorio\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
         LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();
-    
-        // Iterador para recorrer la lista de rutas
+
         Iterator<Route> routeIterator = availableRoutes.iterator();
-    
-        // Iterar sobre cada ruta disponible
+
         while (routeIterator.hasNext()) {
             Route route = routeIterator.next();
             LinkedList<Station> stations = route.getStations();
-            
-            // Mostrar la estación inicial
+
             System.out.println("Estación inicial: " + stations.peek().getStationName());
-    
-            // Iterador para recorrer las estaciones intermedias
+
             Iterator<Station> intermediateStationsIterator = stations.iterator();
+
             intermediateStationsIterator.next(); // Saltar la primera estación (ya mostrada como estación inicial)
             Station intermediateStation;
             while (intermediateStationsIterator.hasNext()) {
                 intermediateStation = intermediateStationsIterator.next();
-                // Mostrar las estaciones intermedias
                 System.out.println("Estación mid: " + intermediateStation.getStationName());
             }
-    
-            // Mostrar la estación final
+
             System.out.println("Estación final: " + stations.peekLast().getStationName());
-    
-            // Separador entre rutas
             System.out.println("--------------");
         }
     }
@@ -276,7 +268,7 @@ public class CustomerRoute {
     
         LinkedList<Station> stationsToTravel = map.stationsToTravel(map.getStationI(), map.getStationF());
     
-        // Mostrar las rutas a recorrer
+
         System.out.println("Estas son las rutas a recorrer:");
         for (int i = 0; i < stationsToTravel.getSize(); i++) {
             System.out.println("  " + stationsToTravel.get(i).getStationName());

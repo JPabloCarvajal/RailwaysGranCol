@@ -16,57 +16,57 @@ import upb.sgttp.model.domain.TicketUtilites.StatusEnum;
 import upb.sgttp.model.domain.persons.Contact;
 
 public class TicketManagerTest {
-    public static void main(String[] args) {
+    // public static void main(String[] args) {
 
-        RoutesMap mapa = new RoutesMap();
+    //     RoutesMap mapa = new RoutesMap();
 
-        CustomerRoute customerRoute = new CustomerRoute();
+    //     CustomerRoute customerRoute = new CustomerRoute();
 
-        TicketRepository ticketRepository = new TicketRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\Tickets.json");
+    //     TicketRepository ticketRepository = new TicketRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\Tickets.json");
 
-        Luggage luggage = new Luggage(0f,0);
-        LinkedList<Luggage> maletas = new LinkedList<>();
-        maletas.add(luggage);
-        maletas.add(luggage);
-        Customer customer = new Customer(maletas,"popeye" , "Doe", new Array<>(new String[]{"123456789"}),"123");
-        Contact customerContact = new Contact("nombre del contacto", "apellido del contacto" ,new Array<>(new String[]{"123456789"}),"123");
-        // Get today's date
-        Date today = new Date();
+    //     Luggage luggage = new Luggage(0f,0);
+    //     LinkedList<Luggage> maletas = new LinkedList<>();
+    //     maletas.add(luggage);
+    //     maletas.add(luggage);
+    //     Customer customer = new Customer(maletas,"popeye" , "Doe", new Array<>(new String[]{"123456789"}),"123");
+    //     Contact customerContact = new Contact("nombre del contacto", "apellido del contacto" ,new Array<>(new String[]{"123456789"}),"123");
+    //     // Get today's date
+    //     Date today = new Date();
 
-        // Get tomorrow's date
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        Date tomorrow = calendar.getTime();
+    //     // Get tomorrow's date
+    //     Calendar calendar = Calendar.getInstance();
+    //     calendar.add(Calendar.DAY_OF_YEAR, 1);
+    //     Date tomorrow = calendar.getTime();
 
-        // Crear una nueva LinkedList para las CustomerRoute del Ticket
-        LinkedList<CustomerRoute> customerRoutes = customerRoute.traerLaRutaDelCliente(mapa.stationsToTravel(mapa.getStationI(),mapa.getStationA()));
+    //     // Crear una nueva LinkedList para las CustomerRoute del Ticket
+    //     LinkedList<CustomerRoute> customerRoutes = customerRoute.traerLaRutaDelCliente(mapa.stationsToTravel(mapa.getStationI(),mapa.getStationA()));
 
-        for(int i = 0; i<customerRoutes.size(); i++){
-            System.out.println(customerRoutes.get(i).getStartPoint().getStationName());
-            System.out.println(customerRoutes.get(i).getDestinationPoint().getStationName());
-        }
+    //     for(int i = 0; i<customerRoutes.size(); i++){
+    //         System.out.println(customerRoutes.get(i).getStartPoint().getStationName());
+    //         System.out.println(customerRoutes.get(i).getDestinationPoint().getStationName());
+    //     }
 
-        Ticket newTicket = new Ticket(
-            customer,
-            CustomerCategory.EXECUTIVE,
-            "TicketIdpopop",
-            today, // PurchaseDate is set to today
-            tomorrow, // BoardingDate is set to tomorrow
-            tomorrow, // ArriveDate is set to tomorrow
-            mapa.calculateTotalPrice(mapa.lowestDistanceBeetweenStationsKM(mapa.getStationI(),mapa.getStationA()),CustomerCategory.EXECUTIVE),
-            customerContact,
-            StatusEnum.ABOARD,
-            customerRoutes,
-            mapa.stationsToTravel(mapa.getStationI(),mapa.getStationA())
-        );
+    //     Ticket newTicket = new Ticket(
+    //         customer,
+    //         CustomerCategory.EXECUTIVE,
+    //         "TicketIdpopop",
+    //         today, // PurchaseDate is set to today
+    //         tomorrow, // BoardingDate is set to tomorrow
+    //         tomorrow, // ArriveDate is set to tomorrow
+    //         mapa.calculateTotalPrice(mapa.lowestDistanceBeetweenStationsKM(mapa.getStationI(),mapa.getStationA()),CustomerCategory.EXECUTIVE),
+    //         customerContact,
+    //         StatusEnum.ABOARD,
+    //         customerRoutes,
+    //         mapa.stationsToTravel(mapa.getStationI(),mapa.getStationA())
+    //     );
 
-        boolean isAdded = ticketRepository.addTicket(newTicket);
-        System.out.println("Ticket added: " + isAdded);
+    //     boolean isAdded = ticketRepository.addTicket(newTicket);
+    //     System.out.println("Ticket added: " + isAdded);
 
-        LinkedList<Ticket> allTickets = ticketRepository.getAllRoutesAsLinkedList();
-        System.out.println("All tickets: " + allTickets);
+    //     LinkedList<Ticket> allTickets = ticketRepository.getAllRoutesAsLinkedList();
+    //     System.out.println("All tickets: " + allTickets);
 
-        Ticket retrievedTicket = ticketRepository.getRoute(newTicket.getTicketId());
-        System.out.println("Retrieved ticket: " + retrievedTicket);
-    }
+    //     Ticket retrievedTicket = ticketRepository.getRoute(newTicket.getTicketId());
+    //     System.out.println("Retrieved ticket: " + retrievedTicket);
+    // }
 }

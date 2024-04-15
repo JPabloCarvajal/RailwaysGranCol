@@ -1,4 +1,4 @@
-package upb.sgttp.model.domain.persons;
+ package upb.sgttp.model.domain.persons;
 
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
