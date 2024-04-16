@@ -4,8 +4,6 @@
  */
 package upb.sgttp.gui;
 
-import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import upb.sgttp.model.domain.Main;
 
 /**

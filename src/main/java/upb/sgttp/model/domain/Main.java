@@ -106,7 +106,7 @@ public class Main {
         contacts = contact.getAllContactsAsLinkedList();
         users = user.getAllUsersAsLinkedList();
     }
-
+//ya no se necesita
     public static int logIn(String n, String p) {
         id = n;
         password = p;

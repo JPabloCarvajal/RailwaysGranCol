@@ -45,7 +45,7 @@ public class CustomerRepository {
         return fileJson.writeObjects(pathFile, updatedUserEntitiesArray);
     }
 
-    public boolean removeCustomer(int customerId) {
+    public boolean removeCustomer(String customerId) {
         CustomerEntity[] customerEntities = fileJson.getObjects(pathFile, CustomerEntity[].class);
 
         int indexToRemove = -1;

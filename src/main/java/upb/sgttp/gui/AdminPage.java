@@ -5,7 +5,9 @@
 package upb.sgttp.gui;
 
 import upb.sgttp.controller.LoginController;
+import upb.sgttp.controller.UserManagementController;
 import upb.sgttp.model.AuthenticationModel;
+import upb.sgttp.model.UserManagementModel;
 
 /**
  *
@@ -124,44 +126,59 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+
 //        LoginView log = new LoginView();
 //        log.setVisible(true);
 //        log.setLocationRelativeTo(null);
         //----------------------------------------------
+//        this.setVisible(false);
+        this.dispose();
         AuthenticationModel model = new AuthenticationModel();
         LoginView view = new LoginView();
         LoginController controller = new LoginController(model, view);
         view.setVisible(true);
         view.setLocationRelativeTo(null);
         upb.sgttp.model.domain.Main.resetCredentials();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+
+//        UserManagement user = new UserManagement();
+//        user.setVisible(true);
+//        user.setLocationRelativeTo(null);
+//        user.addUsers();
+//        this.setVisible(false);
         this.dispose();
-        UserManagement user = new UserManagement();
-        user.setVisible(true);
-        user.setLocationRelativeTo(null);
-        user.addUsers();
+        UserManagementModel model = new UserManagementModel();
+        UserView view = new UserView();
+        UserManagementController controller = new UserManagementController(view, model);
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+//        this.setVisible(false);
         this.dispose();
         TrainManagement train = new TrainManagement();
         train.setVisible(true);
         train.setLocationRelativeTo(null);
         train.addTrains();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+//        this.setVisible(false);
         this.dispose();
         RouteManagement management = new RouteManagement();
         management.setVisible(true);
         management.setLocationRelativeTo(null);
         management.addRoute();
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

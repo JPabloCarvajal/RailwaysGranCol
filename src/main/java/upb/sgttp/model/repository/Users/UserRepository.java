@@ -111,8 +111,13 @@ public class UserRepository {
         }
 
         // Crear un nuevo array para almacenar todos los usuarios, incluido el nuevo usuario
-        // Agregar código para añadir newUserEntity al array y escribirlo en el archivo JSON
-        // ...
+        UserEntity[] newUserEntities = new UserEntity[userEntities.length + 1];
+        System.arraycopy(userEntities, 0, newUserEntities, 0, userEntities.length);
+        newUserEntities[newUserEntities.length - 1] = newUserEntity;
+
+        // Escribir el nuevo array en el archivo JSON
+        fileJson.writeObjects(pathFile, newUserEntities);
+
         return true; // Devolver true si se añadió correctamente
     }
 
