@@ -162,11 +162,16 @@ public class AdminPage extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 //        this.setVisible(false);
+//----------------------------------------------
         this.dispose();
-        TrainManagement train = new TrainManagement();
+//        TrainManagement train = new TrainManagement();
+//        train.setVisible(true);
+//        train.setLocationRelativeTo(null);
+//        train.addTrains();
+        //---------------------------------------
+        TrainView train = new TrainView();
         train.setVisible(true);
         train.setLocationRelativeTo(null);
-        train.addTrains();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

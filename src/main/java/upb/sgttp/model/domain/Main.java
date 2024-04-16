@@ -6,7 +6,6 @@ import java.util.Date;
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.controller.LoginController;
-import upb.sgttp.gui.Login;
 import upb.sgttp.gui.LoginView;
 import upb.sgttp.model.AuthenticationModel;
 import upb.sgttp.model.domain.RouteUtilities.Route;

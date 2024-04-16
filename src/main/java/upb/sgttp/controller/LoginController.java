@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import upb.sgttp.gui.AdminPage;
-import upb.sgttp.gui.ConsultCustomer;
 import upb.sgttp.gui.LoginView;
 import upb.sgttp.model.AuthenticationModel;
 
