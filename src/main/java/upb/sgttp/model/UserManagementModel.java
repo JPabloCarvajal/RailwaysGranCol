@@ -103,7 +103,7 @@ public class UserManagementModel {
         tableModel.addRow(rowData);
     }
 
-    public void removeUser(int index,String username) {//en vez de username deberia ser id pero bueno
+    public void removeUser(int index, String username) {//en vez de username deberia ser id pero bueno
         if (userList.size() > 1 && index != -1) {
             userList.remove(userList.get(index));
             tableModel.removeRow(index);
@@ -111,26 +111,36 @@ public class UserManagementModel {
         }
     }
 
-    public void updateUser(int index, User user) {
-//        switch (user.getType()) {
-//            case 0:
-//                Employee employee = user;
-//                break;
-//            case 1:
-//
-//                break;
-//            case 2:
-//
-//                break;
-//            case 3:
-//
-//                break;
-//        }
-//        userList.set(index, user);
-//        Object[] rowData = getUserRowData(user);
-//        for (int i = 0; i < rowData.length; i++) {
-//            model.setValueAt(rowData[i], index, i);
-//        }
+    public boolean updateUser(User user, int index) {
+        if (userList.size() > 1 && index != -1 && user.getType() == userList.get(index).getType()) {
+            switch (user.getType()) {
+                case 0:
+                    Employee employee = (Employee) user.getPerson();
+                    employees.modifyEmployee(employee.getId(), employee);
+                    userList.get(index).setPerson(employee);
+                    break;
+                case 1:
+                    Customer customer = (Customer) user.getPerson();
+                    customers.modifyCustomer(customer.getCustomerId(), customer);
+                    userList.get(index).setPerson(customer);
+                    break;
+                case 2:
+                    Contact contact = (Contact) user.getPerson();
+                    contacts.modifyContact(contact.getContactId(), contact);
+                    userList.get(index).setPerson(contact);
+                    break;
+                case 3:
+                    Admin admin = (Admin) user.getPerson();
+                    admins.modifyAdmin(admin.getId(), admin);
+                    userList.get(index).setPerson(admin);
+                    break;
+            }
+            users.modifyUser(userList.get(index).getUsername(), user);
+            userList.get(index).setUsername(user.getUsername());
+            userList.get(index).setPassword(user.getPassword());
+            return true;
+        }
+        return false;
     }
 
     // Método para obtener los datos de un usuario como un arreglo de objetos

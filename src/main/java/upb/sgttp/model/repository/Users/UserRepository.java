@@ -154,32 +154,32 @@ public class UserRepository {
             return false;
         }
     }
-//    public boolean modifyUser(String username, User modifiedUser) {
-//        // Obtener todos los usuarios del archivo JSON
-//        UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);
-//
-//        // Buscar el usuario con el nombre de usuario especificado
-//        int indexToModify = -1;
-//        for (int i = 0; i < userEntities.length; i++) {
-//            if (userEntities[i].getUsername().equals(username)) {
-//                indexToModify = i;
-//                break;
-//            }
-//        }
-//
-//        // Si se encontró el usuario, modificarlo y escribir de nuevo los usuarios actualizados en el archivo JSON
-//        if (indexToModify != -1) {
-//            userEntities[indexToModify].setPerson(modifiedUser.getPerson());
-//            userEntities[indexToModify].setUsername(modifiedUser.getUsername());
-//            userEntities[indexToModify].setPassword(modifiedUser.getPassword());
-//            userEntities[indexToModify].setType(modifiedUser.getType());
-//
-//            return fileJson.writeObjects(pathFile, userEntities);
-//        } else {
-//            // Si no se encontró el usuario con el nombre de usuario especificado, devolver false
-//            return false;
-//        }
-//    }
+    public boolean modifyUser(String username, User modifiedUser) {
+        // Obtener todos los usuarios del archivo JSON
+        UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);
+
+        // Buscar el usuario con el nombre de usuario especificado
+        int indexToModify = -1;
+        for (int i = 0; i < userEntities.length; i++) {
+            if (userEntities[i].getUsername().equals(username)) {
+                indexToModify = i;
+                break;
+            }
+        }
+
+        // Si se encontró el usuario, modificarlo y escribir de nuevo los usuarios actualizados en el archivo JSON
+        if (indexToModify != -1) {
+            userEntities[indexToModify].setPerson(modifiedUser.getPerson());
+            userEntities[indexToModify].setUsername(modifiedUser.getUsername());
+            userEntities[indexToModify].setPassword(modifiedUser.getPassword());
+            userEntities[indexToModify].setType(modifiedUser.getType());
+
+            return fileJson.writeObjects(pathFile, userEntities);
+        } else {
+            // Si no se encontró el usuario con el nombre de usuario especificado, devolver false
+            return false;
+        }
+    }
 //    public boolean modifyUser(String username, User modifiedUser) {
 //     Obtener todos los usuarios del archivo JSON
 //    UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);

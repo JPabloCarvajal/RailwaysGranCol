@@ -105,7 +105,6 @@ public class UserManagementController {
                     view.setjTextField3();
                     view.setjTextField4();
                     view.setjTextField5();
-
                 }
             }
         });
@@ -115,11 +114,10 @@ public class UserManagementController {
             public void actionPerformed(ActionEvent e) {
                 // Lógica para manejar el evento de eliminar usuario
                 int selectedRow = view.getjTable().getSelectedRow();
-                System.out.println("selectedRow = " + selectedRow);
                 // Verificar si se ha seleccionado una fila
                 // Eliminar la fila del modelo de la tabla
 
-                model.removeUser(selectedRow,model.getUserList().get(selectedRow).getUsername());
+                model.removeUser(selectedRow, model.getUserList().get(selectedRow).getUsername());
                 view.reloadTable(model);
 //                    view.getjScrollPane1().repaint();
 //                    view.dispose();
@@ -140,6 +138,53 @@ public class UserManagementController {
                 // - Obtener el índice y los nuevos datos del usuario desde la vista
                 // - Actualizar el usuario en el modelo
                 // - Actualizar la vista
+                int selectedRow = view.getjTable().getSelectedRow();
+                String sType = (String) view.getUserTypeComboBox().getSelectedItem();
+                String nombres = view.getNameTextField().getText();
+                String apellidos = view.getLastNameTextField().getText();
+                String numeros = view.getNumbersTextField().getText();
+                String[] numbers = numeros.split(",");
+                String usuario = view.getUsernameTextField().getText();
+                String contraseña = view.getPasswordTextField().getText();
+                if (!usuario.isBlank() || !contraseña.isBlank()) {
+                    Array array = new Array(numbers);
+//            AbstractPerson person = new AbstractPerson(nombres, contraseña, array);
+                    int tipo = -1;
+                    User user = new User();
+                    switch (sType) {
+                        case "Empleado":
+                            tipo = 0;
+                            Employee employ = new Employee(nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            user = new User(employ, usuario, contraseña, tipo);
+                            break;
+                        case "Cliente":
+                            tipo = 1;
+                            LinkedList luggage = new LinkedList<>(Luggage.getNullLuggage());
+                            Customer customer = new Customer(luggage, nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            user = new User(customer, usuario, contraseña, tipo);
+                            break;
+                        case "Admin":
+                            tipo = 3;
+                            Admin admin = new Admin(nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            user = new User(admin, usuario, contraseña, tipo);
+                            break;
+                        case "Contact":
+                            tipo = 2;
+                            Contact contact = new Contact(nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            user = new User(contact, usuario, contraseña, tipo);
+                            break;
+                    }
+
+                    if (model.updateUser(user, selectedRow)) {
+                        view.reloadTable(model);
+                        view.setjTextField1();
+                        view.setjTextField2();
+                        view.setjTextField3();
+                        view.setjTextField4();
+                        view.setjTextField5();
+                    }
+
+                }
             }
         });
 

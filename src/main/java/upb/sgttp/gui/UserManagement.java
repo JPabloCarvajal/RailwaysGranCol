@@ -262,10 +262,10 @@ public class UserManagement extends javax.swing.JFrame {
         for (int i = 0; i < list.size(); i++) {
             AbstractPerson person = list.get(i).getPerson();
             String numbers = "";
-            for(int j=0;j<list.get(i).getPerson().getPhoneNumbers().size();j++){
-                numbers+=list.get(i).getPerson().getPhoneNumbers().get(j);
-                if(j<list.get(i).getPerson().getPhoneNumbers().size()-1){
-                    numbers+=",";
+            for (int j = 0; j < list.get(i).getPerson().getPhoneNumbers().size(); j++) {
+                numbers += list.get(i).getPerson().getPhoneNumbers().get(j);
+                if (j < list.get(i).getPerson().getPhoneNumbers().size() - 1) {
+                    numbers += ",";
                 }
             }
             Object u[] = new Object[7];
@@ -276,7 +276,7 @@ public class UserManagement extends javax.swing.JFrame {
             u[4] = list.get(i).getPassword();
             u[5] = list.get(i).getType();
             int tipo = list.get(i).getType();
-            switch(tipo){
+            switch (tipo) {
                 case 0://empleado
                     Employee empleado = (Employee) list.get(i).getPerson();
                     u[6] = empleado.getId();
@@ -307,7 +307,7 @@ public class UserManagement extends javax.swing.JFrame {
         String nombres = jTextField1.getText();
         String apellidos = jTextField2.getText();
         String numeros = jTextField3.getText();
-        String[]  numbers= numeros.split(",");
+        String[] numbers = numeros.split(",");
         String usuario = jTextField4.getText();
         String contraseña = jTextField5.getText();
 //        @SuppressWarnings("rawtypes")
@@ -368,8 +368,8 @@ public class UserManagement extends javax.swing.JFrame {
         int selectedRow = jTable1.getSelectedRow();
         System.out.println("selectedRow = " + selectedRow);
         System.out.println("list size = " + list.getSize());
-        for(int i=0;i<list.size();i++){
-        System.out.println("list "+i+" :"+list.get(i).getType());
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println("list " + i + " :" + list.get(i).getType());
         }
         // Verificar si se ha seleccionado una fila
         if (selectedRow != -1) {
@@ -377,7 +377,7 @@ public class UserManagement extends javax.swing.JFrame {
             if (list.size() > 1) {
                 int tipo = list.get(selectedRow).getType();
                 System.out.println("tipo = " + tipo);
-                switch(tipo){
+                switch (tipo) {
                     case 0://empleados
                         Employee employee = (Employee) list.get(selectedRow).getPerson();
                         employees.remove(employee);
@@ -424,11 +424,11 @@ public class UserManagement extends javax.swing.JFrame {
             String nombres = jTextField1.getText();
             String apellidos = jTextField2.getText();
             String numeros = jTextField3.getText();
-            String[]  numbers= numeros.split(",");
+            String[] numbers = numeros.split(",");
             String usuario = jTextField4.getText();
             String contraseña = jTextField5.getText();
             Array array = new Array(numbers);
-            System.out.println("selectrow:"+selectedRow);
+            System.out.println("selectrow:" + selectedRow);
             int tipo = -1;
             if (sType.equals("Empleado")) {
                 tipo = 0;
@@ -458,7 +458,7 @@ public class UserManagement extends javax.swing.JFrame {
                             tipo = 2;
                             Contact contact = new Contact(nombres, apellidos, array, upb.sgttp.model.domain.Main.getContactId(selectedRow));
                             upb.sgttp.model.domain.Main.modifyContact(contact);
-                        list.get(selectedRow).setPerson(contact);
+                            list.get(selectedRow).setPerson(contact);
                         }
                     }
                 }

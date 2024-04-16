@@ -75,7 +75,7 @@ public class CustomerRepository {
         }
     }
 
-    public boolean modifyCustomer(int customerId, Customer modifiedCustomer) {
+    public boolean modifyCustomer(String customerId, Customer modifiedCustomer) {
         CustomerEntity[] customerEntities = fileJson.getObjects(pathFile, CustomerEntity[].class);
 
         int indexToModify = -1;

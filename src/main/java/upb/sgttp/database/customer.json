@@ -25,5 +25,32 @@
       ],
       "size": 1
     }
+  },
+  {
+    "luggages": {
+      "head": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "tail": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "size": 1
+    },
+    "type": 1,
+    "customerId": "C2",
+    "names": "3",
+    "lastNames": "3",
+    "phoneNumbers": {
+      "E": [
+        "3"
+      ],
+      "size": 1
+    }
   }
 ]
