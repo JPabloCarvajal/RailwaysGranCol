@@ -99,15 +99,35 @@ public class UserManagementModel {
         users.addUser(user);
         userList.add(user);
         // Añadir fila al modelo
-        Object[] rowData = getUserRowData(user);
-        tableModel.addRow(rowData);
+//        Object[] rowData = getUserRowData(user);
+//        tableModel.addRow(rowData);
+        ReloadTable();
     }
 
-    public void removeUser(int index, String username) {//en vez de username deberia ser id pero bueno
+    public void removeUser(int index, User user) {//en vez de username deberia ser id pero bueno
         if (userList.size() > 1 && index != -1) {
             userList.remove(userList.get(index));
-            tableModel.removeRow(index);
-            users.removeUser(username);
+//            tableModel.removeRow(index);
+            users.removeUser(user.getUsername());
+            switch (user.getType()) {
+                case 0:
+                    Employee employee = (Employee) user.getPerson();
+                    employees.removeEmployee(employee.getId());
+                    break;
+                case 1:
+                    Customer customer = (Customer) user.getPerson();
+                    customers.removeCustomer(customer.getCustomerId());
+                    break;
+                case 2:
+                    Contact contact = (Contact) user.getPerson();
+                    contacts.removeContact(contact.getContactId());
+                    break;
+                case 3:
+                    Admin admin = (Admin) user.getPerson();
+                    admins.removeAdmin(admin.getId());
+                    break;
+            }
+            ReloadTable();
         }
     }
 
@@ -138,6 +158,7 @@ public class UserManagementModel {
             users.modifyUser(userList.get(index).getUsername(), user);
             userList.get(index).setUsername(user.getUsername());
             userList.get(index).setPassword(user.getPassword());
+            ReloadTable();
             return true;
         }
         return false;
@@ -180,5 +201,48 @@ public class UserManagementModel {
                 break;
         }
         return u;
+        
+    }
+    public void ReloadTable(){
+        while (getTableModel().getRowCount() > 0) {
+            getTableModel().removeRow(0);
+        }
+        for (int i = 0; i < userList.size(); i++) {
+            AbstractPerson person = userList.get(i).getPerson();
+            String numbers = "";
+            for(int j=0;j<userList.get(i).getPerson().getPhoneNumbers().size();j++){
+                numbers+=userList.get(i).getPerson().getPhoneNumbers().get(j);
+                if(j<userList.get(i).getPerson().getPhoneNumbers().size()-1){
+                    numbers+=",";
+                }
+            }
+            Object u[] = new Object[7];
+            u[0] = person.getNames();
+            u[1] = person.getLastNames();
+            u[2] = numbers;
+            u[3] = userList.get(i).getUsername();
+            u[4] = userList.get(i).getPassword();
+            u[5] = userList.get(i).getType();
+            int tipo = userList.get(i).getType();
+            switch(tipo){
+                case 0://empleado
+                    Employee empleado = (Employee) userList.get(i).getPerson();
+                    u[6] = empleado.getId();
+                    break;
+                case 1://cliente
+                    Customer customer = (Customer) userList.get(i).getPerson();
+                    u[6] = customer.getCustomerId();
+                    break;
+                case 2://contact
+                    Contact contact = (Contact) userList.get(i).getPerson();
+                    u[6] = contact.getContactId();
+                    break;
+                case 3://admin
+                    Admin admin = (Admin) userList.get(i).getPerson();
+                    u[6] = admin.getId();
+                    break;
+            }
+            getTableModel().addRow(u);
+        }
     }
 }

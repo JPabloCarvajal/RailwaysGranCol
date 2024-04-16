@@ -384,49 +384,51 @@ public class UserView extends javax.swing.JFrame {
     public void setjTextField5() {
         this.passwordTextField.setText("");
     }
+
     public void reloadTable(UserManagementModel model) {
         //borrar los elementos del modelo
-        LinkedList<User> list = model.getUserList();
-        while (model.getTableModel().getRowCount() > 0) {
-            model.getTableModel().removeRow(0);
-        }
-        for (int i = 0; i < list.size(); i++) {
-            AbstractPerson person = list.get(i).getPerson();
-            String numbers = "";
-            for(int j=0;j<list.get(i).getPerson().getPhoneNumbers().size();j++){
-                numbers+=list.get(i).getPerson().getPhoneNumbers().get(j);
-                if(j<list.get(i).getPerson().getPhoneNumbers().size()-1){
-                    numbers+=",";
-                }
-            }
-            Object u[] = new Object[7];
-            u[0] = person.getNames();
-            u[1] = person.getLastNames();
-            u[2] = numbers;
-            u[3] = list.get(i).getUsername();
-            u[4] = list.get(i).getPassword();
-            u[5] = list.get(i).getType();
-            int tipo = list.get(i).getType();
-            switch(tipo){
-                case 0://empleado
-                    Employee empleado = (Employee) list.get(i).getPerson();
-                    u[6] = empleado.getId();
-                    break;
-                case 1://cliente
-                    Customer customer = (Customer) list.get(i).getPerson();
-                    u[6] = customer.getCustomerId();
-                    break;
-                case 2://contact
-                    Contact contact = (Contact) list.get(i).getPerson();
-                    u[6] = contact.getContactId();
-                    break;
-                case 3://admin
-                    Admin admin = (Admin) list.get(i).getPerson();
-                    u[6] = admin.getId();
-                    break;
-            }
-            model.getTableModel().addRow(u);
-        }
+//        LinkedList<User> list = model.getUserList();
+//        while (model.getTableModel().getRowCount() > 0) {
+//            model.getTableModel().removeRow(0);
+//        }
+//        for (int i = 0; i < list.size(); i++) {
+//            AbstractPerson person = list.get(i).getPerson();
+//            String numbers = "";
+//            for(int j=0;j<list.get(i).getPerson().getPhoneNumbers().size();j++){
+//                numbers+=list.get(i).getPerson().getPhoneNumbers().get(j);
+//                if(j<list.get(i).getPerson().getPhoneNumbers().size()-1){
+//                    numbers+=",";
+//                }
+//            }
+//            Object u[] = new Object[7];
+//            u[0] = person.getNames();
+//            u[1] = person.getLastNames();
+//            u[2] = numbers;
+//            u[3] = list.get(i).getUsername();
+//            u[4] = list.get(i).getPassword();
+//            u[5] = list.get(i).getType();
+//            int tipo = list.get(i).getType();
+//            switch(tipo){
+//                case 0://empleado
+//                    Employee empleado = (Employee) list.get(i).getPerson();
+//                    u[6] = empleado.getId();
+//                    break;
+//                case 1://cliente
+//                    Customer customer = (Customer) list.get(i).getPerson();
+//                    u[6] = customer.getCustomerId();
+//                    break;
+//                case 2://contact
+//                    Contact contact = (Contact) list.get(i).getPerson();
+//                    u[6] = contact.getContactId();
+//                    break;
+//                case 3://admin
+//                    Admin admin = (Admin) list.get(i).getPerson();
+//                    u[6] = admin.getId();
+//                    break;
+//            }
+//            model.getTableModel().addRow(u);
+//        }
+//        jTable1.setModel(model.getTableModel());
         jTable1.setModel(model.getTableModel());
     }
 }

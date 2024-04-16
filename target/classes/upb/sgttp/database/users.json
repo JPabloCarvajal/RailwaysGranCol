@@ -16,23 +16,6 @@
   },
   {
     "person": {
-      "luggages": {
-        "head": {
-          "element": {
-            "weight": -1.0,
-            "wagonId": -1
-          }
-        },
-        "tail": {
-          "element": {
-            "weight": -1.0,
-            "wagonId": -1
-          }
-        },
-        "size": 1
-      },
-      "type": 1,
-      "customerId": "C3",
       "names": "3",
       "lastNames": "3",
       "phoneNumbers": {
@@ -45,5 +28,22 @@
     "username": "3",
     "password": "3",
     "type": 1
+  },
+  {
+    "person": {
+      "id": "E1",
+      "type": 0,
+      "names": "2",
+      "lastNames": "2",
+      "phoneNumbers": {
+        "E": [
+          "2"
+        ],
+        "size": 1
+      }
+    },
+    "username": "2",
+    "password": "2",
+    "type": 0
   }
 ]

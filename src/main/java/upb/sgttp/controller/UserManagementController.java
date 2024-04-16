@@ -47,9 +47,11 @@ public class UserManagementController {
 
     private void initView() {
         // Inicializar la vista con los datos del modelo
-        DefaultTableModel tableModel = model.getTableModel();
-        view.getjTable().setModel(tableModel);
+//        DefaultTableModel tableModel = model.getTableModel();
+//        view.getjTable().setModel(tableModel);
+        model.ReloadTable();
         view.reloadTable(model);
+
     }
 
     private void initController() {
@@ -99,7 +101,8 @@ public class UserManagementController {
                             break;
                     }
                     model.addUser(user);
-                    view.reloadTable(model);
+//                    view.reloadTable(model);
+                    reloadTable();
                     view.setjTextField1();
                     view.setjTextField2();
                     view.setjTextField3();
@@ -117,8 +120,9 @@ public class UserManagementController {
                 // Verificar si se ha seleccionado una fila
                 // Eliminar la fila del modelo de la tabla
 
-                model.removeUser(selectedRow, model.getUserList().get(selectedRow).getUsername());
-                view.reloadTable(model);
+                model.removeUser(selectedRow, model.getUserList().get(selectedRow));
+//                view.reloadTable(model);
+                reloadTable();
 //                    view.getjScrollPane1().repaint();
 //                    view.dispose();
 //                    UserManagementModel model = new UserManagementModel();
@@ -176,7 +180,8 @@ public class UserManagementController {
                     }
 
                     if (model.updateUser(user, selectedRow)) {
-                        view.reloadTable(model);
+//                        view.reloadTable(model);
+                        reloadTable();
                         view.setjTextField1();
                         view.setjTextField2();
                         view.setjTextField3();
@@ -203,6 +208,9 @@ public class UserManagementController {
         });
     }
 
+    private void reloadTable() {
+        view.getjTable().setModel(model.getTableModel());
+    }
 //    private void reloadTable() {
 //        // Borrar los elementos del modelo de la tabla
 //        DefaultTableModel tableModel = model.getTableModel();
