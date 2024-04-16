@@ -105,8 +105,10 @@ public class UserManagementModel {
     }
 
     public void removeUser(int index, User user) {//en vez de username deberia ser id pero bueno
-        if (userList.size() > 1 && index != -1) {
-            userList.remove(userList.get(index));
+//        if (userList.size() > 1 && index != -1) {
+//            userList.remove(userList.get(index));
+            if (userList.size() > 1) {
+            userList.remove(user);
 //            tableModel.removeRow(index);
             users.removeUser(user.getUsername());
             switch (user.getType()) {
@@ -165,44 +167,44 @@ public class UserManagementModel {
     }
 
     // Método para obtener los datos de un usuario como un arreglo de objetos
-    private Object[] getUserRowData(User user) {
-        // Implementa la lógica para obtener los datos del usuario según tu estructura
-        String numbers = "";
-        for (int j = 0; j < user.getPerson().getPhoneNumbers().size(); j++) {
-            numbers += user.getPerson().getPhoneNumbers().get(j);
-            if (j < user.getPerson().getPhoneNumbers().size() - 1) {
-                numbers += ",";
-            }
-        }
-        Object u[] = new Object[7];
-        u[0] = user.getPerson().getNames();
-        u[1] = user.getPerson().getLastNames();
-        u[2] = numbers;
-        u[3] = user.getUsername();
-        u[4] = user.getPassword();
-        u[5] = user.getType();
-        int tipo = user.getType();
-        switch (tipo) {
-            case 0://empleado
-                Employee empleado = (Employee) user.getPerson();
-                u[6] = empleado.getId();
-                break;
-            case 1://cliente
-                Customer customer = (Customer) user.getPerson();
-                u[6] = customer.getCustomerId();
-                break;
-            case 2://contact
-                Contact contact = (Contact) user.getPerson();
-                u[6] = contact.getContactId();
-                break;
-            case 3://admin
-                Admin admin = (Admin) user.getPerson();
-                u[6] = admin.getId();
-                break;
-        }
-        return u;
-        
-    }
+//    private Object[] getUserRowData(User user) {
+//        // Implementa la lógica para obtener los datos del usuario según tu estructura
+//        String numbers = "";
+//        for (int j = 0; j < user.getPerson().getPhoneNumbers().size(); j++) {
+//            numbers += user.getPerson().getPhoneNumbers().get(j);
+//            if (j < user.getPerson().getPhoneNumbers().size() - 1) {
+//                numbers += ",";
+//            }
+//        }
+//        Object u[] = new Object[7];
+//        u[0] = user.getPerson().getNames();
+//        u[1] = user.getPerson().getLastNames();
+//        u[2] = numbers;
+//        u[3] = user.getUsername();
+//        u[4] = user.getPassword();
+//        u[5] = user.getType();
+//        int tipo = user.getType();
+//        switch (tipo) {
+//            case 0://empleado
+//                Employee empleado = (Employee) user.getPerson();
+//                u[6] = empleado.getId();
+//                break;
+//            case 1://cliente
+//                Customer customer = (Customer) user.getPerson();
+//                u[6] = customer.getCustomerId();
+//                break;
+//            case 2://contact
+//                Contact contact = (Contact) user.getPerson();
+//                u[6] = contact.getContactId();
+//                break;
+//            case 3://admin
+//                Admin admin = (Admin) user.getPerson();
+//                u[6] = admin.getId();
+//                break;
+//        }
+//        return u;
+//        
+//    }
     public void ReloadTable(){
         while (getTableModel().getRowCount() > 0) {
             getTableModel().removeRow(0);

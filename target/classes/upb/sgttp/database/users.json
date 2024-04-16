@@ -13,37 +13,5 @@
     "username": "Luis",
     "password": "1",
     "type": 3
-  },
-  {
-    "person": {
-      "names": "3",
-      "lastNames": "3",
-      "phoneNumbers": {
-        "E": [
-          "3"
-        ],
-        "size": 1
-      }
-    },
-    "username": "3",
-    "password": "3",
-    "type": 1
-  },
-  {
-    "person": {
-      "id": "E1",
-      "type": 0,
-      "names": "2",
-      "lastNames": "2",
-      "phoneNumbers": {
-        "E": [
-          "2"
-        ],
-        "size": 1
-      }
-    },
-    "username": "2",
-    "password": "2",
-    "type": 0
   }
 ]

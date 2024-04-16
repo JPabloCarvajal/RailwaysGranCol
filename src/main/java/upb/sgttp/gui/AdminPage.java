@@ -5,8 +5,10 @@
 package upb.sgttp.gui;
 
 import upb.sgttp.controller.LoginController;
+import upb.sgttp.controller.TrainController;
 import upb.sgttp.controller.UserManagementController;
 import upb.sgttp.model.AuthenticationModel;
+import upb.sgttp.model.TrainModel;
 import upb.sgttp.model.UserManagementModel;
 
 /**
@@ -169,9 +171,11 @@ public class AdminPage extends javax.swing.JFrame {
 //        train.setLocationRelativeTo(null);
 //        train.addTrains();
         //---------------------------------------
-        TrainView train = new TrainView();
-        train.setVisible(true);
-        train.setLocationRelativeTo(null);
+        TrainModel model = new TrainModel();
+        TrainView view = new TrainView();
+        TrainController controller = new TrainController(model, view);
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

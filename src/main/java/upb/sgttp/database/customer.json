@@ -16,12 +16,12 @@
       "size": 1
     },
     "type": 1,
-    "customerId": "C1",
-    "names": "3",
-    "lastNames": "3",
+    "customerId": "C2",
+    "names": "1",
+    "lastNames": "1",
     "phoneNumbers": {
       "E": [
-        "3"
+        "1"
       ],
       "size": 1
     }

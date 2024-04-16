@@ -1,50 +1,44 @@
 [
   {
-    "routeId": "Estacion K-Estacion A",
+    "routeId": "Estacion A-Estacion B",
     "stations": {
       "head": {
         "next": {
-          "next": {
-            "element": {
-              "stationName": "Estacion A",
-              "cityStation": "Ciudad A"
-            }
-          },
           "element": {
-            "stationName": "Estacion C",
-            "cityStation": "Ciudad C"
+            "stationName": "Estacion B",
+            "cityStation": "Ciudad B"
           }
         },
-        "element": {
-          "stationName": "Estacion K",
-          "cityStation": "Ciudad K"
-        }
-      },
-      "tail": {
         "element": {
           "stationName": "Estacion A",
           "cityStation": "Ciudad A"
         }
       },
-      "size": 3
+      "tail": {
+        "element": {
+          "stationName": "Estacion B",
+          "cityStation": "Ciudad B"
+        }
+      },
+      "size": 2
     },
-    "totalKmToTravel": 150.0,
+    "totalKmToTravel": 30.0,
     "destinationPoint": {
+      "stationName": "Estacion B",
+      "cityStation": "Ciudad B"
+    },
+    "startPoint": {
       "stationName": "Estacion A",
       "cityStation": "Ciudad A"
     },
-    "startPoint": {
-      "stationName": "Estacion K",
-      "cityStation": "Ciudad K"
-    },
     "departureTime": "Apr 19, 2024, 3:30:00 PM",
-    "estimatedArrivalTime": "Apr 19, 2024, 5:06:00 PM",
+    "estimatedArrivalTime": "Apr 19, 2024, 4:17:12 PM",
     "trainToDoRoute": {
-      "trainName": "ferrocarreada",
-      "trainId": "M2",
+      "trainName": "c",
+      "trainId": "A2",
       "kilometers": 0.0,
-      "loadingCapacity": 25,
-      "brand": "Mercedez-Benz",
+      "loadingCapacity": 27,
+      "brand": "Arnold",
       "customersWagons": {
         "E": [
           {
@@ -54,7 +48,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 0
           },
           {
@@ -64,7 +58,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 1
           },
           {
@@ -74,7 +68,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 2
           },
           {
@@ -84,7 +78,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 3
           },
           {
@@ -94,7 +88,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 4
           },
           {
@@ -104,7 +98,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 5
           },
           {
@@ -114,7 +108,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 6
           },
           {
@@ -124,7 +118,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 7
           },
           {
@@ -134,7 +128,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 8
           },
           {
@@ -144,7 +138,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 9
           },
           {
@@ -154,7 +148,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 10
           },
           {
@@ -164,7 +158,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 11
           },
           {
@@ -174,7 +168,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 12
           },
           {
@@ -184,7 +178,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 13
           },
           {
@@ -194,7 +188,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 14
           },
           {
@@ -204,7 +198,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 15
           },
           {
@@ -214,11 +208,21 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 16
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "A2",
+            "wagonNum": 17
           }
         ],
-        "size": 34
+        "size": 36
       },
       "luggageWagons": {
         "E": [
@@ -228,16 +232,7 @@
             },
             "wagonWeight": 0.0,
             "luggagesAmount": 0,
-            "asociatedTrainID": "M2",
-            "wagonNum": 17
-          },
-          {
-            "luggagesWagon": {
-              "size": 0
-            },
-            "wagonWeight": 0.0,
-            "luggagesAmount": 0,
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 18
           },
           {
@@ -246,7 +241,7 @@
             },
             "wagonWeight": 0.0,
             "luggagesAmount": 0,
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 19
           },
           {
@@ -255,7 +250,7 @@
             },
             "wagonWeight": 0.0,
             "luggagesAmount": 0,
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 20
           },
           {
@@ -264,7 +259,7 @@
             },
             "wagonWeight": 0.0,
             "luggagesAmount": 0,
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 21
           },
           {
@@ -273,7 +268,7 @@
             },
             "wagonWeight": 0.0,
             "luggagesAmount": 0,
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 22
           },
           {
@@ -282,7 +277,7 @@
             },
             "wagonWeight": 0.0,
             "luggagesAmount": 0,
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 23
           },
           {
@@ -291,11 +286,29 @@
             },
             "wagonWeight": 0.0,
             "luggagesAmount": 0,
-            "asociatedTrainID": "M2",
+            "asociatedTrainID": "A2",
             "wagonNum": 24
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "A2",
+            "wagonNum": 25
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "A2",
+            "wagonNum": 26
           }
         ],
-        "size": 16
+        "size": 18
       },
       "available": false
     }

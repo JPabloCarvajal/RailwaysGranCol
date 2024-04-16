@@ -50,7 +50,8 @@ public class UserManagementController {
 //        DefaultTableModel tableModel = model.getTableModel();
 //        view.getjTable().setModel(tableModel);
         model.ReloadTable();
-        view.reloadTable(model);
+//        view.reloadTable(model);
+        reloadTable();
 
     }
 
@@ -150,7 +151,7 @@ public class UserManagementController {
                 String[] numbers = numeros.split(",");
                 String usuario = view.getUsernameTextField().getText();
                 String contraseña = view.getPasswordTextField().getText();
-                if (!usuario.isBlank() || !contraseña.isBlank()) {
+                if (!usuario.isBlank() || !contraseña.isBlank() && selectedRow != -1) {
                     Array array = new Array(numbers);
 //            AbstractPerson person = new AbstractPerson(nombres, contraseña, array);
                     int tipo = -1;

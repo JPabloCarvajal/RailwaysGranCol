@@ -385,7 +385,7 @@ public class UserView extends javax.swing.JFrame {
         this.passwordTextField.setText("");
     }
 
-    public void reloadTable(UserManagementModel model) {
+//    public void reloadTable(UserManagementModel model) {
         //borrar los elementos del modelo
 //        LinkedList<User> list = model.getUserList();
 //        while (model.getTableModel().getRowCount() > 0) {
@@ -429,6 +429,6 @@ public class UserView extends javax.swing.JFrame {
 //            model.getTableModel().addRow(u);
 //        }
 //        jTable1.setModel(model.getTableModel());
-        jTable1.setModel(model.getTableModel());
-    }
+//        jTable1.setModel(model.getTableModel());
+//    }
 }

@@ -451,7 +451,7 @@ public class Main {
         return generatedId;
     }
 
-    public static Date DateConverter(String dateString) {
+    public static Date DateConverter(String dateString) {//2024-04-19 15:30:00
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
             Date date = dateFormat.parse(dateString); // Convertir String a Date
