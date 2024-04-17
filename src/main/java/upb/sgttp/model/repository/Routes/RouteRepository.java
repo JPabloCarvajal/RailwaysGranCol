@@ -116,7 +116,7 @@ public class RouteRepository {
         RouteEntity[] routeEntities = fileJson.getObjects(pathFile, RouteEntity[].class);
 
         LinkedList<Route> routeList = new LinkedList<>();
-
+            
         for (RouteEntity entity : routeEntities) {
             Route route = new Route(
                     entity.getStations(),

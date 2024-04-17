@@ -4,6 +4,13 @@
  */
 package upb.sgttp.gui;
 
+import upb.sgttp.controller.LoginController;
+import upb.sgttp.controller.TrainController;
+import upb.sgttp.controller.UserManagementController;
+import upb.sgttp.model.AuthenticationModel;
+import upb.sgttp.model.TrainModel;
+import upb.sgttp.model.UserManagementModel;
+
 /**
  *
  * @author thewe
@@ -52,6 +59,11 @@ public class AdminPage extends javax.swing.JFrame {
         });
 
         jButton3.setText("Gestion de rutas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Gestion de usuarios");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -116,30 +128,67 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+
+//        LoginView log = new LoginView();
+//        log.setVisible(true);
+//        log.setLocationRelativeTo(null);
+        //----------------------------------------------
+//        this.setVisible(false);
         this.dispose();
-        Login log = new Login();
-        log.setVisible(true);
-        log.setLocationRelativeTo(null);
+        AuthenticationModel model = new AuthenticationModel();
+        LoginView view = new LoginView();
+        LoginController controller = new LoginController(model, view);
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
         upb.sgttp.model.domain.Main.resetCredentials();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+
+//        UserManagement user = new UserManagement();
+//        user.setVisible(true);
+//        user.setLocationRelativeTo(null);
+//        user.addUsers();
+//        this.setVisible(false);
         this.dispose();
-        UserManagement user = new UserManagement();
-        user.setVisible(true);
-        user.setLocationRelativeTo(null);
-        user.addUsers();
+        UserManagementModel model = new UserManagementModel();
+        UserView view = new UserView();
+        UserManagementController controller = new UserManagementController(view, model);
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+//        this.setVisible(false);
+//----------------------------------------------
         this.dispose();
-        TrainManagement train = new TrainManagement();
-        train.setVisible(true);
-        train.setLocationRelativeTo(null);
-        train.addTrains();
+//        TrainManagement train = new TrainManagement();
+//        train.setVisible(true);
+//        train.setLocationRelativeTo(null);
+//        train.addTrains();
+        //---------------------------------------
+        TrainModel model = new TrainModel();
+        TrainView view = new TrainView();
+        TrainController controller = new TrainController(model, view);
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+//        this.setVisible(false);
+        this.dispose();
+        RouteManagement management = new RouteManagement();
+        management.setVisible(true);
+        management.setLocationRelativeTo(null);
+        management.addRoute();
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

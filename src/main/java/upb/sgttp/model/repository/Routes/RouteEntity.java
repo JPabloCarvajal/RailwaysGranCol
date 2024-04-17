@@ -33,6 +33,7 @@ public class RouteEntity {
         this.departureTime = departureTime;
         this.estimatedArrivalTime = estimatedArrivalTime;
         this.totalKmToTravel = totalKmToTravel;
+        this.trainToDoRoute = trainToDoRoute;
     }
 
     public Train getTrainToDoRoute() {
