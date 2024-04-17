@@ -21,7 +21,7 @@ public class TrainController {
 
     private TrainModel model;
     private TrainView view;
-
+    
     public TrainController(TrainModel model, TrainView view) {
         this.model = model;
         this.view = view;
@@ -47,7 +47,6 @@ public class TrainController {
                 String nombre = view.getjTextField1().getText();
                 int kilometros = 0;
                 int vagonesPasajeros = Integer.parseInt(view.getjTextField2().getText());
-                //        @SuppressWarnings("rawtypes")
                 int tipo = 0;
                 int vagonesMax = 0;
                 if (!view.getjTextField2().getText().isBlank()) {
@@ -64,7 +63,7 @@ public class TrainController {
                         }
                     }
                     if (vagonesMax >= vagonesPasajeros) {
-                        Train train = new Train(nombre, upb.sgttp.model.domain.Main.createIdTrain(tipo), kilometros, marca, vagonesPasajeros, true);
+                        Train train = new Train(nombre, model.createIdTrain(tipo), kilometros, marca, vagonesPasajeros, true);
                         model.addTrain(train);
                         reloadTable();
                         view.getjTextField1().setText("");
@@ -132,5 +131,4 @@ public class TrainController {
     private void reloadTable() {
         view.getjTable().setModel(model.getTableModel());
     }
-    // Agregar otros listeners aquí para los otros botones
 }

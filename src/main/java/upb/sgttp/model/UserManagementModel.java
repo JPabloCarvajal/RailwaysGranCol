@@ -5,17 +5,8 @@
 package upb.sgttp.model;
 
 import javax.swing.table.DefaultTableModel;
+import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
-import static upb.sgttp.model.domain.Main.admin;
-import static upb.sgttp.model.domain.Main.admins;
-import static upb.sgttp.model.domain.Main.contact;
-import static upb.sgttp.model.domain.Main.contacts;
-import static upb.sgttp.model.domain.Main.customer;
-import static upb.sgttp.model.domain.Main.customers;
-import static upb.sgttp.model.domain.Main.employee;
-import static upb.sgttp.model.domain.Main.employees;
-import static upb.sgttp.model.domain.Main.trains;
-import static upb.sgttp.model.domain.Main.users;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 import upb.sgttp.model.domain.persons.Admin;
 import upb.sgttp.model.domain.persons.Contact;
@@ -34,24 +25,15 @@ import upb.sgttp.model.repository.Users.UserRepository;
  * @author thewe
  */
 public class UserManagementModel {
-
-    private String luisCliente = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\customer.json";
-    private String luisTren = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\train.json";
-    private String luisEmpleado = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\employee.json";
-    private String luisAdmin = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\admins.json";
-    private String luisContact = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\contacts.json";
-    private String luisUsuario = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\users.json";
-    private String luisRoute = "C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\routes.json";
-    CustomerRepository customers = new CustomerRepository(luisCliente);
-    EmployeeRepository employees = new EmployeeRepository(luisEmpleado);
-    AdminRepository admins = new AdminRepository(luisAdmin);
-    ContactRepository contacts = new ContactRepository(luisContact);
-    UserRepository users = new UserRepository(luisUsuario);
+    CustomerRepository customers = new CustomerRepository("src\\main\\java\\upb\\sgttp\\database\\customer.json");
+    EmployeeRepository employees = new EmployeeRepository("src\\main\\java\\upb\\sgttp\\database\\employee.json");
+    AdminRepository admins = new AdminRepository("src\\main\\java\\upb\\sgttp\\database\\admins.json");
+    ContactRepository contacts = new ContactRepository("src\\main\\java\\upb\\sgttp\\database\\contacts.json");
+    UserRepository users = new UserRepository("src\\main\\java\\upb\\sgttp\\database\\users.json");
     DefaultTableModel tableModel = new DefaultTableModel();
     private final LinkedList<User> userList;
 
     public UserManagementModel() {
-//        this.tableModel = tableModel;
         this.userList = users.getAllUsersAsLinkedList();
         initTableModel();
     }
@@ -75,7 +57,6 @@ public class UserManagementModel {
         return userList;
     }
 
-    // Otros métodos para manejar la lógica de gestión de usuarios aquí
     // Métodos para la gestión de usuarios
     public void addUser(User user) {
         switch (user.getType()) {
@@ -98,16 +79,13 @@ public class UserManagementModel {
         }
         users.addUser(user);
         userList.add(user);
-        // Añadir fila al modelo
-//        Object[] rowData = getUserRowData(user);
-//        tableModel.addRow(rowData);
         ReloadTable();
     }
 
     public void removeUser(int index, User user) {//en vez de username deberia ser id pero bueno
 //        if (userList.size() > 1 && index != -1) {
 //            userList.remove(userList.get(index));
-            if (userList.size() > 1) {
+        if (userList.size() > 1 && index != -1) {
             userList.remove(user);
 //            tableModel.removeRow(index);
             users.removeUser(user.getUsername());
@@ -129,6 +107,7 @@ public class UserManagementModel {
                     admins.removeAdmin(admin.getId());
                     break;
             }
+
             ReloadTable();
         }
     }
@@ -166,56 +145,17 @@ public class UserManagementModel {
         return false;
     }
 
-    // Método para obtener los datos de un usuario como un arreglo de objetos
-//    private Object[] getUserRowData(User user) {
-//        // Implementa la lógica para obtener los datos del usuario según tu estructura
-//        String numbers = "";
-//        for (int j = 0; j < user.getPerson().getPhoneNumbers().size(); j++) {
-//            numbers += user.getPerson().getPhoneNumbers().get(j);
-//            if (j < user.getPerson().getPhoneNumbers().size() - 1) {
-//                numbers += ",";
-//            }
-//        }
-//        Object u[] = new Object[7];
-//        u[0] = user.getPerson().getNames();
-//        u[1] = user.getPerson().getLastNames();
-//        u[2] = numbers;
-//        u[3] = user.getUsername();
-//        u[4] = user.getPassword();
-//        u[5] = user.getType();
-//        int tipo = user.getType();
-//        switch (tipo) {
-//            case 0://empleado
-//                Employee empleado = (Employee) user.getPerson();
-//                u[6] = empleado.getId();
-//                break;
-//            case 1://cliente
-//                Customer customer = (Customer) user.getPerson();
-//                u[6] = customer.getCustomerId();
-//                break;
-//            case 2://contact
-//                Contact contact = (Contact) user.getPerson();
-//                u[6] = contact.getContactId();
-//                break;
-//            case 3://admin
-//                Admin admin = (Admin) user.getPerson();
-//                u[6] = admin.getId();
-//                break;
-//        }
-//        return u;
-//        
-//    }
-    public void ReloadTable(){
+    public void ReloadTable() {
         while (getTableModel().getRowCount() > 0) {
             getTableModel().removeRow(0);
         }
         for (int i = 0; i < userList.size(); i++) {
             AbstractPerson person = userList.get(i).getPerson();
             String numbers = "";
-            for(int j=0;j<userList.get(i).getPerson().getPhoneNumbers().size();j++){
-                numbers+=userList.get(i).getPerson().getPhoneNumbers().get(j);
-                if(j<userList.get(i).getPerson().getPhoneNumbers().size()-1){
-                    numbers+=",";
+            for (int j = 0; j < userList.get(i).getPerson().getPhoneNumbers().size(); j++) {
+                numbers += userList.get(i).getPerson().getPhoneNumbers().get(j);
+                if (j < userList.get(i).getPerson().getPhoneNumbers().size() - 1) {
+                    numbers += ",";
                 }
             }
             Object u[] = new Object[7];
@@ -226,7 +166,7 @@ public class UserManagementModel {
             u[4] = userList.get(i).getPassword();
             u[5] = userList.get(i).getType();
             int tipo = userList.get(i).getType();
-            switch(tipo){
+            switch (tipo) {
                 case 0://empleado
                     Employee empleado = (Employee) userList.get(i).getPerson();
                     u[6] = empleado.getId();
@@ -246,5 +186,25 @@ public class UserManagementModel {
             }
             getTableModel().addRow(u);
         }
+    }
+
+    public String createId(int type) {
+        String generatedId = "";
+        int nextId = userList.size() + 1;
+        switch (type) {
+            case 0: // empleado
+                generatedId = "E" + nextId;
+                break;
+            case 1: // cliente
+                generatedId = "C" + nextId;
+                break;
+            case 2: // contacto
+                generatedId = "CO" + nextId;
+                break;
+            case 3: // admin
+                generatedId = "A" + nextId;
+                break;
+        }
+        return generatedId;
     }
 }
