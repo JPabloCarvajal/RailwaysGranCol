@@ -16,12 +16,9 @@ import upb.sgttp.model.repository.Trains.TrainRepository;
 public class TrainModel {
 
     DefaultTableModel tableModel = new DefaultTableModel();
-//    private LinkedList<Train> trainList;
     TrainRepository trains = new TrainRepository("src\\main\\java\\upb\\sgttp\\database\\train.json");
 
     public TrainModel() {
-        // Inicializar los datos del modelo
-//        this.trainList = trains.getAllTrainsAsLinkedList();
         initTableModel();
     }
 
@@ -43,18 +40,13 @@ public class TrainModel {
         return trains.getAllTrainsAsLinkedList();
     }
 
-    // Otros métodos para manejar la lógica de gestión de usuarios aquí
     // Métodos para la gestión de usuarios
     public void addTrain(Train train) {
-//        trainList.add(train);
         trains.addTrain(train);
-//        users.addUser(user);
-//        userList.add(user);
         ReloadTable();
     }
 
     public void removeTrain(Train train) {
-//        trainList.remove(train);
         trains.removeTrain(train.getTrainId());
         ReloadTable();
 
@@ -71,7 +63,6 @@ public class TrainModel {
         }
         LinkedList<Train> trainList = trains.getAllTrainsAsLinkedList();
         for (int i = 0; i < trainList.size(); i++) {
-//            Train train = list.get(i).getPerson;
             Object u[] = new Object[6];
             u[0] = trainList.get(i).getTrainName();
             u[1] = trainList.get(i).getTrainId();
@@ -81,5 +72,20 @@ public class TrainModel {
             u[5] = trainList.get(i).isAvailable();
             getTableModel().addRow(u);
         }
+    }
+
+    public String createIdTrain(int type) {
+        String generatedId = "";
+        int nextId = trains.getAllTrainsAsLinkedList().getSize() + 1;
+        switch (type) {
+            case 0://empleado
+                generatedId = "M" + nextId;
+                break;
+            case 1://cliente
+                generatedId = "A" + nextId;
+                break;
+        }
+        nextId++;
+        return generatedId;
     }
 }

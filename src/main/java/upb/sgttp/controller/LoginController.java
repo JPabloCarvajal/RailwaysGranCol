@@ -34,18 +34,10 @@ public class LoginController {
             String password = view.getPassword();
             boolean authenticated = model.login(username, password);
             if (authenticated) {
-                // Abre la ventana principal de la aplicación
-                // Por ejemplo:
-                // AdminPage ventanaPrincipal = new AdminPage();
-                // ventanaPrincipal.setVisible(true);
-                //----------------------------------------------------
                 view.setVisible(false);
                 AdminPage ventanaPrincipal = new AdminPage();
                 ventanaPrincipal.setVisible(true);
                 ventanaPrincipal.setLocationRelativeTo(null);
-                
-
-                //view.dispose(); // Cierra la ventana de inicio de sesión
             } else {
                 JOptionPane.showMessageDialog(view, "Autenticación fallida. Por favor, inténtalo de nuevo.");
             }

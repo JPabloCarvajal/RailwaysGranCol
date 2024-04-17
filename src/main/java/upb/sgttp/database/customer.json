@@ -17,11 +17,92 @@
     },
     "type": 1,
     "customerId": "C2",
+    "names": "2",
+    "lastNames": "2",
+    "phoneNumbers": {
+      "E": [
+        "2"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "luggages": {
+      "head": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "tail": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "size": 1
+    },
+    "type": 1,
+    "customerId": "C1",
     "names": "1",
     "lastNames": "1",
     "phoneNumbers": {
       "E": [
         "1"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "luggages": {
+      "head": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "tail": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "size": 1
+    },
+    "type": 1,
+    "customerId": "C4",
+    "names": "3",
+    "lastNames": "3",
+    "phoneNumbers": {
+      "E": [
+        "3"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "luggages": {
+      "head": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "tail": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "size": 1
+    },
+    "type": 1,
+    "customerId": "C5",
+    "names": "5",
+    "lastNames": "5",
+    "phoneNumbers": {
+      "E": [
+        "5"
       ],
       "size": 1
     }

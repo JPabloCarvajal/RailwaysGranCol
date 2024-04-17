@@ -5,9 +5,11 @@
 package upb.sgttp.gui;
 
 import upb.sgttp.controller.LoginController;
+import upb.sgttp.controller.RouteController;
 import upb.sgttp.controller.TrainController;
 import upb.sgttp.controller.UserManagementController;
 import upb.sgttp.model.AuthenticationModel;
+import upb.sgttp.model.RouteModel;
 import upb.sgttp.model.TrainModel;
 import upb.sgttp.model.UserManagementModel;
 
@@ -140,7 +142,6 @@ public class AdminPage extends javax.swing.JFrame {
         LoginController controller = new LoginController(model, view);
         view.setVisible(true);
         view.setLocationRelativeTo(null);
-        upb.sgttp.model.domain.Main.resetCredentials();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -183,10 +184,11 @@ public class AdminPage extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        this.setVisible(false);
         this.dispose();
-        RouteManagement management = new RouteManagement();
-        management.setVisible(true);
-        management.setLocationRelativeTo(null);
-        management.addRoute();
+        RouteModel model = new RouteModel();
+        RouteView view = new RouteView();
+        RouteController controller = new RouteController(model, view);
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_jButton3ActionPerformed
 

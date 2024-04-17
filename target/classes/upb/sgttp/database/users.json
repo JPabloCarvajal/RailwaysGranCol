@@ -13,5 +13,82 @@
     "username": "Luis",
     "password": "1",
     "type": 3
+  },
+  {
+    "person": {
+      "names": "2",
+      "lastNames": "2",
+      "phoneNumbers": {
+        "E": [
+          "2"
+        ],
+        "size": 1
+      }
+    },
+    "username": "2",
+    "password": "2",
+    "type": 1
+  },
+  {
+    "person": {
+      "names": "1",
+      "lastNames": "1",
+      "phoneNumbers": {
+        "E": [
+          "1"
+        ],
+        "size": 1
+      }
+    },
+    "username": "1",
+    "password": "1",
+    "type": 1
+  },
+  {
+    "person": {
+      "names": "3",
+      "lastNames": "3",
+      "phoneNumbers": {
+        "E": [
+          "3"
+        ],
+        "size": 1
+      }
+    },
+    "username": "3",
+    "password": "3",
+    "type": 1
+  },
+  {
+    "person": {
+      "luggages": {
+        "head": {
+          "element": {
+            "weight": -1.0,
+            "wagonId": -1
+          }
+        },
+        "tail": {
+          "element": {
+            "weight": -1.0,
+            "wagonId": -1
+          }
+        },
+        "size": 1
+      },
+      "type": 1,
+      "customerId": "C5",
+      "names": "5",
+      "lastNames": "5",
+      "phoneNumbers": {
+        "E": [
+          "5"
+        ],
+        "size": 1
+      }
+    },
+    "username": "5",
+    "password": "5",
+    "type": 1
   }
 ]

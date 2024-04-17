@@ -34,11 +34,11 @@
     "departureTime": "Apr 19, 2024, 3:30:00 PM",
     "estimatedArrivalTime": "Apr 19, 2024, 4:17:12 PM",
     "trainToDoRoute": {
-      "trainName": "c",
-      "trainId": "A2",
+      "trainName": "3",
+      "trainId": "M3",
       "kilometers": 0.0,
-      "loadingCapacity": 27,
-      "brand": "Arnold",
+      "loadingCapacity": 3,
+      "brand": "Mercedez-Benz",
       "customersWagons": {
         "E": [
           {
@@ -48,7 +48,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "A2",
+            "asociatedTrainID": "M3",
             "wagonNum": 0
           },
           {
@@ -58,171 +58,11 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "A2",
+            "asociatedTrainID": "M3",
             "wagonNum": 1
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 2
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 3
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 4
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 5
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 6
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 7
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 8
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 9
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 10
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 11
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 12
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 13
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 14
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 15
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 16
-          },
-          {
-            "standarAmount": 18,
-            "executiveAmount": 8,
-            "premiunAmount": 4,
-            "customers": {
-              "size": 0
-            },
-            "asociatedTrainID": "A2",
-            "wagonNum": 17
           }
         ],
-        "size": 36
+        "size": 4
       },
       "luggageWagons": {
         "E": [
@@ -232,83 +72,11 @@
             },
             "wagonWeight": 0.0,
             "luggagesAmount": 0,
-            "asociatedTrainID": "A2",
-            "wagonNum": 18
-          },
-          {
-            "luggagesWagon": {
-              "size": 0
-            },
-            "wagonWeight": 0.0,
-            "luggagesAmount": 0,
-            "asociatedTrainID": "A2",
-            "wagonNum": 19
-          },
-          {
-            "luggagesWagon": {
-              "size": 0
-            },
-            "wagonWeight": 0.0,
-            "luggagesAmount": 0,
-            "asociatedTrainID": "A2",
-            "wagonNum": 20
-          },
-          {
-            "luggagesWagon": {
-              "size": 0
-            },
-            "wagonWeight": 0.0,
-            "luggagesAmount": 0,
-            "asociatedTrainID": "A2",
-            "wagonNum": 21
-          },
-          {
-            "luggagesWagon": {
-              "size": 0
-            },
-            "wagonWeight": 0.0,
-            "luggagesAmount": 0,
-            "asociatedTrainID": "A2",
-            "wagonNum": 22
-          },
-          {
-            "luggagesWagon": {
-              "size": 0
-            },
-            "wagonWeight": 0.0,
-            "luggagesAmount": 0,
-            "asociatedTrainID": "A2",
-            "wagonNum": 23
-          },
-          {
-            "luggagesWagon": {
-              "size": 0
-            },
-            "wagonWeight": 0.0,
-            "luggagesAmount": 0,
-            "asociatedTrainID": "A2",
-            "wagonNum": 24
-          },
-          {
-            "luggagesWagon": {
-              "size": 0
-            },
-            "wagonWeight": 0.0,
-            "luggagesAmount": 0,
-            "asociatedTrainID": "A2",
-            "wagonNum": 25
-          },
-          {
-            "luggagesWagon": {
-              "size": 0
-            },
-            "wagonWeight": 0.0,
-            "luggagesAmount": 0,
-            "asociatedTrainID": "A2",
-            "wagonNum": 26
+            "asociatedTrainID": "M3",
+            "wagonNum": 2
           }
         ],
-        "size": 18
+        "size": 2
       },
       "available": false
     }

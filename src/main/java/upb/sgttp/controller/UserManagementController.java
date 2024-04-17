@@ -32,12 +32,6 @@ public class UserManagementController {
     private final UserView view;
     private final UserManagementModel model;
 
-//    public UserManagementController(UserView view, UserManagementModel model) {
-//        this.view = view;
-//        this.model = model;
-//        initView();
-//        initController();
-//    }
     public UserManagementController(UserView view, UserManagementModel model) {
         this.view = view;
         this.model = model;
@@ -46,13 +40,8 @@ public class UserManagementController {
     }
 
     private void initView() {
-        // Inicializar la vista con los datos del modelo
-//        DefaultTableModel tableModel = model.getTableModel();
-//        view.getjTable().setModel(tableModel);
         model.ReloadTable();
-//        view.reloadTable(model);
         reloadTable();
-
     }
 
     private void initController() {
@@ -73,31 +62,31 @@ public class UserManagementController {
                 String[] numbers = numeros.split(",");
                 String usuario = view.getUsernameTextField().getText();
                 String contraseña = view.getPasswordTextField().getText();
+                LinkedList<User> list = model.getUserList();
                 if (!usuario.isBlank() || !contraseña.isBlank()) {
                     Array array = new Array(numbers);
-//            AbstractPerson person = new AbstractPerson(nombres, contraseña, array);
                     int tipo = -1;
                     User user = new User();
                     switch (sType) {
                         case "Empleado":
                             tipo = 0;
-                            Employee employ = new Employee(nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            Employee employ = new Employee(nombres, apellidos, array, model.createId(tipo));
                             user = new User(employ, usuario, contraseña, tipo);
                             break;
                         case "Cliente":
                             tipo = 1;
                             LinkedList luggage = new LinkedList<>(Luggage.getNullLuggage());
-                            Customer customer = new Customer(luggage, nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            Customer customer = new Customer(luggage, nombres, apellidos, array, model.createId(tipo));
                             user = new User(customer, usuario, contraseña, tipo);
                             break;
                         case "Admin":
                             tipo = 3;
-                            Admin admin = new Admin(nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            Admin admin = new Admin(nombres, apellidos, array, model.createId(tipo));
                             user = new User(admin, usuario, contraseña, tipo);
                             break;
                         case "Contact":
                             tipo = 2;
-                            Contact contact = new Contact(nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            Contact contact = new Contact(nombres, apellidos, array, model.createId(tipo));
                             user = new User(contact, usuario, contraseña, tipo);
                             break;
                     }
@@ -118,19 +107,8 @@ public class UserManagementController {
             public void actionPerformed(ActionEvent e) {
                 // Lógica para manejar el evento de eliminar usuario
                 int selectedRow = view.getjTable().getSelectedRow();
-                // Verificar si se ha seleccionado una fila
-                // Eliminar la fila del modelo de la tabla
-
                 model.removeUser(selectedRow, model.getUserList().get(selectedRow));
-//                view.reloadTable(model);
                 reloadTable();
-//                    view.getjScrollPane1().repaint();
-//                    view.dispose();
-//                    UserManagementModel model = new UserManagementModel();
-//                    UserView view = new UserView();
-//                    UserManagementController controller = new UserManagementController(view, model);
-//                    view.setVisible(true);
-//                    view.setLocationRelativeTo(null);
 
             }
         });
@@ -144,6 +122,7 @@ public class UserManagementController {
                 // - Actualizar el usuario en el modelo
                 // - Actualizar la vista
                 int selectedRow = view.getjTable().getSelectedRow();
+                LinkedList<User> list = model.getUserList();
                 String sType = (String) view.getUserTypeComboBox().getSelectedItem();
                 String nombres = view.getNameTextField().getText();
                 String apellidos = view.getLastNameTextField().getText();
@@ -151,33 +130,36 @@ public class UserManagementController {
                 String[] numbers = numeros.split(",");
                 String usuario = view.getUsernameTextField().getText();
                 String contraseña = view.getPasswordTextField().getText();
-                if (!usuario.isBlank() || !contraseña.isBlank() && selectedRow != -1) {
+                if ((!usuario.isBlank() || !contraseña.isBlank()) && selectedRow != -1) {
                     Array array = new Array(numbers);
-//            AbstractPerson person = new AbstractPerson(nombres, contraseña, array);
                     int tipo = -1;
                     User user = new User();
                     switch (sType) {
-                        case "Empleado":
+                        case "Empleado" -> {
                             tipo = 0;
-                            Employee employ = new Employee(nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            Employee auxE = (Employee) list.get(selectedRow).getPerson();
+                            Employee employ = new Employee(nombres, apellidos, array, auxE.getId());
                             user = new User(employ, usuario, contraseña, tipo);
-                            break;
-                        case "Cliente":
+                        }
+                        case "Cliente" -> {
                             tipo = 1;
+                            Customer auxC = (Customer) list.get(selectedRow).getPerson();
                             LinkedList luggage = new LinkedList<>(Luggage.getNullLuggage());
-                            Customer customer = new Customer(luggage, nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            Customer customer = new Customer(luggage, nombres, apellidos, array, auxC.getCustomerId());
                             user = new User(customer, usuario, contraseña, tipo);
-                            break;
-                        case "Admin":
+                        }
+                        case "Admin" -> {
                             tipo = 3;
-                            Admin admin = new Admin(nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            Admin auxA = (Admin) list.get(selectedRow).getPerson();
+                            Admin admin = new Admin(nombres, apellidos, array, auxA.getId());
                             user = new User(admin, usuario, contraseña, tipo);
-                            break;
-                        case "Contact":
+                        }
+                        case "Contact" -> {
                             tipo = 2;
-                            Contact contact = new Contact(nombres, apellidos, array, upb.sgttp.model.domain.Main.createId(tipo));
+                            Contact auxCo = (Contact) list.get(selectedRow).getPerson();
+                            Contact contact = new Contact(nombres, apellidos, array, auxCo.getContactId());
                             user = new User(contact, usuario, contraseña, tipo);
-                            break;
+                        }
                     }
 
                     if (model.updateUser(user, selectedRow)) {
@@ -212,66 +194,4 @@ public class UserManagementController {
     private void reloadTable() {
         view.getjTable().setModel(model.getTableModel());
     }
-//    private void reloadTable() {
-//        // Borrar los elementos del modelo de la tabla
-//        DefaultTableModel tableModel = model.getTableModel();
-//        while (tableModel.getRowCount() > 0) {
-//            tableModel.removeRow(0);
-//        }
-//
-//        // Obtener la lista actualizada de usuarios del modelo
-//        LinkedList<User> userList = model.getUserList();
-//
-//        // Iterar sobre la lista de usuarios y agregar cada usuario a la tabla
-//        for (int i = 0; i < userList.size(); i++) {
-//            // Obtener el usuario en la posición i
-//            User user = userList.get(i);
-//
-//            // Obtener los datos del usuario
-//            AbstractPerson person = user.getPerson();
-//            String numbers = "";
-//            for (int j = 0; j < person.getPhoneNumbers().size(); j++) {
-//                numbers += person.getPhoneNumbers().get(j);
-//                if (j < person.getPhoneNumbers().size() - 1) {
-//                    numbers += ",";
-//                }
-//            }
-//
-//            // Crear un arreglo de objetos con los datos del usuario
-//            Object[] rowData = new Object[7];
-//            rowData[0] = person.getNames();
-//            rowData[1] = person.getLastNames();
-//            rowData[2] = numbers;
-//            rowData[3] = user.getUsername();
-//            rowData[4] = user.getPassword();
-//            rowData[5] = user.getType();
-//
-//            // Obtener el tipo de usuario y agregar el ID correspondiente al arreglo de datos
-//            int tipo = user.getType();
-//            switch (tipo) {
-//                case 0: // Empleado
-//                    Employee employee = (Employee) person;
-//                    rowData[6] = employee.getId();
-//                    break;
-//                case 1: // Cliente
-//                    Customer customer = (Customer) person;
-//                    rowData[6] = customer.getCustomerId();
-//                    break;
-//                case 2: // Contacto
-//                    Contact contact = (Contact) person;
-//                    rowData[6] = contact.getContactId();
-//                    break;
-//                case 3: // Administrador
-//                    Admin admin = (Admin) person;
-//                    rowData[6] = admin.getId();
-//                    break;
-//            }
-//
-//            // Agregar la fila a la tabla
-//            tableModel.addRow(rowData);
-//        }
-//
-//        // Actualizar la vista con el nuevo modelo de datos
-//        view.getjTable().setModel(tableModel);
-//    }
 }
