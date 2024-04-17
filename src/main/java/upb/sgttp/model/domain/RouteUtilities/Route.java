@@ -36,6 +36,9 @@ public class Route {
         this.totalKmToTravel = totalKmToTravel;
         this.subRoutes = createSubRoutes(stations);
     }
+    public Route(){
+        
+    }
 
 
     private LinkedList<SubRoute> createSubRoutes(LinkedList<Station> stations) {

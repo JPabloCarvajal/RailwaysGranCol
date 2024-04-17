@@ -20,8 +20,8 @@ public class RouteManagerTest {
         RouteRepository routeManager = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
 
         // Definir estaciones de inicio y fin para la primera ruta
-        Station startStation1 = mapa.getStationI();
-        Station endStation1 = mapa.getStationA();
+        Station startStation1 = mapa.getStationA();
+        Station endStation1 = mapa.getStationE();
  
         // Crear la primera ruta
         Route route1 = createRoute(mapa, startStation1, endStation1);

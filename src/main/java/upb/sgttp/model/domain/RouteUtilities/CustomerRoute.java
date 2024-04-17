@@ -84,35 +84,25 @@ public class CustomerRoute {
     }
 
     private LinkedList<SubRoute> assignSubRoutesForCustomerStationsToRun(LinkedList<Station> stationsToRun) {
-
-        LinkedList<SubRoute> subRoutesOfStationsToRun = createSubStations(stationsToRun);
-    
-        RouteRepository routeManager = new RouteRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\clone repositorio\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
-        LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();
-    
         LinkedList<SubRoute> assignedSubRoutes = new LinkedList<>();
+        RouteRepository routeManager = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
     
+        // Iterar sobre todas las rutas disponibles
+        LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();
         for (int i = 0; i < availableRoutes.getSize(); i++) {
-            LinkedList<SubRoute> subRoutes = availableRoutes.get(i).getSubRoutes();
+            Route route = availableRoutes.get(i);
+    
+            // Iterar sobre las subrutas de la ruta
+            LinkedList<SubRoute> subRoutes = route.getSubRoutes();
             for (int j = 0; j < subRoutes.getSize(); j++) {
                 SubRoute subRoute = subRoutes.get(j);
+    
+                // Verificar si la subruta conecta las estaciones de inicio y destino proporcionadas por el cliente
                 if (stationsToRun.contains(subRoute.getStartPoint()) && stationsToRun.contains(subRoute.getDestinationPoint())) {
-                    // Verificar si la subruta conecta las mismas estaciones y el orden es correcto
-                    if (stationsToRun.indexOf(subRoute.getStartPoint()) < stationsToRun.indexOf(subRoute.getDestinationPoint())) {
-                        // Verificar si ya existe una subruta que conecta las mismas estaciones
-                        boolean routeExists = false;
-                        for (int k = 0; k < assignedSubRoutes.getSize(); k++) {
-                            SubRoute assignedRoute = assignedSubRoutes.get(k);
-                            if (assignedRoute.getStartPoint().equals(subRoute.getStartPoint())
-                                    && assignedRoute.getDestinationPoint().equals(subRoute.getDestinationPoint())) {
-                                routeExists = true;
-                                break;
-                            }
-                        }
-                        // Si no existe una subruta que conecta las mismas estaciones, agregar la nueva subruta
-                        if (!routeExists) {
-                            assignedSubRoutes.add(subRoute);
-                        }
+    
+                    // Verificar si la subruta ya está asignada
+                    if (!assignedSubRoutes.contains(subRoute)) {
+                        assignedSubRoutes.add(subRoute);
                     }
                 }
             }
@@ -120,82 +110,99 @@ public class CustomerRoute {
     
         return assignedSubRoutes;
     }
+    
+    
 
     private LinkedList<Route> getOrderedRoutes(LinkedList<SubRoute> assignedSubRoutes) {
-        // Agrupar las subrutas por ruta asociada
-        Array<LinkedList<SubRoute>> tempRouteGroups = new Array<>(assignedSubRoutes.getSize());
-        int groupCount = 0;
-        
-        // Agrupar temporalmente las subrutas en arreglos
+        // Crear una lista de rutas ordenadas
+        LinkedList<Route> orderedRoutes = new LinkedList<>();
+    
+        // Crear una lista para almacenar las rutas agrupadas
+        LinkedList<LinkedList<SubRoute>> groupedRoutesList = new LinkedList<>();
+    
+        // Agrupar las subrutas por estación de inicio y final
         for (int i = 0; i < assignedSubRoutes.getSize(); i++) {
             SubRoute subRoute = assignedSubRoutes.get(i);
             boolean foundGroup = false;
-            
-            // Buscar un arreglo existente donde pueda agregarse la subruta
-            for (int j = 0; j < groupCount; j++) {
-                LinkedList<SubRoute> group = tempRouteGroups.get(j);
-                if (group.peek().getAsociatedIdRoute().equals(subRoute.getAsociatedIdRoute())) {
+    
+            // Buscar un grupo existente para agregar la subruta
+            for (int j = 0; j < groupedRoutesList.getSize(); j++) {
+                LinkedList<SubRoute> group = groupedRoutesList.get(j);
+                if (group.peek().getStartPoint().equals(subRoute.getStartPoint()) &&
+                    group.peekLast().getDestinationPoint().equals(subRoute.getDestinationPoint())) {
                     group.add(subRoute);
                     foundGroup = true;
                     break;
                 }
             }
-            
+    
             // Si no se encuentra un grupo existente, crear uno nuevo
             if (!foundGroup) {
                 LinkedList<SubRoute> newGroup = new LinkedList<>();
                 newGroup.add(subRoute);
-                tempRouteGroups.set(groupCount++, newGroup);
+                groupedRoutesList.add(newGroup);
             }
         }
-        
-        // Crear una lista de rutas ordenadas
-        LinkedList<Route> orderedRoutes = new LinkedList<>();
-        
-        // Iterar sobre los grupos temporales de subrutas y crear rutas ordenadas
-        for (int i = 0; i < groupCount; i++) {
-            LinkedList<SubRoute> group = tempRouteGroups.get(i);
+    
+        // Crear rutas ordenadas a partir de las subrutas agrupadas
+        for (int i = 0; i < groupedRoutesList.getSize(); i++) {
+            LinkedList<SubRoute> group = groupedRoutesList.get(i);
             LinkedList<LinkedList<SubRoute>> groupedRoutes = getGroupedRoutes(group);
             
             // Agregar las rutas agrupadas a la lista de rutas ordenadas
             for (int j = 0; j < groupedRoutes.getSize(); j++) {
                 LinkedList<SubRoute> groupedRoute = groupedRoutes.get(j);
                 Route route = createRouteFromSubRoutes(groupedRoute);
-                orderedRoutes.add(route);
+                if (!isRouteCompleted(route, orderedRoutes)) {
+                    orderedRoutes.add(route);
+                }
             }
         }
-        
+    
         return orderedRoutes;
     }
+
+// Método para verificar si una ruta ya ha sido completada
+private boolean isRouteCompleted(Route route, LinkedList<Route> completedRoutes) {
+    for (int i = 0; i < completedRoutes.getSize(); i++) {
+        Route completedRoute = completedRoutes.get(i);
+        // Verificar si las estaciones de inicio y final son las mismas
+        if (route.getStartPoint().equals(completedRoute.getStartPoint()) &&
+            route.getDestinationPoint().equals(completedRoute.getDestinationPoint())) {
+            return true;
+        }
+    }
+    return false;
+}
     
     private LinkedList<LinkedList<SubRoute>> getGroupedRoutes(LinkedList<SubRoute> assignedSubRoutes) {
-        LinkedList<LinkedList<SubRoute>> groupedRoutes = new LinkedList<>();
-        
-        if (assignedSubRoutes.isEmpty()) {
-            return groupedRoutes;
-        }
-        
-        LinkedList<SubRoute> currentGroup = new LinkedList<>();
-        currentGroup.add(assignedSubRoutes.get(0));
-        
-        for (int i = 1; i < assignedSubRoutes.getSize(); i++) {
-            SubRoute currentRoute = assignedSubRoutes.get(i);
-            SubRoute previousRoute = currentGroup.peekLast();
-            
-            if (currentRoute.getStartPoint().equals(previousRoute.getDestinationPoint())) {
-                currentGroup.add(currentRoute);
-            } else {
-                groupedRoutes.add(currentGroup);
-                currentGroup = new LinkedList<>();
-                currentGroup.add(currentRoute);
-            }
-        }
-        
-        // Agregar el último grupo
-        groupedRoutes.add(currentGroup);
-        
+    LinkedList<LinkedList<SubRoute>> groupedRoutes = new LinkedList<>();
+
+    if (assignedSubRoutes.isEmpty()) {
         return groupedRoutes;
     }
+
+    LinkedList<SubRoute> currentGroup = new LinkedList<>();
+    currentGroup.add(assignedSubRoutes.get(0));
+
+    for (int i = 1; i < assignedSubRoutes.getSize(); i++) {
+        SubRoute currentRoute = assignedSubRoutes.get(i);
+        SubRoute previousRoute = currentGroup.peekLast();
+
+        if (currentRoute.getStartPoint().equals(previousRoute.getDestinationPoint())) {
+            currentGroup.add(currentRoute);
+        } else {
+            groupedRoutes.add(currentGroup);
+            currentGroup = new LinkedList<>();
+            currentGroup.add(currentRoute);
+        }
+    }
+
+    // Agregar el último grupo
+    groupedRoutes.add(currentGroup);
+
+    return groupedRoutes;
+}
 
     private Route createRouteFromSubRoutes(LinkedList<SubRoute> groupedRoute) {
         // Obtener la información necesaria de la primera subruta en el grupo
@@ -230,7 +237,7 @@ public class CustomerRoute {
     }
 
     public static void traerRutasCliente() {
-        RouteRepository routeManager = new RouteRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\clone repositorio\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
+        RouteRepository routeManager = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
         LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();
     
         // Iterador para recorrer la lista de rutas
@@ -241,40 +248,35 @@ public class CustomerRoute {
             Route route = routeIterator.next();
             LinkedList<Station> stations = route.getStations();
             
-            // Mostrar la estación inicial
-            System.out.println("Estación inicial: " + stations.peek().getStationName());
-    
-            // Iterador para recorrer las estaciones intermedias
+            System.out.println("Ruta: " + route.getRouteId());
+
             Iterator<Station> intermediateStationsIterator = stations.iterator();
-            intermediateStationsIterator.next(); // Saltar la primera estación (ya mostrada como estación inicial)
             Station intermediateStation;
             while (intermediateStationsIterator.hasNext()) {
                 intermediateStation = intermediateStationsIterator.next();
-                // Mostrar las estaciones intermedias
-                System.out.println("Estación mid: " + intermediateStation.getStationName());
+                
+                System.out.println("Estación: " + intermediateStation.getStationName());
             }
-    
-            // Mostrar la estación final
-            System.out.println("Estación final: " + stations.peekLast().getStationName());
     
             // Separador entre rutas
             System.out.println("--------------");
         }
     }
 
-    
+    //ESTE METODO ES EL QUE SE USA YA QUE COMPILA TOD LO DE ARRIBA EN 1
     public LinkedList<CustomerRoute> traerLaRutaDelCliente(LinkedList<Station> stationsToRun){
         LinkedList<SubRoute> assignedSubRoutes = assignSubRoutesForCustomerStationsToRun(stationsToRun);
         LinkedList<Route> orderedRoutes = getOrderedRoutes(assignedSubRoutes);
         LinkedList<CustomerRoute> customerRoutes = createCustomerRoutes(orderedRoutes);
         return customerRoutes;
     }
+    
 
     public static void main(String[] args) {
 
         RoutesMap map = new RoutesMap();
     
-        LinkedList<Station> stationsToTravel = map.stationsToTravel(map.getStationI(), map.getStationF());
+        LinkedList<Station> stationsToTravel = map.stationsToTravel(map.getStationI(), map.getStationG());
     
         // Mostrar las rutas a recorrer
         System.out.println("Estas son las rutas a recorrer:");
@@ -300,6 +302,7 @@ public class CustomerRoute {
     
         // Obtener rutas ordenadas
         LinkedList<Route> orderedRoutes = customerRoute.getOrderedRoutes(assignedSubRoutes);
+
         System.out.println("Rutas ya compiladas y organizadas a usar:");
         for (int i = 0; i < orderedRoutes.getSize(); i++) {
             System.out.println("Ruta " + (i + 1) + ":");
@@ -309,7 +312,7 @@ public class CustomerRoute {
     
         // Crear las rutas del cliente
         LinkedList<CustomerRoute> customerRoutes = customerRoute.createCustomerRoutes(orderedRoutes);
-    
+        
         // Mostrar las rutas del cliente
         System.out.println("Rutas del cliente:");
         for (int i = 0; i < customerRoutes.getSize(); i++) {
