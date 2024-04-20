@@ -417,7 +417,7 @@ public class UserRepository {
                 switch (entity.getType()) {
                     case 0:
 
-                        EmployeeRepository employee = new EmployeeRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\employee.json");
+                        EmployeeRepository employee = new EmployeeRepository("src\\main\\java\\upb\\sgttp\\database\\employee.json");
                         LinkedList employees = employee.getAllEmployeesAsLinkedList();
                         user = new User(
                                 getEmployee(employees, entity.getPerson().getNames()),
@@ -428,7 +428,7 @@ public class UserRepository {
                         users.add(user);
                         break;
                     case 1:
-                        CustomerRepository customer = new CustomerRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\customer.json");
+                        CustomerRepository customer = new CustomerRepository("src\\main\\java\\upb\\sgttp\\database\\customer.json");
                         LinkedList customers = customer.getAllCustomersAsLinkedList();
                         user = new User(
                                 getCustomer(customers, entity.getPerson().getNames()),
@@ -438,7 +438,7 @@ public class UserRepository {
                         );
                         break;
                     case 2:
-                        ContactRepository contact = new ContactRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\contacts.json");
+                        ContactRepository contact = new ContactRepository("src\\main\\java\\upb\\sgttp\\database\\contacts.json");
                         LinkedList contacts = contact.getAllContactsAsLinkedList();
                         user = new User(
                                 getContact(contacts, entity.getPerson().getNames()),
@@ -448,7 +448,7 @@ public class UserRepository {
                         );
                         break;
                     case 3:
-                        AdminRepository admin = new AdminRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\admins.json");
+                        AdminRepository admin = new AdminRepository("src\\main\\java\\upb\\sgttp\\database\\admins.json");
                         LinkedList admins = admin.getAllAdminsAsLinkedList();
                         user = new User(
                                 getAdmin(admins, entity.getPerson().getNames()),
@@ -560,7 +560,7 @@ public class UserRepository {
                     User user = new User();
                     switch (entity.getType()) {
                         case 0:
-                            EmployeeRepository employeeRepo = new EmployeeRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\employee.json");
+                            EmployeeRepository employeeRepo = new EmployeeRepository("src\\main\\java\\upb\\sgttp\\database\\employee.json");
                             LinkedList<Employee> employees = employeeRepo.getAllEmployeesAsLinkedList();
                             user = new User(
                                     getEmployee(employees, entity.getPerson().getNames()),
@@ -570,7 +570,7 @@ public class UserRepository {
                             );
                             break;
                         case 1:
-                            CustomerRepository customerRepo = new CustomerRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\customer.json");
+                            CustomerRepository customerRepo = new CustomerRepository("src\\main\\java\\upb\\sgttp\\database\\customer.json");
                             LinkedList<Customer> customers = customerRepo.getAllCustomersAsLinkedList();
                             user = new User(
                                     getCustomer(customers, entity.getPerson().getNames()),
@@ -590,7 +590,7 @@ public class UserRepository {
                             );
                             break;
                         case 3:
-                            AdminRepository adminRepo = new AdminRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\admins.json");
+                            AdminRepository adminRepo = new AdminRepository("src\\main\\java\\upb\\sgttp\\database\\admins.json");
                             LinkedList<Admin> admins = adminRepo.getAllAdminsAsLinkedList();
                             user = new User(
                                     getAdmin(admins, entity.getPerson().getNames()),
@@ -621,7 +621,7 @@ public class UserRepository {
                     User user = new User();
                     switch (entity.getType()) {
                         case 0:
-                            EmployeeRepository employeeRepo = new EmployeeRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\employee.json");
+                            EmployeeRepository employeeRepo = new EmployeeRepository("src\\main\\java\\upb\\sgttp\\database\\employee.json");
                             LinkedList<Employee> employees = employeeRepo.getAllEmployeesAsLinkedList();
                             user = new User(
                                     getEmployee(employees, entity.getPerson().getNames()),
@@ -631,7 +631,7 @@ public class UserRepository {
                             );
                             break;
                         case 1:
-                            CustomerRepository customerRepo = new CustomerRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\customer.json");
+                            CustomerRepository customerRepo = new CustomerRepository("src\\main\\java\\upb\\sgttp\\database\\customer.json");
                             LinkedList<Customer> customers = customerRepo.getAllCustomersAsLinkedList();
                             user = new User(
                                     getCustomer(customers, entity.getPerson().getNames()),
@@ -641,7 +641,7 @@ public class UserRepository {
                             );
                             break;
                         case 2:
-                            ContactRepository contactRepo = new ContactRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\contacts.json");
+                            ContactRepository contactRepo = new ContactRepository("src\\main\\java\\upb\\sgttp\\database\\contacts.json");
                             LinkedList<Contact> contacts = contactRepo.getAllContactsAsLinkedList();
                             user = new User(
                                     getContact(contacts, entity.getPerson().getNames()),
@@ -651,7 +651,7 @@ public class UserRepository {
                             );
                             break;
                         case 3:
-                            AdminRepository adminRepo = new AdminRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\admins.json");
+                            AdminRepository adminRepo = new AdminRepository("src\\main\\java\\upb\\sgttp\\database\\admins.json");
                             LinkedList<Admin> admins = adminRepo.getAllAdminsAsLinkedList();
                             user = new User(
                                     getAdmin(admins, entity.getPerson().getNames()),

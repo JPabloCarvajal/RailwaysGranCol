@@ -7,7 +7,6 @@ package upb.sgttp.model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
-import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 import upb.sgttp.model.domain.persons.Admin;
@@ -15,7 +14,6 @@ import upb.sgttp.model.domain.persons.Contact;
 import upb.sgttp.model.domain.persons.Customer;
 import upb.sgttp.model.domain.persons.Employee;
 import upb.sgttp.model.domain.persons.User;
-import upb.sgttp.model.domain.trainUtilities.Train;
 import upb.sgttp.model.repository.Admins.AdminRepository;
 import upb.sgttp.model.repository.Contacts.ContactRepository;
 import upb.sgttp.model.repository.Customers.CustomerRepository;
@@ -28,14 +26,14 @@ import upb.sgttp.model.repository.Users.UserRepository;
  */
 public class UserManagementModel {
 
-    CustomerRepository customers = new CustomerRepository("src\\main\\java\\upb\\sgttp\\database\\customer.json");
-    EmployeeRepository employees = new EmployeeRepository("src\\main\\java\\upb\\sgttp\\database\\employee.json");
-    AdminRepository admins = new AdminRepository("src\\main\\java\\upb\\sgttp\\database\\admins.json");
-    ContactRepository contacts = new ContactRepository("src\\main\\java\\upb\\sgttp\\database\\contacts.json");
-    UserRepository users = new UserRepository("src\\main\\java\\upb\\sgttp\\database\\users.json");
-    DefaultTableModel tableModel = new DefaultTableModel();
+    private CustomerRepository customers = new CustomerRepository("src\\main\\java\\upb\\sgttp\\database\\customer.json");
+    private EmployeeRepository employees = new EmployeeRepository("src\\main\\java\\upb\\sgttp\\database\\employee.json");
+    private AdminRepository admins = new AdminRepository("src\\main\\java\\upb\\sgttp\\database\\admins.json");
+    private ContactRepository contacts = new ContactRepository("src\\main\\java\\upb\\sgttp\\database\\contacts.json");
+    private UserRepository users = new UserRepository("src\\main\\java\\upb\\sgttp\\database\\users.json");
+    private DefaultTableModel tableModel = new DefaultTableModel();
     private final LinkedList<User> userList;
-
+    private User login = AuthenticationModel.getUserLogin();
     public UserManagementModel() {
         this.userList = users.getAllUsersAsLinkedList();
         initTableModel();
@@ -62,54 +60,62 @@ public class UserManagementModel {
 
     // Métodos para la gestión de usuarios
     public void addUser(User user) {
+        String traceability = "agrego un Usuario Id:";
         switch (user.getType()) {
             case 0 -> {
                 Employee employee = (Employee) user.getPerson();
                 employees.addEmployee(employee);
+                TraceabilityModel.writeTraceability(traceability+employee.getId());
             }
             case 1 -> {
                 Customer customer = (Customer) user.getPerson();
                 customers.addCustomer(customer);
+                TraceabilityModel.writeTraceability(traceability+customer.getCustomerId());
             }
             case 2 -> {
                 Contact contact = (Contact) user.getPerson();
                 contacts.addContact(contact);
+                TraceabilityModel.writeTraceability(traceability+contact.getContactId());
             }
             case 3 -> {
                 Admin admin = (Admin) user.getPerson();
                 admins.addAdmin(admin);
+                TraceabilityModel.writeTraceability(traceability+admin.getId());
             }
         }
+        
         users.addUser(user);
         userList.add(user);
         ReloadTable();
     }
 
-    public void removeUser(int index, User user) {//en vez de username deberia ser id pero bueno
-//        if (userList.size() > 1 && index != -1) {
-//            userList.remove(userList.get(index));
+    public void removeUser(int index, User user) {
+        String traceability = "elimino un usuario Id:";
         if (userList.size() > 1 && index != -1) {
             userList.remove(user);
-//            tableModel.removeRow(index);
             userList.remove(user);
             switch (user.getType()) {
                 case 0 -> {
                     Employee employee = (Employee) user.getPerson();
+                    TraceabilityModel.writeTraceability(traceability+employee.getId());
                     employees.removeEmployee(employee.getId());
                     users.removeUserById(employee.getId());
                 }
                 case 1 -> {
                     Customer customer = (Customer) user.getPerson();
+                    TraceabilityModel.writeTraceability(traceability+customer.getCustomerId());
                     customers.removeCustomer(customer.getCustomerId());
                     users.removeUserById(customer.getCustomerId());
                 }
                 case 2 -> {
                     Contact contact = (Contact) user.getPerson();
+                    TraceabilityModel.writeTraceability(traceability+contact.getContactId());
                     contacts.removeContact(contact.getContactId());
                     users.removeUserById(contact.getContactId());
                 }
                 case 3 -> {
                     Admin admin = (Admin) user.getPerson();
+                    TraceabilityModel.writeTraceability(traceability+admin.getId());
                     admins.removeAdmin(admin.getId());
                     users.removeUserById(admin.getId());
                 }
@@ -120,25 +126,30 @@ public class UserManagementModel {
     }
 
     public boolean updateUser(User user, int index) {
+        String traceability = "modifico un usuario Id:";
         if (userList.size() > 1 && index != -1 && user.getType() == userList.get(index).getType()) {
             switch (user.getType()) {
                 case 0 -> {
                     Employee employee = (Employee) user.getPerson();
+                    TraceabilityModel.writeTraceability(traceability+employee.getId());
                     employees.modifyEmployee(employee.getId(), employee);
                     userList.get(index).setPerson(employee);
                 }
                 case 1 -> {
                     Customer customer = (Customer) user.getPerson();
+                    TraceabilityModel.writeTraceability(traceability+customer.getCustomerId());
                     customers.modifyCustomer(customer.getCustomerId(), customer);
                     userList.get(index).setPerson(customer);
                 }
                 case 2 -> {
                     Contact contact = (Contact) user.getPerson();
+                    TraceabilityModel.writeTraceability(traceability+contact.getContactId());
                     contacts.modifyContact(contact.getContactId(), contact);
                     userList.get(index).setPerson(contact);
                 }
                 case 3 -> {
                     Admin admin = (Admin) user.getPerson();
+                    TraceabilityModel.writeTraceability(traceability+admin.getId());
                     admins.modifyAdmin(admin.getId(), admin);
                     userList.get(index).setPerson(admin);
                 }
@@ -199,6 +210,15 @@ public class UserManagementModel {
         }
     }
 
+    public boolean isUsernameUsed(String username) {
+        for (int i = 0; i < userList.getSize(); i++) {
+            if (username.equals(userList.get(i).getUsername())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String findId(int type) {
         String id = "";
         String tipo = "";
@@ -219,5 +239,45 @@ public class UserManagementModel {
         }
         id = tipo + formattedDateTime;
         return id;
+    }
+
+    public boolean isUserinList(int index) {
+        if (login.getType() == userList.get(index).getType()) {
+            switch (userList.get(index).getType()) {
+                case 0 -> {
+                    //empleado
+                    Employee empleado = (Employee) userList.get(index).getPerson();
+                    Employee empleado2 = (Employee) login.getPerson();
+                    if (empleado.getId().equals(empleado2.getId())) {
+                        return true;
+                    }
+                }
+                case 1 -> {
+                    //cliente
+                    Customer customer = (Customer) userList.get(index).getPerson();
+                    Customer customer2 = (Customer) login.getPerson();
+                    if (customer.getCustomerId().equals(customer2.getCustomerId())) {
+                        return true;
+                    }
+                }
+                case 2 -> {
+                    //contact
+                    Contact contact = (Contact) userList.get(index).getPerson();
+                    Contact contact2 = (Contact) login.getPerson();
+                    if (contact.getContactId().equals(contact2.getContactId())) {
+                        return true;
+                    }
+                }
+                case 3 -> {
+                    //admin
+                    Admin admin = (Admin) userList.get(index).getPerson();
+                    Admin admin2 = (Admin) login.getPerson();
+                    if (admin.getId().equals(admin2.getId())) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

@@ -44,17 +44,23 @@ public class TrainModel {
 
     // Métodos para la gestión de usuarios
     public void addTrain(Train train) {
+        String traceability = "agrego un tren Id:";
+        TraceabilityModel.writeTraceability(traceability+train.getTrainId());
         trains.addTrain(train);
         ReloadTable();
     }
 
     public void removeTrain(Train train) {
+        String traceability = "elimino un tren Id:";
+        TraceabilityModel.writeTraceability(traceability+train.getTrainId());
         trains.removeTrain(train.getTrainId());
         ReloadTable();
 
     }
 
     public void updateTrain(Train train) {
+        String traceability = "modifico un tren Id:";
+        TraceabilityModel.writeTraceability(traceability+train.getTrainId());
         trains.modifyTrain(train.getTrainId(), train);
         ReloadTable();
     }
