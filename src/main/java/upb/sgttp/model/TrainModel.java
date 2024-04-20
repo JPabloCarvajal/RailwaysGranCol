@@ -4,6 +4,8 @@
  */
 package upb.sgttp.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.trainUtilities.Train;
@@ -77,33 +79,19 @@ public class TrainModel {
     public String createIdTrain(int type) {
         String generatedId = "";
         String tipo = "";
-        String aux = "";
-        LinkedList<Train> train = trains.getAllTrainsAsLinkedList();
-        int c=0;
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Formatear la fecha y hora como una cadena
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String formattedDateTime = currentDateTime.format(formatter);
         switch (type) {
-            case 0 : // mercedez
+            case 0: // mercedez
                 tipo = "M";
                 break;
-            case 1 : // arnold
+            case 1: // arnold
                 tipo = "A";
                 break;
         }
-        for (int i = 0; i < train.size(); i++) {
-            aux = tipo+i;
-            System.out.println("aux = " + aux);
-            System.out.println("id:"+train.get(i).getTrainId());
-            if(!aux.equals(train.get(i).getTrainId())){
-                System.out.println("entro");
-                generatedId = aux;
-                return generatedId;
-                
-            }
-            c++;
-        }
-        if(generatedId.isBlank()){
-            aux = tipo+(c+1);
-            return aux;
-        }
-        return "N/A";
+        generatedId = tipo+formattedDateTime;
+        return generatedId;
     }
 }

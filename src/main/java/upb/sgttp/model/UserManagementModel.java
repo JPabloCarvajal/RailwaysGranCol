@@ -4,6 +4,8 @@
  */
 package upb.sgttp.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
@@ -193,11 +195,15 @@ public class UserManagementModel {
             getTableModel().addRow(u);
         }
     }
-    
+
     public String findId(int type) {
-        String aux = "";
+        String id = "";
         String tipo = "";
         String r = "";
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Formatear la fecha y hora como una cadena
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String formattedDateTime = currentDateTime.format(formatter);
         switch (type) {
             case 0 -> // empleado
                 tipo = "E";
@@ -208,42 +214,7 @@ public class UserManagementModel {
             case 3 -> // admin
                 tipo = "A";
         }
-        for (int i = 0; i < userList.size(); i++) {
-            switch (userList.get(i).getType()) {
-                case 0 -> {
-                    //empleado
-                    aux =  tipo+ i;
-                    Employee empleado = (Employee) userList.get(i).getPerson();
-                    if (!aux.equals(empleado.getId())) {
-                        r= aux;
-                    }
-                }
-                case 1 -> {
-                    //cliente
-                    aux =  tipo+ i;
-                    Customer customer = (Customer) userList.get(i).getPerson();
-                    if (!aux.equals(customer.getCustomerId())) {
-                        r= aux;
-                    }
-                }
-                case 2 -> {
-                    //contact
-                    aux =  tipo+ i;
-                    Contact contact = (Contact) userList.get(i).getPerson();
-                    if (!aux.equals(contact.getContactId())) {
-                        r= aux;
-                    }
-                }
-                case 3 -> {
-                    //admin
-                    aux =  tipo+ i;
-                    Admin admin = (Admin) userList.get(i).getPerson();
-                    if (!aux.equals(admin.getId())) {
-                        r= aux;
-                    }
-                }
-            }
-        }
-        return r;
+        id = tipo + formattedDateTime;
+        return id;
     }
 }

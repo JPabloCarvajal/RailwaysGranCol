@@ -16,66 +16,6 @@
   },
   {
     "person": {
-      "names": "2",
-      "lastNames": "2",
-      "phoneNumbers": {
-        "E": [
-          "2"
-        ],
-        "size": 1
-      }
-    },
-    "username": "2",
-    "password": "2",
-    "type": 3
-  },
-  {
-    "person": {
-      "names": "5",
-      "lastNames": "5",
-      "phoneNumbers": {
-        "E": [
-          "5"
-        ],
-        "size": 1
-      }
-    },
-    "username": "5",
-    "password": "5",
-    "type": 2
-  },
-  {
-    "person": {
-      "names": "6",
-      "lastNames": "6",
-      "phoneNumbers": {
-        "E": [
-          "6"
-        ],
-        "size": 1
-      }
-    },
-    "username": "6",
-    "password": "6",
-    "type": 2
-  },
-  {
-    "person": {
-      "names": "6",
-      "lastNames": "6",
-      "phoneNumbers": {
-        "E": [
-          "6"
-        ],
-        "size": 1
-      }
-    },
-    "username": "6",
-    "password": "6",
-    "type": 2
-  },
-  {
-    "person": {
       "luggages": {
         "head": {
           "element": {
@@ -92,18 +32,18 @@
         "size": 1
       },
       "type": 1,
-      "customerId": "C6",
-      "names": "8",
-      "lastNames": "88",
+      "customerId": "C20240419202549",
+      "names": "1",
+      "lastNames": "1",
       "phoneNumbers": {
         "E": [
-          "8"
+          "1"
         ],
         "size": 1
       }
     },
-    "username": "8",
-    "password": "8",
+    "username": "1",
+    "password": "1",
     "type": 1
   }
 ]

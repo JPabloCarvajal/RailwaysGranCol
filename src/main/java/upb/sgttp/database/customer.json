@@ -16,39 +16,12 @@
       "size": 1
     },
     "type": 1,
-    "customerId": "C0",
+    "customerId": "C20240419202549",
     "names": "1",
     "lastNames": "1",
     "phoneNumbers": {
       "E": [
         "1"
-      ],
-      "size": 1
-    }
-  },
-  {
-    "luggages": {
-      "head": {
-        "element": {
-          "weight": -1.0,
-          "wagonId": -1
-        }
-      },
-      "tail": {
-        "element": {
-          "weight": -1.0,
-          "wagonId": -1
-        }
-      },
-      "size": 1
-    },
-    "type": 1,
-    "customerId": "C6",
-    "names": "8",
-    "lastNames": "88",
-    "phoneNumbers": {
-      "E": [
-        "8"
       ],
       "size": 1
     }
