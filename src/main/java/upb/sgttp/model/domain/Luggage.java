@@ -1,6 +1,8 @@
 package upb.sgttp.model.domain;
 
-public class Luggage {
+import java.io.Serializable;
+
+public class Luggage implements Serializable{
     
     static int luggageId = 0;
     float weight;

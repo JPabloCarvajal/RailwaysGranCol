@@ -1,5 +1,6 @@
 package upb.sgttp.model.domain.RouteUtilities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import jp.array.Array;
@@ -8,7 +9,7 @@ import jp.graphs.Graph;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.TicketUtilites.CustomerCategory;
 
-public class RoutesMap {
+public class RoutesMap implements Serializable{
 
     Graph<Station> stationsGraph = new Graph<>();
 
@@ -274,6 +275,7 @@ public class RoutesMap {
 
     // Prueba con este main xd
     public static void main(String[] args) {
+
 
         RoutesMap routesMap = new RoutesMap();
 

@@ -1,6 +1,8 @@
 package upb.sgttp.model.domain.persons;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private AbstractPerson person;
     private String username;

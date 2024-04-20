@@ -1,6 +1,8 @@
 package upb.sgttp.model.domain.trainUtilities;
 
-public class Wagon{
+import java.io.Serializable;
+
+public class Wagon implements Serializable{
 
     private String asociatedTrainID;
     private int wagonNum;

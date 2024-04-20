@@ -1,12 +1,14 @@
 package upb.sgttp.model.repository.Routes;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.RouteUtilities.Route;
 import upb.sgttp.shared.filejsonadapter.FileJsonAdapter;
 import upb.sgttp.shared.filejsonadapter.FileJsonInterface;
 
-public class RouteRepository {
+public class RouteRepository implements Serializable{
     
     private FileJsonInterface<RouteEntity> fileJson;
     private String pathFile;

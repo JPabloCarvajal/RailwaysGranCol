@@ -1,12 +1,13 @@
 package upb.sgttp.model.repository.Routes;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.RouteUtilities.Station;
 import upb.sgttp.model.domain.trainUtilities.Train;
 
-public class RouteEntity {
+public class RouteEntity implements Serializable{
     
     private String routeId;
 

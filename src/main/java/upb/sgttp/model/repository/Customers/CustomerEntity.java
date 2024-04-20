@@ -1,12 +1,14 @@
 package upb.sgttp.model.repository.Customers;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.Luggage;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 import upb.sgttp.model.domain.persons.Customer;
 
-public class CustomerEntity extends AbstractPerson {
+public class CustomerEntity extends AbstractPerson implements Serializable {
 
     LinkedList<Luggage> luggages = new LinkedList<>();
     private final int type = 1;

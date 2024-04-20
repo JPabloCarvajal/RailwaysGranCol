@@ -1,12 +1,14 @@
 package upb.sgttp.model.repository.Trains;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.trainUtilities.Train;
 import upb.sgttp.shared.filejsonadapter.FileJsonAdapter;
 import upb.sgttp.shared.filejsonadapter.FileJsonInterface;
 
-public class TrainRepository {
+public class TrainRepository implements Serializable{
 
     private FileJsonInterface<TrainEntity> fileJson;
     private String pathFile;

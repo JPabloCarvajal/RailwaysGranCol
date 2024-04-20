@@ -1,12 +1,14 @@
 package upb.sgttp.model.repository.Admins;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.persons.Admin;
 import upb.sgttp.shared.filejsonadapter.FileJsonAdapter;
 import upb.sgttp.shared.filejsonadapter.FileJsonInterface;
 
-public class AdminRepository {
+public class AdminRepository implements Serializable {
 
     private FileJsonInterface<AdminEntity> fileJson;
     private String pathFile;

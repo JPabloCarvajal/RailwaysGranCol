@@ -1,16 +1,12 @@
 package upb.sgttp.model.domain.RouteUtilities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import jp.array.Array;
-import jp.linkedlist.singly.LinkedList;
-import jp.queue.list.QueueList;
 import upb.sgttp.model.domain.trainUtilities.Train;
-import upb.sgttp.model.repository.Routes.RouteRepository;
-import jp.stack.list.StackList;
-import jp.util.iterator.Iterator;
 
-public class SubRoute {
+
+public class SubRoute implements Serializable{
 
     private String asociatedIdRoute;
 
@@ -79,23 +75,6 @@ public class SubRoute {
     public void setTrainToDoRoute(Train trainToDoRoute) {
         this.trainToDoRoute = trainToDoRoute;
     }   
-
-    public static void traerRutas(){
-
-        RouteRepository routeManager = new RouteRepository("C:\\Users\\juanp\\OneDrive\\Escritorio\\RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
-        LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();
-
-        Iterator<Route> iterator = availableRoutes.iterator();
-        while (iterator.hasNext()) {
-            Iterator<Station> stationsite = iterator.next().getStations().iterator();
-            while(stationsite.hasNext()){
-                System.out.println(stationsite.next().getStationName()); 
-            }
-            System.out.println("--------------");
-        }
-    }
-
-        
 
     public static void main(String[] args) {
         /*

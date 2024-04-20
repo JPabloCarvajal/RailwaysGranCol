@@ -1,5 +1,6 @@
 package upb.sgttp.model.domain.TicketUtilites;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import jp.linkedlist.singly.LinkedList;
@@ -8,7 +9,7 @@ import upb.sgttp.model.domain.RouteUtilities.Station;
 import upb.sgttp.model.domain.persons.Contact;
 import upb.sgttp.model.domain.persons.Customer;
 
-public class Ticket {
+public class Ticket implements Serializable{
     
     private Customer customer; //
 

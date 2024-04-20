@@ -1,5 +1,7 @@
 package upb.sgttp.model.repository.Users;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.persons.AbstractPerson;
@@ -15,7 +17,7 @@ import upb.sgttp.model.repository.Employees.EmployeeRepository;
 import upb.sgttp.shared.filejsonadapter.FileJsonAdapter;
 import upb.sgttp.shared.filejsonadapter.FileJsonInterface;
 
-public class UserRepository {
+public class UserRepository implements Serializable{
 
     private FileJsonInterface<UserEntity> fileJson;
     private String pathFile;

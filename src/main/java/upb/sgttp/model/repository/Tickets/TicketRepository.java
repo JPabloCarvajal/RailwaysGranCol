@@ -1,5 +1,7 @@
 package upb.sgttp.model.repository.Tickets;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.TicketUtilites.Ticket;
@@ -7,7 +9,7 @@ import upb.sgttp.model.domain.TicketUtilites.Ticket;
 import upb.sgttp.shared.filejsonadapter.FileJsonAdapter;
 import upb.sgttp.shared.filejsonadapter.FileJsonInterface;
 
-public class TicketRepository {
+public class TicketRepository implements Serializable{
     
     private FileJsonInterface<TicketEntity> fileJson;
     private String pathFile;
@@ -52,7 +54,7 @@ public class TicketRepository {
         return fileJson.writeObjects(pathFile, updatedTicketEntitiesArray);
     }
 
-    public LinkedList<Ticket> getAllRoutesAsLinkedList() {
+    public LinkedList<Ticket> getAllTicketsAsLinkedList() {
         TicketEntity[] ticketEntities = fileJson.getObjects(pathFile, TicketEntity[].class);
 
         LinkedList<Ticket> ticketList = new LinkedList<>();
@@ -78,7 +80,7 @@ public class TicketRepository {
     }
 
     
-    public Ticket getRoute(String ticketId) {
+    public Ticket getTicket(String ticketId) {
         TicketEntity[] ticketEntities = fileJson.getObjects(pathFile, TicketEntity[].class);
 
         for (TicketEntity entity : ticketEntities) {

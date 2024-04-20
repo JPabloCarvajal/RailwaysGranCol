@@ -1,12 +1,14 @@
 package upb.sgttp.model.domain.trainUtilities;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.Luggage;
 import upb.sgttp.model.domain.RouteUtilities.Station;
 import upb.sgttp.model.domain.TicketUtilites.Ticket;
 
-public class Train {
+public class Train implements Serializable{
 
     private String trainName;
     private String trainId;

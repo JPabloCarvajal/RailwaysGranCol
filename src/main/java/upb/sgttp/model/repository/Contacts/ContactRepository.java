@@ -1,12 +1,14 @@
 package upb.sgttp.model.repository.Contacts;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.persons.Contact;
 import upb.sgttp.shared.filejsonadapter.FileJsonAdapter;
 import upb.sgttp.shared.filejsonadapter.FileJsonInterface;
 
-public class ContactRepository {
+public class ContactRepository implements Serializable{
 
     private FileJsonInterface<ContactEntity> fileJson;
     private String pathFile;

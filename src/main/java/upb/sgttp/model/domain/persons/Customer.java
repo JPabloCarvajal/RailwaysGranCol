@@ -4,7 +4,7 @@ import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.Luggage;
 
-public class Customer extends AbstractPerson {
+public class Customer extends AbstractPerson  {
 
 //    private static int nextId = upb.sgttp.model.domain.Main.getCustomers().getSize();
 
