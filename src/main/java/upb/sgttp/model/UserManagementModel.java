@@ -91,24 +91,27 @@ public class UserManagementModel {
         if (userList.size() > 1 && index != -1) {
             userList.remove(user);
 //            tableModel.removeRow(index);
-            users.removeUser(user.getUsername());
             userList.remove(user);
             switch (user.getType()) {
                 case 0 -> {
                     Employee employee = (Employee) user.getPerson();
                     employees.removeEmployee(employee.getId());
+                    users.removeUserById(employee.getId());
                 }
                 case 1 -> {
                     Customer customer = (Customer) user.getPerson();
                     customers.removeCustomer(customer.getCustomerId());
+                    users.removeUserById(customer.getCustomerId());
                 }
                 case 2 -> {
                     Contact contact = (Contact) user.getPerson();
                     contacts.removeContact(contact.getContactId());
+                    users.removeUserById(contact.getContactId());
                 }
                 case 3 -> {
                     Admin admin = (Admin) user.getPerson();
                     admins.removeAdmin(admin.getId());
+                    users.removeUserById(admin.getId());
                 }
             }
 

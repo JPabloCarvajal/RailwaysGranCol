@@ -85,6 +85,7 @@ public class UserRepository {
 //        // ...
 //        return false;
 //    }
+    //-----------------------------------------------------------------------------------------
     public boolean addUser(User user) {
         // Obtener todos los usuarios del archivo JSON
         UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);
@@ -93,18 +94,36 @@ public class UserRepository {
         if (userEntities == null) {
             userEntities = new UserEntity[0]; // Si es null, asignamos un array vacío
         }
-
+        String id = "";
+        switch (user.getType()) {
+            case 0:
+                Employee employee = (Employee) user.getPerson();
+                id = employee.getId();
+                break;
+            case 1:
+                Customer customer = (Customer) user.getPerson();
+                id = customer.getCustomerId();
+                break;
+            case 2:
+                Contact contact = (Contact) user.getPerson();
+                id = contact.getContactId();
+                break;
+            case 3:
+                Admin admin = (Admin) user.getPerson();
+                id = admin.getId();
+                break;
+        }
         // Crear una nueva instancia de UserEntity a partir del usuario proporcionado
         AbstractPerson person = user.getPerson();
         UserEntity newUserEntity;
         if (person instanceof Employee) {
-            newUserEntity = new UserEntity((Employee) person, user.getUsername(), user.getPassword(), user.getType());
+            newUserEntity = new UserEntity((Employee) person, user.getUsername(), user.getPassword(), user.getType(), id);
         } else if (person instanceof Customer) {
-            newUserEntity = new UserEntity((Customer) person, user.getUsername(), user.getPassword(), user.getType());
+            newUserEntity = new UserEntity((Customer) person, user.getUsername(), user.getPassword(), user.getType(), id);
         } else if (person instanceof Contact) {
-            newUserEntity = new UserEntity((Contact) person, user.getUsername(), user.getPassword(), user.getType());
+            newUserEntity = new UserEntity((Contact) person, user.getUsername(), user.getPassword(), user.getType(), id);
         } else if (person instanceof Admin) {
-            newUserEntity = new UserEntity((Admin) person, user.getUsername(), user.getPassword(), user.getType());
+            newUserEntity = new UserEntity((Admin) person, user.getUsername(), user.getPassword(), user.getType(), id);
         } else {
             // Handle unsupported person type
             return false;
@@ -154,6 +173,85 @@ public class UserRepository {
             return false;
         }
     }
+
+    public boolean removeUserById(String id) {
+        // Obtener todos los usuarios del archivo JSON
+        UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);
+
+        // Buscar el usuario con el nombre de usuario especificado
+        int indexToRemove = -1;
+        for (int i = 0; i < userEntities.length; i++) {
+            if (userEntities[i].getId().equals(id)) {
+                indexToRemove = i;
+                break;
+            }
+        }
+
+        // Si se encontró el usuario, eliminarlo y escribir de nuevo los usuarios actualizados en el archivo JSON
+        if (indexToRemove != -1) {
+            Array<UserEntity> updatedUserEntities = new Array<>(userEntities.length - 1);
+            for (int i = 0; i < userEntities.length; i++) {
+                if (i != indexToRemove) {
+                    updatedUserEntities.add(userEntities[i]);
+                }
+            }
+
+            UserEntity[] updatedUserEntitiesArray = new UserEntity[updatedUserEntities.size()];
+            for (int i = 0; i < updatedUserEntities.size(); i++) {
+                updatedUserEntitiesArray[i] = updatedUserEntities.get(i);
+            }
+
+            return fileJson.writeObjects(pathFile, updatedUserEntitiesArray);
+        } else {
+            // Si no se encontró el usuario con el nombre de usuario especificado, devolver false
+            return false;
+        }
+    }
+//    public boolean removeUserById(String id) {
+//        // Obtener todos los usuarios del archivo JSON
+//        UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);
+//
+//        // Imprimir el ID que estamos buscando
+//        System.out.println("Buscando usuario con ID: " + id);
+//
+//        // Buscar el usuario con el ID especificado
+//        int indexToRemove = -1;
+//        for (int i = 0; i < userEntities.length; i++) {
+//            if (userEntities[i].getId().equals(id)) {
+//                indexToRemove = i;
+//                System.out.println("Usuario encontrado en el índice: " + i);
+//                break;
+//            }
+//        }
+//
+//        // Si se encontró el usuario, eliminarlo y escribir los usuarios actualizados en el archivo JSON
+//        if (indexToRemove != -1) {
+//            System.out.println("Eliminando usuario...");
+//            UserEntity[] updatedUserEntities = new UserEntity[userEntities.length - 1];
+//            for (int i = 0, j = 0; i < userEntities.length; i++) {
+//                if (i != indexToRemove) {
+//                    updatedUserEntities[j++] = userEntities[i];
+//                }
+//            }
+//            System.out.println("Usuario eliminado.");
+//            // Imprimir el contenido del array de entidades de usuario antes de la eliminación
+//            System.out.println("Contenido antes de la eliminación:");
+//            for (UserEntity entity : userEntities) {
+//                System.out.println(entity.getId());
+//            }
+//            // Imprimir el contenido del array de entidades de usuario después de la eliminación
+//            System.out.println("Contenido después de la eliminación:");
+//            for (UserEntity entity : updatedUserEntities) {
+//                System.out.println(entity.getId());
+//            }
+//            return fileJson.writeObjects(pathFile, updatedUserEntities);
+//        } else {
+//            // Si no se encontró el usuario, devolver false
+//            System.out.println("Usuario no encontrado.");
+//            return false;
+//        }
+//    }
+
     public boolean modifyUser(String username, User modifiedUser) {
         // Obtener todos los usuarios del archivo JSON
         UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);
@@ -414,18 +512,100 @@ public class UserRepository {
     public boolean modifyUsers(LinkedList<User> modifiedUsers) {
         // Convertir la lista de usuarios modificados a un arreglo de entidades de usuario
         UserEntity[] modifiedUserEntities = new UserEntity[modifiedUsers.size()];
+        String id = "";
         for (int i = 0; i < modifiedUsers.size(); i++) {
             User modifiedUser = modifiedUsers.get(i);
+
+            switch (modifiedUser.getType()) {
+                case 0:
+                    Employee employee = (Employee) modifiedUser.getPerson();
+                    id = employee.getId();
+                    break;
+                case 1:
+                    Customer customer = (Customer) modifiedUser.getPerson();
+                    id = customer.getCustomerId();
+                    break;
+                case 2:
+                    Contact contact = (Contact) modifiedUser.getPerson();
+                    id = contact.getContactId();
+                    break;
+                case 3:
+                    Admin admin = (Admin) modifiedUser.getPerson();
+                    id = admin.getId();
+                    break;
+            }
             modifiedUserEntities[i] = new UserEntity(
                     modifiedUser.getPerson(),
                     modifiedUser.getUsername(),
                     modifiedUser.getPassword(),
-                    modifiedUser.getType()
+                    modifiedUser.getType(),
+                    id
             );
         }
 
         // Escribir los nuevos objetos en el archivo JSON
         return fileJson.writeObjects(pathFile, modifiedUserEntities);
+    }
+
+    public User getUserById(String id) {
+        // Obtener todos los usuarios del archivo JSON
+        UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);
+
+        // Verificar si userEntities es null antes de continuar
+        if (userEntities != null) {
+            // Recorrer cada UserEntity
+            for (UserEntity entity : userEntities) {
+                // Verificar si el nombre de usuario coincide con el proporcionado
+                if (entity.getId().equals(id)) {
+                    User user = new User();
+                    switch (entity.getType()) {
+                        case 0:
+                            EmployeeRepository employeeRepo = new EmployeeRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\employee.json");
+                            LinkedList<Employee> employees = employeeRepo.getAllEmployeesAsLinkedList();
+                            user = new User(
+                                    getEmployee(employees, entity.getPerson().getNames()),
+                                    entity.getUsername(),
+                                    entity.getPassword(),
+                                    entity.getType()
+                            );
+                            break;
+                        case 1:
+                            CustomerRepository customerRepo = new CustomerRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\customer.json");
+                            LinkedList<Customer> customers = customerRepo.getAllCustomersAsLinkedList();
+                            user = new User(
+                                    getCustomer(customers, entity.getPerson().getNames()),
+                                    entity.getUsername(),
+                                    entity.getPassword(),
+                                    entity.getType()
+                            );
+                            break;
+                        case 2:
+                            ContactRepository contactRepo = new ContactRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\contacts.json");
+                            LinkedList<Contact> contacts = contactRepo.getAllContactsAsLinkedList();
+                            user = new User(
+                                    getContact(contacts, entity.getPerson().getNames()),
+                                    entity.getUsername(),
+                                    entity.getPassword(),
+                                    entity.getType()
+                            );
+                            break;
+                        case 3:
+                            AdminRepository adminRepo = new AdminRepository("C:\\Users\\thewe\\OneDrive\\Escritorio\\nuevo train\\SGTTP\\src\\main\\java\\upb\\sgttp\\database\\admins.json");
+                            LinkedList<Admin> admins = adminRepo.getAllAdminsAsLinkedList();
+                            user = new User(
+                                    getAdmin(admins, entity.getPerson().getNames()),
+                                    entity.getUsername(),
+                                    entity.getPassword(),
+                                    entity.getType()
+                            );
+                            break;
+                    }
+                    // Devolver el usuario encontrado
+                    return user;
+                }
+            }
+        }
+        return null;
     }
 
     public User getUserByUsername(String username) {

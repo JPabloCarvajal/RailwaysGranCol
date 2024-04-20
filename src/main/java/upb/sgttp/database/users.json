@@ -1,49 +1,18 @@
 [
   {
     "person": {
-      "names": "Luis",
-      "lastNames": "Fuentes",
+      "names": "Changua",
+      "lastNames": "Comes",
       "phoneNumbers": {
         "E": [
-          "300"
-        ],
-        "size": 2
-      }
-    },
-    "username": "Luis",
-    "password": "1",
-    "type": 3
-  },
-  {
-    "person": {
-      "luggages": {
-        "head": {
-          "element": {
-            "weight": -1.0,
-            "wagonId": -1
-          }
-        },
-        "tail": {
-          "element": {
-            "weight": -1.0,
-            "wagonId": -1
-          }
-        },
-        "size": 1
-      },
-      "type": 1,
-      "customerId": "C20240419202549",
-      "names": "1",
-      "lastNames": "1",
-      "phoneNumbers": {
-        "E": [
-          "1"
+          "12"
         ],
         "size": 1
       }
     },
-    "username": "1",
+    "username": "Changua",
     "password": "1",
-    "type": 1
+    "type": 3,
+    "id": "A20240419230745"
   }
 ]
