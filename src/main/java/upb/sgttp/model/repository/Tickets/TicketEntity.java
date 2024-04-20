@@ -1,5 +1,6 @@
 package upb.sgttp.model.repository.Tickets;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import jp.linkedlist.singly.LinkedList;
@@ -10,7 +11,7 @@ import upb.sgttp.model.domain.TicketUtilites.StatusEnum;
 import upb.sgttp.model.domain.persons.Contact;
 import upb.sgttp.model.domain.persons.Customer;
 
-public class TicketEntity {
+public class TicketEntity implements Serializable{
     private Customer customer; //
 
     private CustomerCategory customerCategory; //

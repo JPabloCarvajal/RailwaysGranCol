@@ -1,6 +1,8 @@
 package upb.sgttp.model.domain.TicketUtilites;
 
-public enum CustomerCategory {
+import java.io.Serializable;
+
+public enum CustomerCategory implements Serializable{
     
     PREMIUN,EXECUTIVE,STANDAR
 

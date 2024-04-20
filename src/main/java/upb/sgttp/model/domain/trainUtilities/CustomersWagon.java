@@ -1,9 +1,11 @@
 package upb.sgttp.model.domain.trainUtilities;
 
+import java.io.Serializable;
+
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.TicketUtilites.Ticket;
 
-public class CustomersWagon extends Wagon {
+public class CustomersWagon extends Wagon implements Serializable {
 
     private int standarAmount;
     private int executiveAmount;

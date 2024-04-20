@@ -1,9 +1,11 @@
 package upb.sgttp.model.domain.trainUtilities;
 
+import java.io.Serializable;
+
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.Luggage;
 
-public class LuggageWagon extends Wagon{
+public class LuggageWagon extends Wagon implements Serializable{
 
     private LinkedList<Luggage> luggagesWagon;
     private float wagonWeight;

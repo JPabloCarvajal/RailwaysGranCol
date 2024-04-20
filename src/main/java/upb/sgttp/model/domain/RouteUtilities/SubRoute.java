@@ -1,11 +1,12 @@
 package upb.sgttp.model.domain.RouteUtilities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import upb.sgttp.model.domain.trainUtilities.Train;
 
 
-public class SubRoute {
+public class SubRoute implements Serializable{
 
     private String asociatedIdRoute;
 

@@ -1,5 +1,7 @@
 package upb.sgttp.model.repository.Tickets;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.TicketUtilites.Ticket;
@@ -7,7 +9,7 @@ import upb.sgttp.model.domain.TicketUtilites.Ticket;
 import upb.sgttp.shared.filejsonadapter.FileJsonAdapter;
 import upb.sgttp.shared.filejsonadapter.FileJsonInterface;
 
-public class TicketRepository {
+public class TicketRepository implements Serializable{
     
     private FileJsonInterface<TicketEntity> fileJson;
     private String pathFile;

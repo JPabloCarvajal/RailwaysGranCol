@@ -1,12 +1,13 @@
 package upb.sgttp.model.domain.RouteUtilities;
 
+import java.io.Serializable;
 import java.util.Date;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.trainUtilities.Train;
 import upb.sgttp.model.repository.Routes.RouteRepository;
 import jp.util.iterator.Iterator;
 
-public class CustomerRoute {
+public class CustomerRoute implements Serializable{
 
     private Station startPoint;
     private Station destinationPoint;

@@ -1,9 +1,11 @@
 package upb.sgttp.model.repository.Contacts;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 
-public class ContactEntity extends AbstractPerson{
+public class ContactEntity extends AbstractPerson implements Serializable{
     
     String contactId;
 

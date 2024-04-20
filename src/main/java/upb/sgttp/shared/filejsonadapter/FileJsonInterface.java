@@ -1,8 +1,9 @@
 package upb.sgttp.shared.filejsonadapter;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public interface FileJsonInterface<E>{
+public interface FileJsonInterface<E> extends Serializable{
     
   E getObject(String pathFile, Class<E> classOfT);
   

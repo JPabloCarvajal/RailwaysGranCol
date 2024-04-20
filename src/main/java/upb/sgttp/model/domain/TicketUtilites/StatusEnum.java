@@ -1,6 +1,8 @@
 package upb.sgttp.model.domain.TicketUtilites;
 
-public enum StatusEnum {
+import java.io.Serializable;
+
+public enum StatusEnum implements Serializable{
     
     BOARDING,UNBOARDING,ABOARD
 }

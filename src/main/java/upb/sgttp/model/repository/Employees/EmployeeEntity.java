@@ -1,9 +1,11 @@
 package upb.sgttp.model.repository.Employees;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 
-public class EmployeeEntity extends AbstractPerson {
+public class EmployeeEntity extends AbstractPerson implements Serializable{
 
     private String id;
     private final int type = 0;

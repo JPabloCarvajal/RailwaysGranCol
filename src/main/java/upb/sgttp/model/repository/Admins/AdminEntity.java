@@ -1,9 +1,11 @@
 package upb.sgttp.model.repository.Admins;
 
+import java.io.Serializable;
+
 import jp.array.Array;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 
-public class AdminEntity extends AbstractPerson{
+public class AdminEntity extends AbstractPerson implements Serializable{
     
     private String id;
     private final int type = 3;
