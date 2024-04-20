@@ -36,4 +36,10 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
         ServerImplement server = new ServerImplement();
         System.out.println(server.ConsultarExistenciaTicket("prueba123","popeye"));
     }
+
+    @Override
+    public LinkedList<Ticket> getTicketList() throws RemoteException {
+
+        return ticketRepository.getAllTicketsAsLinkedList();
+    }
 }

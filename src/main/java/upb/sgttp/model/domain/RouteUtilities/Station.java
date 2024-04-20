@@ -3,9 +3,6 @@ package upb.sgttp.model.domain.RouteUtilities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import jp.linkedlist.singly.LinkedList;
-import upb.sgttp.model.domain.trainUtilities.Train;
-
 public class Station implements Serializable{
     
     private String stationName;

@@ -28,7 +28,7 @@ public class TicketManagerTest {
          LinkedList<Luggage> maletas = new LinkedList<>();
          maletas.add(luggage);
          maletas.add(luggage);
-         Customer customer = new Customer(maletas,"kike" , "Doe", new Array<>(new String[]{"123456789"}),"123");
+         Customer customer = new Customer(maletas,"william" , "Doe", new Array<>(new String[]{"123456789"}),"123");
          Contact customerContact = new Contact("nombre del contacto", "apellido del contacto" ,new Array<>(new String[]{"123456789"}),"123");
         // Get today's date
          Date today = new Date();
@@ -49,7 +49,7 @@ public class TicketManagerTest {
          Ticket newTicket = new Ticket(
              customer,
              CustomerCategory.EXECUTIVE,
-             "kike123",
+             "william id 12312321",
              today,  //PurchaseDate is set to today
              tomorrow, // BoardingDate is set to tomorrow
              tomorrow,  //ArriveDate is set to tomorrow
