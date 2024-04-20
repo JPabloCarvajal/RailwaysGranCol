@@ -25,17 +25,19 @@ public class Model {
     public Model() {
         initTableModel();
     }
-    
+
     public boolean ConsultTicket(String id, String name) throws Exception {
         return ConsultarExistenciaTicket("id", "name");
     }
-    public void ConsultTicket1(String id, String name){
-        for(int i=0;i<ticketList.size();i++){
-            if(ticketList.get(i).getCustomer().getNames().equals(name) && ticketList.get(i).getTicketId().equals(id)){
+
+    public void ConsultTicket1(String id, String name) {
+        for (int i = 0; i < ticketList.size(); i++) {
+            if (ticketList.get(i).getCustomer().getNames().equals(name) && ticketList.get(i).getTicketId().equals(id)) {
                 findTicketList.add(ticketList.get(i));
             }
         }
     }
+
     private void initTableModel() {
         // Inicializar el modelo de la tabla con las columnas necesarias
         tableModel.addColumn("Nombres");
@@ -62,7 +64,7 @@ public class Model {
     public void setFindTicketList(LinkedList<Ticket> findTicketList) {
         this.findTicketList = findTicketList;
     }
-    
+
     public void ReloadTable() {
         while (getTableModel().getRowCount() > 0) {
             getTableModel().removeRow(0);
@@ -80,5 +82,5 @@ public class Model {
             getTableModel().addRow(u);
         }
     }
-    
+
 }
