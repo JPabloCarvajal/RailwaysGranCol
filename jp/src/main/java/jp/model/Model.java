@@ -38,6 +38,7 @@ public class Model {
                 findTicketList.add(ticketList.get(i));
             }
         }
+        ReloadTable();
     }
 
     private void initTableModel() {
@@ -78,9 +79,9 @@ public class Model {
             u[1] = customer.getLastNames();
             u[2] = customer.getCustomerId();
             u[3] = findTicketList.get(i).getTicketId();
-            u[4] = findTicketList.get(i).getCustomerRoute().get(i).getTrainToDoRoute().getTrainId();
-            u[5] = findTicketList.get(i).getCustomerRoute().get(i).getDepartureTime();
-            u[6] = findTicketList.get(i).getCustomerRoute().get(i).getEstimatedArrivalTime();
+//            u[4] = findTicketList.get(i).getCustomerRoute().get(0).getTrainToDoRoute().getTrainId();
+            u[5] = findTicketList.get(i).getCustomerRoute().get(0).getDepartureTime();
+            u[6] = findTicketList.get(i).getCustomerRoute().get(0).getEstimatedArrivalTime();
             getTableModel().addRow(u);
         }
     }
