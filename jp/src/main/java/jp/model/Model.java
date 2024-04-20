@@ -5,7 +5,7 @@
 package jp.model;
 
 import java.lang.reflect.Array;
-import java.util.LinkedList;
+import jp.linkedlist.singly.LinkedList;
 import javax.swing.table.DefaultTableModel;
 import static jp.Client.ConsultarExistenciaTicket;
 import upb.sgttp.model.domain.TicketUtilites.Ticket;
@@ -21,6 +21,12 @@ public class Model {
     private LinkedList<Ticket> ticketList = new LinkedList<>();//obtener el linkedlist desde rmi
     private LinkedList<Ticket> findTicketList = new LinkedList<>();
     private DefaultTableModel tableModel = new DefaultTableModel();
+
+    public void setTicketList(LinkedList<Ticket> listaTickets){
+        this.ticketList = ticketList;
+    }
+
+
 
     public Model() {
         initTableModel();
