@@ -5,13 +5,12 @@
 package jp.model;
 
 import java.lang.reflect.Array;
-import java.rmi.Naming;
 import jp.linkedlist.singly.LinkedList;
 import javax.swing.table.DefaultTableModel;
+import static jp.Client.ConsultarExistenciaTicket;
 import upb.sgttp.model.domain.TicketUtilites.Ticket;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 import upb.sgttp.model.domain.persons.Customer;
-import upb.sgttp.rmiTest.Server;
 
 /**
  *
@@ -19,20 +18,25 @@ import upb.sgttp.rmiTest.Server;
  */
 public class Model {
 
-    private LinkedList<Ticket> ticketList;//obtener el linkedlist desde rmi
+    private LinkedList<Ticket> ticketList = new LinkedList<>();//obtener el linkedlist desde rmi
     private LinkedList<Ticket> findTicketList = new LinkedList<>();
     private DefaultTableModel tableModel = new DefaultTableModel();
 
-    public Model() throws Exception {
-        ticketList = obtenerListaTickets();
+    public void setTicketList(LinkedList<Ticket> listaTickets){
+        this.ticketList = ticketList;
+    }
+
+
+
+    public Model() {
         initTableModel();
     }
 
-//    public boolean ConsultTicket(String id, String name) throws Exception {
-//        return ConsultarExistenciaTicket("id", "name");
-//    }
+    public boolean ConsultTicket(String id, String name) throws Exception {
+        return ConsultarExistenciaTicket("id", "name");
+    }
 
-    public void ConsultTicket(String id, String name) {
+    public void ConsultTicket1(String id, String name) {
         for (int i = 0; i < ticketList.size(); i++) {
             if (ticketList.get(i).getCustomer().getNames().equals(name) && ticketList.get(i).getTicketId().equals(id)) {
                 findTicketList.add(ticketList.get(i));
@@ -84,23 +88,5 @@ public class Model {
             getTableModel().addRow(u);
         }
     }
-    public boolean ConsultarExistenciaTicket(String ticketID, String customerName) throws Exception {
-        // Obtén la referencia al objeto remoto
-        Server server = (Server) Naming.lookup("rmi://localhost/Server");
 
-        // Llama al método remoto en el servidor
-        boolean existeTicket = server.ConsultarExistenciaTicket(ticketID, customerName);
-        
-        return existeTicket;
-    }
-    
-    public LinkedList<Ticket> obtenerListaTickets() throws Exception {
-        // Obtén la referencia al objeto remoto
-        Server server = (Server) Naming.lookup("rmi://localhost/Server");
-
-        // Llama al método remoto en el servidor para obtener la lista de tickets
-        LinkedList<Ticket> ticketList = server.getTicketList();
-        
-        return ticketList;
-    }
 }

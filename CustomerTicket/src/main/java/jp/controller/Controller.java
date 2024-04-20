@@ -43,7 +43,7 @@ public class Controller {
                 String nombres = view.getjTextField2().getText();
                 String id = view.getjTextField1().getText();
                 try {
-                    model.ConsultTicket(id, nombres);
+                    model.ConsultTicket1(id, nombres);
                 } catch (Exception ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
