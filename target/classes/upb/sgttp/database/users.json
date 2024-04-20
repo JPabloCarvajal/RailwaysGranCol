@@ -1,21 +1,6 @@
 [
   {
     "person": {
-      "names": "Luis",
-      "lastNames": "Fuentes",
-      "phoneNumbers": {
-        "E": [
-          "300"
-        ],
-        "size": 2
-      }
-    },
-    "username": "Luis",
-    "password": "1",
-    "type": 3
-  },
-  {
-    "person": {
       "names": "2",
       "lastNames": "2",
       "phoneNumbers": {
@@ -27,22 +12,40 @@
     },
     "username": "2",
     "password": "2",
-    "type": 3
+    "type": 3,
+    "id": "A20240420004346"
   },
   {
     "person": {
-      "names": "5",
-      "lastNames": "5",
+      "names": "3",
+      "lastNames": "3",
       "phoneNumbers": {
         "E": [
-          "5"
+          "3"
         ],
         "size": 1
       }
     },
-    "username": "5",
-    "password": "5",
-    "type": 2
+    "username": "3",
+    "password": "3",
+    "type": 1,
+    "id": "C20240420011928"
+  },
+  {
+    "person": {
+      "names": "4",
+      "lastNames": "4",
+      "phoneNumbers": {
+        "E": [
+          "4"
+        ],
+        "size": 1
+      }
+    },
+    "username": "4",
+    "password": "4",
+    "type": 1,
+    "id": "C20240420012342"
   },
   {
     "person": {
@@ -57,53 +60,7 @@
     },
     "username": "6",
     "password": "6",
-    "type": 2
-  },
-  {
-    "person": {
-      "names": "6",
-      "lastNames": "6",
-      "phoneNumbers": {
-        "E": [
-          "6"
-        ],
-        "size": 1
-      }
-    },
-    "username": "6",
-    "password": "6",
-    "type": 2
-  },
-  {
-    "person": {
-      "luggages": {
-        "head": {
-          "element": {
-            "weight": -1.0,
-            "wagonId": -1
-          }
-        },
-        "tail": {
-          "element": {
-            "weight": -1.0,
-            "wagonId": -1
-          }
-        },
-        "size": 1
-      },
-      "type": 1,
-      "customerId": "C6",
-      "names": "8",
-      "lastNames": "88",
-      "phoneNumbers": {
-        "E": [
-          "8"
-        ],
-        "size": 1
-      }
-    },
-    "username": "8",
-    "password": "8",
-    "type": 1
+    "type": 3,
+    "id": "A20240420013032"
   }
 ]

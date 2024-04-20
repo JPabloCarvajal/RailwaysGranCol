@@ -16,12 +16,12 @@
       "size": 1
     },
     "type": 1,
-    "customerId": "C0",
-    "names": "1",
-    "lastNames": "1",
+    "customerId": "C20240420004039",
+    "names": "2",
+    "lastNames": "2",
     "phoneNumbers": {
       "E": [
-        "1"
+        "2"
       ],
       "size": 1
     }
@@ -43,12 +43,66 @@
       "size": 1
     },
     "type": 1,
-    "customerId": "C6",
-    "names": "8",
-    "lastNames": "88",
+    "customerId": "C20240420004226",
+    "names": "3",
+    "lastNames": "3",
     "phoneNumbers": {
       "E": [
-        "8"
+        "3"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "luggages": {
+      "head": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "tail": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "size": 1
+    },
+    "type": 1,
+    "customerId": "C20240420011928",
+    "names": "3",
+    "lastNames": "3",
+    "phoneNumbers": {
+      "E": [
+        "3"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "luggages": {
+      "head": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "tail": {
+        "element": {
+          "weight": -1.0,
+          "wagonId": -1
+        }
+      },
+      "size": 1
+    },
+    "type": 1,
+    "customerId": "C20240420012342",
+    "names": "4",
+    "lastNames": "4",
+    "phoneNumbers": {
+      "E": [
+        "4"
       ],
       "size": 1
     }

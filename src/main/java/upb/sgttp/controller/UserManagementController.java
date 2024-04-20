@@ -7,10 +7,11 @@ package upb.sgttp.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import jp.array.Array;
 import jp.linkedlist.singly.LinkedList;
-import upb.sgttp.gui.AdminPage;
+import upb.sgttp.gui.AdminView;
 import upb.sgttp.gui.LoginView;
 import upb.sgttp.gui.UserView;
 import upb.sgttp.model.AuthenticationModel;
@@ -31,6 +32,7 @@ public class UserManagementController {
 
     private final UserView view;
     private final UserManagementModel model;
+    
 
     public UserManagementController(UserView view, UserManagementModel model) {
         this.view = view;
@@ -63,7 +65,7 @@ public class UserManagementController {
                 String usuario = view.getUsernameTextField().getText();
                 String contraseña = view.getPasswordTextField().getText();
                 LinkedList<User> list = model.getUserList();
-                if (!usuario.isBlank() || !contraseña.isBlank()) {
+                if ((!usuario.isBlank() || !contraseña.isBlank()) && !model.isUsernameUsed(usuario)) {
                     Array array = new Array(numbers);
                     int tipo = -1;
                     User user = new User();
@@ -107,9 +109,13 @@ public class UserManagementController {
             public void actionPerformed(ActionEvent e) {
                 // Lógica para manejar el evento de eliminar usuario
                 int selectedRow = view.getjTable().getSelectedRow();
-                model.removeUser(selectedRow, model.getUserList().get(selectedRow));
+                if(!model.isUserinList(selectedRow)){
+                    model.removeUser(selectedRow, model.getUserList().get(selectedRow));
                 reloadTable();
-
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"No puedes eliminarte a ti mismo.");
+                }
             }
         });
 
@@ -117,10 +123,6 @@ public class UserManagementController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Lógica para manejar el evento de actualizar usuario
-                // Por ejemplo:
-                // - Obtener el índice y los nuevos datos del usuario desde la vista
-                // - Actualizar el usuario en el modelo
-                // - Actualizar la vista
                 int selectedRow = view.getjTable().getSelectedRow();
                 LinkedList<User> list = model.getUserList();
                 String sType = (String) view.getUserTypeComboBox().getSelectedItem();
@@ -180,13 +182,11 @@ public class UserManagementController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Lógica para manejar el evento de retroceder (botón de atrás)
-                // Por ejemplo:
-                // - Cerrar la vista actual
-                // - Abrir la vista anterior o realizar alguna acción de retroceso
-                view.setVisible(false);
-                AdminPage ventanaPrincipal = new AdminPage();
-                ventanaPrincipal.setVisible(true);
-                ventanaPrincipal.setLocationRelativeTo(null);
+                view.dispose();
+                AdminView view = new AdminView();
+                AdminPageController controller = new AdminPageController(view);
+                view.setVisible(true);
+                view.setLocationRelativeTo(null);
             }
         });
     }

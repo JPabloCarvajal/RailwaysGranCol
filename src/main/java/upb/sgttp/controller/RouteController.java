@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.JButton;
 import jp.linkedlist.singly.LinkedList;
-import upb.sgttp.gui.AdminPage;
+import upb.sgttp.gui.AdminView;
 import upb.sgttp.gui.RouteView;
 import upb.sgttp.gui.TrainView;
 import upb.sgttp.model.RouteModel;
@@ -159,9 +159,10 @@ public class RouteController {
             public void actionPerformed(ActionEvent e) {
                 //retroceder (botón de atrás)
                 view.dispose();
-                AdminPage ventanaPrincipal = new AdminPage();
-                ventanaPrincipal.setVisible(true);
-                ventanaPrincipal.setLocationRelativeTo(null);
+                AdminView view = new AdminView();
+                AdminPageController controller = new AdminPageController(view);
+                view.setVisible(true);
+                view.setLocationRelativeTo(null);
             }
         });
     }

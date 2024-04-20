@@ -37,6 +37,7 @@ public class RouteModel {
         tableModel.addColumn("KM");
         tableModel.addColumn("Id tren");
         tableModel.addColumn("Id ruta");
+        tableModel.addColumn("Estaciones");
     }
 
     public DefaultTableModel getTableModel() {
@@ -48,17 +49,23 @@ public class RouteModel {
     }
 
     public void addRoute(Route route) {
+        String traceability = "agrego un ruta Id:";
+        TraceabilityModel.writeTraceability(traceability + route.getRouteId());
         routes.addRoute(route);
         ReloadTable();
     }
 
     public void removeRoute(Route route) {
+        String traceability = "elimino un ruta Id:";
+        TraceabilityModel.writeTraceability(traceability + route.getRouteId());
         routes.removeRoute(route.getRouteId());
         ReloadTable();
 
     }
 
-    public void updateRoute(Route route,String id) {
+    public void updateRoute(Route route, String id) {
+        String traceability = "modifico un ruta Id:";
+        TraceabilityModel.writeTraceability(traceability + route.getRouteId());
         routes.modifyRoute(id, route);
         ReloadTable();
     }
@@ -68,8 +75,18 @@ public class RouteModel {
             getTableModel().removeRow(0);
         }
         LinkedList<Route> routeList = routes.getAllRoutesAsLinkedList();
+        LinkedList<Station> stations;
+
         for (int i = 0; i < routeList.size(); i++) {
-            Object u[] = new Object[7];
+            stations = routeList.get(i).getStations();
+            String station = "";
+            for (int j = 0; j < stations.size(); j++) {
+                station+=stations.get(j).getStationName();
+                if (j < stations.size() - 1) {
+                    station += ",";
+                }
+            }
+            Object u[] = new Object[8];
             u[0] = routeList.get(i).getStartPoint().getStationName();
             u[1] = routeList.get(i).getDestinationPoint().getStationName();
             u[2] = routeList.get(i).getDepartureTime();
@@ -77,6 +94,7 @@ public class RouteModel {
             u[4] = routeList.get(i).getTotalKmToTravel();
             u[5] = routeList.get(i).getTrainToDoRoute().getTrainId();
             u[6] = routeList.get(i).getRouteId();
+            u[7] = station;
             getTableModel().addRow(u);
         }
     }
@@ -88,6 +106,7 @@ public class RouteModel {
     public Train getTrain(String id) {
         return trains.getTrain(id);
     }
+
     public String createIdRoute(Station station1, Station station2) {
         String generatedId = "";
         generatedId = station1.getStationName() + "-" + station2.getStationName();

@@ -14,14 +14,23 @@ public class UserEntity implements Serializable{
     String username;
     String password;
     int type;
+    String id;
   
-    public UserEntity(AbstractPerson person, String username, String password,int type) {
-      this.person = person;
-      this.username = username;
-      this.password = password;
-      this.type = type;
-    }
+//    public UserEntity(AbstractPerson person, String username, String password,int type) {
+//      this.person = person;
+//      this.username = username;
+//      this.password = password;
+//      this.type = type;
+//    }
 
+    public UserEntity(AbstractPerson person, String username, String password, int type, String id) {
+        this.person = person;
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.id = id;
+    }
+    
     public AbstractPerson getPerson() {
       return person;
     }
@@ -53,6 +62,15 @@ public class UserEntity implements Serializable{
     public void setType(int type) {
         this.type = type;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
 }
 
 
