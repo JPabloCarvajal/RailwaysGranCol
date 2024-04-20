@@ -1,5 +1,8 @@
 package jp;
 import java.rmi.Naming;
+import jp.controller.Controller;
+import jp.model.Model;
+import jp.view.FindTicket;
 import upb.sgttp.rmiTest.Server;
 
 public class Client {
@@ -15,13 +18,18 @@ public class Client {
     }
 
     public static void main(String[] args) {
-        try {
-            // Ejemplo de cómo usar ConsultarExistenciaTicket
-            boolean existe = ConsultarExistenciaTicket("kike123", "kike");
-            System.out.println("¿Existe el ticket? " + (existe ? "Sí" : "No"));
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
+        Model model = new Model();
+        FindTicket view = new FindTicket();
+        Controller controller = new Controller(view, model);
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
+//        try {
+//            // Ejemplo de cómo usar ConsultarExistenciaTicket
+//            boolean existe = ConsultarExistenciaTicket("kike123", "kike");
+//            System.out.println("¿Existe el ticket? " + (existe ? "Sí" : "No"));
+//        } catch (Exception e) {
+//            System.err.println("Error: " + e.getMessage());
+//            e.printStackTrace();
+//        }
     }   
 }
