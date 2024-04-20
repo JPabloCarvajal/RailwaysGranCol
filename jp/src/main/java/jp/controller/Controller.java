@@ -44,6 +44,7 @@ public class Controller {
                 String id = view.getjTextField1().getText();
                 try {
                     model.ConsultTicket(id, nombres);
+                    reloadTable();
                 } catch (Exception ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -21,7 +21,7 @@ public class RouteManagerTest {
 
         // Definir estaciones de inicio y fin para la primera ruta
         Station startStation1 = mapa.getStationA();
-        Station endStation1 = mapa.getStationE();
+        Station endStation1 = mapa.getStationB();
  
         // Crear la primera ruta
         Route route1 = createRoute(mapa, startStation1, endStation1);
@@ -88,7 +88,7 @@ public class RouteManagerTest {
     
         // Crear el objeto Train con los vagones creados
         //String trainName//, String trainId//, float kilometers//, int loadingCapacity//, String brand, Array<CustomersWagon> customersWagons, Array<LuggageWagon> luggageWagons, boolean available
-        Train train = null;
+        Train train = Train.getNullTrain();
         // Crear la ruta
         return new Route(stations, startStation, endStation, departureTime, arrivalTime,
                 mapa.calculateTotalDistance(stations), train, startStation.getStationName() + "-" + endStation.getStationName());
