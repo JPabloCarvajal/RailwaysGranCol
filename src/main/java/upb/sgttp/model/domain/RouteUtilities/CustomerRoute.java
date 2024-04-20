@@ -7,7 +7,7 @@ import upb.sgttp.model.domain.trainUtilities.Train;
 import upb.sgttp.model.repository.Routes.RouteRepository;
 import jp.util.iterator.Iterator;
 
-public class CustomerRoute implements Serializable{
+public class CustomerRoute implements Serializable {
 
     private Station startPoint;
     private Station destinationPoint;
@@ -76,29 +76,38 @@ public class CustomerRoute implements Serializable{
     private LinkedList<SubRoute> assignSubRoutesForCustomerStationsToRun(LinkedList<Station> stationsToRun) {
         LinkedList<SubRoute> assignedSubRoutes = new LinkedList<>();
         RouteRepository routeManager = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
-    
+
         // Iterar sobre todas las rutas disponibles
         LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();
         for (int i = 0; i < availableRoutes.getSize(); i++) {
             Route route = availableRoutes.get(i);
-    
+
             // Iterar sobre las subrutas de la ruta
             LinkedList<SubRoute> subRoutes = route.getSubRoutes();
             for (int j = 0; j < subRoutes.getSize(); j++) {
                 SubRoute subRoute = subRoutes.get(j);
-    
+
                 // Verificar si la subruta conecta las estaciones de inicio y destino proporcionadas por el cliente
                 if (stationsToRun.contains(subRoute.getStartPoint()) && stationsToRun.contains(subRoute.getDestinationPoint())) {
-    
-                    // Verificar si la subruta ya está asignada
-                    if (!assignedSubRoutes.contains(subRoute)) {
-                        assignedSubRoutes.add(subRoute);
+
+                    // Verificar si la subruta respeta el orden de las estaciones proporcionadas por el cliente
+                    if (checkSubRouteOrder(subRoute, stationsToRun)) {
+                        // Verificar si la subruta ya está asignada
+                        if (!assignedSubRoutes.contains(subRoute)) {
+                            assignedSubRoutes.add(subRoute);
+                        }
                     }
                 }
             }
         }
-    
+
         return assignedSubRoutes;
+    }
+
+    private boolean checkSubRouteOrder(SubRoute subRoute, LinkedList<Station> stationsToRun) {
+        int startIndex = stationsToRun.indexOf(subRoute.getStartPoint());
+        int destIndex = stationsToRun.indexOf(subRoute.getDestinationPoint());
+        return startIndex < destIndex;
     }
     
     
@@ -277,7 +286,7 @@ private boolean isRouteCompleted(Route route, LinkedList<Route> completedRoutes)
 
         RoutesMap map = new RoutesMap();
     
-        LinkedList<Station> stationsToTravel = map.stationsToTravel(map.getStationI(), map.getStationF());
+        LinkedList<Station> stationsToTravel = map.stationsToTravel(map.getStationB(), map.getStationH());
 
 
     
