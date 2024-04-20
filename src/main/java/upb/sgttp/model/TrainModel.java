@@ -76,16 +76,34 @@ public class TrainModel {
 
     public String createIdTrain(int type) {
         String generatedId = "";
-        int nextId = trains.getAllTrainsAsLinkedList().getSize() + 1;
+        String tipo = "";
+        String aux = "";
+        LinkedList<Train> train = trains.getAllTrainsAsLinkedList();
+        int c=0;
         switch (type) {
-            case 0://empleado
-                generatedId = "M" + nextId;
+            case 0 : // mercedez
+                tipo = "M";
                 break;
-            case 1://cliente
-                generatedId = "A" + nextId;
+            case 1 : // arnold
+                tipo = "A";
                 break;
         }
-        nextId++;
-        return generatedId;
+        for (int i = 0; i < train.size(); i++) {
+            aux = tipo+i;
+            System.out.println("aux = " + aux);
+            System.out.println("id:"+train.get(i).getTrainId());
+            if(!aux.equals(train.get(i).getTrainId())){
+                System.out.println("entro");
+                generatedId = aux;
+                return generatedId;
+                
+            }
+            c++;
+        }
+        if(generatedId.isBlank()){
+            aux = tipo+(c+1);
+            return aux;
+        }
+        return "N/A";
     }
 }
