@@ -27,37 +27,52 @@
     },
     "username": "2",
     "password": "2",
-    "type": 1
+    "type": 3
   },
   {
     "person": {
-      "names": "1",
-      "lastNames": "1",
+      "names": "5",
+      "lastNames": "5",
       "phoneNumbers": {
         "E": [
-          "1"
+          "5"
         ],
         "size": 1
       }
     },
-    "username": "1",
-    "password": "1",
-    "type": 1
+    "username": "5",
+    "password": "5",
+    "type": 2
   },
   {
     "person": {
-      "names": "3",
-      "lastNames": "3",
+      "names": "6",
+      "lastNames": "6",
       "phoneNumbers": {
         "E": [
-          "3"
+          "6"
         ],
         "size": 1
       }
     },
-    "username": "3",
-    "password": "3",
-    "type": 1
+    "username": "6",
+    "password": "6",
+    "type": 2
+  },
+  {
+    "person": {
+      "names": "6",
+      "lastNames": "6",
+      "phoneNumbers": {
+        "E": [
+          "6"
+        ],
+        "size": 1
+      }
+    },
+    "username": "6",
+    "password": "6",
+    "type": 2
   },
   {
     "person": {
@@ -77,18 +92,18 @@
         "size": 1
       },
       "type": 1,
-      "customerId": "C5",
-      "names": "5",
-      "lastNames": "5",
+      "customerId": "C6",
+      "names": "8",
+      "lastNames": "88",
       "phoneNumbers": {
         "E": [
-          "5"
+          "8"
         ],
         "size": 1
       }
     },
-    "username": "5",
-    "password": "5",
+    "username": "8",
+    "password": "8",
     "type": 1
   }
 ]

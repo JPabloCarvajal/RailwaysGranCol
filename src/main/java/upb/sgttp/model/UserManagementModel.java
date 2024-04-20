@@ -25,6 +25,7 @@ import upb.sgttp.model.repository.Users.UserRepository;
  * @author thewe
  */
 public class UserManagementModel {
+
     CustomerRepository customers = new CustomerRepository("src\\main\\java\\upb\\sgttp\\database\\customer.json");
     EmployeeRepository employees = new EmployeeRepository("src\\main\\java\\upb\\sgttp\\database\\employee.json");
     AdminRepository admins = new AdminRepository("src\\main\\java\\upb\\sgttp\\database\\admins.json");
@@ -60,22 +61,22 @@ public class UserManagementModel {
     // Métodos para la gestión de usuarios
     public void addUser(User user) {
         switch (user.getType()) {
-            case 0:
+            case 0 -> {
                 Employee employee = (Employee) user.getPerson();
                 employees.addEmployee(employee);
-                break;
-            case 1:
+            }
+            case 1 -> {
                 Customer customer = (Customer) user.getPerson();
                 customers.addCustomer(customer);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 Contact contact = (Contact) user.getPerson();
                 contacts.addContact(contact);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 Admin admin = (Admin) user.getPerson();
                 admins.addAdmin(admin);
-                break;
+            }
         }
         users.addUser(user);
         userList.add(user);
@@ -89,23 +90,24 @@ public class UserManagementModel {
             userList.remove(user);
 //            tableModel.removeRow(index);
             users.removeUser(user.getUsername());
+            userList.remove(user);
             switch (user.getType()) {
-                case 0:
+                case 0 -> {
                     Employee employee = (Employee) user.getPerson();
                     employees.removeEmployee(employee.getId());
-                    break;
-                case 1:
+                }
+                case 1 -> {
                     Customer customer = (Customer) user.getPerson();
                     customers.removeCustomer(customer.getCustomerId());
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     Contact contact = (Contact) user.getPerson();
                     contacts.removeContact(contact.getContactId());
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     Admin admin = (Admin) user.getPerson();
                     admins.removeAdmin(admin.getId());
-                    break;
+                }
             }
 
             ReloadTable();
@@ -115,26 +117,26 @@ public class UserManagementModel {
     public boolean updateUser(User user, int index) {
         if (userList.size() > 1 && index != -1 && user.getType() == userList.get(index).getType()) {
             switch (user.getType()) {
-                case 0:
+                case 0 -> {
                     Employee employee = (Employee) user.getPerson();
                     employees.modifyEmployee(employee.getId(), employee);
                     userList.get(index).setPerson(employee);
-                    break;
-                case 1:
+                }
+                case 1 -> {
                     Customer customer = (Customer) user.getPerson();
                     customers.modifyCustomer(customer.getCustomerId(), customer);
                     userList.get(index).setPerson(customer);
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     Contact contact = (Contact) user.getPerson();
                     contacts.modifyContact(contact.getContactId(), contact);
                     userList.get(index).setPerson(contact);
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     Admin admin = (Admin) user.getPerson();
                     admins.modifyAdmin(admin.getId(), admin);
                     userList.get(index).setPerson(admin);
-                    break;
+                }
             }
             users.modifyUser(userList.get(index).getUsername(), user);
             userList.get(index).setUsername(user.getUsername());
@@ -167,44 +169,81 @@ public class UserManagementModel {
             u[5] = userList.get(i).getType();
             int tipo = userList.get(i).getType();
             switch (tipo) {
-                case 0://empleado
+                case 0 -> {
+                    //empleado
                     Employee empleado = (Employee) userList.get(i).getPerson();
                     u[6] = empleado.getId();
-                    break;
-                case 1://cliente
+                }
+                case 1 -> {
+                    //cliente
                     Customer customer = (Customer) userList.get(i).getPerson();
                     u[6] = customer.getCustomerId();
-                    break;
-                case 2://contact
+                }
+                case 2 -> {
+                    //contact
                     Contact contact = (Contact) userList.get(i).getPerson();
                     u[6] = contact.getContactId();
-                    break;
-                case 3://admin
+                }
+                case 3 -> {
+                    //admin
                     Admin admin = (Admin) userList.get(i).getPerson();
                     u[6] = admin.getId();
-                    break;
+                }
             }
             getTableModel().addRow(u);
         }
     }
-
-    public String createId(int type) {
-        String generatedId = "";
-        int nextId = userList.size() + 1;
+    
+    public String findId(int type) {
+        String aux = "";
+        String tipo = "";
+        String r = "";
         switch (type) {
-            case 0: // empleado
-                generatedId = "E" + nextId;
-                break;
-            case 1: // cliente
-                generatedId = "C" + nextId;
-                break;
-            case 2: // contacto
-                generatedId = "CO" + nextId;
-                break;
-            case 3: // admin
-                generatedId = "A" + nextId;
-                break;
+            case 0 -> // empleado
+                tipo = "E";
+            case 1 -> // cliente
+                tipo = "C";
+            case 2 -> // contacto
+                tipo = "CO";
+            case 3 -> // admin
+                tipo = "A";
         }
-        return generatedId;
+        for (int i = 0; i < userList.size(); i++) {
+            switch (userList.get(i).getType()) {
+                case 0 -> {
+                    //empleado
+                    aux =  tipo+ i;
+                    Employee empleado = (Employee) userList.get(i).getPerson();
+                    if (!aux.equals(empleado.getId())) {
+                        r= aux;
+                    }
+                }
+                case 1 -> {
+                    //cliente
+                    aux =  tipo+ i;
+                    Customer customer = (Customer) userList.get(i).getPerson();
+                    if (!aux.equals(customer.getCustomerId())) {
+                        r= aux;
+                    }
+                }
+                case 2 -> {
+                    //contact
+                    aux =  tipo+ i;
+                    Contact contact = (Contact) userList.get(i).getPerson();
+                    if (!aux.equals(contact.getContactId())) {
+                        r= aux;
+                    }
+                }
+                case 3 -> {
+                    //admin
+                    aux =  tipo+ i;
+                    Admin admin = (Admin) userList.get(i).getPerson();
+                    if (!aux.equals(admin.getId())) {
+                        r= aux;
+                    }
+                }
+            }
+        }
+        return r;
     }
 }

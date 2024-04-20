@@ -70,23 +70,23 @@ public class UserManagementController {
                     switch (sType) {
                         case "Empleado":
                             tipo = 0;
-                            Employee employ = new Employee(nombres, apellidos, array, model.createId(tipo));
+                            Employee employ = new Employee(nombres, apellidos, array, model.findId(tipo));
                             user = new User(employ, usuario, contraseña, tipo);
                             break;
                         case "Cliente":
                             tipo = 1;
                             LinkedList luggage = new LinkedList<>(Luggage.getNullLuggage());
-                            Customer customer = new Customer(luggage, nombres, apellidos, array, model.createId(tipo));
+                            Customer customer = new Customer(luggage, nombres, apellidos, array, model.findId(tipo));
                             user = new User(customer, usuario, contraseña, tipo);
                             break;
                         case "Admin":
                             tipo = 3;
-                            Admin admin = new Admin(nombres, apellidos, array, model.createId(tipo));
+                            Admin admin = new Admin(nombres, apellidos, array, model.findId(tipo));
                             user = new User(admin, usuario, contraseña, tipo);
                             break;
                         case "Contact":
                             tipo = 2;
-                            Contact contact = new Contact(nombres, apellidos, array, model.createId(tipo));
+                            Contact contact = new Contact(nombres, apellidos, array, model.findId(tipo));
                             user = new User(contact, usuario, contraseña, tipo);
                             break;
                     }
