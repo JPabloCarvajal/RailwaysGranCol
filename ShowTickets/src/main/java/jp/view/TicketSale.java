@@ -4,9 +4,6 @@
  */
 package jp.view;
 
-import java.awt.GridBagConstraints;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -25,29 +22,8 @@ public class TicketSale extends javax.swing.JFrame {
      */
     public TicketSale() {
         initComponents();
-        // Llamada a un método para configurar la imagen
-        setImagen();
     }
-    // Método para configurar la imagen
-    private void setImagen() {
-        // Crea un JLabel para mostrar la imagen
-        JLabel labelImagen = new JLabel();
-        
-        // Carga la imagen desde un archivo
-        ImageIcon icono = new ImageIcon("grafo.jpg");
-        
-        // Escala la imagen para que se ajuste al tamaño del JLabel
-        Image imagen = icono.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
-        
-        // Establece la imagen escalada en el JLabel
-        labelImagen.setIcon(new ImageIcon(imagen));
-        
-        // Establece el tamaño del JLabel
-        labelImagen.setBounds(450, -150, 1000, 1000);
-        
-        // Agrega el JLabel al JPanel
-        jPanel1.add(labelImagen);
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
