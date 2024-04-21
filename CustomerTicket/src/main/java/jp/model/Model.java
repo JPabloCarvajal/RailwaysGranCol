@@ -4,12 +4,20 @@
  */
 package jp.model;
 
-import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import jp.linkedlist.singly.LinkedList;
+<<<<<<< HEAD
 import javax.swing.table.DefaultTableModel;
 import upb.sgttp.model.domain.TicketUtilites.Ticket;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 import upb.sgttp.model.domain.persons.Customer;
+=======
+import upb.sgttp.model.domain.RouteUtilities.Route;
+>>>>>>> b33523f5ab1084388b7747745fdc98b685180ff8
 
 /**
  *
@@ -17,50 +25,53 @@ import upb.sgttp.model.domain.persons.Customer;
  */
 public class Model {
 
-    private LinkedList<Ticket> ticketList = new LinkedList<>();//obtener el linkedlist desde rmi
-    private LinkedList<Ticket> findTicketList = new LinkedList<>();
-    private DefaultTableModel tableModel = new DefaultTableModel();
-
-    public void setTicketList(LinkedList<Ticket> listaTickets){
-        this.ticketList = ticketList;
-    }
-
-
+    LinkedList<Route> routeList;
 
     public Model() {
-        initTableModel();
+        routeList = new LinkedList<>();//obtener el linkedlist de el rmi de rutas
     }
 
+<<<<<<< HEAD
    // public boolean ConsultTicket(String id, String name) throws Exception {
         //return ConsultarExistenciaTicket("id", "name");
    // }
+=======
+    public LinkedList<Route> getRouteList() {
+        return routeList;
+    }
+>>>>>>> b33523f5ab1084388b7747745fdc98b685180ff8
 
-    public void ConsultTicket1(String id, String name) {
-        for (int i = 0; i < ticketList.size(); i++) {
-            if (ticketList.get(i).getCustomer().getNames().equals(name) && ticketList.get(i).getTicketId().equals(id)) {
-                findTicketList.add(ticketList.get(i));
-            }
-        }
+    public void setRouteList(LinkedList<Route> routeList) {
+        this.routeList = routeList;
     }
 
-    private void initTableModel() {
-        // Inicializar el modelo de la tabla con las columnas necesarias
-        tableModel.addColumn("Nombres");
-        tableModel.addColumn("Apellidos");
-        tableModel.addColumn("Customer id");
-        tableModel.addColumn("Ticket id");
-        tableModel.addColumn("Train id");
-        tableModel.addColumn("Fecha salida");
-        tableModel.addColumn("Fecha llegada");
+    public String findId() {
+        String id = "";
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Formatear la fecha y hora como una cadena
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        id = "C" + formattedDateTime;
+        return id;
     }
 
-    public DefaultTableModel getTableModel() {
-        return tableModel;
+    public String findIdTicket() {
+        String id = "";
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Formatear la fecha y hora como una cadena
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        id = "T" + formattedDateTime;
+        return id;
     }
-
-    public LinkedList<Ticket> getTicketList() {
-        return ticketList;
+    public Date getDate() {
+        String id = "";
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Formatear la fecha y hora como una cadena
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
+<<<<<<< HEAD
 
     public LinkedList<Ticket> getFindTicketList() {
         return findTicketList;
@@ -88,4 +99,7 @@ public class Model {
         }
     }
 
+=======
+    //metodos rmi para pasarle los datos a los jsons
+>>>>>>> b33523f5ab1084388b7747745fdc98b685180ff8
 }

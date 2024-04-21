@@ -184,7 +184,6 @@ public class RoutesMap implements Serializable{
 
     public LinkedList<Station> buildCustomRoute(LinkedList<Station> stations) {
         if (stations == null || stations.size() < 2) {
-
             System.out.println("La lista de estaciones proporcionada no es válida.");
             return null;
         }

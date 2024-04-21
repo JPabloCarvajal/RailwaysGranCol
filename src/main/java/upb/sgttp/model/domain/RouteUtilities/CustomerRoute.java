@@ -238,7 +238,7 @@ private boolean isRouteCompleted(Route route, LinkedList<Route> completedRoutes)
     }
 
     public static void traerRutasCliente() {
-        RouteRepository routeManager = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
+        RouteRepository routeManager = new RouteRepository("src\\main\\java\\upb\\sgttp\\database\\routes.json");
         LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();
     
         // Iterador para recorrer la lista de rutas
