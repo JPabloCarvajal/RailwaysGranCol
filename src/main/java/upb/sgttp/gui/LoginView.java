@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package upb.sgttp.gui;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 
-/**
- *
- * @author thewe
- */
 public class LoginView extends javax.swing.JFrame {
 
     /**
@@ -100,6 +92,7 @@ public class LoginView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    @SuppressWarnings("unused")
     private void adjustLayout() {
         int width = jPanel1.getWidth();
         int height = jPanel1.getHeight();
@@ -121,10 +114,12 @@ public class LoginView extends javax.swing.JFrame {
         jPanel1.setLocation(x, y);
     }
 
+    @SuppressWarnings("unused")
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
+    @SuppressWarnings("unused")
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }

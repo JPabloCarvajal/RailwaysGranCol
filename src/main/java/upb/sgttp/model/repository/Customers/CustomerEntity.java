@@ -8,6 +8,7 @@ import upb.sgttp.model.domain.Luggage;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 import upb.sgttp.model.domain.persons.Customer;
 
+@SuppressWarnings("unused")
 public class CustomerEntity extends AbstractPerson implements Serializable {
 
     LinkedList<Luggage> luggages = new LinkedList<>();

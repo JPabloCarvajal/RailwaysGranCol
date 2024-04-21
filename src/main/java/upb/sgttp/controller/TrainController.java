@@ -101,6 +101,7 @@ public class TrainController {
                 if (selectedRow != -1 && list.get(selectedRow).isAvailable()) {
                     // modificar la fila del modelo de la tabla
                     list.get(selectedRow);
+                    @SuppressWarnings("unused")
                     String sType = (String) view.getjComboBox1().getSelectedItem();
                     String nombre = view.getjTextField1().getText();
                     int vagonesPasajeros = Integer.parseInt(view.getjTextField2().getText());
@@ -122,6 +123,7 @@ public class TrainController {
                 //retroceder (botón de atrás)
                 view.dispose();
                 AdminView view = new AdminView();
+                @SuppressWarnings("unused")
                 AdminPageController controller = new AdminPageController(view);
                 view.setVisible(true);
                 view.setLocationRelativeTo(null);

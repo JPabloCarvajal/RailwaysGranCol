@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package upb.sgttp.gui;
 
 import javax.swing.JOptionPane;
 import javax.swing.*;
 
-/**
- *
- * @author thewe
- */
 public class TrainView extends javax.swing.JFrame {
 
     public TrainView() {
@@ -319,30 +312,37 @@ public class TrainView extends javax.swing.JFrame {
         pack();
     }
 
+    @SuppressWarnings("unused")
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
+    @SuppressWarnings("unused")
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
+    @SuppressWarnings("unused")
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
+    @SuppressWarnings("unused")
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
+    @SuppressWarnings("unused")
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
+    @SuppressWarnings("unused")
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
+    @SuppressWarnings("unused")
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }

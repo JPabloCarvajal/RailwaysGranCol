@@ -3,7 +3,6 @@ package upb.sgttp.model.repository.Trains;
 import java.io.Serializable;
 
 import jp.array.Array;
-import upb.sgttp.model.domain.RouteUtilities.Station;
 import upb.sgttp.model.domain.trainUtilities.CustomersWagon;
 import upb.sgttp.model.domain.trainUtilities.LuggageWagon;
 import upb.sgttp.model.domain.trainUtilities.Train;
@@ -96,6 +95,7 @@ public class TrainEntity implements Serializable{
         return luggageWagons;
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public static Train getNullTrain() {
         return new Train("", "", 0, 0, "", new Array(1), new Array(1), true);
     }

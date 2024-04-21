@@ -60,31 +60,33 @@ public class UserManagementController {
                 String[] numbers = numeros.split(",");
                 String usuario = view.getUsernameTextField().getText();
                 String contraseña = view.getPasswordTextField().getText();
+                @SuppressWarnings("unused")
                 LinkedList<User> list = model.getUserList();
                 if ((!usuario.isBlank() || !contraseña.isBlank()) && !model.isUsernameUsed(usuario)) {
+                    @SuppressWarnings({ "rawtypes", "unchecked" })
                     Array array = new Array(numbers);
                     int tipo = -1;
                     User user = new User();
                     switch (sType) {
                         case "Empleado":
                             tipo = 0;
-                            Employee employ = new Employee(nombres, apellidos, array, model.findId(tipo));
+                            @SuppressWarnings("unchecked") Employee employ = new Employee(nombres, apellidos, array, model.findId(tipo));
                             user = new User(employ, usuario, contraseña, tipo);
                             break;
                         case "Cliente":
                             tipo = 1;
-                            LinkedList luggage = new LinkedList<>(Luggage.getNullLuggage());
-                            Customer customer = new Customer(luggage, nombres, apellidos, array, model.findId(tipo));
+                            @SuppressWarnings("rawtypes") LinkedList luggage = new LinkedList<>(Luggage.getNullLuggage());
+                            @SuppressWarnings("unchecked") Customer customer = new Customer(luggage, nombres, apellidos, array, model.findId(tipo));
                             user = new User(customer, usuario, contraseña, tipo);
                             break;
                         case "Admin":
                             tipo = 3;
-                            Admin admin = new Admin(nombres, apellidos, array, model.findId(tipo));
+                            @SuppressWarnings("unchecked") Admin admin = new Admin(nombres, apellidos, array, model.findId(tipo));
                             user = new User(admin, usuario, contraseña, tipo);
                             break;
                         case "Contact":
                             tipo = 2;
-                            Contact contact = new Contact(nombres, apellidos, array, model.findId(tipo));
+                            @SuppressWarnings("unchecked") Contact contact = new Contact(nombres, apellidos, array, model.findId(tipo));
                             user = new User(contact, usuario, contraseña, tipo);
                             break;
                     }
@@ -116,6 +118,7 @@ public class UserManagementController {
         });
 
         updateButton.addActionListener(new ActionListener() {
+            @SuppressWarnings("rawtypes")
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Lógica para manejar el evento de actualizar usuario
@@ -129,6 +132,8 @@ public class UserManagementController {
                 String usuario = view.getUsernameTextField().getText();
                 String contraseña = view.getPasswordTextField().getText();
                 if ((!usuario.isBlank() || !contraseña.isBlank()) && selectedRow != -1) {
+                    
+                    @SuppressWarnings({ "unchecked" })
                     Array array = new Array(numbers);
                     int tipo = -1;
                     User user = new User();
@@ -136,25 +141,30 @@ public class UserManagementController {
                         case "Empleado" -> {
                             tipo = 0;
                             Employee auxE = (Employee) list.get(selectedRow).getPerson();
+                            @SuppressWarnings("unchecked")
                             Employee employ = new Employee(nombres, apellidos, array, auxE.getId());
                             user = new User(employ, usuario, contraseña, tipo);
                         }
                         case "Cliente" -> {
                             tipo = 1;
                             Customer auxC = (Customer) list.get(selectedRow).getPerson();
+                            //luis que wea es esto 
                             LinkedList luggage = new LinkedList<>(Luggage.getNullLuggage());
+                            @SuppressWarnings("unchecked")
                             Customer customer = new Customer(luggage, nombres, apellidos, array, auxC.getCustomerId());
                             user = new User(customer, usuario, contraseña, tipo);
                         }
                         case "Admin" -> {
                             tipo = 3;
                             Admin auxA = (Admin) list.get(selectedRow).getPerson();
+                            @SuppressWarnings("unchecked")
                             Admin admin = new Admin(nombres, apellidos, array, auxA.getId());
                             user = new User(admin, usuario, contraseña, tipo);
                         }
                         case "Contact" -> {
                             tipo = 2;
                             Contact auxCo = (Contact) list.get(selectedRow).getPerson();
+                            @SuppressWarnings("unchecked")
                             Contact contact = new Contact(nombres, apellidos, array, auxCo.getContactId());
                             user = new User(contact, usuario, contraseña, tipo);
                         }
@@ -180,6 +190,7 @@ public class UserManagementController {
                 // Lógica para manejar el evento de retroceder (botón de atrás)
                 view.dispose();
                 AdminView view = new AdminView();
+                @SuppressWarnings("unused")
                 AdminPageController controller = new AdminPageController(view);
                 view.setVisible(true);
                 view.setLocationRelativeTo(null);

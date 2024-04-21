@@ -5,27 +5,31 @@ import java.util.Date;
 
 import upb.sgttp.model.domain.trainUtilities.Train;
 
+/**
+ * Representa una subruta dentro de una ruta principal en el sistema de gestión de rutas.
+ */
 
 public class SubRoute implements Serializable{
 
-    private String asociatedIdRoute;
+    private String asociatedIdRoute; // El ID de la ruta asociada
 
-    public String getAsociatedIdRoute() {
-        return asociatedIdRoute;
-    }
+    private Station startPoint; // El punto de inicio de la subruta
+    private Station destinationPoint; // El punto de destino de la subruta
 
-    public void setAsociatedIdRoute(String asociatedIdRoute) {
-        this.asociatedIdRoute = asociatedIdRoute;
-    }
+    private Date departureTime; // La hora de salida de la subruta
+    private Date estimatedArrivalTime; // La hora estimada de llegada de la subruta
 
-    private Station startPoint;
-    private Station destinationPoint;
+    private Train trainToDoRoute; // El tren asignado para realizar la subruta
 
-    private Date departureTime;
-    private Date estimatedArrivalTime;
-
-    private Train trainToDoRoute;
-
+    /**
+     * Constructor de la clase SubRoute.
+     * @param startPoint El punto de inicio de la subruta.
+     * @param destinationPoint El punto de destino de la subruta.
+     * @param departureTime La hora de salida de la subruta.
+     * @param estimatedArrivalTime La hora estimada de llegada de la subruta.
+     * @param trainToDoRoute El tren asignado para realizar la subruta.
+     * @param asociatedIdRoute El ID de la ruta asociada.
+     */
     public SubRoute(Station startPoint, Station destinationPoint, Date departureTime, Date estimatedArrivalTime,
             Train trainToDoRoute, String asociatedIdRoute) {
         this.startPoint = startPoint;
@@ -36,42 +40,89 @@ public class SubRoute implements Serializable{
         this.asociatedIdRoute = asociatedIdRoute;
     }
 
+
+    public String getAsociatedIdRoute() {
+        return asociatedIdRoute;
+    }
+
+    public void setAsociatedIdRoute(String asociatedIdRoute) {
+        this.asociatedIdRoute = asociatedIdRoute;
+    }
+
+     /**
+     * Obtiene el punto de inicio de la subruta.
+     * @return El punto de inicio de la subruta.
+     */
     public Station getStartPoint() {
         return startPoint;
     }
-
+    /**
+     * Establece el punto de inicio de la subruta.
+     * @param startPoint El punto de inicio de la subruta.
+     */
     public void setStartPoint(Station startPoint) {
         this.startPoint = startPoint;
     }
-
+    /**
+     * Obtiene el punto de destino de la subruta.
+     * @return El punto de destino de la subruta.
+     */
     public Station getDestinationPoint() {
         return destinationPoint;
     }
 
+    /**
+     * Establece el punto de destino de la subruta.
+     * @param destinationPoint El punto de destino de la subruta.
+     */
     public void setDestinationPoint(Station destinationPoint) {
         this.destinationPoint = destinationPoint;
     }
-
+    
+    /**
+     * Obtiene la hora de salida de la subruta.
+     * @return La hora de salida de la subruta.
+     */
     public Date getDepartureTime() {
         return departureTime;
     }
 
+    /**
+     * Establece la hora de salida de la subruta.
+     * @param departureTime La hora de salida de la subruta.
+     */
     public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 
+    /**
+     * Obtiene la hora estimada de llegada de la subruta.
+     * @return La hora estimada de llegada de la subruta.
+     */
     public Date getEstimatedArrivalTime() {
         return estimatedArrivalTime;
     }
 
+    /**
+     * Establece la hora estimada de llegada de la subruta.
+     * @param estimatedArrivalTime La hora estimada de llegada de la subruta.
+     */
     public void setEstimatedArrivalTime(Date estimatedArrivalTime) {
         this.estimatedArrivalTime = estimatedArrivalTime;
     }
 
+    /**
+     * Obtiene el tren asignado para realizar la subruta.
+     * @return El tren asignado para realizar la subruta.
+     */
     public Train getTrainToDoRoute() {
         return trainToDoRoute;
     }
 
+    /**
+     * Establece el tren asignado para realizar la subruta.
+     * @param trainToDoRoute El tren asignado para realizar la subruta.
+     */
     public void setTrainToDoRoute(Train trainToDoRoute) {
         this.trainToDoRoute = trainToDoRoute;
     }   

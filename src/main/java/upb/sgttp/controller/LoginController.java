@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import upb.sgttp.gui.AdminView;
 import upb.sgttp.gui.LoginView;
 import upb.sgttp.model.AuthenticationModel;
-import upb.sgttp.model.domain.persons.User;
 
 /**
  *
@@ -40,6 +39,7 @@ public class LoginController {
                 if (authenticated) {
                     view.setVisible(false);
                     AdminView view = new AdminView();
+                    @SuppressWarnings("unused")
                     AdminPageController controller = new AdminPageController(view);
                     view.setVisible(true);
                     view.setLocationRelativeTo(null);

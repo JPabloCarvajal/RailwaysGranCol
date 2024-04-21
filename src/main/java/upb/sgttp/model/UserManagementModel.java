@@ -222,6 +222,7 @@ public class UserManagementModel {
     public String findId(int type) {
         String id = "";
         String tipo = "";
+        @SuppressWarnings("unused")
         String r = "";
         LocalDateTime currentDateTime = LocalDateTime.now();
         // Formatear la fecha y hora como una cadena

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import jp.array.Array;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 
+@SuppressWarnings("unused")
 public class EmployeeEntity extends AbstractPerson implements Serializable{
 
     private String id;

@@ -78,7 +78,9 @@ public class RouteController {
                 //eliminar ruta
                 int selectedRow = view.getjTable().getSelectedRow();
                 LinkedList<Route> list = model.getRouteList();
+                @SuppressWarnings("unused")
                 Train train = list.get(selectedRow).getTrainToDoRoute();
+                @SuppressWarnings("unused")
                 String id = list.get(selectedRow).getRouteId();
                 // Verificar si se ha seleccionado una fila
                 if (selectedRow != -1) {
@@ -113,11 +115,13 @@ public class RouteController {
                     LocalDateTime currentDateTime = LocalDateTime.now();
                     // Formatear la fecha y hora según tus necesidades
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    @SuppressWarnings("unused")
                     String formattedDateTime = currentDateTime.format(formatter);
                     // Convertir la fecha de partida de la lista a LocalDateTime
                     Date departureDate = list.get(selectedRow).getDepartureTime();
                     Instant instant = departureDate.toInstant();
                     ZoneId zoneId = ZoneId.systemDefault();
+                    @SuppressWarnings("unused")
                     LocalDateTime departureDateTime = instant.atZone(zoneId).toLocalDateTime();
 //            if (departureDateTime.isAfter(currentDateTime) && (list.get(selectedRow).getTrainToDoRoute().isAvailable() || idtren.equals(upb.sgttp.model.domain.Main.getTrain(idtren).getTrainId()))) {
 
@@ -157,6 +161,7 @@ public class RouteController {
                 //retroceder (botón de atrás)
                 view.dispose();
                 AdminView view = new AdminView();
+                @SuppressWarnings("unused")
                 AdminPageController controller = new AdminPageController(view);
                 view.setVisible(true);
                 view.setLocationRelativeTo(null);
