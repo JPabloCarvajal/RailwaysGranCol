@@ -16,7 +16,7 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
 
     public ServerImplement() throws RemoteException {
         super();
-        this.ticketRepository = new TicketRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\tickets.json");
+        this.ticketRepository = new TicketRepository("src\\main\\java\\upb\\sgttp\\database\\tickets.json");
     }
 
     @Override

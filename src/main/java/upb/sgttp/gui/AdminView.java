@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package upb.sgttp.gui;
-
-import java.awt.BorderLayout;
 import javax.swing.*;
 
 /**

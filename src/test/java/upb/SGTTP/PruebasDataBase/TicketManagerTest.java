@@ -28,7 +28,7 @@ public class TicketManagerTest {
          LinkedList<Luggage> maletas = new LinkedList<>();
          maletas.add(luggage);
          maletas.add(luggage);
-         Customer customer = new Customer(maletas,"william" , "Doe", new Array<>(new String[]{"123456789"}),"123");
+         Customer customer = new Customer(maletas,"kike" , "Doe", new Array<>(new String[]{"123456789"}),"123");
          Contact customerContact = new Contact("nombre del contacto", "apellido del contacto" ,new Array<>(new String[]{"123456789"}),"123");
         // Get today's date
          Date today = new Date();
@@ -39,7 +39,7 @@ public class TicketManagerTest {
          Date tomorrow = calendar.getTime();
 
          // Crear una nueva LinkedList para las CustomerRoute del Ticket
-         LinkedList<CustomerRoute> customerRoutes = customerRoute.traerLaRutaDelCliente(mapa.stationsToTravel(mapa.getStationI(),mapa.getStationA()));
+         LinkedList<CustomerRoute> customerRoutes = customerRoute.traerLaRutaDelCliente(mapa.stationsToTravel(mapa.getStationA(),mapa.getStationB()));
 
          for(int i = 0; i<customerRoutes.size(); i++){
              System.out.println(customerRoutes.get(i).getStartPoint().getStationName());
@@ -49,7 +49,7 @@ public class TicketManagerTest {
          Ticket newTicket = new Ticket(
              customer,
              CustomerCategory.EXECUTIVE,
-             "william id 12312321",
+             "kike123",
              today,  //PurchaseDate is set to today
              tomorrow, // BoardingDate is set to tomorrow
              tomorrow,  //ArriveDate is set to tomorrow
