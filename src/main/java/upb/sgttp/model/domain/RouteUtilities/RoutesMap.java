@@ -296,9 +296,9 @@ public class RoutesMap implements Serializable{
         }
 
         // Prueba de la ruta personalizada
-        Station intermediateStationI = routesMap.getStationI();
-        Station intermediateStationJ = routesMap.getStationJ();
-        Station intermediateStationA = routesMap.getStationA();
+        Station intermediateStationI = routesMap.getStationB();
+        Station intermediateStationJ = routesMap.getStationD();
+        Station intermediateStationA = routesMap.getStationF();
         Station intermediateStationG = routesMap.getStationG();
         Station intermediateStationH = routesMap.getStationH();
 
@@ -307,8 +307,8 @@ public class RoutesMap implements Serializable{
         customStationsList.add(intermediateStationI);
         customStationsList.add(intermediateStationJ);
         customStationsList.add(intermediateStationA);
-        customStationsList.add(intermediateStationG);
-        customStationsList.add(intermediateStationH);
+        // customStationsList.add(intermediateStationG);
+        // customStationsList.add(intermediateStationH);
 
         // Construir la ruta personalizada
         LinkedList<Station> customRouteStations = routesMap.buildCustomRoute(customStationsList);

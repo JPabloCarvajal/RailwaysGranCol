@@ -7,7 +7,6 @@ package jp.model;
 import java.lang.reflect.Array;
 import jp.linkedlist.singly.LinkedList;
 import javax.swing.table.DefaultTableModel;
-import static jp.Client.ConsultarExistenciaTicket;
 import upb.sgttp.model.domain.TicketUtilites.Ticket;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 import upb.sgttp.model.domain.persons.Customer;
@@ -32,9 +31,9 @@ public class Model {
         initTableModel();
     }
 
-    public boolean ConsultTicket(String id, String name) throws Exception {
-        return ConsultarExistenciaTicket("id", "name");
-    }
+   // public boolean ConsultTicket(String id, String name) throws Exception {
+        //return ConsultarExistenciaTicket("id", "name");
+   // }
 
     public void ConsultTicket1(String id, String name) {
         for (int i = 0; i < ticketList.size(); i++) {
@@ -77,12 +76,12 @@ public class Model {
         }
         for (int i = 0; i < findTicketList.size(); i++) {
             Customer customer = findTicketList.get(i).getCustomer();
-            Object u[] = new Object[7];
+            Object u[] = new Object[8];
             u[0] = customer.getNames();
             u[1] = customer.getLastNames();
             u[2] = customer.getCustomerId();
             u[3] = findTicketList.get(i).getTicketId();
-            u[4] = findTicketList.get(i).getCustomerRoute().get(i).getTrainToDoRoute().getTrainId();
+            //u[4] = findTicketList.get(i).getCustomerRoute().get(i).getTrainToDoRoute().getTrainId();
             u[5] = findTicketList.get(i).getCustomerRoute().get(i).getDepartureTime();
             u[6] = findTicketList.get(i).getCustomerRoute().get(i).getEstimatedArrivalTime();
             getTableModel().addRow(u);
