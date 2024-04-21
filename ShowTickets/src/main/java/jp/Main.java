@@ -1,16 +1,12 @@
 package jp;
 
-import java.rmi.Naming;
 import jp.controller.Controller;
 import jp.model.Model;
-import upb.sgttp.model.domain.TicketUtilites.Ticket;
-import upb.sgttp.rmiTest.Server;
-import jp.linkedlist.singly.LinkedList;
-import jp.view.TicketSale;
+import jp.view.ShowBoarding;
 
 public class Main {
     public static void main(String[] args) {
-        TicketSale view = new TicketSale();
+        ShowBoarding view = new ShowBoarding();
         Model model = new Model();
         Controller controller = new Controller(view, model);
         view.setVisible(true);
