@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.util.Date;
 
 import jp.linkedlist.singly.LinkedList;
+import upb.sgttp.model.domain.RouteUtilities.Route;
 import upb.sgttp.model.domain.RouteUtilities.Station;
 import upb.sgttp.model.domain.TicketUtilites.CustomerCategory;
 import upb.sgttp.model.domain.TicketUtilites.StatusEnum;
@@ -22,4 +23,6 @@ public interface Server extends Remote {
     
     boolean dataToTicketRouteList(Customer customer, Contact contacto,LinkedList<Station> estacionesPorPasar, CustomerCategory category,String ticketId,
     Date purchaseDate,Date boardingDate,Date arriveDate,StatusEnum status) throws java.rmi.RemoteException;
+
+    LinkedList<Route> getRouteList() throws java.rmi.RemoteException;
 }

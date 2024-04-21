@@ -7,6 +7,7 @@ import java.util.Date;
 import jp.linkedlist.singly.LinkedList;
 import jp.util.iterator.Iterator;
 import upb.sgttp.model.domain.RouteUtilities.CustomerRoute;
+import upb.sgttp.model.domain.RouteUtilities.Route;
 import upb.sgttp.model.domain.RouteUtilities.RoutesMap;
 import upb.sgttp.model.domain.RouteUtilities.Station;
 import upb.sgttp.model.domain.TicketUtilites.CustomerCategory;
@@ -107,6 +108,11 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
                   Date boardingDate,Date arriveDate, float value, Contact customerContact, StatusEnum status, 
                   LinkedList<CustomerRoute> customerRoute,LinkedList<Station> stations
          */ 
+    }
+
+    @Override
+    public LinkedList<Route> getRouteList() throws RemoteException {
+        return routeRepository.getAllRoutesAsLinkedList();
     }
 
     

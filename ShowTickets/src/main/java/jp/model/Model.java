@@ -4,9 +4,12 @@
  */
 package jp.model;
 
+import java.rmi.Naming;
+
 import javax.swing.table.DefaultTableModel;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.RouteUtilities.Route;
+import upb.sgttp.rmiTest.Server;
 
 /**
  *
@@ -44,6 +47,16 @@ public class Model {
 
     public void setRouteList(LinkedList<Route> routeList) {
         this.routeList = routeList;
+    }
+
+
+    //lista de rutas
+    public LinkedList<Route> obtenerListaRutas() throws Exception {
+        // Obtén la referencia al objeto remoto
+        Server server = (Server) Naming.lookup("rmi://localhost/Server");
+        // Llama al método remoto en el servidor para obtener la lista de tickets
+        LinkedList<Route> routeList = server.getRouteList();
+        return routeList;
     }
 
     public void ReloadTable() {
