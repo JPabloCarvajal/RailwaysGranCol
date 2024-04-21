@@ -7,15 +7,29 @@ import upb.sgttp.model.domain.trainUtilities.Train;
 import upb.sgttp.model.repository.Routes.RouteRepository;
 import jp.util.iterator.Iterator;
 
+/**
+ * La clase CustomerRoute representa una ruta específica solicitada por un cliente.
+ * Contiene información sobre la estación de inicio, la estación de destino, la hora de salida,
+ * la hora de llegada estimada y el tren asignado para realizar la ruta, que se toma de las rutas
+ * agregadas por los administradores.
+ */
+
 public class CustomerRoute implements Serializable {
 
     private Station startPoint;
     private Station destinationPoint;
-
     private Date departureTime;
     private Date estimatedArrivalTime;
-
     private Train trainToDoRoute;
+
+    /**
+     * Constructor de CustomerRoute.
+     * @param startPoint La estación de inicio de la ruta.
+     * @param destinationPoint La estación de destino de la ruta.
+     * @param departureTime La hora de salida de la ruta.
+     * @param estimatedArrivalTime La hora de llegada estimada de la ruta.
+     * @param trainToDoRoute El tren asignado para realizar la ruta.
+     */
 
     public CustomerRoute(Station startPoint, Station destinationPoint, Date departureTime, Date estimatedArrivalTime,
             Train trainToDoRoute) {
@@ -25,6 +39,11 @@ public class CustomerRoute implements Serializable {
         this.estimatedArrivalTime = estimatedArrivalTime;
         this.trainToDoRoute = trainToDoRoute;
     }
+
+    /**
+     * Constructor vacío de CustomerRoute.
+     */
+
     public CustomerRoute(){
         this.startPoint = null;
         this.destinationPoint = null;
@@ -33,45 +52,101 @@ public class CustomerRoute implements Serializable {
         this.trainToDoRoute = null;
     }
 
+    /**
+     * Obtiene la estación de inicio de la ruta.
+     * @return La estación de inicio de la ruta.
+     */
+
     public Station getStartPoint() {
         return startPoint;
     }
+
+    /**
+     * Establece la estación de inicio de la ruta.
+     * @param startPoint La estación de inicio de la ruta.
+     */
 
     public void setStartPoint(Station startPoint) {
         this.startPoint = startPoint;
     }
 
+    /**
+     * Obtiene la estación de destino de la ruta.
+     * @return La estación de destino de la ruta.
+     */
+
     public Station getDestinationPoint() {
         return destinationPoint;
     }
+
+    /**
+     * Establece la estación de destino de la ruta.
+     * @param destinationPoint La estación de destino de la ruta.
+     */
 
     public void setDestinationPoint(Station destinationPoint) {
         this.destinationPoint = destinationPoint;
     }
 
+    /**
+     * Obtiene la hora de salida de la ruta.
+     * @return La hora de salida de la ruta.
+     */
+
     public Date getDepartureTime() {
         return departureTime;
     }
+
+    /**
+     * Obtiene la hora de salida de la ruta.
+     * @return La hora de salida de la ruta.
+     */
 
     public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 
+    /**
+     * Obtiene la hora de llegada estimada de la ruta.
+     * @return La hora de llegada estimada de la ruta.
+     */
+
     public Date getEstimatedArrivalTime() {
         return estimatedArrivalTime;
     }
+
+    /**
+     * Establece la hora de llegada estimada de la ruta.
+     * @param estimatedArrivalTime La hora de llegada estimada de la ruta.
+     */
 
     public void setEstimatedArrivalTime(Date estimatedArrivalTime) {
         this.estimatedArrivalTime = estimatedArrivalTime;
     }
 
+    /**
+     * Obtiene el tren asignado para realizar la ruta.
+     * @return El tren asignado para realizar la ruta.
+     */
+
     public Train getTrainToDoRoute() {
         return trainToDoRoute;
     }
 
+     /**
+     * Establece el tren asignado para realizar la ruta.
+     * @param trainToDoRoute El tren asignado para realizar la ruta.
+     */
+
     public void setTrainToDoRoute(Train trainToDoRoute) {
         this.trainToDoRoute = trainToDoRoute;
     }
+
+    /**
+     * Metodo auxiliar que Asigna subrutas para las estaciones del cliente y las agrupa en una lista.
+     * @param stationsToRun Las estaciones del cliente por las que tiene pasar para completar su recorrido.
+     * @return Una lista de subrutas asignadas.
+     */
 
     private LinkedList<SubRoute> assignSubRoutesForCustomerStationsToRun(LinkedList<Station> stationsToRun) {
         LinkedList<SubRoute> assignedSubRoutes = new LinkedList<>();
@@ -104,13 +179,25 @@ public class CustomerRoute implements Serializable {
         return assignedSubRoutes;
     }
 
+    /**
+     * Metodo auxiliar que Verifica el orden de una subruta con respecto a las estaciones por las que tiene que pasar
+     * proporcionadas por el cliente.
+     * @param subRoute La subruta a verificar.
+     * @param stationsToRun Las estaciones proporcionadas por el cliente.
+     * @return true si el orden de la subruta es correcto, false de lo contrario.
+     */
     private boolean checkSubRouteOrder(SubRoute subRoute, LinkedList<Station> stationsToRun) {
         int startIndex = stationsToRun.indexOf(subRoute.getStartPoint());
         int destIndex = stationsToRun.indexOf(subRoute.getDestinationPoint());
         return startIndex < destIndex;
     }
     
-    
+    /**
+     * Metodo auxiliar que Obtiene las rutas ordenadas a partir de las subrutas asignadas,ordenadas significa que las
+     * agrupa segun las que necesite el cliente especificamente y en el orden especifico.
+     * @param assignedSubRoutes Las subrutas asignadas.
+     * @return Una lista de rutas ordenadas.
+     */
 
     private LinkedList<Route> getOrderedRoutes(LinkedList<SubRoute> assignedSubRoutes) {
         // Crear una lista de rutas ordenadas
@@ -161,18 +248,30 @@ public class CustomerRoute implements Serializable {
         return orderedRoutes;
     }
 
-// Método para verificar si una ruta ya ha sido completada
-private boolean isRouteCompleted(Route route, LinkedList<Route> completedRoutes) {
-    for (int i = 0; i < completedRoutes.getSize(); i++) {
-        Route completedRoute = completedRoutes.get(i);
-        // Verificar si las estaciones de inicio y final son las mismas
-        if (route.getStartPoint().equals(completedRoute.getStartPoint()) &&
-            route.getDestinationPoint().equals(completedRoute.getDestinationPoint())) {
-            return true;
+
+    /**
+     *  Metodo auxiliar que verifica si una ruta ya ha sido completada.
+     * @param route La ruta a verificar.
+     * @param completedRoutes Las rutas completadas.
+     * @return true si la ruta ya ha sido completada, false de lo contrario.
+     */
+    private boolean isRouteCompleted(Route route, LinkedList<Route> completedRoutes) {
+        for (int i = 0; i < completedRoutes.getSize(); i++) {
+            Route completedRoute = completedRoutes.get(i);
+            // Verificar si las estaciones de inicio y final son las mismas
+            if (route.getStartPoint().equals(completedRoute.getStartPoint()) &&
+                route.getDestinationPoint().equals(completedRoute.getDestinationPoint())) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
+
+    /**
+     * Metodo auxiliar que agrupa las subrutas en rutas ordenadas.
+     * @param assignedSubRoutes Las subrutas asignadas.
+     * @return Una lista de rutas ordenadas.
+     */
     
     private LinkedList<LinkedList<SubRoute>> getGroupedRoutes(LinkedList<SubRoute> assignedSubRoutes) {
 
@@ -205,6 +304,13 @@ private boolean isRouteCompleted(Route route, LinkedList<Route> completedRoutes)
         return groupedRoutes;
     }
 
+    /**
+     * Metodo auxiliar que crea una ruta a partir de un grupo de subrutas que son las que necesita el cliente
+     * para cumplir su trayecto .
+     * @param groupedRoute El grupo de subrutas.
+     * @return La ruta creada.
+     */
+
     private Route createRouteFromSubRoutes(LinkedList<SubRoute> groupedRoute) {
         // Obtener la información necesaria de la primera subruta en el grupo
         SubRoute firstSubRoute = groupedRoute.get(0);
@@ -225,6 +331,13 @@ private boolean isRouteCompleted(Route route, LinkedList<Route> completedRoutes)
         return route;
     }
 
+    /**
+     * Metodo auxiliar que crea las rutas del cliente osea las que necesita para completar su recorrido 
+     * a partir de las rutas ordenadas.
+     * @param routes Las rutas ordenadas.
+     * @return Una lista de rutas del cliente.
+     */
+
     private LinkedList<CustomerRoute> createCustomerRoutes(LinkedList<Route> routes) {
         LinkedList<CustomerRoute> customerRoutes = new LinkedList<>();
         int size = routes.size();
@@ -237,8 +350,12 @@ private boolean isRouteCompleted(Route route, LinkedList<Route> completedRoutes)
         return customerRoutes;
     }
 
+    /**
+     * Método estático para traer las rutas de la base de datos y mostrarlas por consola.
+     */
+
     public static void traerRutasCliente() {
-        RouteRepository routeManager = new RouteRepository("src\\main\\java\\upb\\sgttp\\database\\routes.json");
+        RouteRepository routeManager = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
         LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();
     
         // Iterador para recorrer la lista de rutas
@@ -264,29 +381,36 @@ private boolean isRouteCompleted(Route route, LinkedList<Route> completedRoutes)
         }
     }
 
-    //ESTE METODO ES EL QUE SE USA YA QUE COMPILA TOD LO DE ARRIBA EN 1
+    /**
+     * Trae la ruta del cliente en función de las estaciones proporcionadas.
+     * @param stationsToRun Lista de estaciones proporcionadas por el cliente.
+     * @return Una lista enlazada de objetos CustomerRoute que representan las rutas disponibles para el cliente.
+     */
     public LinkedList<CustomerRoute> traerLaRutaDelCliente(LinkedList<Station> stationsToRun){
 
-        //Las que de las subrutas de las rutas de admin congenian con las estaciones del cliente
+        // Asigna las subrutas para las estaciones del cliente
         LinkedList<SubRoute> assignedSubRoutes = assignSubRoutesForCustomerStationsToRun(stationsToRun);
 
-        //Obtener las rutas ordenadas
+        // Obtiene las rutas ordenadas
         LinkedList<Route> orderedRoutes = getOrderedRoutes(assignedSubRoutes);
 
-        
+        // Crea las rutas del cliente a partir de las rutas ordenadas
         LinkedList<CustomerRoute> customerRoutes = createCustomerRoutes(orderedRoutes);
 
         return customerRoutes;
+
     }
+
     
-
+    /**
+     * Método principal para probar la funcionalidad de la clase.
+     * Muestra las rutas a recorrer, las rutas del cliente y la información sobre las subrutas asignadas.
+     */
     public static void main(String[] args) {
-
-
 
         RoutesMap map = new RoutesMap();
     
-        LinkedList<Station> stationsToTravel = map.stationsToTravel(map.getStationB(), map.getStationH());
+        LinkedList<Station> stationsToTravel = map.stationsToTravel(map.getStationA(), map.getStationB());
 
 
     

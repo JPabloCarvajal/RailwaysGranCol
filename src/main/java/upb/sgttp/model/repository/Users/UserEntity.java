@@ -3,10 +3,7 @@ package upb.sgttp.model.repository.Users;
 import java.io.Serializable;
 
 import upb.sgttp.model.domain.persons.AbstractPerson;
-import upb.sgttp.model.domain.persons.Admin;
-import upb.sgttp.model.domain.persons.Contact;
-import upb.sgttp.model.domain.persons.Customer;
-import upb.sgttp.model.domain.persons.Employee;
+
 import upb.sgttp.model.domain.persons.User;
 
 public class UserEntity implements Serializable{

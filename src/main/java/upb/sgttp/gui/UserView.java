@@ -4,16 +4,8 @@
  */
 package upb.sgttp.gui;
 
-import javax.accessibility.AccessibleContext;
 import javax.swing.*;
-import jp.linkedlist.singly.LinkedList;
-import upb.sgttp.model.UserManagementModel;
-import upb.sgttp.model.domain.persons.AbstractPerson;
-import upb.sgttp.model.domain.persons.Admin;
-import upb.sgttp.model.domain.persons.Contact;
-import upb.sgttp.model.domain.persons.Customer;
-import upb.sgttp.model.domain.persons.Employee;
-import upb.sgttp.model.domain.persons.User;
+
 
 /**
  *

@@ -34,6 +34,7 @@ public class AuthenticationModel {
         return userLogin;
     }
 
+    @SuppressWarnings("static-access")
     public void setUserLogin(User userLogin) {
         this.userLogin = userLogin;
     }

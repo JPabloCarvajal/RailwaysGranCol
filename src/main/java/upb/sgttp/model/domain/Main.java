@@ -8,6 +8,7 @@ public class Main {
 
     private static AuthenticationModel model;
     private static LoginView view;
+    @SuppressWarnings("unused")
     private static LoginController controller;
 
     public static void main(String[] args) {

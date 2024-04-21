@@ -404,6 +404,7 @@ public class UserRepository implements Serializable{
 //        // Devolver la LinkedList de User
 //        return users;
 //    }
+    @SuppressWarnings("unchecked")
     public LinkedList<User> getAllUsersAsLinkedList() {
         // Obtener todos los usuarios del archivo JSON
         UserEntity[] userEntities = fileJson.getObjects(pathFile, UserEntity[].class);
@@ -420,7 +421,7 @@ public class UserRepository implements Serializable{
                     case 0:
 
                         EmployeeRepository employee = new EmployeeRepository("src\\main\\java\\upb\\sgttp\\database\\employee.json");
-                        LinkedList employees = employee.getAllEmployeesAsLinkedList();
+                        @SuppressWarnings("rawtypes") LinkedList employees = employee.getAllEmployeesAsLinkedList();
                         user = new User(
                                 getEmployee(employees, entity.getPerson().getNames()),
                                 entity.getUsername(),
@@ -431,7 +432,7 @@ public class UserRepository implements Serializable{
                         break;
                     case 1:
                         CustomerRepository customer = new CustomerRepository("src\\main\\java\\upb\\sgttp\\database\\customer.json");
-                        LinkedList customers = customer.getAllCustomersAsLinkedList();
+                        @SuppressWarnings({ "rawtypes" }) LinkedList customers = customer.getAllCustomersAsLinkedList();
                         user = new User(
                                 getCustomer(customers, entity.getPerson().getNames()),
                                 entity.getUsername(),
@@ -441,7 +442,7 @@ public class UserRepository implements Serializable{
                         break;
                     case 2:
                         ContactRepository contact = new ContactRepository("src\\main\\java\\upb\\sgttp\\database\\contacts.json");
-                        LinkedList contacts = contact.getAllContactsAsLinkedList();
+                        @SuppressWarnings("rawtypes") LinkedList contacts = contact.getAllContactsAsLinkedList();
                         user = new User(
                                 getContact(contacts, entity.getPerson().getNames()),
                                 entity.getUsername(),
@@ -451,7 +452,7 @@ public class UserRepository implements Serializable{
                         break;
                     case 3:
                         AdminRepository admin = new AdminRepository("src\\main\\java\\upb\\sgttp\\database\\admins.json");
-                        LinkedList admins = admin.getAllAdminsAsLinkedList();
+                        @SuppressWarnings("rawtypes") LinkedList admins = admin.getAllAdminsAsLinkedList();
                         user = new User(
                                 getAdmin(admins, entity.getPerson().getNames()),
                                 entity.getUsername(),
@@ -475,6 +476,7 @@ public class UserRepository implements Serializable{
         return users;
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Employee getEmployee(LinkedList<Employee> list, String user) {
         for (int i = 0; i < list.size(); i++) {
             if (user.equals(list.get(i).getNames())) {
@@ -484,6 +486,7 @@ public class UserRepository implements Serializable{
         return new Employee("N/A", "N/A", new Array(1), "N/A");
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Admin getAdmin(LinkedList<Admin> list, String user) {
         for (int i = 0; i < list.size(); i++) {
             if (user.equals(list.get(i).getNames())) {
@@ -493,6 +496,7 @@ public class UserRepository implements Serializable{
         return new Admin("N/A", "N/A", new Array(1), "N/A");
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Contact getContact(LinkedList<Contact> list, String user) {
         for (int i = 0; i < list.size(); i++) {
             if (user.equals(list.get(i).getNames())) {
@@ -502,6 +506,7 @@ public class UserRepository implements Serializable{
         return new Contact("N/A", "N/A", new Array(1), "N/A");
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Customer getCustomer(LinkedList<Customer> list, String user) {
         for (int i = 0; i < list.size(); i++) {
             if (user.equals(list.get(i).getNames())) {

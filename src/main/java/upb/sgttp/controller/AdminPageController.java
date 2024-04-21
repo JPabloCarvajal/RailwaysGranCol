@@ -21,6 +21,7 @@ import upb.sgttp.model.UserManagementModel;
  *
  * @author thewe
  */
+@SuppressWarnings("F")
 public class AdminPageController {
 
     private final AdminView view;
@@ -42,6 +43,7 @@ public class AdminPageController {
                 view.dispose();
                 RouteModel model = new RouteModel();
                 RouteView view = new RouteView();
+                @SuppressWarnings("unused")
                 RouteController controller = new RouteController(model, view);
                 view.setVisible(true);
                 view.setLocationRelativeTo(null);
@@ -55,6 +57,7 @@ public class AdminPageController {
                 view.dispose();
                 TrainModel model = new TrainModel();
                 TrainView view = new TrainView();
+                @SuppressWarnings("unused")
                 TrainController controller = new TrainController(model, view);
                 view.setVisible(true);
                 view.setLocationRelativeTo(null);
@@ -68,6 +71,7 @@ public class AdminPageController {
                 view.dispose();
                 UserManagementModel model = new UserManagementModel();
                 UserView view = new UserView();
+                @SuppressWarnings("unused")
                 UserManagementController controller = new UserManagementController(view, model);
                 view.setVisible(true);
                 view.setLocationRelativeTo(null);
@@ -81,6 +85,7 @@ public class AdminPageController {
                 view.dispose();
                 AuthenticationModel model = new AuthenticationModel();
                 LoginView view = new LoginView();
+                @SuppressWarnings("unused")
                 LoginController controller = new LoginController(model, view);
                 view.setVisible(true);
                 view.setLocationRelativeTo(null);

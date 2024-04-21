@@ -103,21 +103,25 @@ public class AdminView extends javax.swing.JFrame {
     }
 
     // Acción del botón "Main menu"
+    @SuppressWarnings("unused")
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
     // Acción del botón "Gestion de trenes"
+    @SuppressWarnings("unused")
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
     // Acción del botón "Gestion de rutas"
+    @SuppressWarnings("unused")
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
     // Acción del botón "Gestion de usuarios"
+    @SuppressWarnings("unused")
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }

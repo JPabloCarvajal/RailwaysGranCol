@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.File;
 
+@SuppressWarnings("unused")
 public class FileJsonAdapter<E> implements FileJsonInterface<E> ,Serializable{
 
     private static FileJsonAdapter<?> instance;
@@ -136,6 +137,7 @@ public class FileJsonAdapter<E> implements FileJsonInterface<E> ,Serializable{
 //            throw e;
 //        }
 //    }
+    @SuppressWarnings("unchecked")
     public static synchronized <E> FileJsonAdapter<E> getInstance() {
         if (instance == null) {
             instance = new FileJsonAdapter<>();

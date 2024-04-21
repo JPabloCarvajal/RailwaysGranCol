@@ -26,6 +26,7 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
     private TicketRepository ticketRepository;
     private CustomerRepository customerRepository;
     private ContactRepository contactsRepository;
+    @SuppressWarnings("unused")
     private RouteRepository routeRepository;
 
     public ServerImplement() throws RemoteException {

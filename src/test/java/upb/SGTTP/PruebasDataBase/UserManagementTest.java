@@ -1,10 +1,10 @@
 package upb.SGTTP.PruebasDataBase;
 
-import jp.array.Array;
-import upb.sgttp.model.domain.persons.AbstractPerson;
-import upb.sgttp.model.domain.persons.User;
-import upb.sgttp.model.repository.Users.UserRepository;
-import jp.util.iterator.Iterator;
+// import jp.array.Array;
+// import upb.sgttp.model.domain.persons.AbstractPerson;
+// import upb.sgttp.model.domain.persons.User;
+// import upb.sgttp.model.repository.Users.UserRepository;
+// import jp.util.iterator.Iterator;
 
 public class UserManagementTest {/*    public static void main(String[] args) {
         // Ruta del archivo JSON de usuarios
