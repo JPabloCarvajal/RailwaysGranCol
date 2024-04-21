@@ -4,20 +4,23 @@
  */
 package jp.model;
 
+import java.rmi.Naming;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import jp.linkedlist.singly.LinkedList;
-<<<<<<< HEAD
 import javax.swing.table.DefaultTableModel;
 import upb.sgttp.model.domain.TicketUtilites.Ticket;
 import upb.sgttp.model.domain.persons.AbstractPerson;
 import upb.sgttp.model.domain.persons.Customer;
-=======
 import upb.sgttp.model.domain.RouteUtilities.Route;
->>>>>>> b33523f5ab1084388b7747745fdc98b685180ff8
+import upb.sgttp.model.domain.RouteUtilities.Station;
+import upb.sgttp.model.domain.TicketUtilites.CustomerCategory;
+import upb.sgttp.model.domain.TicketUtilites.StatusEnum;
+import upb.sgttp.model.domain.persons.Contact;
+import upb.sgttp.rmiTest.Server;
 
 /**
  *
@@ -31,15 +34,12 @@ public class Model {
         routeList = new LinkedList<>();//obtener el linkedlist de el rmi de rutas
     }
 
-<<<<<<< HEAD
-   // public boolean ConsultTicket(String id, String name) throws Exception {
-        //return ConsultarExistenciaTicket("id", "name");
-   // }
-=======
+    // public boolean ConsultTicket(String id, String name) throws Exception {
+    //return ConsultarExistenciaTicket("id", "name");
+    // }
     public LinkedList<Route> getRouteList() {
         return routeList;
     }
->>>>>>> b33523f5ab1084388b7747745fdc98b685180ff8
 
     public void setRouteList(LinkedList<Route> routeList) {
         this.routeList = routeList;
@@ -64,6 +64,7 @@ public class Model {
         id = "T" + formattedDateTime;
         return id;
     }
+
     public Date getDate() {
         String id = "";
         LocalDateTime currentDateTime = LocalDateTime.now();
@@ -71,35 +72,32 @@ public class Model {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
-<<<<<<< HEAD
 
-    public LinkedList<Ticket> getFindTicketList() {
-        return findTicketList;
-    }
+    public boolean dataToTicketNormalRoute(Customer customer, Contact contacto, Station A, Station B, CustomerCategory category, String ticketId,
+            Date purchaseDate, Date boardingDate, Date arriveDate, StatusEnum status) {
 
-    public void setFindTicketList(LinkedList<Ticket> findTicketList) {
-        this.findTicketList = findTicketList;
-    }
+        try {
+            Server server = (Server) Naming.lookup("rmi://localhost/Server");
 
-    public void ReloadTable() {
-        while (getTableModel().getRowCount() > 0) {
-            getTableModel().removeRow(0);
-        }
-        for (int i = 0; i < findTicketList.size(); i++) {
-            Customer customer = findTicketList.get(i).getCustomer();
-            Object u[] = new Object[8];
-            u[0] = customer.getNames();
-            u[1] = customer.getLastNames();
-            u[2] = customer.getCustomerId();
-            u[3] = findTicketList.get(i).getTicketId();
-            //u[4] = findTicketList.get(i).getCustomerRoute().get(i).getTrainToDoRoute().getTrainId();
-            u[5] = findTicketList.get(i).getCustomerRoute().get(i).getDepartureTime();
-            u[6] = findTicketList.get(i).getCustomerRoute().get(i).getEstimatedArrivalTime();
-            getTableModel().addRow(u);
+            return server.dataToTicketNormalRoute(customer, contacto, A, B, category, ticketId,
+                    purchaseDate, boardingDate, arriveDate, status);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
-=======
-    //metodos rmi para pasarle los datos a los jsons
->>>>>>> b33523f5ab1084388b7747745fdc98b685180ff8
+    public boolean dataToTicketRouteList(Customer customer, Contact contacto, LinkedList<Station> estaciones, CustomerCategory category, String ticketId,
+            Date purchaseDate, Date boardingDate, Date arriveDate, StatusEnum status) {
+
+        try {
+            Server server = (Server) Naming.lookup("rmi://localhost/Server");
+
+            return server.dataToTicketRouteList(customer, contacto, estaciones, category, ticketId,
+                    purchaseDate, boardingDate, arriveDate, status);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

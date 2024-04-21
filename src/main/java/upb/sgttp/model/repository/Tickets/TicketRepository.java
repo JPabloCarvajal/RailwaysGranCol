@@ -33,7 +33,7 @@ public class TicketRepository implements Serializable{
                 ticket.getPurchaseDate(),
                 ticket.getBoardingDate(),
                 ticket.getArriveDate(),
-                ticket. getValue(),
+                ticket.getValue(),
                 ticket.getCustomerContact(),
                 ticket.getStatus(),
                 ticket.getCustomerRoute(),

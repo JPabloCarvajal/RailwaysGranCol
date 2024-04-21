@@ -30,10 +30,10 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
 
     public ServerImplement() throws RemoteException {
         super();
-        this.ticketRepository = new TicketRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\tickets.json");
-        this.customerRepository = new CustomerRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\customer.json");
-        this.contactsRepository = new ContactRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\contacts.json");
-        this.routeRepository = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
+        this.ticketRepository = new TicketRepository("src\\main\\java\\upb\\sgttp\\database\\tickets.json");
+        this.customerRepository = new CustomerRepository("src\\main\\java\\upb\\sgttp\\database\\customer.json");
+        this.contactsRepository = new ContactRepository("src\\main\\java\\upb\\sgttp\\database\\contacts.json");
+        this.routeRepository = new RouteRepository("src\\main\\java\\upb\\sgttp\\database\\routes.json");
     }
 
     @Override
@@ -99,9 +99,7 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
 
         LinkedList<CustomerRoute> rutaPersonalizadaCliente = customerRoute.traerLaRutaDelCliente(stations);
         float precio = mapa.calculateTotalPrice(mapa.calculateTotalDistance(stations), category);
-
         Ticket ticket = new Ticket(customer, category, ticketId, purchaseDate, boardingDate, arriveDate, precio, contacto, status, rutaPersonalizadaCliente, stations);
-        
         return ticketRepository.addTicket(ticket);
 
         /*

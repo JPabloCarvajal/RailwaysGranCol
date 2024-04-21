@@ -53,5 +53,237 @@
       },
       "available": true
     }
+  },
+  {
+    "routeId": "Estacion A-Estacion B",
+    "stations": {
+      "head": {
+        "next": {
+          "element": {
+            "stationName": "Estacion B",
+            "cityStation": "Ciudad B"
+          }
+        },
+        "element": {
+          "stationName": "Estacion A",
+          "cityStation": "Ciudad A"
+        }
+      },
+      "tail": {
+        "element": {
+          "stationName": "Estacion B",
+          "cityStation": "Ciudad B"
+        }
+      },
+      "size": 2
+    },
+    "totalKmToTravel": 30.0,
+    "destinationPoint": {
+      "stationName": "Estacion B",
+      "cityStation": "Ciudad B"
+    },
+    "startPoint": {
+      "stationName": "Estacion A",
+      "cityStation": "Ciudad A"
+    },
+    "departureTime": "Apr 22, 2024, 3:30:00 PM",
+    "estimatedArrivalTime": "Apr 22, 2024, 4:17:12 PM",
+    "trainToDoRoute": {
+      "trainName": "4",
+      "trainId": "M20240421143832",
+      "kilometers": 0.0,
+      "loadingCapacity": 6,
+      "brand": "Mercedez-Benz",
+      "customersWagons": {
+        "E": [
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M20240421143832",
+            "wagonNum": 0
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M20240421143832",
+            "wagonNum": 1
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M20240421143832",
+            "wagonNum": 2
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M20240421143832",
+            "wagonNum": 3
+          }
+        ],
+        "size": 8
+      },
+      "luggageWagons": {
+        "E": [
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M20240421143832",
+            "wagonNum": 4
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M20240421143832",
+            "wagonNum": 5
+          }
+        ],
+        "size": 4
+      },
+      "available": false
+    }
+  },
+  {
+    "routeId": "Estacion A-Estacion B",
+    "stations": {
+      "head": {
+        "next": {
+          "element": {
+            "stationName": "Estacion B",
+            "cityStation": "Ciudad B"
+          }
+        },
+        "element": {
+          "stationName": "Estacion A",
+          "cityStation": "Ciudad A"
+        }
+      },
+      "tail": {
+        "element": {
+          "stationName": "Estacion B",
+          "cityStation": "Ciudad B"
+        }
+      },
+      "size": 2
+    },
+    "totalKmToTravel": 30.0,
+    "destinationPoint": {
+      "stationName": "Estacion B",
+      "cityStation": "Ciudad B"
+    },
+    "startPoint": {
+      "stationName": "Estacion A",
+      "cityStation": "Ciudad A"
+    },
+    "departureTime": "Apr 23, 2024, 3:30:00 PM",
+    "estimatedArrivalTime": "Apr 23, 2024, 4:17:12 PM",
+    "trainToDoRoute": {
+      "trainName": "5",
+      "trainId": "M20240421152518",
+      "kilometers": 0.0,
+      "loadingCapacity": 7,
+      "brand": "Mercedez-Benz",
+      "customersWagons": {
+        "E": [
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M20240421152518",
+            "wagonNum": 0
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M20240421152518",
+            "wagonNum": 1
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M20240421152518",
+            "wagonNum": 2
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M20240421152518",
+            "wagonNum": 3
+          },
+          {
+            "standarAmount": 18,
+            "executiveAmount": 8,
+            "premiunAmount": 4,
+            "customers": {
+              "size": 0
+            },
+            "asociatedTrainID": "M20240421152518",
+            "wagonNum": 4
+          }
+        ],
+        "size": 10
+      },
+      "luggageWagons": {
+        "E": [
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M20240421152518",
+            "wagonNum": 5
+          },
+          {
+            "luggagesWagon": {
+              "size": 0
+            },
+            "wagonWeight": 0.0,
+            "luggagesAmount": 0,
+            "asociatedTrainID": "M20240421152518",
+            "wagonNum": 6
+          }
+        ],
+        "size": 4
+      },
+      "available": false
+    }
   }
 ]

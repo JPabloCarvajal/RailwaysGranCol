@@ -75,7 +75,7 @@ public class CustomerRoute implements Serializable {
 
     private LinkedList<SubRoute> assignSubRoutesForCustomerStationsToRun(LinkedList<Station> stationsToRun) {
         LinkedList<SubRoute> assignedSubRoutes = new LinkedList<>();
-        RouteRepository routeManager = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
+        RouteRepository routeManager = new RouteRepository("src\\main\\java\\upb\\sgttp\\database\\routes.json");
 
         // Iterar sobre todas las rutas disponibles
         LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();

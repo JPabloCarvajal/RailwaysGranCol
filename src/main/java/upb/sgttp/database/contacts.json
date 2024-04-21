@@ -1,2 +1,101 @@
 [
+  {
+    "contactId": "Estacion B",
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "contactId": "Estacion B",
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "contactId": "Estacion B",
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "contactId": "Estacion B",
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "contactId": "Estacion B",
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "contactId": "Estacion A",
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "contactId": "Estacion B",
+    "names": "2",
+    "lastNames": "2",
+    "phoneNumbers": {
+      "E": [
+        "2"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "contactId": "Estacion B",
+    "names": "4",
+    "lastNames": "4",
+    "phoneNumbers": {
+      "E": [
+        "4"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "contactId": "Estacion B",
+    "names": "6",
+    "lastNames": "6",
+    "phoneNumbers": {
+      "E": [
+        "6"
+      ],
+      "size": 1
+    }
+  }
 ]

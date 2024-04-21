@@ -55,7 +55,6 @@ public class Controller {
                 String station1 = view.getjTextField4().getText();
                 String station2 = view.getjTextField5().getText();
                 String StacionesPersonalizadas = view.getjTextField6().getText();
-                String[] estacionesCustomer = StacionesPersonalizadas.split(",");
                 String pesoMaleta = view.getjTextField7().getText();
                 String[] pesos = pesoMaleta.split(",");
                 LinkedList<Luggage> luggage = new LinkedList<>();
@@ -64,6 +63,7 @@ public class Controller {
                 RoutesMap mapa = new RoutesMap();
                 int precio = 0;
                 boolean rutaPersonalizada = view.getjCheckBox1().isSelected();
+                System.out.println("rutaPersonalizada = " + rutaPersonalizada);
                 jp.array.Array array = new jp.array.Array(numbers);
                 //persona Contacto
                 String nombresContacto = view.getjTextField8().getText();
@@ -84,41 +84,50 @@ public class Controller {
                 CustomerRoute customerRoute;
                 LinkedList<CustomerRoute> customerRouteList = new LinkedList<>();
                 float km = 0f;
-                if (!nombres.isBlank()&&!apellidos.isBlank()&&!numeros.isBlank()&&!nombresContacto.isBlank()&&!apellidosContacto.isBlank()&&!numerosContacto.isBlank()&&!pesoMaleta.isBlank()) {
-                    if (rutaPersonalizada) {
+                if (!nombres.isBlank() && !apellidos.isBlank() && !numeros.isBlank() && !nombresContacto.isBlank() && !apellidosContacto.isBlank() && !numerosContacto.isBlank() && !pesoMaleta.isBlank()) {
+
+                    if (!rutaPersonalizada) {
+                        km = mapa.calculateTotalDistance(mapa.stationsToTravel(mapa.getStation(station1), mapa.getStation(station2)));
+
+                        switch (sType) {
+                            case "PREMIUM":
+                                precio += 1800 * km;
+                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station1), CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                break;
+                            case "EXECUTIVE":
+                                precio += 1200 * km;
+                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station1), CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                break;
+                            case "STANDARD":
+                                precio += 1000 * km;
+                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station1), CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                break;
+                        }
+
+                    } else {
+                        String[] estacionesCustomer = StacionesPersonalizadas.split(",");
                         for (int i = 0; i < estacionesCustomer.length; i++) {
                             stations.add(mapa.getStation(estacionesCustomer[i]));
+                            System.out.println("stations.get(i) = " + stations.get(i).getStationName());
                         }
-                        CustomerRoute aux = new CustomerRoute();
-                        customerRouteList = aux.traerLaRutaDelCliente(stations);
-//                    customerRoute = new CustomerRoute(stations.peek(), stations.peekLast(), model.getDate(),mapa.calculateEstimatedArrivalTime(model.getDate(),stations) , trainToDoRoute);
-                    } else {
-                        for (int i = 0; i < routes.size(); i++) {
-                            if (routes.get(i).getStartPoint().getStationName().equals(station1) && routes.get(i).getDestinationPoint().getStationName().equals(station2)) {
-//                            route = routes.get(i);
-                                stations = routes.get(i).getStations();
-//                            date = routes.get(i).getDepartureTime();
-//                            dateArrival = routes.get(i).getArrivalTime();
-                                customerRoute = new CustomerRoute(routes.get(i).getStartPoint(), routes.get(i).getDestinationPoint(), routes.get(i).getDepartureTime(), routes.get(i).getArrivalTime(), routes.get(i).getTrainToDoRoute());
-                                km = routes.get(i).getTotalKmToTravel();
-                                customerRouteList.add(customerRoute);
+                        for (int i = 0; i < estacionesCustomer.length; i++) {
+                            System.out.println("estacion posicion " + i + " : " + estacionesCustomer[i]);
+                        }
+                        km = mapa.calculateTotalDistance(stations);
+                        switch (sType) {
+                            case "PREMIUM":
+                                precio += 1800 * km;
+                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.PREMIUN, numeros, model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
                                 break;
-                            }
+                            case "EXECUTIVE":
+                                precio += 1200 * km;
+                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.EXECUTIVE, numeros, model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                break;
+                            case "STANDARD":
+                                precio += 1000 * km;
+                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.STANDAR, numeros, model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                break;
                         }
-                    }
-                    switch (sType) {
-                        case "PREMIUM":
-                            precio += 1800 * km;
-                            ticket = new Ticket(customer, CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), customerRouteList.get(0).getDepartureTime(), customerRouteList.get(0).getEstimatedArrivalTime(), precio, contact, StatusEnum.ABOARD, customerRouteList, stations);
-                            break;
-                        case "EXECUTIVE":
-                            precio += 1200 * km;
-                            ticket = new Ticket(customer, CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), customerRouteList.get(0).getDepartureTime(), customerRouteList.get(0).getEstimatedArrivalTime(), precio, contact, StatusEnum.ABOARD, customerRouteList, stations);
-                            break;
-                        case "STANDARD":
-                            precio += 1000 * km;
-                            ticket = new Ticket(customer, CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), customerRouteList.get(0).getDepartureTime(), customerRouteList.get(0).getEstimatedArrivalTime(), precio, contact, StatusEnum.ABOARD, customerRouteList, stations);
-                            break;
                     }
                     view.setjLabel18(precio);
                     view.getjTextField1().setText("");
@@ -134,6 +143,7 @@ public class Controller {
                     view.getjTextField11().setText("");
                 }
             }
-        });
+        }
+        );
     }
 }

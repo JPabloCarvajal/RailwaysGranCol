@@ -9,7 +9,7 @@ import upb.sgttp.rmiTest.Server;
 import jp.linkedlist.singly.LinkedList;
 import jp.view.TicketSale;
 
-public class Main {
+public class Main {    
     public static void main(String[] args) {
         TicketSale view = new TicketSale();
         Model model = new Model();
