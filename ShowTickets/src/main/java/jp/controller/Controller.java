@@ -39,6 +39,8 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    String idTrain = view.getjTextField1().getText();
+                    model.setTicketList(idTrain);
                     model.ReloadTable();
                 } catch (Exception ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

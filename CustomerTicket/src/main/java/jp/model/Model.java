@@ -5,15 +5,11 @@
 package jp.model;
 
 import java.rmi.Naming;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import jp.linkedlist.singly.LinkedList;
-import javax.swing.table.DefaultTableModel;
-import upb.sgttp.model.domain.TicketUtilites.Ticket;
-import upb.sgttp.model.domain.persons.AbstractPerson;
 import upb.sgttp.model.domain.persons.Customer;
 import upb.sgttp.model.domain.RouteUtilities.Route;
 import upb.sgttp.model.domain.RouteUtilities.Station;
@@ -28,21 +24,7 @@ import upb.sgttp.rmiTest.Server;
  */
 public class Model {
 
-    LinkedList<Route> routeList;
-
     public Model() {
-        routeList = new LinkedList<>();//obtener el linkedlist de el rmi de rutas
-    }
-
-    // public boolean ConsultTicket(String id, String name) throws Exception {
-    //return ConsultarExistenciaTicket("id", "name");
-    // }
-    public LinkedList<Route> getRouteList() {
-        return routeList;
-    }
-
-    public void setRouteList(LinkedList<Route> routeList) {
-        this.routeList = routeList;
     }
 
     public String findId() {

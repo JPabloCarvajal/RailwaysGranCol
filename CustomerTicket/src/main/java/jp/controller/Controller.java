@@ -6,22 +6,15 @@ package jp.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import jp.linkedlist.singly.LinkedList;
 import jp.model.Model;
-import jp.util.array.Array;
 import jp.view.TicketSale;
 import upb.sgttp.model.domain.Luggage;
-import upb.sgttp.model.domain.RouteUtilities.CustomerRoute;
-import upb.sgttp.model.domain.RouteUtilities.Route;
 import upb.sgttp.model.domain.RouteUtilities.RoutesMap;
 import upb.sgttp.model.domain.RouteUtilities.Station;
 import upb.sgttp.model.domain.TicketUtilites.CustomerCategory;
 import upb.sgttp.model.domain.TicketUtilites.StatusEnum;
-import upb.sgttp.model.domain.TicketUtilites.Ticket;
 import upb.sgttp.model.domain.persons.Contact;
 import upb.sgttp.model.domain.persons.Customer;
 
@@ -43,7 +36,6 @@ public class Controller {
     private void initController() {
         // Configurar los listeners de la vista para interactuar con el modelo
         JButton buyTicket = view.getjButton1();
-
         buyTicket.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -56,14 +48,9 @@ public class Controller {
                 String station2 = view.getjTextField5().getText();
                 String StacionesPersonalizadas = view.getjTextField6().getText();
                 String pesoMaleta = view.getjTextField7().getText();
-                String[] pesos = pesoMaleta.split(",");
-                LinkedList<Luggage> luggage = new LinkedList<>();
-                luggage.add(new Luggage(Integer.parseInt(pesos[0]), 0));
-                luggage.add(new Luggage(Integer.parseInt(pesos[1]), 0));
                 RoutesMap mapa = new RoutesMap();
                 int precio = 0;
                 boolean rutaPersonalizada = view.getjCheckBox1().isSelected();
-                System.out.println("rutaPersonalizada = " + rutaPersonalizada);
                 jp.array.Array array = new jp.array.Array(numbers);
                 //persona Contacto
                 String nombresContacto = view.getjTextField8().getText();
@@ -71,24 +58,18 @@ public class Controller {
                 String numerosContacto = view.getjTextField10().getText();
                 String[] numbersContacto = numerosContacto.split(",");
                 jp.array.Array<String> arrayContact = new jp.array.Array<>(numbersContacto);
-                Contact contact = new Contact(nombresContacto, apellidosContacto, arrayContact, model.findIdContact());
-                Customer customer = new Customer(luggage, nombres, apellidos, array, model.findId());
-//                Ticket ticket;
-//                LinkedList<Route> routes = model.getRouteList();
-                //crear ruta personalizada
-//                int index = 0;
-//                Route route = null;
                 LinkedList<Station> stations = new LinkedList<>();
-//                Date date = new Date();
-//                Date dateArrival = new Date();
-//                CustomerRoute customerRoute;
-//                LinkedList<CustomerRoute> customerRouteList = new LinkedList<>();
                 float km;
                 if (!nombres.isBlank() && !apellidos.isBlank() && !numeros.isBlank() && !nombresContacto.isBlank() && !apellidosContacto.isBlank() && !numerosContacto.isBlank() && !pesoMaleta.isBlank()) {
-
+                    String[] pesos = pesoMaleta.split(",");
+                    LinkedList<Luggage> luggage = new LinkedList<>();
+                    for (int i = 0; i < 2 || i < pesos.length; i++) {
+                        luggage.add(new Luggage(Integer.parseInt(pesos[i]), 0));
+                    }
+                    Contact contact = new Contact(nombresContacto, apellidosContacto, arrayContact, model.findIdContact());
+                    Customer customer = new Customer(luggage, nombres, apellidos, array, model.findId());
                     if (!rutaPersonalizada) {
                         km = mapa.calculateTotalDistance(mapa.stationsToTravel(mapa.getStation(station1), mapa.getStation(station2)));
-
                         switch (sType) {
                             case "PREMIUM":
                                 precio += 1800 * km;
@@ -108,24 +89,20 @@ public class Controller {
                         String[] estacionesCustomer = StacionesPersonalizadas.split(",");
                         for (int i = 0; i < estacionesCustomer.length; i++) {
                             stations.add(mapa.getStation(estacionesCustomer[i]));
-                            System.out.println("stations.get(i) = " + stations.get(i).getStationName());
-                        }
-                        for (int i = 0; i < estacionesCustomer.length; i++) {
-                            System.out.println("estacion posicion " + i + " : " + estacionesCustomer[i]);
                         }
                         km = mapa.calculateTotalDistance(stations);
                         switch (sType) {
                             case "PREMIUM":
                                 precio += 1800 * km;
-                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.PREMIUN, numeros, model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
                                 break;
                             case "EXECUTIVE":
                                 precio += 1200 * km;
-                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.EXECUTIVE, numeros, model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
                                 break;
                             case "STANDARD":
                                 precio += 1000 * km;
-                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.STANDAR, numeros, model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
                                 break;
                         }
                     }
