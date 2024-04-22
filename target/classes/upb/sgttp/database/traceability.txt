@@ -22,3 +22,5 @@ ID: A20240420004346 agrego un tren Id:M20240421152518
 ID: A20240420004346 agrego un ruta Id:Estacion A-Estacion B
 ID: A20240420004346 agrego un tren Id:M20240421201152
 ID: A20240420004346 agrego un ruta Id:Estacion A-Estacion B
+ID: A20240420004346 agrego un tren Id:M20240421235308
+ID: A20240420004346 agrego un ruta Id:Estacion A-Estacion B

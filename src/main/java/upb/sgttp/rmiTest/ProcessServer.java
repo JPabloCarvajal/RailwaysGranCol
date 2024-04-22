@@ -12,12 +12,9 @@ public class ProcessServer {
         try {
             // Crea una instancia del objeto remoto
             ServerImplement server = new ServerImplement();
-
             // Registra el objeto remoto en el registro RMI
             Registry registry = LocateRegistry.createRegistry(1099);
             registry.rebind("Server", server);
-
-            System.out.println("Server is running...");
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();

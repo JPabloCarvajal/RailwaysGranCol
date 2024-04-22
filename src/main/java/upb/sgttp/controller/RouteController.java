@@ -58,8 +58,14 @@ public class RouteController {
                 String idtren = view.getjTextField4().getText();
                 Train train = model.getTrain(idtren);
                 if (train.isAvailable()) {
-                    LinkedList<Station> stations = mapa.stationsToTravel(mapa.getStation(station1), mapa.getStation(station2));
-                    Route route = new Route(stations, mapa.getStation(station1), mapa.getStation(station2), model.DateConverter(fecha), mapa.calculateEstimatedArrivalTime(model.DateConverter(fecha), stations), mapa.calculateTotalDistance(stations), train, model.createIdRoute(mapa.getStation(station1), mapa.getStation(station2)));
+                    String[] station= station1.split(",");
+                    LinkedList<Station> stations = new LinkedList<>();
+                    for(int i=0;i<station.length;i++){
+                        stations.add(mapa.getStation(station[i]));
+                    }
+                    //
+//                    LinkedList<Station> stations = mapa.stationsToTravel(mapa.getStation(station1), mapa.getStation(station2));
+                    Route route = new Route(stations, stations.peek(), stations.peekLast(), model.DateConverter(fecha), mapa.calculateEstimatedArrivalTime(model.DateConverter(fecha), stations), mapa.calculateTotalDistance(stations), train, model.createIdRoute(stations.peek(), stations.peekLast()));
                     train.setAvailable(false);
                     model.setAvailable(train);
                     model.addRoute(route);

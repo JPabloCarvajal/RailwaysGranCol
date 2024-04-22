@@ -25,5 +25,52 @@
       "size": 0
     },
     "available": false
+  },
+  {
+    "trainName": "2",
+    "trainId": "M20240421235308",
+    "kilometers": 0.0,
+    "loadingCapacity": 3,
+    "brand": "Mercedez-Benz",
+    "customersWagons": {
+      "E": [
+        {
+          "standarAmount": 18,
+          "executiveAmount": 8,
+          "premiunAmount": 4,
+          "customers": {
+            "size": 0
+          },
+          "asociatedTrainID": "M20240421235308",
+          "wagonNum": 0
+        },
+        {
+          "standarAmount": 18,
+          "executiveAmount": 8,
+          "premiunAmount": 4,
+          "customers": {
+            "size": 0
+          },
+          "asociatedTrainID": "M20240421235308",
+          "wagonNum": 1
+        }
+      ],
+      "size": 4
+    },
+    "luggageWagons": {
+      "E": [
+        {
+          "luggagesWagon": {
+            "size": 0
+          },
+          "wagonWeight": 0.0,
+          "luggagesAmount": 0,
+          "asociatedTrainID": "M20240421235308",
+          "wagonNum": 2
+        }
+      ],
+      "size": 2
+    },
+    "available": false
   }
 ]
