@@ -23,7 +23,7 @@
         "size": 2
       },
       "type": 1,
-      "customerId": "C20240421201329",
+      "customerId": "C20240421205911",
       "names": "1",
       "lastNames": "1",
       "phoneNumbers": {
@@ -34,14 +34,14 @@
       }
     },
     "customerCategory": "PREMIUN",
-    "ticketId": "T20240421201329",
-    "purchaseDate": "Apr 21, 2024, 8:13:29 PM",
-    "boardingDate": "Apr 21, 2024, 8:13:29 PM",
+    "ticketId": "T20240421205911",
+    "purchaseDate": "Apr 21, 2024, 8:59:11 PM",
+    "boardingDate": "Apr 21, 2024, 8:59:11 PM",
     "value": 54000.0,
-    "arriveDate": "Apr 21, 2024, 8:13:29 PM",
+    "arriveDate": "Apr 21, 2024, 8:59:11 PM",
     "customerContact": {
       "type": 2,
-      "contactId": "CO20240421201329",
+      "contactId": "CO20240421205911",
       "names": "1",
       "lastNames": "1",
       "phoneNumbers": {
@@ -64,7 +64,34 @@
             "cityStation": "Ciudad B"
           },
           "departureTime": "Apr 22, 2024, 3:30:00 PM",
-          "estimatedArrivalTime": "Apr 22, 2024, 4:17:12 PM"
+          "estimatedArrivalTime": "Apr 22, 2024, 4:17:12 PM",
+          "trainToDoRoute": {
+            "trainName": "1",
+            "trainId": "M20240421201152",
+            "kilometers": 0.0,
+            "loadingCapacity": 1,
+            "brand": "Mercedez-Benz",
+            "customersWagons": {
+              "E": [
+                {
+                  "standarAmount": 18,
+                  "executiveAmount": 8,
+                  "premiunAmount": 4,
+                  "customers": {
+                    "size": 0
+                  },
+                  "asociatedTrainID": "M20240421201152",
+                  "wagonNum": 0
+                }
+              ],
+              "size": 2
+            },
+            "luggageWagons": {
+              "E": [],
+              "size": 0
+            },
+            "available": false
+          }
         }
       },
       "tail": {
@@ -78,7 +105,194 @@
             "cityStation": "Ciudad B"
           },
           "departureTime": "Apr 22, 2024, 3:30:00 PM",
-          "estimatedArrivalTime": "Apr 22, 2024, 4:17:12 PM"
+          "estimatedArrivalTime": "Apr 22, 2024, 4:17:12 PM",
+          "trainToDoRoute": {
+            "trainName": "1",
+            "trainId": "M20240421201152",
+            "kilometers": 0.0,
+            "loadingCapacity": 1,
+            "brand": "Mercedez-Benz",
+            "customersWagons": {
+              "E": [
+                {
+                  "standarAmount": 18,
+                  "executiveAmount": 8,
+                  "premiunAmount": 4,
+                  "customers": {
+                    "size": 0
+                  },
+                  "asociatedTrainID": "M20240421201152",
+                  "wagonNum": 0
+                }
+              ],
+              "size": 2
+            },
+            "luggageWagons": {
+              "E": [],
+              "size": 0
+            },
+            "available": false
+          }
+        }
+      },
+      "size": 1
+    },
+    "stations": {
+      "head": {
+        "next": {
+          "element": {
+            "stationName": "Estacion B",
+            "cityStation": "Ciudad B"
+          }
+        },
+        "element": {
+          "stationName": "Estacion A",
+          "cityStation": "Ciudad A"
+        }
+      },
+      "tail": {
+        "element": {
+          "stationName": "Estacion B",
+          "cityStation": "Ciudad B"
+        }
+      },
+      "size": 2
+    }
+  },
+  {
+    "customer": {
+      "luggages": {
+        "head": {
+          "next": {
+            "element": {
+              "weight": 0.0,
+              "wagonId": 0
+            }
+          },
+          "element": {
+            "weight": 0.0,
+            "wagonId": 0
+          }
+        },
+        "tail": {
+          "element": {
+            "weight": 0.0,
+            "wagonId": 0
+          }
+        },
+        "size": 2
+      },
+      "type": 1,
+      "customerId": "C20240421210141",
+      "names": "1",
+      "lastNames": "1",
+      "phoneNumbers": {
+        "E": [
+          "1"
+        ],
+        "size": 1
+      }
+    },
+    "customerCategory": "PREMIUN",
+    "ticketId": "1",
+    "purchaseDate": "Apr 21, 2024, 9:01:41 PM",
+    "boardingDate": "Apr 21, 2024, 9:01:41 PM",
+    "value": 54000.0,
+    "arriveDate": "Apr 21, 2024, 9:01:41 PM",
+    "customerContact": {
+      "type": 2,
+      "contactId": "CO20240421210141",
+      "names": "1",
+      "lastNames": "1",
+      "phoneNumbers": {
+        "E": [
+          "1"
+        ],
+        "size": 1
+      }
+    },
+    "status": "ABOARD",
+    "customerRoute": {
+      "head": {
+        "element": {
+          "startPoint": {
+            "stationName": "Estacion A",
+            "cityStation": "Ciudad A"
+          },
+          "destinationPoint": {
+            "stationName": "Estacion B",
+            "cityStation": "Ciudad B"
+          },
+          "departureTime": "Apr 22, 2024, 3:30:00 PM",
+          "estimatedArrivalTime": "Apr 22, 2024, 4:17:12 PM",
+          "trainToDoRoute": {
+            "trainName": "1",
+            "trainId": "M20240421201152",
+            "kilometers": 0.0,
+            "loadingCapacity": 1,
+            "brand": "Mercedez-Benz",
+            "customersWagons": {
+              "E": [
+                {
+                  "standarAmount": 18,
+                  "executiveAmount": 8,
+                  "premiunAmount": 4,
+                  "customers": {
+                    "size": 0
+                  },
+                  "asociatedTrainID": "M20240421201152",
+                  "wagonNum": 0
+                }
+              ],
+              "size": 2
+            },
+            "luggageWagons": {
+              "E": [],
+              "size": 0
+            },
+            "available": false
+          }
+        }
+      },
+      "tail": {
+        "element": {
+          "startPoint": {
+            "stationName": "Estacion A",
+            "cityStation": "Ciudad A"
+          },
+          "destinationPoint": {
+            "stationName": "Estacion B",
+            "cityStation": "Ciudad B"
+          },
+          "departureTime": "Apr 22, 2024, 3:30:00 PM",
+          "estimatedArrivalTime": "Apr 22, 2024, 4:17:12 PM",
+          "trainToDoRoute": {
+            "trainName": "1",
+            "trainId": "M20240421201152",
+            "kilometers": 0.0,
+            "loadingCapacity": 1,
+            "brand": "Mercedez-Benz",
+            "customersWagons": {
+              "E": [
+                {
+                  "standarAmount": 18,
+                  "executiveAmount": 8,
+                  "premiunAmount": 4,
+                  "customers": {
+                    "size": 0
+                  },
+                  "asociatedTrainID": "M20240421201152",
+                  "wagonNum": 0
+                }
+              ],
+              "size": 2
+            },
+            "luggageWagons": {
+              "E": [],
+              "size": 0
+            },
+            "available": false
+          }
         }
       },
       "size": 1

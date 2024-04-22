@@ -9,5 +9,38 @@
       ],
       "size": 1
     }
+  },
+  {
+    "contactId": "CO20240421205702",
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "contactId": "CO20240421205911",
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "contactId": "CO20240421210141",
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 1
+    }
   }
 ]
