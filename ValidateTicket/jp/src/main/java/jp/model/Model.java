@@ -44,6 +44,7 @@ public class Model {
         tableModel.addColumn("Train id");
         tableModel.addColumn("Fecha salida");
         tableModel.addColumn("Fecha llegada");
+        tableModel.addColumn("Estaciones");
     }
 
     public DefaultTableModel getTableModel() {
@@ -68,7 +69,7 @@ public class Model {
         }
         for (int i = 0; i < findTicketList.size(); i++) {
             Customer customer = findTicketList.get(i).getCustomer();
-            Object u[] = new Object[7];
+            Object u[] = new Object[8];
             u[0] = customer.getNames();
             u[1] = customer.getLastNames();
             u[2] = customer.getCustomerId();
@@ -76,6 +77,14 @@ public class Model {
             u[4] = findTicketList.get(i).getCustomerRoute().get(0).getTrainToDoRoute().getTrainId();
             u[5] = findTicketList.get(i).getCustomerRoute().get(0).getDepartureTime();
             u[6] = findTicketList.get(i).getCustomerRoute().get(0).getEstimatedArrivalTime();
+            String stations = "";
+            for (int j = 0; j < findTicketList.get(i).getStations().size(); j++) {
+                stations += findTicketList.get(i).getStations().get(j).getStationName();
+                if (j < findTicketList.get(i).getStations().size() - 1) {
+                    stations += ",";
+                }
+            }
+            u[7] = stations;
             getTableModel().addRow(u);
         }
     }

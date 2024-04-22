@@ -5,6 +5,9 @@
 package jp.model;
 
 import java.rmi.Naming;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -57,12 +60,24 @@ public class Model {
         return id;
     }
 
-    public Date getDate() {
-        String id = "";
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        // Formatear la fecha y hora como una cadena
+    public static Date getDate() throws ParseException {
+        // Obtener la fecha y hora actuales como LocalDateTime
+        LocalDateTime localDateTime = LocalDateTime.now();
+        
+        // Crear un formato de fecha y hora
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        
+        // Formatear la fecha y hora como una cadena
+        String formattedDateTime = formatter.format(localDateTime);
+        
+        // Crear un SimpleDateFormat para el formateo
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        
+        // Convertir la cadena formateada a un objeto Date
+        Date date = sdf.parse(formattedDateTime);
+        
+        // Devolver el objeto Date
+        return date;
     }
 
     public boolean dataToTicketNormalRoute(Customer customer, Contact contacto, Station A, Station B, CustomerCategory category, String ticketId,

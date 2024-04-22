@@ -138,7 +138,7 @@
                                               <Component id="jTextField5" min="-2" pref="128" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jTextField6" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
+                                      <Component id="jTextField6" min="-2" pref="400" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">

@@ -6,6 +6,9 @@ package jp.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import jp.linkedlist.singly.LinkedList;
 import jp.model.Model;
@@ -73,16 +76,37 @@ public class Controller {
                         switch (sType) {
                             case "PREMIUM":
                                 precio += 1800 * km;
-                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                            {
+                                try {
+                                    model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
                                 break;
+
                             case "EXECUTIVE":
                                 precio += 1200 * km;
-                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                            {
+                                try {
+                                    model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
                                 break;
+
                             case "STANDARD":
                                 precio += 1000 * km;
-                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                            {
+                                try {
+                                    model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
                                 break;
+
                         }
 
                     } else {
@@ -94,16 +118,37 @@ public class Controller {
                         switch (sType) {
                             case "PREMIUM":
                                 precio += 1800 * km;
-                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                            {
+                                try {
+                                    model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
                                 break;
+
                             case "EXECUTIVE":
                                 precio += 1200 * km;
-                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                            {
+                                try {
+                                    model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
                                 break;
+
                             case "STANDARD":
                                 precio += 1000 * km;
-                                model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                            {
+                                try {
+                                    model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
                                 break;
+
                         }
                     }
                     view.setjLabel18(precio);

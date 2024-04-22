@@ -28,7 +28,7 @@ public class Controller {
         initController();
     }
     private void initView() throws Exception {
-        model.ReloadTable();
+//        model.ReloadTable();
         reloadTable();
     }
     private void initController() {
@@ -42,6 +42,7 @@ public class Controller {
                     String idTrain = view.getjTextField1().getText();
                     model.setTicketList(idTrain);
                     model.ReloadTable();
+                    reloadTable();
                 } catch (Exception ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
