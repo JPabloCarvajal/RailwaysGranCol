@@ -150,7 +150,7 @@ public class CustomerRoute implements Serializable {
 
     private LinkedList<SubRoute> assignSubRoutesForCustomerStationsToRun(LinkedList<Station> stationsToRun) {
         LinkedList<SubRoute> assignedSubRoutes = new LinkedList<>();
-        RouteRepository routeManager = new RouteRepository("src\\main\\java\\upb\\sgttp\\database\\routes.json");
+        RouteRepository routeManager = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
 
         // Iterar sobre todas las rutas disponibles
         LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();
@@ -354,7 +354,7 @@ public class CustomerRoute implements Serializable {
      * Método estático para traer las rutas de la base de datos y mostrarlas por consola.
      */
 
-    public static void traerRutasCliente() {
+     public static void traerRutasCliente() {
         RouteRepository routeManager = new RouteRepository("RailwaysGranCol\\src\\main\\java\\upb\\sgttp\\database\\routes.json");
         LinkedList<Route> availableRoutes = routeManager.getAllRoutesAsLinkedList();
     
@@ -375,7 +375,13 @@ public class CustomerRoute implements Serializable {
                 
                 System.out.println("Estación: " + intermediateStation.getStationName());
             }
-    
+            
+            System.out.println(route.getTrainToDoRoute().getTrainId());
+            LinkedList<SubRoute> subruta = route.getSubRoutes();
+            for (int i = 0; i < subruta.getSize(); i++) {
+                System.out.println("Subruta: " + subruta.get(i).getStartPoint().getStationName() + " - " + subruta.get(i).getDestinationPoint().getStationName());
+                System.out.println("Tren: "+ subruta.get(i).getTrainToDoRoute().getTrainId());
+            }
             // Separador entre rutas
             System.out.println("--------------");
         }

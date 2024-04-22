@@ -12,6 +12,7 @@ public class Main {
     private static LoginController controller;
 
     public static void main(String[] args) {
+
         model = new AuthenticationModel();
         view = new LoginView();
         controller = new LoginController(model, view);
