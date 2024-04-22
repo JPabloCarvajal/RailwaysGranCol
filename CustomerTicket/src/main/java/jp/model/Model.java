@@ -55,6 +55,16 @@ public class Model {
         return id;
     }
 
+    public String findIdContact() {
+        String id = "";
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Formatear la fecha y hora como una cadena
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        id = "CO" + formattedDateTime;
+        return id;
+    }
+
     public String findIdTicket() {
         String id = "";
         LocalDateTime currentDateTime = LocalDateTime.now();

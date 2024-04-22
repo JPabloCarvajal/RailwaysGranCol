@@ -71,19 +71,19 @@ public class Controller {
                 String numerosContacto = view.getjTextField10().getText();
                 String[] numbersContacto = numerosContacto.split(",");
                 jp.array.Array<String> arrayContact = new jp.array.Array<>(numbersContacto);
-                Contact contact = new Contact(nombresContacto, apellidosContacto, arrayContact, station2);
+                Contact contact = new Contact(nombresContacto, apellidosContacto, arrayContact, model.findIdContact());
                 Customer customer = new Customer(luggage, nombres, apellidos, array, model.findId());
-                Ticket ticket;
-                LinkedList<Route> routes = model.getRouteList();
+//                Ticket ticket;
+//                LinkedList<Route> routes = model.getRouteList();
                 //crear ruta personalizada
 //                int index = 0;
 //                Route route = null;
                 LinkedList<Station> stations = new LinkedList<>();
 //                Date date = new Date();
 //                Date dateArrival = new Date();
-                CustomerRoute customerRoute;
-                LinkedList<CustomerRoute> customerRouteList = new LinkedList<>();
-                float km = 0f;
+//                CustomerRoute customerRoute;
+//                LinkedList<CustomerRoute> customerRouteList = new LinkedList<>();
+                float km;
                 if (!nombres.isBlank() && !apellidos.isBlank() && !numeros.isBlank() && !nombresContacto.isBlank() && !apellidosContacto.isBlank() && !numerosContacto.isBlank() && !pesoMaleta.isBlank()) {
 
                     if (!rutaPersonalizada) {
@@ -92,15 +92,15 @@ public class Controller {
                         switch (sType) {
                             case "PREMIUM":
                                 precio += 1800 * km;
-                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station1), CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
                                 break;
                             case "EXECUTIVE":
                                 precio += 1200 * km;
-                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station1), CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
                                 break;
                             case "STANDARD":
                                 precio += 1000 * km;
-                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station1), CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
                                 break;
                         }
 

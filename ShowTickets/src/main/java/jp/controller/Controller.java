@@ -6,6 +6,8 @@ package jp.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import jp.model.Model;
 import jp.view.ShowBoarding;
@@ -19,13 +21,13 @@ public class Controller {
     private final ShowBoarding view;
     private final Model model;
 
-    public Controller(ShowBoarding view, Model model) {
+    public Controller(ShowBoarding view, Model model) throws Exception {
         this.view = view;
         this.model = model;
         initView();
         initController();
     }
-    private void initView() {
+    private void initView() throws Exception {
         model.ReloadTable();
         reloadTable();
     }
@@ -36,6 +38,11 @@ public class Controller {
         Update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    model.ReloadTable();
+                } catch (Exception ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 reloadTable();
             }
         });

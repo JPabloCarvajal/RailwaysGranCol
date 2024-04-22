@@ -21,7 +21,7 @@ import upb.sgttp.model.repository.Routes.RouteRepository;
 import upb.sgttp.model.repository.Tickets.TicketRepository;
 
 public class ServerImplement extends UnicastRemoteObject implements Server {
-    
+
     private static final long serialVersionUID = 1L; // Añade este atributo
 
     private TicketRepository ticketRepository;
@@ -38,12 +38,12 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
     }
 
     @Override
-    public boolean ConsultarExistenciaTicket(String ticketID,String customerName){
+    public boolean ConsultarExistenciaTicket(String ticketID, String customerName) {
         LinkedList<Ticket> ticketList = ticketRepository.getAllTicketsAsLinkedList();
         Iterator<Ticket> iterator = ticketList.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Ticket ticket = iterator.next();
-            if(ticket.getTicketId().equals(ticketID) && ticket.getCustomer().getNames().equals(customerName)){
+            if (ticket.getTicketId().equals(ticketID) && ticket.getCustomer().getNames().equals(customerName)) {
                 return true;
             }
         }
@@ -52,7 +52,7 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
 
     public static void main(String[] args) throws RemoteException {
         ServerImplement server = new ServerImplement();
-        System.out.println(server.ConsultarExistenciaTicket("prueba123","popeye"));
+        System.out.println(server.ConsultarExistenciaTicket("prueba123", "popeye"));
     }
 
     @Override
@@ -61,8 +61,8 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
     }
 
     @Override
-    public boolean dataToTicketNormalRoute(Customer customer, Contact contacto, Station A,Station B, CustomerCategory category,String ticketId,
-    Date purchaseDate,Date boardingDate,Date arriveDate,StatusEnum status){
+    public boolean dataToTicketNormalRoute(Customer customer, Contact contacto, Station A, Station B, CustomerCategory category, String ticketId,
+            Date purchaseDate, Date boardingDate, Date arriveDate, StatusEnum status) {
 
         customerRepository.addCustomer(customer);
         contactsRepository.addContact(contacto);
@@ -76,19 +76,19 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
         float precio = mapa.calculateTotalPrice(mapa.lowestDistanceBeetweenStationsKM(A, B), category);
 
         Ticket ticket = new Ticket(customer, category, ticketId, purchaseDate, boardingDate, arriveDate, precio, contacto, status, rutaPersonalizadaCliente, stations);
-        
+
         return ticketRepository.addTicket(ticket);
 
         /*
          * Customer customer, CustomerCategory customerCategory, String ticketId, Date purchaseDate, 
                   Date boardingDate,Date arriveDate, float value, Contact customerContact, StatusEnum status, 
                   LinkedList<CustomerRoute> customerRoute,LinkedList<Station> stations
-         */ 
+         */
     }
 
     @Override
-    public boolean dataToTicketRouteList(Customer customer, Contact contacto,LinkedList<Station> estacionesPorPasar, CustomerCategory category,String ticketId,
-    Date purchaseDate,Date boardingDate,Date arriveDate,StatusEnum status){
+    public boolean dataToTicketRouteList(Customer customer, Contact contacto, LinkedList<Station> estacionesPorPasar, CustomerCategory category, String ticketId,
+            Date purchaseDate, Date boardingDate, Date arriveDate, StatusEnum status) {
 
         customerRepository.addCustomer(customer);
         contactsRepository.addContact(contacto);
@@ -107,7 +107,7 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
          * Customer customer, CustomerCategory customerCategory, String ticketId, Date purchaseDate, 
                   Date boardingDate,Date arriveDate, float value, Contact customerContact, StatusEnum status, 
                   LinkedList<CustomerRoute> customerRoute,LinkedList<Station> stations
-         */ 
+         */
     }
 
     @Override
@@ -115,5 +115,4 @@ public class ServerImplement extends UnicastRemoteObject implements Server {
         return routeRepository.getAllRoutesAsLinkedList();
     }
 
-    
 }

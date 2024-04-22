@@ -4,11 +4,15 @@
  */
 package jp.model;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 import javax.swing.table.DefaultTableModel;
 import jp.linkedlist.singly.LinkedList;
 import upb.sgttp.model.domain.RouteUtilities.Route;
+import upb.sgttp.model.domain.TicketUtilites.Ticket;
 import upb.sgttp.rmiTest.Server;
 
 /**
@@ -49,7 +53,6 @@ public class Model {
         this.routeList = routeList;
     }
 
-
     //lista de rutas
     public LinkedList<Route> obtenerListaRutas() throws Exception {
         // Obtén la referencia al objeto remoto
@@ -59,50 +62,28 @@ public class Model {
         return routeList;
     }
 
-    public void ReloadTable() {
+    public LinkedList<Ticket> getCustomerRoute() throws Exception {
+        Server server = (Server) Naming.lookup("rmi://localhost/Server");
+        LinkedList<Ticket> ticket = server.getTicketList();
+        return ticket;
+    }
+
+    public void ReloadTable() throws Exception {
         while (getTableModel().getRowCount() > 0) {
             getTableModel().removeRow(0);
         }
-//        for (int i = 0; i < userList.size(); i++) {
-//            AbstractPerson person = userList.get(i).getPerson();
-//            String numbers = "";
-//            for (int j = 0; j < userList.get(i).getPerson().getPhoneNumbers().size(); j++) {
-//                numbers += userList.get(i).getPerson().getPhoneNumbers().get(j);
-//                if (j < userList.get(i).getPerson().getPhoneNumbers().size() - 1) {
-//                    numbers += ",";
-//                }
-//            }
-//            Object u[] = new Object[7];
-//            u[0] = person.getNames();
-//            u[1] = person.getLastNames();
-//            u[2] = numbers;
-//            u[3] = userList.get(i).getUsername();
-//            u[4] = userList.get(i).getPassword();
-//            u[5] = userList.get(i).getType();
-//            int tipo = userList.get(i).getType();
-//            switch (tipo) {
-//                case 0 -> {
-//                    //empleado
-//                    Employee empleado = (Employee) userList.get(i).getPerson();
-//                    u[6] = empleado.getId();
-//                }
-//                case 1 -> {
-//                    //cliente
-//                    Customer customer = (Customer) userList.get(i).getPerson();
-//                    u[6] = customer.getCustomerId();
-//                }
-//                case 2 -> {
-//                    //contact
-//                    Contact contact = (Contact) userList.get(i).getPerson();
-//                    u[6] = contact.getContactId();
-//                }
-//                case 3 -> {
-//                    //admin
-//                    Admin admin = (Admin) userList.get(i).getPerson();
-//                    u[6] = admin.getId();
-//                }
-//            }
-//            getTableModel().addRow(u);
-//        }
+        LinkedList<Ticket> ticketList = getCustomerRoute();
+        for (int i = 0; i < ticketList.size(); i++) {
+            Object u[] = new Object[8];
+            u[0] = ticketList.get(i).getStations().peek().getStationName();
+            u[1] = ticketList.get(i).getStations().peekLast().getStationName();
+            u[2] = ticketList.get(i).getCustomerRoute().peek().getDepartureTime();
+            u[3] = ticketList.get(i).getCustomerRoute().peek().getEstimatedArrivalTime();
+            u[4] = ticketList.get(i).getCustomerRoute().peek();
+            u[5] = ticketList.get(i).getCustomerRoute().peek().getTrainToDoRoute().getTrainId();
+            u[6] = ticketList.get(i).getTicketId();
+            u[7] = ticketList.get(i).getStations().toString();
+            getTableModel().addRow(u);
+        }
     }
 }
