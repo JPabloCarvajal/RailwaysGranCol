@@ -52,8 +52,8 @@ public class Route implements Serializable{
         this.departureTime = departureTime;
         this.estimatedArrivalTime = estimatedArrivalTime;
         this.totalKmToTravel = totalKmToTravel;
-        this.subRoutes = createSubRoutes(stations);
         this.trainToDoRoute = trainToDoRoute;
+        this.subRoutes = createSubRoutes(stations);
     }
     
     /**
@@ -69,7 +69,7 @@ public class Route implements Serializable{
      * @return Una lista enlazada de objetos SubRoute que representan las subrutas de la ruta.
      */
 
-    private LinkedList<SubRoute> createSubRoutes(LinkedList<Station> stations) {
+     private LinkedList<SubRoute> createSubRoutes(LinkedList<Station> stations) {
         LinkedList<SubRoute> subRoutes = new LinkedList<>();
         for (int i = 0; i < stations.getSize() - 1; i++) {
             SubRoute subRoute = new SubRoute(stations.get(i), stations.get(i + 1), departureTime, estimatedArrivalTime, trainToDoRoute, routeId);
