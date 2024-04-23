@@ -1,6 +1,6 @@
 [
   {
-    "contactId": "CO20240421201329",
+    "contactId": "CO20240422212924",
     "names": "1",
     "lastNames": "1",
     "phoneNumbers": {
@@ -11,7 +11,7 @@
     }
   },
   {
-    "contactId": "CO20240421205702",
+    "contactId": "CO20240422214308",
     "names": "1",
     "lastNames": "1",
     "phoneNumbers": {
@@ -22,7 +22,7 @@
     }
   },
   {
-    "contactId": "CO20240421205911",
+    "contactId": "CO20240422214714",
     "names": "1",
     "lastNames": "1",
     "phoneNumbers": {
@@ -33,34 +33,12 @@
     }
   },
   {
-    "contactId": "CO20240421210141",
+    "contactId": "CO20240422215008",
     "names": "1",
     "lastNames": "1",
     "phoneNumbers": {
       "E": [
         "1"
-      ],
-      "size": 1
-    }
-  },
-  {
-    "contactId": "CO20240421224048",
-    "names": "1",
-    "lastNames": "1",
-    "phoneNumbers": {
-      "E": [
-        "1"
-      ],
-      "size": 1
-    }
-  },
-  {
-    "contactId": "CO20240421224222",
-    "names": "2",
-    "lastNames": "2",
-    "phoneNumbers": {
-      "E": [
-        "2"
       ],
       "size": 1
     }

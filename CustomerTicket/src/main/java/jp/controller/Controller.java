@@ -66,103 +66,112 @@ public class Controller {
                 if (!nombres.isBlank() && !apellidos.isBlank() && !numeros.isBlank() && !nombresContacto.isBlank() && !apellidosContacto.isBlank() && !numerosContacto.isBlank() && !pesoMaleta.isBlank()) {
                     String[] pesos = pesoMaleta.split(",");
                     LinkedList<Luggage> luggage = new LinkedList<>();
-                    for (int i = 0; i < 2 || i < pesos.length; i++) {
-                        luggage.add(new Luggage(Integer.parseInt(pesos[i]), 0));
-                    }
-                    Contact contact = new Contact(nombresContacto, apellidosContacto, arrayContact, model.findIdContact());
-                    Customer customer = new Customer(luggage, nombres, apellidos, array, model.findId());
-                    if (!rutaPersonalizada) {
-                        km = mapa.calculateTotalDistance(mapa.stationsToTravel(mapa.getStation(station1), mapa.getStation(station2)));
-                        switch (sType) {
-                            case "PREMIUM":
-                                precio += 1800 * km;
-                            {
-                                try {
-                                    model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
-                                } catch (ParseException ex) {
-                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
-                                break;
-
-                            case "EXECUTIVE":
-                                precio += 1200 * km;
-                            {
-                                try {
-                                    model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
-                                } catch (ParseException ex) {
-                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
-                                break;
-
-                            case "STANDARD":
-                                precio += 1000 * km;
-                            {
-                                try {
-                                    model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
-                                } catch (ParseException ex) {
-                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
-                                break;
-
+                    if (pesos.length == 1) {
+                        for (int i = 0; i < 1; i++) {
+                            luggage.add(new Luggage(Integer.parseInt(pesos[i]), 0));
                         }
-
                     } else {
-                        String[] estacionesCustomer = StacionesPersonalizadas.split(",");
-                        for (int i = 0; i < estacionesCustomer.length; i++) {
-                            stations.add(mapa.getStation(estacionesCustomer[i]));
-                        }
-                        km = mapa.calculateTotalDistance(stations);
-                        switch (sType) {
-                            case "PREMIUM":
-                                precio += 1800 * km;
-                            {
-                                try {
-                                    model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
-                                } catch (ParseException ex) {
-                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
-                                break;
-
-                            case "EXECUTIVE":
-                                precio += 1200 * km;
-                            {
-                                try {
-                                    model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
-                                } catch (ParseException ex) {
-                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
-                                break;
-
-                            case "STANDARD":
-                                precio += 1000 * km;
-                            {
-                                try {
-                                    model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
-                                } catch (ParseException ex) {
-                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
-                                break;
-
+                        for (int i = 0; i < 2; i++) {
+                            luggage.add(new Luggage(Integer.parseInt(pesos[i]), 0));
                         }
                     }
-                    view.setjLabel18(precio);
-                    view.getjTextField1().setText("");
-                    view.getjTextField2().setText("");
-                    view.getjTextField3().setText("");
-                    view.getjTextField4().setText("");
-                    view.getjTextField5().setText("");
-                    view.getjTextField6().setText("");
-                    view.getjTextField7().setText("");
-                    view.getjTextField8().setText("");
-                    view.getjTextField9().setText("");
-                    view.getjTextField10().setText("");
-                    view.getjTextField11().setText("");
+
+                    if (luggage.peek().getWeight() < 80 && luggage.peekLast().getWeight() < 80) {
+                        Contact contact = new Contact(nombresContacto, apellidosContacto, arrayContact, model.findIdContact());
+                        Customer customer = new Customer(luggage, nombres, apellidos, array, model.findId());
+                        if (!rutaPersonalizada) {
+                            km = mapa.calculateTotalDistance(mapa.stationsToTravel(mapa.getStation(station1), mapa.getStation(station2)));
+                            switch (sType) {
+                                case "PREMIUM":
+                                    precio += 1800 * km;
+                                     {
+                                        try {
+                                            model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                        } catch (ParseException ex) {
+                                            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                    }
+                                    break;
+
+                                case "EXECUTIVE":
+                                    precio += 1200 * km;
+                                     {
+                                        try {
+                                            model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                        } catch (ParseException ex) {
+                                            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                    }
+                                    break;
+
+                                case "STANDARD":
+                                    precio += 1000 * km;
+                                     {
+                                        try {
+                                            model.dataToTicketNormalRoute(customer, contact, mapa.getStation(station1), mapa.getStation(station2), CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                        } catch (ParseException ex) {
+                                            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                    }
+                                    break;
+
+                            }
+
+                        } else {
+                            String[] estacionesCustomer = StacionesPersonalizadas.split(",");
+                            for (int i = 0; i < estacionesCustomer.length; i++) {
+                                stations.add(mapa.getStation(estacionesCustomer[i]));
+                            }
+                            km = mapa.calculateTotalDistance(stations);
+                            switch (sType) {
+                                case "PREMIUM":
+                                    precio += 1800 * km;
+                                     {
+                                        try {
+                                            model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.PREMIUN, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                        } catch (ParseException ex) {
+                                            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                    }
+                                    break;
+
+                                case "EXECUTIVE":
+                                    precio += 1200 * km;
+                                     {
+                                        try {
+                                            model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.EXECUTIVE, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                        } catch (ParseException ex) {
+                                            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                    }
+                                    break;
+
+                                case "STANDARD":
+                                    precio += 1000 * km;
+                                     {
+                                        try {
+                                            model.dataToTicketRouteList(customer, contact, stations, CustomerCategory.STANDAR, model.findIdTicket(), model.getDate(), model.getDate(), model.getDate(), StatusEnum.ABOARD);
+                                        } catch (ParseException ex) {
+                                            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                    }
+                                    break;
+
+                            }
+                        }
+                        view.setjLabel18(precio);
+                        view.getjTextField1().setText("");
+                        view.getjTextField2().setText("");
+                        view.getjTextField3().setText("");
+                        view.getjTextField4().setText("");
+                        view.getjTextField5().setText("");
+                        view.getjTextField6().setText("");
+                        view.getjTextField7().setText("");
+                        view.getjTextField8().setText("");
+                        view.getjTextField9().setText("");
+                        view.getjTextField10().setText("");
+                        view.getjTextField11().setText("");
+                    }
                 }
             }
         }

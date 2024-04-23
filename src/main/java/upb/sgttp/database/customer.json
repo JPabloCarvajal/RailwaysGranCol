@@ -22,7 +22,34 @@
       "size": 2
     },
     "type": 1,
-    "customerId": "C20240421201329",
+    "customerId": "C20240422212924",
+    "names": "1",
+    "lastNames": "1",
+    "phoneNumbers": {
+      "E": [
+        "1"
+      ],
+      "size": 1
+    }
+  },
+  {
+    "luggages": {
+      "head": {
+        "element": {
+          "weight": 70.0,
+          "wagonId": 0
+        }
+      },
+      "tail": {
+        "element": {
+          "weight": 70.0,
+          "wagonId": 0
+        }
+      },
+      "size": 1
+    },
+    "type": 1,
+    "customerId": "C20240422214308",
     "names": "1",
     "lastNames": "1",
     "phoneNumbers": {
@@ -55,9 +82,9 @@
       "size": 2
     },
     "type": 1,
-    "customerId": "C20240421205702",
+    "customerId": "C20240422214714",
     "names": "1",
-    "lastNames": "1",
+    "lastNames": "11",
     "phoneNumbers": {
       "E": [
         "1"
@@ -68,131 +95,26 @@
   {
     "luggages": {
       "head": {
-        "next": {
-          "element": {
-            "weight": 0.0,
-            "wagonId": 0
-          }
-        },
         "element": {
-          "weight": 0.0,
+          "weight": 1.0,
           "wagonId": 0
         }
       },
       "tail": {
         "element": {
-          "weight": 0.0,
+          "weight": 1.0,
           "wagonId": 0
         }
       },
-      "size": 2
+      "size": 1
     },
     "type": 1,
-    "customerId": "C20240421205911",
+    "customerId": "C20240422215008",
     "names": "1",
     "lastNames": "1",
     "phoneNumbers": {
       "E": [
         "1"
-      ],
-      "size": 1
-    }
-  },
-  {
-    "luggages": {
-      "head": {
-        "next": {
-          "element": {
-            "weight": 0.0,
-            "wagonId": 0
-          }
-        },
-        "element": {
-          "weight": 0.0,
-          "wagonId": 0
-        }
-      },
-      "tail": {
-        "element": {
-          "weight": 0.0,
-          "wagonId": 0
-        }
-      },
-      "size": 2
-    },
-    "type": 1,
-    "customerId": "C20240421210141",
-    "names": "1",
-    "lastNames": "1",
-    "phoneNumbers": {
-      "E": [
-        "1"
-      ],
-      "size": 1
-    }
-  },
-  {
-    "luggages": {
-      "head": {
-        "next": {
-          "element": {
-            "weight": 0.0,
-            "wagonId": 0
-          }
-        },
-        "element": {
-          "weight": 0.0,
-          "wagonId": 0
-        }
-      },
-      "tail": {
-        "element": {
-          "weight": 0.0,
-          "wagonId": 0
-        }
-      },
-      "size": 2
-    },
-    "type": 1,
-    "customerId": "C20240421224048",
-    "names": "1",
-    "lastNames": "1",
-    "phoneNumbers": {
-      "E": [
-        "1"
-      ],
-      "size": 1
-    }
-  },
-  {
-    "luggages": {
-      "head": {
-        "next": {
-          "element": {
-            "weight": 0.0,
-            "wagonId": 0
-          }
-        },
-        "element": {
-          "weight": 0.0,
-          "wagonId": 0
-        }
-      },
-      "tail": {
-        "element": {
-          "weight": 0.0,
-          "wagonId": 0
-        }
-      },
-      "size": 2
-    },
-    "type": 1,
-    "customerId": "C20240421224222",
-    "names": "2",
-    "lastNames": "2",
-    "phoneNumbers": {
-      "E": [
-        "2"
       ],
       "size": 1
     }

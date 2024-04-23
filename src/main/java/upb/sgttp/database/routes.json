@@ -1,41 +1,47 @@
 [
   {
-    "routeId": "Estacion A-Estacion B",
+    "routeId": "Estacion I-Estacion H",
     "stations": {
       "head": {
         "next": {
+          "next": {
+            "element": {
+              "stationName": "Estacion H",
+              "cityStation": "Ciudad H"
+            }
+          },
           "element": {
-            "stationName": "Estacion B",
-            "cityStation": "Ciudad B"
+            "stationName": "Estacion G",
+            "cityStation": "Ciudad G"
           }
         },
         "element": {
-          "stationName": "Estacion A",
-          "cityStation": "Ciudad A"
+          "stationName": "Estacion I",
+          "cityStation": "Ciudad I"
         }
       },
       "tail": {
         "element": {
-          "stationName": "Estacion B",
-          "cityStation": "Ciudad B"
+          "stationName": "Estacion H",
+          "cityStation": "Ciudad H"
         }
       },
-      "size": 2
+      "size": 3
     },
-    "totalKmToTravel": 30.0,
+    "totalKmToTravel": 175.0,
     "destinationPoint": {
-      "stationName": "Estacion B",
-      "cityStation": "Ciudad B"
+      "stationName": "Estacion H",
+      "cityStation": "Ciudad H"
     },
     "startPoint": {
-      "stationName": "Estacion A",
-      "cityStation": "Ciudad A"
+      "stationName": "Estacion I",
+      "cityStation": "Ciudad I"
     },
-    "departureTime": "Apr 22, 2024, 3:30:00 PM",
-    "estimatedArrivalTime": "Apr 22, 2024, 4:17:12 PM",
+    "departureTime": "Apr 25, 2024, 3:30:00 PM",
+    "estimatedArrivalTime": "Apr 25, 2024, 5:12:00 PM",
     "trainToDoRoute": {
       "trainName": "1",
-      "trainId": "M20240421201152",
+      "trainId": "M20240422212414",
       "kilometers": 0.0,
       "loadingCapacity": 1,
       "brand": "Mercedez-Benz",
@@ -48,7 +54,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M20240421201152",
+            "asociatedTrainID": "M20240422212414",
             "wagonNum": 0
           }
         ],
@@ -97,7 +103,7 @@
     "estimatedArrivalTime": "Apr 25, 2024, 4:17:12 PM",
     "trainToDoRoute": {
       "trainName": "2",
-      "trainId": "M20240421235308",
+      "trainId": "M20240422212641",
       "kilometers": 0.0,
       "loadingCapacity": 3,
       "brand": "Mercedez-Benz",
@@ -110,7 +116,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M20240421235308",
+            "asociatedTrainID": "M20240422212641",
             "wagonNum": 0
           },
           {
@@ -120,7 +126,7 @@
             "customers": {
               "size": 0
             },
-            "asociatedTrainID": "M20240421235308",
+            "asociatedTrainID": "M20240422212641",
             "wagonNum": 1
           }
         ],
@@ -134,7 +140,7 @@
             },
             "wagonWeight": 0.0,
             "luggagesAmount": 0,
-            "asociatedTrainID": "M20240421235308",
+            "asociatedTrainID": "M20240422212641",
             "wagonNum": 2
           }
         ],

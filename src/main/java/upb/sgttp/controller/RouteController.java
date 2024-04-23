@@ -53,7 +53,6 @@ public class RouteController {
                 //agregar ruta
                 RoutesMap mapa = new RoutesMap();
                 String station1 = view.getjTextField1().getText();
-                String station2 = view.getjTextField2().getText();
                 String fecha = view.getjTextField3().getText();
                 String idtren = view.getjTextField4().getText();
                 Train train = model.getTrain(idtren);
@@ -71,7 +70,6 @@ public class RouteController {
                     model.addRoute(route);
                     reloadTable();
                     view.getjTextField1().setText("");
-                    view.getjTextField2().setText("");
                     view.getjTextField3().setText("");
                     view.getjTextField4().setText("");
                 }
@@ -112,7 +110,6 @@ public class RouteController {
                     RoutesMap mapa = new RoutesMap();
                     LinkedList<Route> list = model.getRouteList();
                     String station1 = view.getjTextField1().getText();
-                    String station2 = view.getjTextField2().getText();
                     String fecha = view.getjTextField3().getText();
                     String idtren = view.getjTextField4().getText();
 //                    Train train = Main.getTrain(idtren);
@@ -131,19 +128,25 @@ public class RouteController {
                     LocalDateTime departureDateTime = instant.atZone(zoneId).toLocalDateTime();
 //            if (departureDateTime.isAfter(currentDateTime) && (list.get(selectedRow).getTrainToDoRoute().isAvailable() || idtren.equals(upb.sgttp.model.domain.Main.getTrain(idtren).getTrainId()))) {
 
-                    LinkedList<Station> stations = mapa.stationsToTravel(mapa.getStation(station1), mapa.getStation(station2));
-                    Route route = new Route(stations, mapa.getStation(station1), mapa.getStation(station2), model.DateConverter(fecha), mapa.calculateEstimatedArrivalTime(model.DateConverter(fecha), stations), mapa.calculateTotalDistance(stations), train, model.createIdRoute(mapa.getStation(station1), mapa.getStation(station2)));
+                    String[] station= station1.split(",");
+                    LinkedList<Station> stations = new LinkedList<>();
+                    for(int i=0;i<station.length;i++){
+                        stations.add(mapa.getStation(station[i]));
+                    }
+//                    LinkedList<Station> stations = mapa.stationsToTravel(mapa.getStation(station1), mapa.getStation(station2));
+//                    Route route = new Route(stations, mapa.getStation(station1), stai, model.DateConverter(fecha), mapa.calculateEstimatedArrivalTime(model.DateConverter(fecha), stations), mapa.calculateTotalDistance(stations), train, model.createIdRoute(mapa.getStation(station1), mapa.getStation(station2)));
+                    Route route = new Route(stations, stations.peek(), stations.peekLast(), model.DateConverter(fecha), mapa.calculateEstimatedArrivalTime(model.DateConverter(fecha), stations), mapa.calculateTotalDistance(stations), train, model.createIdRoute(stations.peek(), stations.peekLast()));
                     String id = list.get(selectedRow).getRouteId();
                     String idt = list.get(selectedRow).getTrainToDoRoute().getTrainId();
                     Train AuxTrain = list.get(selectedRow).getTrainToDoRoute();
                     list.get(selectedRow).setStations(stations);
-                    list.get(selectedRow).setStartPoint(mapa.getStation(station1));
-                    list.get(selectedRow).setDestinationPoint(mapa.getStation(station2));
+                    list.get(selectedRow).setStartPoint(route.getStartPoint());
+                    list.get(selectedRow).setDestinationPoint(route.getDestinationPoint());
                     list.get(selectedRow).setDepartureTime(model.DateConverter(fecha));
                     list.get(selectedRow).setEstimatedArrivalTime(mapa.calculateEstimatedArrivalTime(model.DateConverter(fecha), stations));
                     list.get(selectedRow).setTotalKmToTravel(mapa.calculateTotalDistance(stations));
                     list.get(selectedRow).setTrainToDoRoute(train);
-                    list.get(selectedRow).setRouteId(model.createIdRoute(mapa.getStation(station1), mapa.getStation(station2)));
+                    list.get(selectedRow).setRouteId(model.createIdRoute(stations.peek(), stations.peekLast()));
                     if (!idtren.equals(idt)) {
                         train.setAvailable(false);
                         model.setAvailable(train);
@@ -153,7 +156,6 @@ public class RouteController {
                     model.updateRoute(route,id);
                     reloadTable();
                     view.getjTextField1().setText("");
-                    view.getjTextField2().setText("");
                     view.getjTextField3().setText("");
                     view.getjTextField4().setText("");
 //            }
