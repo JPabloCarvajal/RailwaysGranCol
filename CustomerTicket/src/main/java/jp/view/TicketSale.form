@@ -398,7 +398,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Identificacion"/>
+            <Property name="text" type="java.lang.String" value="Identificaci&#xf3;n"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField11">

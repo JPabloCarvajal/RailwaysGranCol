@@ -192,7 +192,7 @@ public class TicketSale extends javax.swing.JFrame {
             }
         });
 
-        jLabel16.setText("Identificacion");
+        jLabel16.setText("Identificación");
 
         jLabel17.setText("Tipo de identificación");
 
